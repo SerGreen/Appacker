@@ -9,33 +9,40 @@ namespace Packer
 {
     class Program
     {
-        private const string USAGE = "packer.exe <path_to_packed_app> <local_path_to_main_exe> <path_to_folder_for_packing>";
+        private const string USAGE = "packer.exe <path to unpacker.exe> <path to packed app file> <local path to main exe> <path to folder for packing>";
 
-        //string pathToPackedApp, string localPathToMainExe, string pathToFolderWithApp
-        static void Main(string[] args)
+        //string unpackerExePath, string pathToPackedApp, string localPathToMainExe, string pathToFolderWithApp
+        static int Main(string[] args)
         {
             #region == Arguments check and assignment ==
-            if (args.Length < 3)
+            if (args.Length < 4)
             {
                 Console.WriteLine("Arguments are missing. Usage:");
                 Console.WriteLine(USAGE);
-                return;
+                return 1;
             }
 
-            string pathToPackedApp = args[0];
-            string localPathToMainExe = args[1];
-            string pathToFolderWithApp = args[2];
+            string unpackerExePath = args[0];
+            string pathToPackedApp = args[1];
+            string localPathToMainExe = args[2];
+            string pathToFolderWithApp = args[3];
             
+            if(!File.Exists(unpackerExePath))
+            {
+                Console.WriteLine("Unpacker.exe is missing.");
+                return 2;
+            }
+
             if (!Directory.Exists(pathToFolderWithApp))
             {
                 Console.WriteLine("Specified directory with application does not exist.");
-                return;
+                return 3;
             }
 
             if (!File.Exists(Path.Combine(pathToFolderWithApp, localPathToMainExe)))
             {
                 Console.WriteLine("Main executable does not exist in app directory.");
-                return;
+                return 4;
             }
 
             // Check if the provided path where we gonna save packed exe is valid
@@ -47,7 +54,7 @@ namespace Packer
             catch(Exception)
             {
                 Console.WriteLine("Invalid path to packed executable.");
-                return;
+                return 5;
             }
             finally
             {
@@ -62,23 +69,26 @@ namespace Packer
             for (int i = 0; i < filesToPack.Count; i++)
                 filesToPack[i] = filesToPack[i].Replace(pathToFolderWithApp, string.Empty).TrimStart('\\');
 
-            PackApp(pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack);
+            PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack);
+
+            return 0;
         }
 
         /// <summary>
         /// Packs given files into a single executable file
         /// </summary>
+        /// <param name="unpackerExePath">Path to Unpacker.exe</param>
         /// <param name="pathToPackedApp">Path where packed .exe will be created</param>
         /// <param name="pathToFolderWithApp">Path to the directory that contains application files that will be packed</param>
         /// <param name="localPathToMainExe">Relative path to the executable file that will be launched when the packed app is launched</param>
         /// <param name="filesToPack">List of relative paths to all files of the app that is being packed</param>
-        private static void PackApp(string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack)
+        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack)
         {
             using (var packedExe = new BinaryWriter(File.Open(pathToPackedApp, FileMode.Create, FileAccess.Write)))
             {
                 // Write wrapper app (unpacker.exe) 
                 // and the key-word mark that will help to separate wrapper app bytes from data bytes
-                packedExe.Write(Resource.unpacker);                     // byte[]
+                packedExe.Write(File.ReadAllBytes(unpackerExePath));      // byte[]
                 packedExe.Write(Encoding.UTF8.GetBytes("<SerGreen>"));    // byte[]
 
                 // Write relative path to the main executable of the packed app

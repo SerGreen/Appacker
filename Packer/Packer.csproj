@@ -64,6 +64,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(TargetPath)" "C:\Users\SerGreen\Desktop\packed.exe" "Music Turing Machine.exe" "C:\Users\SerGreen\Desktop\Vault\MTM"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

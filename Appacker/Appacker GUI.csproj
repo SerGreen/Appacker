@@ -48,16 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -68,6 +68,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resource.resx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -84,6 +85,17 @@
   <ItemGroup>
     <Content Include="Icon credit.txt" />
     <Content Include="open box icon.ico" />
+    <None Include="Resources\Unpacker.exe" />
+    <None Include="Resources\Packer.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if "$(ConfigurationName)" == "Debug" (
+  copy "$(SolutionDir)Packer\bin\Debug\packer.exe" "$(ProjectDir)Resources" /Y
+  copy "$(SolutionDir)Unpacker\bin\Debug\unpacker.exe" "$(ProjectDir)Resources" /Y
+) ELSE (
+  copy "$(SolutionDir)Packer\bin\Release\packer.exe" "$(ProjectDir)Resources" /Y
+  copy "$(SolutionDir)Unpacker\bin\Release\unpacker.exe" "$(ProjectDir)Resources" /Y
+)</PreBuildEvent>
+  </PropertyGroup>
 </Project>
