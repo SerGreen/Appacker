@@ -14,6 +14,13 @@ namespace Packer
         //string unpackerExePath, string pathToPackedApp, string localPathToMainExe, string pathToFolderWithApp
         static int Main(string[] args)
         {
+#if DEBUG
+            Console.WriteLine("Running in Debug");
+            Console.WriteLine("Attach to process now and press Enter...");
+            Console.ReadLine();
+            Console.WriteLine("Resuming");
+#endif
+
             #region == Arguments check and assignment ==
             if (args.Length < 4)
             {

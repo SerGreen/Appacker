@@ -52,6 +52,7 @@
             // 
             // txtAppFolderPath
             // 
+            this.txtAppFolderPath.AllowDrop = true;
             this.txtAppFolderPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAppFolderPath.BackColor = System.Drawing.SystemColors.Window;
@@ -60,6 +61,9 @@
             this.txtAppFolderPath.ReadOnly = true;
             this.txtAppFolderPath.Size = new System.Drawing.Size(357, 20);
             this.txtAppFolderPath.TabIndex = 0;
+            this.txtAppFolderPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.txtAppFolderPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
+            this.txtAppFolderPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
             // 
             // btnBrowseAppFolder
             // 
@@ -92,12 +96,16 @@
             // 
             // txtPackPath
             // 
+            this.txtPackPath.AllowDrop = true;
             this.txtPackPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPackPath.Location = new System.Drawing.Point(12, 74);
             this.txtPackPath.Name = "txtPackPath";
             this.txtPackPath.Size = new System.Drawing.Size(357, 20);
             this.txtPackPath.TabIndex = 0;
+            this.txtPackPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.txtPackPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPackPath_DragDrop);
+            this.txtPackPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
             // 
             // btnBrowsePackPath
             // 
@@ -117,6 +125,7 @@
             // 
             // treeView
             // 
+            this.treeView.AllowDrop = true;
             this.treeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -131,6 +140,8 @@
             this.treeView.Size = new System.Drawing.Size(357, 241);
             this.treeView.TabIndex = 3;
             this.treeView.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_BeforeSelect);
+            this.treeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
+            this.treeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
             // 
             // treeViewIconsList
             // 
@@ -152,6 +163,7 @@
             this.txtMainExePath.ReadOnly = true;
             this.txtMainExePath.Size = new System.Drawing.Size(357, 20);
             this.txtMainExePath.TabIndex = 0;
+            this.txtMainExePath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // labMainExePath
             // 
@@ -189,6 +201,7 @@
             this.Controls.Add(this.txtMainExePath);
             this.Controls.Add(this.txtPackPath);
             this.Controls.Add(this.txtAppFolderPath);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Appacker";
             this.ResumeLayout(false);

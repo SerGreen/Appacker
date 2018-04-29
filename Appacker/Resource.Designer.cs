@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Packer {
+namespace Appacker {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Packer {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Packer.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Appacker.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,19 @@ namespace Packer {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] unpacker {
+        internal static byte[] Packer {
             get {
-                object obj = ResourceManager.GetObject("unpacker", resourceCulture);
+                object obj = ResourceManager.GetObject("Packer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Unpacker {
+            get {
+                object obj = ResourceManager.GetObject("Unpacker", resourceCulture);
                 return ((byte[])(obj));
             }
         }

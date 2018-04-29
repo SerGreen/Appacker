@@ -19,6 +19,7 @@ namespace Unpacker
             Console.WriteLine("Running in Debug");
             Console.WriteLine("Attach to process now and press Enter...");
             Console.ReadLine();
+            Console.WriteLine("Resuming");
 #endif
 
             // Subscribe for exit event to delete tempDir

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -23,12 +24,15 @@ namespace Appacker
         {
             if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                txtAppFolderPath.Text = folderBrowserDialog.SelectedPath;
-                RebuildTree();
-                txtMainExePath.Text = string.Empty;
+                SetAppFolderPath(folderBrowserDialog.SelectedPath);
             }
+        }
 
-            CheckIfReadyToPack();
+        private void SetAppFolderPath(string path)
+        {
+            txtAppFolderPath.Text = path;
+            RebuildTree();
+            txtMainExePath.Text = string.Empty;
         }
 
         // Open save file dialog box
@@ -36,14 +40,17 @@ namespace Appacker
         {
             if(saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                txtPackPath.Text = saveFileDialog.FileName;
-
-                // If treeView is build, make the root node name equal to name of the pack name
-                if (treeView.Nodes.Count > 0)
-                    treeView.Nodes[0].Text = Path.GetFileName(saveFileDialog.FileName);
+                SetPackPath(saveFileDialog.FileName);
             }
+        }
 
-            CheckIfReadyToPack();
+        private void SetPackPath(string path)
+        {
+            txtPackPath.Text = path;
+
+            // If treeView is build, make the root node name equal to name of the pack name
+            if (treeView.Nodes.Count > 0)
+                treeView.Nodes[0].Text = Path.GetFileName(path);
         }
 
         // Clear tree view and build new tree using path from txtAppFolderPath
@@ -102,7 +109,6 @@ namespace Appacker
             }
 
             txtMainExePath.Text = e.Node.FullPath.Substring(e.Node.FullPath.IndexOf(Path.DirectorySeparatorChar) + 1);
-            CheckIfReadyToPack();
         }
 
         // When user specified path to app directory, path to save package and local path to main exe
@@ -110,17 +116,115 @@ namespace Appacker
         private void CheckIfReadyToPack()
         {
             if (string.IsNullOrWhiteSpace(txtAppFolderPath.Text) ||
-                string.IsNullOrWhiteSpace(txtMainExePath.Text) ||
-                string.IsNullOrWhiteSpace(txtPackPath.Text))
+                 string.IsNullOrWhiteSpace(txtMainExePath.Text) ||
+                 string.IsNullOrWhiteSpace(txtPackPath.Text) ||
+                 !txtPackPath.Text.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
                 btnPack.Enabled = false;
             else
                 btnPack.Enabled = true;
         }
 
+        private void TextBox_TextChanged(object sender, EventArgs e) => CheckIfReadyToPack();
+
         // Launch packer.exe with needed arguments
         private void btnPack_Click(object sender, EventArgs e)
         {
-            // TODO save unpacker and packer to disk, run packer with arguments, clean up
+            btnPack.Text = "Packing..." + Environment.NewLine + "Please wait";
+            btnPack.Update();
+
+            // Copy packer and unpacker into temp directory
+            string tempDir = null;
+            while (tempDir == null || Directory.Exists(tempDir))
+                tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(tempDir);
+
+            File.WriteAllBytes(Path.Combine(tempDir, "packer.exe"), Resource.Packer);
+            File.WriteAllBytes(Path.Combine(tempDir, "unpacker.exe"), Resource.Unpacker);
+
+            // Launch packer.exe with arguments:
+            // 1. Path to unpacker.exe
+            // 2. Path where to save packed app
+            // 3. Relative path to main executable inside app directory
+            // 4. Path to app directory
+            ProcessStartInfo packProcInfo = new ProcessStartInfo(Path.Combine(tempDir, "packer.exe"));
+            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{txtPackPath.Text.TrimEnd(Path.DirectorySeparatorChar)}"" ""{txtMainExePath.Text}"" ""{txtAppFolderPath.Text}""";
+#if (!DEBUG)
+            packProcInfo.CreateNoWindow = true;
+            packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;
+#endif
+
+            Process packProc = Process.Start(packProcInfo);
+            packProc.WaitForExit();
+
+            // Show error message if return code is abnormal
+            if (packProc.ExitCode != 0)
+                ShowPackingFailMessage(packProc.ExitCode);
+            else
+                System.Media.SystemSounds.Exclamation.Play();
+
+            packProc.Dispose();
+
+            // Delete temp directory
+            if (Directory.Exists(tempDir))
+                Directory.Delete(tempDir, true);
+
+            btnPack.Text = "Pack!";
+        }
+
+        private void ShowPackingFailMessage(int exitCode)
+        {
+            string message;
+            switch (exitCode)
+            {
+                case 1:
+                    message = "Arguments are missing."; break;
+                case 2:
+                    message = "Unpacker.exe is missing."; break;
+                case 3:
+                    message = "Directory with the application is missing."; break;
+                case 4:
+                    message = "Main executable is missing inside the application directory."; break;
+                case 5:
+                    message = "Package save location is invalid."; break;
+                default:
+                    message = "Unknown error.";  break;
+            }
+
+            MessageBox.Show($"Packing was not performed. Packer has exited with code 0x{exitCode:x16}.\n{message}", "Packing aborted", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void txtAppFolderPath_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void txtAppFolderPath_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+
+                if (Directory.Exists(files[0]))
+                {
+                    SetAppFolderPath(files[0]);
+                }
+            }
+        }
+
+        private void txtPackPath_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                if (File.Exists(files[0]) && files[0].EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
+                {
+                    SetPackPath(files[0]);
+                }
+            }
         }
     }
 }
