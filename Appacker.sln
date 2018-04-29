@@ -4,8 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appacker GUI", "Appacker\Appacker GUI.csproj", "{0618E8D3-3057-4317-8BA4-46F39EB864F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{076A6452-1FA4-4995-95BF-C4E28EEFD062} = {076A6452-1FA4-4995-95BF-C4E28EEFD062}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Packer", "Packer\Packer.csproj", "{076A6452-1FA4-4995-95BF-C4E28EEFD062}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B} = {8D85B3EA-40DB-4187-A4F6-FA6263669C5B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unpacker", "Unpacker\Unpacker.csproj", "{8D85B3EA-40DB-4187-A4F6-FA6263669C5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,10 @@ Global
 		{076A6452-1FA4-4995-95BF-C4E28EEFD062}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{076A6452-1FA4-4995-95BF-C4E28EEFD062}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{076A6452-1FA4-4995-95BF-C4E28EEFD062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
