@@ -43,6 +43,7 @@
             this.txtMainExePath = new System.Windows.Forms.TextBox();
             this.labMainExePath = new System.Windows.Forms.Label();
             this.btnPack = new System.Windows.Forms.Button();
+            this.checkRepackable = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // folderBrowserDialog
@@ -61,6 +62,7 @@
             this.txtAppFolderPath.ReadOnly = true;
             this.txtAppFolderPath.Size = new System.Drawing.Size(357, 20);
             this.txtAppFolderPath.TabIndex = 0;
+            this.txtAppFolderPath.TabStop = false;
             this.txtAppFolderPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.txtAppFolderPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
             this.txtAppFolderPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
@@ -71,7 +73,7 @@
             this.btnBrowseAppFolder.Location = new System.Drawing.Point(375, 24);
             this.btnBrowseAppFolder.Name = "btnBrowseAppFolder";
             this.btnBrowseAppFolder.Size = new System.Drawing.Size(75, 22);
-            this.btnBrowseAppFolder.TabIndex = 1;
+            this.btnBrowseAppFolder.TabIndex = 0;
             this.btnBrowseAppFolder.Text = "Browse...";
             this.btnBrowseAppFolder.UseVisualStyleBackColor = true;
             this.btnBrowseAppFolder.Click += new System.EventHandler(this.btnBrowseAppFolder_Click);
@@ -102,7 +104,7 @@
             this.txtPackPath.Location = new System.Drawing.Point(12, 74);
             this.txtPackPath.Name = "txtPackPath";
             this.txtPackPath.Size = new System.Drawing.Size(357, 20);
-            this.txtPackPath.TabIndex = 0;
+            this.txtPackPath.TabIndex = 1;
             this.txtPackPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.txtPackPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPackPath_DragDrop);
             this.txtPackPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
@@ -113,7 +115,7 @@
             this.btnBrowsePackPath.Location = new System.Drawing.Point(375, 73);
             this.btnBrowsePackPath.Name = "btnBrowsePackPath";
             this.btnBrowsePackPath.Size = new System.Drawing.Size(75, 22);
-            this.btnBrowsePackPath.TabIndex = 1;
+            this.btnBrowsePackPath.TabIndex = 2;
             this.btnBrowsePackPath.Text = "Browse...";
             this.btnBrowsePackPath.UseVisualStyleBackColor = true;
             this.btnBrowsePackPath.Click += new System.EventHandler(this.btnBrowsePackPath_Click);
@@ -137,8 +139,8 @@
             this.treeView.Location = new System.Drawing.Point(12, 149);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 1;
-            this.treeView.Size = new System.Drawing.Size(357, 241);
-            this.treeView.TabIndex = 3;
+            this.treeView.Size = new System.Drawing.Size(357, 218);
+            this.treeView.TabIndex = 4;
             this.treeView.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_BeforeSelect);
             this.treeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
             this.treeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
@@ -163,6 +165,7 @@
             this.txtMainExePath.ReadOnly = true;
             this.txtMainExePath.Size = new System.Drawing.Size(357, 20);
             this.txtMainExePath.TabIndex = 0;
+            this.txtMainExePath.TabStop = false;
             this.txtMainExePath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // labMainExePath
@@ -178,19 +181,31 @@
             // 
             this.btnPack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPack.Enabled = false;
-            this.btnPack.Location = new System.Drawing.Point(375, 341);
+            this.btnPack.Location = new System.Drawing.Point(375, 318);
             this.btnPack.Name = "btnPack";
             this.btnPack.Size = new System.Drawing.Size(75, 49);
-            this.btnPack.TabIndex = 4;
+            this.btnPack.TabIndex = 6;
             this.btnPack.Text = "Pack!";
             this.btnPack.UseVisualStyleBackColor = true;
             this.btnPack.Click += new System.EventHandler(this.btnPack_Click);
+            // 
+            // checkRepackable
+            // 
+            this.checkRepackable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkRepackable.AutoSize = true;
+            this.checkRepackable.Location = new System.Drawing.Point(12, 373);
+            this.checkRepackable.Name = "checkRepackable";
+            this.checkRepackable.Size = new System.Drawing.Size(154, 17);
+            this.checkRepackable.TabIndex = 5;
+            this.checkRepackable.Text = "Self-repackable application";
+            this.checkRepackable.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 402);
+            this.Controls.Add(this.checkRepackable);
             this.Controls.Add(this.btnPack);
             this.Controls.Add(this.treeView);
             this.Controls.Add(this.labMainExePath);
@@ -224,6 +239,7 @@
         private System.Windows.Forms.Label labMainExePath;
         private System.Windows.Forms.ImageList treeViewIconsList;
         private System.Windows.Forms.Button btnPack;
+        private System.Windows.Forms.CheckBox checkRepackable;
     }
 }
 

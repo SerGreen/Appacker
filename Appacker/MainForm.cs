@@ -146,8 +146,9 @@ namespace Appacker
             // 2. Path where to save packed app
             // 3. Relative path to main executable inside app directory
             // 4. Path to app directory
+            // 5. Whether app is self-repackable, True or False
             ProcessStartInfo packProcInfo = new ProcessStartInfo(Path.Combine(tempDir, "packer.exe"));
-            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{txtPackPath.Text.TrimEnd(Path.DirectorySeparatorChar)}"" ""{txtMainExePath.Text}"" ""{txtAppFolderPath.Text}""";
+            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{txtPackPath.Text.TrimEnd(Path.DirectorySeparatorChar)}"" ""{txtMainExePath.Text}"" ""{txtAppFolderPath.Text}"" {checkRepackable.Checked}";
 #if (!DEBUG)
             packProcInfo.CreateNoWindow = true;
             packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -186,11 +187,13 @@ namespace Appacker
                     message = "Main executable is missing inside the application directory."; break;
                 case 5:
                     message = "Package save location is invalid."; break;
+                case 6:
+                    message = "File access is denied."; break;
                 default:
                     message = "Unknown error.";  break;
             }
 
-            MessageBox.Show($"Packing was not performed. Packer has exited with code 0x{exitCode:x16}.\n{message}", "Packing aborted", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show($"Packing was not performed. Packer has exited with code 0x{exitCode:X3}.\n{message}", "Packing aborted", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void txtAppFolderPath_DragEnter(object sender, DragEventArgs e)

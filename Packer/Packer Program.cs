@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,14 @@ namespace Packer
 {
     class Program
     {
-        private const string USAGE = "packer.exe <path to unpacker.exe> <path to packed app file> <local path to main exe> <path to folder for packing>";
+        private const string USAGE = "packer.exe <path to unpacker.exe> <path to packed app file> <local path to main exe> <path to folder for packing> [if app should be repackable: True|False]";
+        private const int WAIT_FOR_FILE_ACCESS_TIMEOUT = 5000; // ms
 
         //string unpackerExePath, string pathToPackedApp, string localPathToMainExe, string pathToFolderWithApp
         static int Main(string[] args)
         {
 #if DEBUG
-            Console.WriteLine("Running in Debug");
+            Console.WriteLine("Packer.exe is running in Debug");
             Console.WriteLine("Attach to process now and press Enter...");
             Console.ReadLine();
             Console.WriteLine("Resuming");
@@ -33,6 +35,12 @@ namespace Packer
             string pathToPackedApp = args[1];
             string localPathToMainExe = args[2];
             string pathToFolderWithApp = args[3];
+            bool isSelfRepackable = false;
+            if (args.Length > 4)
+                bool.TryParse(args[4], out isSelfRepackable);
+            bool isRepacking = false;
+            if (args.Length > 5 && (args[5] == "-repack" || args[5] == "repack"))
+                isRepacking = true;
             
             if(!File.Exists(unpackerExePath))
             {
@@ -76,7 +84,28 @@ namespace Packer
             for (int i = 0; i < filesToPack.Count; i++)
                 filesToPack[i] = filesToPack[i].Replace(pathToFolderWithApp, string.Empty).TrimStart('\\');
 
-            PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack);
+            // If it's self-repacking process, then we should wait until packed app frees its .exe file
+            if (isRepacking)
+            {
+                if(WaitForFileAccess(pathToPackedApp, WAIT_FOR_FILE_ACCESS_TIMEOUT) == false)
+                {
+                    Console.WriteLine($"Can't access file {pathToPackedApp}");
+                    return 6;
+                }
+            }
+
+            PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable);
+
+            // If it was repack call, then packer.exe is the one who should remove temp dir with app after packing
+            // Problem: packer.exe can't delete itself
+            // Solution: launch just repacked app and tell it to kill this packer.exe
+            if(isRepacking)
+            {
+                if (Directory.Exists(pathToFolderWithApp))
+                    Directory.Delete(pathToFolderWithApp, true);
+
+                Process.Start(pathToPackedApp, $@"-killme ""{System.Reflection.Assembly.GetEntryAssembly().Location}""");
+            }
 
             return 0;
         }
@@ -89,7 +118,7 @@ namespace Packer
         /// <param name="pathToFolderWithApp">Path to the directory that contains application files that will be packed</param>
         /// <param name="localPathToMainExe">Relative path to the executable file that will be launched when the packed app is launched</param>
         /// <param name="filesToPack">List of relative paths to all files of the app that is being packed</param>
-        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack)
+        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack, bool isSelfRepackable)
         {
             using (var packedExe = new BinaryWriter(File.Open(pathToPackedApp, FileMode.Create, FileAccess.Write)))
             {
@@ -97,6 +126,16 @@ namespace Packer
                 // and the key-word mark that will help to separate wrapper app bytes from data bytes
                 packedExe.Write(File.ReadAllBytes(unpackerExePath));      // byte[]
                 packedExe.Write(Encoding.UTF8.GetBytes("<SerGreen>"));    // byte[]
+
+                // Write self-repackable flag
+                packedExe.Write(isSelfRepackable);                      // bool
+                // If self-repackable, then write packer.exe
+                if (isSelfRepackable)
+                {
+                    byte[] packerData = File.ReadAllBytes(System.Reflection.Assembly.GetEntryAssembly().Location);
+                    packedExe.Write(packerData.Length);                 // int
+                    packedExe.Write(packerData);                        // byte[]
+                }
 
                 // Write relative path to the main executable of the packed app
                 packedExe.Write(localPathToMainExe);                    // string
@@ -126,6 +165,56 @@ namespace Packer
                 files.AddRange(GetFilesRecursively(subDir));
 
             return files;
+        }
+        
+        /// <summary>
+        /// Awaits for file access
+        /// </summary>
+        /// <param name="timeout">Maximum amount of time to wait in milliseconds</param>
+        /// <returns>True if access successfully gained; False if timed out</returns>
+        private static bool WaitForFileAccess(string filePath, int timeout = 0)
+        {
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            while (!IsFileReady(filePath))
+            {
+                if (timeout > 0 && timer.ElapsedMilliseconds > timeout)
+                    return false;
+
+                System.Threading.Thread.Sleep(200);
+            }
+            timer.Stop();
+            return true;
+        }
+
+        /// <summary>
+        /// Detects if you can exclusively access the file
+        /// </summary>
+        /// <param name="sFilename">Path to file</param>
+        /// <returns>True if file can be exclusively accessed, False otherwise</returns>
+        private static bool IsFileReady(String sFilename)
+        {
+            // If the file can be opened for exclusive access it means that the file
+            // is no longer locked by another process.
+            try
+            {
+                using (FileStream inputStream = File.Open(sFilename, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    if (inputStream.Length > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
