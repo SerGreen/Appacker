@@ -141,6 +141,9 @@ namespace Appacker
             File.WriteAllBytes(Path.Combine(tempDir, "packer.exe"), Resource.Packer);
             File.WriteAllBytes(Path.Combine(tempDir, "unpacker.exe"), Resource.Unpacker);
 
+            // Inject new icon into unpacker.exe (take the icon from the main executable of unpacked app)
+            IconSwapper.ChangeIcon(Path.Combine(tempDir, "unpacker.exe"), Path.Combine(txtAppFolderPath.Text, txtMainExePath.Text));
+
             // Launch packer.exe with arguments:
             // 1. Path to unpacker.exe
             // 2. Path where to save packed app
@@ -164,11 +167,11 @@ namespace Appacker
                 System.Media.SystemSounds.Exclamation.Play();
 
             packProc.Dispose();
-
+            
             // Delete temp directory
             if (Directory.Exists(tempDir))
                 Directory.Delete(tempDir, true);
-
+            
             btnPack.Text = "Pack!";
         }
 

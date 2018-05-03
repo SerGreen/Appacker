@@ -1,0 +1,110 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IconLib</RootNamespace>
+    <AssemblyName>IconLib</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Drawing\IconLib\AuthorAttribute.cs" />
+    <Compile Include="System\Drawing\IconLib\ColorProcessing\EuclideanQuantizer.cs" />
+    <Compile Include="System\Drawing\IconLib\ColorProcessing\FloydSteinbergDithering.cs" />
+    <Compile Include="System\Drawing\IconLib\ColorProcessing\IColorQuantizer.cs" />
+    <Compile Include="System\Drawing\IconLib\ColorProcessing\IDithering.cs" />
+    <Compile Include="System\Drawing\IconLib\ColorProcessing\IPaletteQuantizer.cs" />
+    <Compile Include="System\Drawing\IconLib\ColorProcessing\OctreeQuantizer.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\InvalidPixelFormatException.cs" />
+    <Compile Include="System\Drawing\IconLib\LibraryFormats\ILibraryFormat.cs" />
+    <Compile Include="System\Drawing\IconLib\BitmapEncoders\BMPEncoder.cs" />
+    <Compile Include="System\Drawing\IconLib\BitmapEncoders\PNGEncoder.cs" />
+    <Compile Include="System\Drawing\IconLib\BitmapEncoders\ImageEncoder.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\InvalidIconFormatSelectionException.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\InvalidIconSelectionException.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\InvalidICLFileException.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\IconNameAlreadyExistException.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\ImageAlreadyExistsException.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\ImageTooBigException.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\InvalidMultiIconFileException.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\InvalidMultiIconMaskBitmap.cs" />
+    <Compile Include="System\Drawing\IconLib\LibraryFormats\IconFormat.cs" />
+    <Compile Include="System\Drawing\IconLib\Enums.cs" />
+    <Compile Include="System\Drawing\IconLib\Exceptions\InvalidFileException.cs" />
+    <Compile Include="System\Drawing\IconLib\MultiIcon.cs" />
+    <Compile Include="System\Drawing\IconLib\LibraryFormats\NEFormat.cs" />
+    <Compile Include="System\Drawing\IconLib\IconImage.cs" />
+    <Compile Include="System\Drawing\IconLib\LibraryFormats\PEFormat.cs" />
+    <Compile Include="System\Drawing\IconLib\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="System\Drawing\IconLib\SingleIcon.cs" />
+    <Compile Include="System\Drawing\IconLib\Structs.cs" />
+    <Compile Include="System\Drawing\IconLib\Tools.cs" />
+    <Compile Include="System\Drawing\IconLib\Win32.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="System\Drawing\IconLib\Resource.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EmptyDll.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

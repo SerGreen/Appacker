@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IconSwapper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +96,16 @@
     <Content Include="open box icon.ico" />
     <None Include="Resources\Unpacker.exe" />
     <None Include="Resources\Packer.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IconInjector\IconInjector.csproj">
+      <Project>{D7B9897A-704B-4754-BB33-F26529A23EA6}</Project>
+      <Name>IconInjector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IconLib\IconLib.csproj">
+      <Project>{ce53747f-d2e6-4e1e-9ef4-a0ae02671b1d}</Project>
+      <Name>IconLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

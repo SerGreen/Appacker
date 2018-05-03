@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appacker GUI", "Appacker\Appacker GUI.csproj", "{0618E8D3-3057-4317-8BA4-46F39EB864F3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{076A6452-1FA4-4995-95BF-C4E28EEFD062} = {076A6452-1FA4-4995-95BF-C4E28EEFD062}
+		{D7B9897A-704B-4754-BB33-F26529A23EA6} = {D7B9897A-704B-4754-BB33-F26529A23EA6}
+		{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D} = {CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}
+		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B} = {8D85B3EA-40DB-4187-A4F6-FA6263669C5B}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Packer", "Packer\Packer.csproj", "{076A6452-1FA4-4995-95BF-C4E28EEFD062}"
@@ -14,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Packer", "Packer\Packer.csp
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unpacker", "Unpacker\Unpacker.csproj", "{8D85B3EA-40DB-4187-A4F6-FA6263669C5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconInjector", "IconInjector\IconInjector.csproj", "{D7B9897A-704B-4754-BB33-F26529A23EA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconLib", "IconLib\IconLib.csproj", "{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +40,14 @@ Global
 		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B9897A-704B-4754-BB33-F26529A23EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B9897A-704B-4754-BB33-F26529A23EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B9897A-704B-4754-BB33-F26529A23EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B9897A-704B-4754-BB33-F26529A23EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
