@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,8 @@ namespace Appacker
         public MainForm()
         {
             InitializeComponent();
+            var aaa = Properties.Settings.Default.Language;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = aaa;
         }
 
         // Open folder dialog box
@@ -111,6 +114,17 @@ namespace Appacker
             txtMainExePath.Text = e.Node.FullPath.Substring(e.Node.FullPath.IndexOf(Path.DirectorySeparatorChar) + 1);
         }
 
+        private void SetAppIconPreview()
+        {
+            if (string.IsNullOrWhiteSpace(txtMainExePath.Text))
+                picAppIcon.Image = null;
+            else
+            {
+                Bitmap appIcon = Icon.ExtractAssociatedIcon(Path.Combine(txtAppFolderPath.Text, txtMainExePath.Text)).ToBitmap();
+                picAppIcon.Image = appIcon;
+            }
+        }
+
         // When user specified path to app directory, path to save package and local path to main exe
         // Button 'Pack' becomes active
         private void CheckIfReadyToPack()
@@ -124,7 +138,11 @@ namespace Appacker
                 btnPack.Enabled = true;
         }
 
-        private void TextBox_TextChanged(object sender, EventArgs e) => CheckIfReadyToPack();
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            CheckIfReadyToPack();
+            SetAppIconPreview();
+        }
 
         // Launch packer.exe with needed arguments
         private void btnPack_Click(object sender, EventArgs e)
@@ -231,6 +249,16 @@ namespace Appacker
                     SetPackPath(files[0]);
                 }
             }
+        }
+
+        private void btnLanguage_Click(object sender, EventArgs e)
+        {
+            if (Properties.Resources.Culture == CultureInfo.GetCultureInfo("ru-RU"))
+                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+            else
+                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("ru-RU");
+
+            btnLanguage.ImageIndex = ++btnLanguage.ImageIndex % 2;
         }
     }
 }

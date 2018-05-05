@@ -44,24 +44,25 @@
             this.labMainExePath = new System.Windows.Forms.Label();
             this.btnPack = new System.Windows.Forms.Button();
             this.checkRepackable = new System.Windows.Forms.CheckBox();
+            this.picAppIcon = new System.Windows.Forms.PictureBox();
+            this.btnLanguage = new System.Windows.Forms.Button();
+            this.flagsIamgeList = new System.Windows.Forms.ImageList(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // folderBrowserDialog
             // 
+            resources.ApplyResources(this.folderBrowserDialog, "folderBrowserDialog");
             this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.folderBrowserDialog.ShowNewFolderButton = false;
             // 
             // txtAppFolderPath
             // 
+            resources.ApplyResources(this.txtAppFolderPath, "txtAppFolderPath");
             this.txtAppFolderPath.AllowDrop = true;
-            this.txtAppFolderPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAppFolderPath.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAppFolderPath.Location = new System.Drawing.Point(12, 25);
             this.txtAppFolderPath.Name = "txtAppFolderPath";
             this.txtAppFolderPath.ReadOnly = true;
-            this.txtAppFolderPath.Size = new System.Drawing.Size(357, 20);
-            this.txtAppFolderPath.TabIndex = 0;
             this.txtAppFolderPath.TabStop = false;
             this.txtAppFolderPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.txtAppFolderPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
@@ -69,78 +70,50 @@
             // 
             // btnBrowseAppFolder
             // 
-            this.btnBrowseAppFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowseAppFolder.Location = new System.Drawing.Point(375, 24);
+            resources.ApplyResources(this.btnBrowseAppFolder, "btnBrowseAppFolder");
             this.btnBrowseAppFolder.Name = "btnBrowseAppFolder";
-            this.btnBrowseAppFolder.Size = new System.Drawing.Size(75, 22);
-            this.btnBrowseAppFolder.TabIndex = 0;
-            this.btnBrowseAppFolder.Text = "Browse...";
             this.btnBrowseAppFolder.UseVisualStyleBackColor = true;
             this.btnBrowseAppFolder.Click += new System.EventHandler(this.btnBrowseAppFolder_Click);
             // 
             // labAppFolderPath
             // 
-            this.labAppFolderPath.AutoSize = true;
-            this.labAppFolderPath.Location = new System.Drawing.Point(12, 9);
+            resources.ApplyResources(this.labAppFolderPath, "labAppFolderPath");
             this.labAppFolderPath.Name = "labAppFolderPath";
-            this.labAppFolderPath.Size = new System.Drawing.Size(194, 13);
-            this.labAppFolderPath.TabIndex = 2;
-            this.labAppFolderPath.Text = "Directory containing application to pack";
             // 
             // labPackPath
             // 
-            this.labPackPath.AutoSize = true;
-            this.labPackPath.Location = new System.Drawing.Point(12, 58);
+            resources.ApplyResources(this.labPackPath, "labPackPath");
             this.labPackPath.Name = "labPackPath";
-            this.labPackPath.Size = new System.Drawing.Size(163, 13);
-            this.labPackPath.TabIndex = 2;
-            this.labPackPath.Text = "Where packed app will be saved";
             // 
             // txtPackPath
             // 
+            resources.ApplyResources(this.txtPackPath, "txtPackPath");
             this.txtPackPath.AllowDrop = true;
-            this.txtPackPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPackPath.Location = new System.Drawing.Point(12, 74);
             this.txtPackPath.Name = "txtPackPath";
-            this.txtPackPath.Size = new System.Drawing.Size(357, 20);
-            this.txtPackPath.TabIndex = 1;
             this.txtPackPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.txtPackPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPackPath_DragDrop);
             this.txtPackPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
             // 
             // btnBrowsePackPath
             // 
-            this.btnBrowsePackPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowsePackPath.Location = new System.Drawing.Point(375, 73);
+            resources.ApplyResources(this.btnBrowsePackPath, "btnBrowsePackPath");
             this.btnBrowsePackPath.Name = "btnBrowsePackPath";
-            this.btnBrowsePackPath.Size = new System.Drawing.Size(75, 22);
-            this.btnBrowsePackPath.TabIndex = 2;
-            this.btnBrowsePackPath.Text = "Browse...";
             this.btnBrowsePackPath.UseVisualStyleBackColor = true;
             this.btnBrowsePackPath.Click += new System.EventHandler(this.btnBrowsePackPath_Click);
             // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "exe";
-            this.saveFileDialog.Filter = "Executables|*.exe";
+            resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             // 
             // treeView
             // 
+            resources.ApplyResources(this.treeView, "treeView");
             this.treeView.AllowDrop = true;
-            this.treeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView.FullRowSelect = true;
             this.treeView.HideSelection = false;
-            this.treeView.ImageIndex = 0;
             this.treeView.ImageList = this.treeViewIconsList;
-            this.treeView.Indent = 17;
-            this.treeView.Location = new System.Drawing.Point(12, 149);
             this.treeView.Name = "treeView";
-            this.treeView.SelectedImageIndex = 1;
-            this.treeView.Size = new System.Drawing.Size(357, 218);
-            this.treeView.TabIndex = 4;
             this.treeView.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_BeforeSelect);
             this.treeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
             this.treeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
@@ -157,54 +130,60 @@
             // 
             // txtMainExePath
             // 
-            this.txtMainExePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.txtMainExePath, "txtMainExePath");
             this.txtMainExePath.BackColor = System.Drawing.SystemColors.Window;
-            this.txtMainExePath.Location = new System.Drawing.Point(12, 123);
             this.txtMainExePath.Name = "txtMainExePath";
             this.txtMainExePath.ReadOnly = true;
-            this.txtMainExePath.Size = new System.Drawing.Size(357, 20);
-            this.txtMainExePath.TabIndex = 0;
             this.txtMainExePath.TabStop = false;
             this.txtMainExePath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // labMainExePath
             // 
-            this.labMainExePath.AutoSize = true;
-            this.labMainExePath.Location = new System.Drawing.Point(12, 107);
+            resources.ApplyResources(this.labMainExePath, "labMainExePath");
             this.labMainExePath.Name = "labMainExePath";
-            this.labMainExePath.Size = new System.Drawing.Size(117, 13);
-            this.labMainExePath.TabIndex = 2;
-            this.labMainExePath.Text = "Select main executable";
             // 
             // btnPack
             // 
-            this.btnPack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPack.Enabled = false;
-            this.btnPack.Location = new System.Drawing.Point(375, 318);
+            resources.ApplyResources(this.btnPack, "btnPack");
             this.btnPack.Name = "btnPack";
-            this.btnPack.Size = new System.Drawing.Size(75, 49);
-            this.btnPack.TabIndex = 6;
-            this.btnPack.Text = "Pack!";
             this.btnPack.UseVisualStyleBackColor = true;
             this.btnPack.Click += new System.EventHandler(this.btnPack_Click);
             // 
             // checkRepackable
             // 
-            this.checkRepackable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkRepackable.AutoSize = true;
-            this.checkRepackable.Location = new System.Drawing.Point(12, 373);
+            resources.ApplyResources(this.checkRepackable, "checkRepackable");
             this.checkRepackable.Name = "checkRepackable";
-            this.checkRepackable.Size = new System.Drawing.Size(154, 17);
-            this.checkRepackable.TabIndex = 5;
-            this.checkRepackable.Text = "Self-repackable application";
             this.checkRepackable.UseVisualStyleBackColor = true;
+            // 
+            // picAppIcon
+            // 
+            resources.ApplyResources(this.picAppIcon, "picAppIcon");
+            this.picAppIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picAppIcon.Name = "picAppIcon";
+            this.picAppIcon.TabStop = false;
+            // 
+            // btnLanguage
+            // 
+            resources.ApplyResources(this.btnLanguage, "btnLanguage");
+            this.btnLanguage.ImageList = this.flagsIamgeList;
+            this.btnLanguage.Name = "btnLanguage";
+            this.btnLanguage.TabStop = false;
+            this.btnLanguage.UseVisualStyleBackColor = true;
+            this.btnLanguage.Click += new System.EventHandler(this.btnLanguage_Click);
+            // 
+            // flagsIamgeList
+            // 
+            this.flagsIamgeList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("flagsIamgeList.ImageStream")));
+            this.flagsIamgeList.TransparentColor = System.Drawing.Color.Transparent;
+            this.flagsIamgeList.Images.SetKeyName(0, "russia-flag-icon-32.png");
+            this.flagsIamgeList.Images.SetKeyName(1, "united-kingdom-flag-icon-32.png");
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 402);
+            this.Controls.Add(this.btnLanguage);
+            this.Controls.Add(this.picAppIcon);
             this.Controls.Add(this.checkRepackable);
             this.Controls.Add(this.btnPack);
             this.Controls.Add(this.treeView);
@@ -216,9 +195,8 @@
             this.Controls.Add(this.txtMainExePath);
             this.Controls.Add(this.txtPackPath);
             this.Controls.Add(this.txtAppFolderPath);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Appacker";
+            ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,6 +218,9 @@
         private System.Windows.Forms.ImageList treeViewIconsList;
         private System.Windows.Forms.Button btnPack;
         private System.Windows.Forms.CheckBox checkRepackable;
+        private System.Windows.Forms.PictureBox picAppIcon;
+        private System.Windows.Forms.Button btnLanguage;
+        private System.Windows.Forms.ImageList flagsIamgeList;
     }
 }
 
