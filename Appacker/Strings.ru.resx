@@ -124,7 +124,7 @@
     <value>Упаковка...</value>
   </data>
   <data name="btnPackTextPacking2" xml:space="preserve">
-    <value>Пожалуйста, подождите</value>
+    <value>Ожидайте</value>
   </data>
   <data name="errorCaption" xml:space="preserve">
     <value>Упаковка прервана</value>

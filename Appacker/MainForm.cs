@@ -21,7 +21,7 @@ namespace Appacker
         public MainForm()
         {
             InitializeComponent();
-            SetLanguage(Properties.Settings.Default.Language);
+            SetLanguage(RegistrySettingsProvider.Language);
         }
         
         // Open folder dialog box
@@ -253,8 +253,8 @@ namespace Appacker
             cultureManager.UICulture = 
                 System.Threading.Thread.CurrentThread.CurrentCulture =
                 System.Threading.Thread.CurrentThread.CurrentUICulture = language;
-            Properties.Settings.Default.Language = cultureManager.UICulture;
-            Properties.Settings.Default.Save();
+            RegistrySettingsProvider.Language = cultureManager.UICulture;
+            CheckIfReadyToPack();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Application.Exit();

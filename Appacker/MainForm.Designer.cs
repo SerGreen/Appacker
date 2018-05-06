@@ -63,19 +63,17 @@
             // 
             // folderBrowserDialog
             // 
-            resources.ApplyResources(this.folderBrowserDialog, "folderBrowserDialog");
             this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.folderBrowserDialog.ShowNewFolderButton = false;
             // 
             // txtAppFolderPath
             // 
-            resources.ApplyResources(this.txtAppFolderPath, "txtAppFolderPath");
             this.txtAppFolderPath.AllowDrop = true;
+            resources.ApplyResources(this.txtAppFolderPath, "txtAppFolderPath");
             this.txtAppFolderPath.BackColor = System.Drawing.SystemColors.Window;
             this.txtAppFolderPath.Name = "txtAppFolderPath";
             this.txtAppFolderPath.ReadOnly = true;
             this.txtAppFolderPath.TabStop = false;
-            this.toolTip.SetToolTip(this.txtAppFolderPath, resources.GetString("txtAppFolderPath.ToolTip"));
             this.txtAppFolderPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.txtAppFolderPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
             this.txtAppFolderPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
@@ -84,7 +82,6 @@
             // 
             resources.ApplyResources(this.btnBrowseAppFolder, "btnBrowseAppFolder");
             this.btnBrowseAppFolder.Name = "btnBrowseAppFolder";
-            this.toolTip.SetToolTip(this.btnBrowseAppFolder, resources.GetString("btnBrowseAppFolder.ToolTip"));
             this.btnBrowseAppFolder.UseVisualStyleBackColor = true;
             this.btnBrowseAppFolder.Click += new System.EventHandler(this.btnBrowseAppFolder_Click);
             // 
@@ -92,20 +89,17 @@
             // 
             resources.ApplyResources(this.labAppFolderPath, "labAppFolderPath");
             this.labAppFolderPath.Name = "labAppFolderPath";
-            this.toolTip.SetToolTip(this.labAppFolderPath, resources.GetString("labAppFolderPath.ToolTip"));
             // 
             // labPackPath
             // 
             resources.ApplyResources(this.labPackPath, "labPackPath");
             this.labPackPath.Name = "labPackPath";
-            this.toolTip.SetToolTip(this.labPackPath, resources.GetString("labPackPath.ToolTip"));
             // 
             // txtPackPath
             // 
-            resources.ApplyResources(this.txtPackPath, "txtPackPath");
             this.txtPackPath.AllowDrop = true;
+            resources.ApplyResources(this.txtPackPath, "txtPackPath");
             this.txtPackPath.Name = "txtPackPath";
-            this.toolTip.SetToolTip(this.txtPackPath, resources.GetString("txtPackPath.ToolTip"));
             this.txtPackPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.txtPackPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPackPath_DragDrop);
             this.txtPackPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
@@ -114,7 +108,6 @@
             // 
             resources.ApplyResources(this.btnBrowsePackPath, "btnBrowsePackPath");
             this.btnBrowsePackPath.Name = "btnBrowsePackPath";
-            this.toolTip.SetToolTip(this.btnBrowsePackPath, resources.GetString("btnBrowsePackPath.ToolTip"));
             this.btnBrowsePackPath.UseVisualStyleBackColor = true;
             this.btnBrowsePackPath.Click += new System.EventHandler(this.btnBrowsePackPath_Click);
             // 
@@ -125,13 +118,12 @@
             // 
             // treeView
             // 
-            resources.ApplyResources(this.treeView, "treeView");
             this.treeView.AllowDrop = true;
+            resources.ApplyResources(this.treeView, "treeView");
             this.treeView.FullRowSelect = true;
             this.treeView.HideSelection = false;
             this.treeView.ImageList = this.treeViewIconsList;
             this.treeView.Name = "treeView";
-            this.toolTip.SetToolTip(this.treeView, resources.GetString("treeView.ToolTip"));
             this.treeView.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_BeforeSelect);
             this.treeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
             this.treeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
@@ -153,20 +145,17 @@
             this.txtMainExePath.Name = "txtMainExePath";
             this.txtMainExePath.ReadOnly = true;
             this.txtMainExePath.TabStop = false;
-            this.toolTip.SetToolTip(this.txtMainExePath, resources.GetString("txtMainExePath.ToolTip"));
             this.txtMainExePath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // labMainExePath
             // 
             resources.ApplyResources(this.labMainExePath, "labMainExePath");
             this.labMainExePath.Name = "labMainExePath";
-            this.toolTip.SetToolTip(this.labMainExePath, resources.GetString("labMainExePath.ToolTip"));
             // 
             // btnPack
             // 
             resources.ApplyResources(this.btnPack, "btnPack");
             this.btnPack.Name = "btnPack";
-            this.toolTip.SetToolTip(this.btnPack, resources.GetString("btnPack.ToolTip"));
             this.btnPack.UseVisualStyleBackColor = true;
             this.btnPack.Click += new System.EventHandler(this.btnPack_Click);
             // 
@@ -193,21 +182,20 @@
             // 
             // menuStrip
             // 
-            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.languageToolStripMenuItem,
             this.helpToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
-            this.toolTip.SetToolTip(this.menuStrip, resources.GetString("menuStrip.ToolTip"));
             // 
             // fileToolStripMenuItem
             // 
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.packToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // packToolStripMenuItem
             // 
@@ -217,43 +205,43 @@
             // 
             // exitToolStripMenuItem
             // 
-            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
-            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.russianToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             // 
             // englishToolStripMenuItem
             // 
-            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Image = global::Appacker.Properties.Resources.united_kingdom_flag_icon_32;
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // russianToolStripMenuItem
             // 
-            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
             this.russianToolStripMenuItem.Image = global::Appacker.Properties.Resources.russia_flag_icon_32;
+            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
             this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
             this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
             // aboutToolStripMenuItem
             // 
-            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // picAppIcon
@@ -262,7 +250,6 @@
             this.picAppIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picAppIcon.Name = "picAppIcon";
             this.picAppIcon.TabStop = false;
-            this.toolTip.SetToolTip(this.picAppIcon, resources.GetString("picAppIcon.ToolTip"));
             // 
             // cultureManager
             // 
@@ -287,7 +274,6 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
-            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).EndInit();
