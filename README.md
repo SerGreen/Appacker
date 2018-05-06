@@ -34,7 +34,7 @@ __If it's NOT a self-repacking application, CoolApp.exe does the following:__
 1. Creates a temporary folder for the target application files in `C:\Users\%UserName%\AppData\Local\Temp`
 2. Extracts all the appended files from its own `exe` into the temp folder
 3. Runs the main executable of the extracted app (for `CoolApp.exe` it's `Launcher.exe`) and waits for it to finish
-4. Deletes the temporary folder and finishes
+4. Deletes the temporary folder and quits
 
 __If it is a self-repacking application, CoolApp.exe does the following:__
 1. Creates a temporary folder A for the target application files in `C:\Users\%UserName%\AppData\Local\Temp`
@@ -42,11 +42,11 @@ __If it is a self-repacking application, CoolApp.exe does the following:__
 3. Extracts `packer.exe` and `unpacker.exe` from its own `exe` into the temp folder B
 4. Extracts all the appended files from its own `exe` into the temp folder A
 5. Runs the main executable of the extracted app (for `CoolApp.exe` it's `Launcher.exe`) and waits for it to finish
-6. Launches the `packer.exe` from temp folder B and finishes
+6. Launches the `packer.exe` from temp folder B and quits
 7. Packer takes all the files from the temp folder A and packs them into a new package. New package replaces the original `CoolApp.exe`
 8. Packer deletes the temp folder A
-9. Packer launches new `CoolApp.exe` with the special flag `-killme` and asks it to delete the temp folder B (because `packer.exe` can't delete itself); packer finishes
-10. New `CoolApp.exe` deletes temp folder B and finishes
+9. Packer launches new `CoolApp.exe` with the special flag `-killme` and asks it to delete the temp folder B (because `packer.exe` can't delete itself); packer quits
+10. New `CoolApp.exe` deletes temp folder B and quits
 
 ## Solution structure
 * `Appacker` &mdash; WinForms main application project
@@ -56,8 +56,8 @@ __If it is a self-repacking application, CoolApp.exe does the following:__
 * `IconInjector` &mdash; DLL project for replacing icons of external executables
 
 ## Dependancies and credits
-* [IconLib by Gustavo Franco](https://www.codeproject.com/Articles/16178/IconLib-Icons-Unfolded-MultiIcon-and-Windows-Vista) &mdash; Library for work with windows `.ico` images.
-* [IconInjector by some chinese guy](https://hackforums.net/showthread.php?tid=1021081) &mdash; Library for injecting icons into external executables.
-* [Fody.Costura by Simon Cropp](https://github.com/Fody/Costura) &mdash; NuGet package for embedding .exe and .dll files into the main executable.
-* [Resource.Embedder by MarcStan](https://gitlab.com/MarcStan/Resource.Embedder) &mdash; NuGet package for embedding localization satellite assemblies into the main executable.
-* [CultureManager by Grant Frisken](https://www.codeproject.com/Articles/23694/Changing-Your-Application-User-Interface-Culture-O) &mdash; WinForms component that allows dynamically update language and UI Culture of the form without closing and recreating it.
+* [IconLib by Gustavo Franco](https://www.codeproject.com/Articles/16178/IconLib-Icons-Unfolded-MultiIcon-and-Windows-Vista) &mdash; Library for work with windows `.ico` images
+* [IconInjector by some chinese guy](https://hackforums.net/showthread.php?tid=1021081) &mdash; Library for injecting icons into external executables
+* [Fody.Costura by Simon Cropp](https://github.com/Fody/Costura) &mdash; NuGet package for embedding .exe and .dll files into the main executable
+* [Resource.Embedder by MarcStan](https://gitlab.com/MarcStan/Resource.Embedder) &mdash; NuGet package for embedding localization satellite assemblies into the main executable
+* [CultureManager by Grant Frisken](https://www.codeproject.com/Articles/23694/Changing-Your-Application-User-Interface-Culture-O) &mdash; WinForms component that allows dynamically update language and UI Culture of the form without closing and recreating it
