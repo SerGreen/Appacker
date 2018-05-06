@@ -15,13 +15,15 @@ namespace Appacker
 {
     public partial class MainForm : Form
     {
+        private readonly CultureInfo CULTURE_RU = CultureInfo.GetCultureInfo("ru-RU");
+        private readonly CultureInfo CULTURE_EN = CultureInfo.GetCultureInfo("en-US");
+
         public MainForm()
         {
             InitializeComponent();
-            var aaa = Properties.Settings.Default.Language;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = aaa;
+            SetLanguage(Properties.Settings.Default.Language);
         }
-
+        
         // Open folder dialog box
         private void btnBrowseAppFolder_Click(object sender, EventArgs e)
         {
@@ -133,9 +135,9 @@ namespace Appacker
                  string.IsNullOrWhiteSpace(txtMainExePath.Text) ||
                  string.IsNullOrWhiteSpace(txtPackPath.Text) ||
                  !txtPackPath.Text.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
-                btnPack.Enabled = false;
+                packToolStripMenuItem.Enabled = btnPack.Enabled = false;
             else
-                btnPack.Enabled = true;
+                packToolStripMenuItem.Enabled = btnPack.Enabled = true;
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e)
@@ -147,7 +149,8 @@ namespace Appacker
         // Launch packer.exe with needed arguments
         private void btnPack_Click(object sender, EventArgs e)
         {
-            btnPack.Text = "Packing..." + Environment.NewLine + "Please wait";
+            packToolStripMenuItem.Enabled = false;
+            btnPack.Text = Strings.btnPackTextPacking1 + Environment.NewLine + Strings.btnPackTextPacking2;
             btnPack.Update();
 
             // Copy packer and unpacker into temp directory
@@ -190,31 +193,20 @@ namespace Appacker
             if (Directory.Exists(tempDir))
                 Directory.Delete(tempDir, true);
             
-            btnPack.Text = "Pack!";
+            btnPack.Text = Strings.btnPackText;
+            packToolStripMenuItem.Enabled = true;
         }
 
+        // Display message box with error explanation
         private void ShowPackingFailMessage(int exitCode)
         {
             string message;
-            switch (exitCode)
-            {
-                case 1:
-                    message = "Arguments are missing."; break;
-                case 2:
-                    message = "Unpacker.exe is missing."; break;
-                case 3:
-                    message = "Directory with the application is missing."; break;
-                case 4:
-                    message = "Main executable is missing inside the application directory."; break;
-                case 5:
-                    message = "Package save location is invalid."; break;
-                case 6:
-                    message = "File access is denied."; break;
-                default:
-                    message = "Unknown error.";  break;
-            }
+            if (exitCode >= 1 && exitCode <= 6)
+                message = Strings.ResourceManager.GetString($"errorCode{exitCode}");
+            else
+                message = Strings.errorCodeUnknown;
 
-            MessageBox.Show($"Packing was not performed. Packer has exited with code 0x{exitCode:X3}.\n{message}", "Packing aborted", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show($"{Strings.errorText} 0x{exitCode:X3}.\n{message}", Strings.errorCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void txtAppFolderPath_DragEnter(object sender, DragEventArgs e)
@@ -250,15 +242,27 @@ namespace Appacker
                 }
             }
         }
-
-        private void btnLanguage_Click(object sender, EventArgs e)
+        
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e) => SetLanguage(CULTURE_EN);
+        private void russianToolStripMenuItem_Click(object sender, EventArgs e) => SetLanguage(CULTURE_RU);
+        
+        private void SetLanguage(CultureInfo language)
         {
-            if (Properties.Resources.Culture == CultureInfo.GetCultureInfo("ru-RU"))
-                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
-            else
-                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("ru-RU");
+            englishToolStripMenuItem.Checked = language.Equals(CULTURE_EN);
+            russianToolStripMenuItem.Checked = language.Equals(CULTURE_RU);
+            cultureManager.UICulture = 
+                System.Threading.Thread.CurrentThread.CurrentCulture =
+                System.Threading.Thread.CurrentThread.CurrentUICulture = language;
+            Properties.Settings.Default.Language = cultureManager.UICulture;
+            Properties.Settings.Default.Save();
+        }
 
-            btnLanguage.ImageIndex = ++btnLanguage.ImageIndex % 2;
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Application.Exit();
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm about = new AboutForm();
+            about.ShowDialog(this);
         }
     }
 }

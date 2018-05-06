@@ -117,14 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="united-kingdom-flag-icon-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\united-kingdom-flag-icon-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnPackText" xml:space="preserve">
+    <value>Pack!</value>
   </data>
-  <data name="russia-flag-icon-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\russia-flag-icon-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnPackTextPacking1" xml:space="preserve">
+    <value>Packing...</value>
   </data>
-  <data name="open box icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open box icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnPackTextPacking2" xml:space="preserve">
+    <value>Please wait</value>
+  </data>
+  <data name="errorCaption" xml:space="preserve">
+    <value>Packing aborted</value>
+  </data>
+  <data name="errorCode1" xml:space="preserve">
+    <value>Arguments are missing.</value>
+  </data>
+  <data name="errorCode2" xml:space="preserve">
+    <value>Unpacker.exe is missing.</value>
+  </data>
+  <data name="errorCode3" xml:space="preserve">
+    <value>Directory with the application is missing.</value>
+  </data>
+  <data name="errorCode4" xml:space="preserve">
+    <value>Main executable is missing inside the application directory.</value>
+  </data>
+  <data name="errorCode5" xml:space="preserve">
+    <value>Package save location is invalid.</value>
+  </data>
+  <data name="errorCode6" xml:space="preserve">
+    <value>File access is denied.</value>
+  </data>
+  <data name="errorCodeUnknown" xml:space="preserve">
+    <value>Unknown error.</value>
+  </data>
+  <data name="errorText" xml:space="preserve">
+    <value>Packing was not performed. Packer has exited with code</value>
   </data>
 </root>
