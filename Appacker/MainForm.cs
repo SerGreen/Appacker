@@ -127,7 +127,7 @@ namespace Appacker
             }
         }
 
-        // When user specified path to app directory, path to save package and local path to main exe
+        // When user have specified path to app directory, path to save package and local path to main exe
         // Button 'Pack' becomes active
         private void CheckIfReadyToPack()
         {
@@ -146,14 +146,14 @@ namespace Appacker
             SetAppIconPreview();
         }
 
-        // Launch packer.exe with needed arguments
+        // Launch the packer.exe with needed arguments
         private void btnPack_Click(object sender, EventArgs e)
         {
             packToolStripMenuItem.Enabled = false;
             btnPack.Text = Strings.btnPackTextPacking1 + Environment.NewLine + Strings.btnPackTextPacking2;
             btnPack.Update();
 
-            // Copy packer and unpacker into temp directory
+            // Copy packer and unpacker into the temp directory
             string tempDir = null;
             while (tempDir == null || Directory.Exists(tempDir))
                 tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -197,7 +197,7 @@ namespace Appacker
             packToolStripMenuItem.Enabled = true;
         }
 
-        // Display message box with error explanation
+        // Display message box with an error explanation
         private void ShowPackingFailMessage(int exitCode)
         {
             string message;
@@ -209,6 +209,7 @@ namespace Appacker
             MessageBox.Show($"{Strings.errorText} 0x{exitCode:X3}.\n{message}", Strings.errorCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
+        #region == Drag and drop stuff ==
         private void txtAppFolderPath_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -242,20 +243,23 @@ namespace Appacker
                 }
             }
         }
-        
-        private void englishToolStripMenuItem_Click(object sender, EventArgs e) => SetLanguage(CULTURE_EN);
-        private void russianToolStripMenuItem_Click(object sender, EventArgs e) => SetLanguage(CULTURE_RU);
-        
+        #endregion
+
+        // Change the CultureInfo and save the language choice to the registry
         private void SetLanguage(CultureInfo language)
         {
             englishToolStripMenuItem.Checked = language.Equals(CULTURE_EN);
             russianToolStripMenuItem.Checked = language.Equals(CULTURE_RU);
-            cultureManager.UICulture = 
+            cultureManager.UICulture =
                 System.Threading.Thread.CurrentThread.CurrentCulture =
                 System.Threading.Thread.CurrentThread.CurrentUICulture = language;
             RegistrySettingsProvider.Language = cultureManager.UICulture;
             CheckIfReadyToPack();
         }
+
+        #region == Menu strip items stuff ==
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e) => SetLanguage(CULTURE_EN);
+        private void russianToolStripMenuItem_Click(object sender, EventArgs e) => SetLanguage(CULTURE_RU);
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Application.Exit();
 
@@ -264,5 +268,6 @@ namespace Appacker
             AboutForm about = new AboutForm();
             about.ShowDialog(this);
         }
+        #endregion
     }
 }

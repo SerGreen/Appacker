@@ -25,21 +25,17 @@ namespace Unpacker
             Console.WriteLine("Resuming");
 #endif
 
-            // After self-repacking, packer.exe can't delete itself from temp dir, so it calls repacked app to kill it
+            // After self-repacking, packer.exe can't delete itself from the temp dir, so it calls repacked app to kill it
             // Command is "unpacker.exe -killme <path to packer.exe>"
             // The whole folder where packer.exe is gets deleted (cuz there should also be temp unpacker.exe from repacking process)
             if(args.Length > 0 && 
                 (args[0] == "-killme" || args[0] == "killme"))
             {
                 if(args.Length > 1)
-                {
                     if(WaitForFileAccess(args[1], WAIT_FOR_FILE_ACCESS_TIMEOUT) == true)
-                    {
-                        Directory.Delete(Path.GetDirectoryName(args[1]), true);
-                    }
-                }
+                        DeleteDirectory(Path.GetDirectoryName(args[1]));
 
-                // Just close the app now
+                // Don't unpack anything. Just close the app now
                 return;
             }
 
@@ -60,6 +56,7 @@ namespace Unpacker
                 long pos = FindPatternPosition(me.BaseStream, pattern);
                 me.BaseStream.Seek(pos + pattern.Length, SeekOrigin.Begin);
 
+                // Start extracting appended data
                 isSelfRepackable = me.ReadBoolean();
                 if(isSelfRepackable)
                 {
@@ -68,7 +65,8 @@ namespace Unpacker
                         repackerTempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
                     Directory.CreateDirectory(repackerTempDir);
 
-                    // Return to the beginning of the file and save the unpacker.exe part
+                    // For repacking we also need the unpacker.exe itself
+                    // So return to the beginning of the file and save the unpacker.exe part
                     me.BaseStream.Seek(0, SeekOrigin.Begin);
                     File.WriteAllBytes(Path.Combine(repackerTempDir, "unpacker.exe"), me.ReadBytes((int)pos));
                     // Skip <SerGreen> keyword and 1 byte of isSelfRepackable flag
@@ -80,13 +78,14 @@ namespace Unpacker
 
                 pathToMainExe = me.ReadString();
 
-                // Extract files until the end of stream is reached
+                // Keep extracting files until the end of the stream
                 while(me.BaseStream.Position < me.BaseStream.Length)
                 {
                     string path = me.ReadString();
                     int length = me.ReadInt32();
                     byte[] data = me.ReadBytes(length);
 
+                    // Create subdirectory if necessary
                     string dir = Path.GetDirectoryName(path);
                     if (!string.IsNullOrWhiteSpace(dir) && !Directory.Exists(Path.Combine(tempDir, dir)))
                         Directory.CreateDirectory(Path.Combine(tempDir, dir));
@@ -96,46 +95,74 @@ namespace Unpacker
             }
 
             // Launch unpacked app
-            Process proc = Process.Start(Path.Combine(tempDir, pathToMainExe));
+            ProcessStartInfo procInfo = new ProcessStartInfo(Path.Combine(tempDir, pathToMainExe));
+            procInfo.WorkingDirectory = tempDir;
+            Process proc = Process.Start(procInfo);
 
             // Wait until app exits to delete its files from temp directory
             proc.WaitForExit();
         }
 
-        // Exit event. Delete tempDir recursively
+        // Exit event. Delete tempDir recursively or start repacker process
         private static void Unpacker_ProcessExit(object sender, EventArgs e)
         {
             // If it's a self-repackable app, then launch packer.exe from temp directory
             if (isSelfRepackable)
             {
-                // Launch packer.exe with arguments:
-                // 1. Path to unpacker.exe (inside repackTempDir)
-                // 2. Path where to save packed app (path of current exe)
-                // 3. Relative path to main executable inside app directory
-                // 4. Path to app directory (tempDir)
-                // 5. True flag = this app is self-repackable
-                // 6. -repack flag = this is the repacking process, which will result in deletion of unpacked app folder after repacking
-                ProcessStartInfo repackProcInfo = new ProcessStartInfo(Path.Combine(repackerTempDir, "packer.exe"));
-                repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" True -repack";
+                // Repack only if there're actually changed files
+                if (AnyFileChanged(tempDir))
+                {
+                    // Launch packer.exe with following arguments:
+                    // 1. Path to unpacker.exe (inside repackTempDir)
+                    // 2. Path where to save the packed app (path of the current exe, it will be replaced)
+                    // 3. Relative path to main executable inside app directory
+                    // 4. Path to the app directory (tempDir)
+                    // 5. Self-repackable flag = True
+                    // 6. -repack flag = mark, that this is the repacking process, which will result in deletion of unpacked temp folder after repacking
+                    ProcessStartInfo repackProcInfo = new ProcessStartInfo(Path.Combine(repackerTempDir, "packer.exe"));
+                    repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" True -repack";
 #if (!DEBUG)
                 repackProcInfo.CreateNoWindow = true;
                 repackProcInfo.WindowStyle = ProcessWindowStyle.Hidden;
 #endif
-                Process.Start(repackProcInfo);
+                    Process.Start(repackProcInfo);
+                }
+                // If no file was changed, then just delete temp folders and that's it
+                else
+                {
+                    DeleteDirectory(tempDir);
+                    DeleteDirectory(repackerTempDir);
+                }
             }
             // If it's not a repackable app, then delete temp files immediately
             else
             {
-                if (tempDir != null && Directory.Exists(tempDir))
-                    Directory.Delete(tempDir, true);
+                DeleteDirectory(tempDir);
             }
         }
 
+        private static void DeleteDirectory(string dirPath)
+        {
+            if (dirPath != null && Directory.Exists(dirPath))
+                Directory.Delete(dirPath, true);
+        }
+        
+        // Checks if there's at least one file that has been altered since its creation time
+        private static bool AnyFileChanged(string pathToAppDir) => GetAllFilesInsideDirectory(new DirectoryInfo(pathToAppDir)).Any(x => x.LastWriteTime.Subtract(x.CreationTime).Milliseconds > 500);
+        private static IEnumerable<FileInfo> GetAllFilesInsideDirectory(DirectoryInfo dirInfo)
+        {
+            foreach (FileInfo file in dirInfo.GetFiles())
+                yield return file;
 
-#region Find pattern position in stream methods
+            foreach (DirectoryInfo dir in dirInfo.GetDirectories())
+                foreach (FileInfo file in GetAllFilesInsideDirectory(dir))
+                    yield return file;
+        }
+
+        #region == Find pattern position in stream methods ==
         // Solution from here https://stackoverflow.com/questions/1471975
         /// <summary>
-        /// Search for first occurance of byte-sequence pattern in stream
+        /// Search for the first occurance of a byte-sequence pattern in stream
         /// </summary>
         /// <param name="stream">Stream to search in</param>
         /// <param name="byteSequence">Pattern to search for</param>
@@ -176,10 +203,11 @@ namespace Unpacker
             }
             return i;
         }
-#endregion
+        #endregion
 
+        #region == Wait for the file access ==
         /// <summary>
-        /// Awaits for file access
+        /// Awaits for the file access
         /// </summary>
         /// <param name="timeout">Maximum amount of time to wait in milliseconds</param>
         /// <returns>True if access successfully gained; False if timed out</returns>
@@ -227,5 +255,6 @@ namespace Unpacker
                 return false;
             }
         }
+        #endregion
     }
 }

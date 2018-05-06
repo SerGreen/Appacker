@@ -15,6 +15,7 @@ namespace Appacker
         public AboutForm()
         {
             InitializeComponent();
+            labVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(3);
         }
 
         private void linkIconsCredit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

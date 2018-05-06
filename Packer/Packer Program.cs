@@ -23,6 +23,9 @@ namespace Packer
             Console.WriteLine("Resuming");
 #endif
 
+            string unpackerExePath, pathToPackedApp, localPathToMainExe, pathToFolderWithApp;
+            bool isSelfRepackable, isRepacking;
+
             #region == Arguments check and assignment ==
             if (args.Length < 4)
             {
@@ -31,14 +34,14 @@ namespace Packer
                 return 1;
             }
 
-            string unpackerExePath = args[0];
-            string pathToPackedApp = args[1];
-            string localPathToMainExe = args[2];
-            string pathToFolderWithApp = args[3];
-            bool isSelfRepackable = false;
+            unpackerExePath = args[0];
+            pathToPackedApp = args[1];
+            localPathToMainExe = args[2];
+            pathToFolderWithApp = args[3];
+            isSelfRepackable = false;
             if (args.Length > 4)
                 bool.TryParse(args[4], out isSelfRepackable);
-            bool isRepacking = false;
+            isRepacking = false;
             if (args.Length > 5 && (args[5] == "-repack" || args[5] == "repack"))
                 isRepacking = true;
             
@@ -94,9 +97,10 @@ namespace Packer
                 }
             }
 
+            // Do the packing
             PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable);
 
-            // If it was repack call, then packer.exe is the one who should remove temp dir with app after packing
+            // If it was repack call, then packer.exe is the one who should remove the temp dir with the app after packing
             // Problem: packer.exe can't delete itself
             // Solution: launch just repacked app and tell it to kill this packer.exe
             if(isRepacking)
@@ -124,8 +128,8 @@ namespace Packer
             {
                 // Write wrapper app (unpacker.exe) 
                 // and the key-word mark that will help to separate wrapper app bytes from data bytes
-                packedExe.Write(File.ReadAllBytes(unpackerExePath));      // byte[]
-                packedExe.Write(Encoding.UTF8.GetBytes("<SerGreen>"));    // byte[]
+                packedExe.Write(File.ReadAllBytes(unpackerExePath));    // byte[]
+                packedExe.Write(Encoding.UTF8.GetBytes("<SerGreen>"));  // byte[]
 
                 // Write self-repackable flag
                 packedExe.Write(isSelfRepackable);                      // bool
@@ -140,7 +144,7 @@ namespace Packer
                 // Write relative path to the main executable of the packed app
                 packedExe.Write(localPathToMainExe);                    // string
 
-                // Write all packed files to the end of wrapper app .exe file
+                // Append all packed files to the end of the wrapper app .exe file
                 foreach (string filePath in filesToPack)
                 {
                     byte[] data = File.ReadAllBytes(Path.Combine(pathToFolderWithApp, filePath));

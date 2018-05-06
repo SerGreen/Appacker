@@ -34,7 +34,7 @@
             this.linkIconsCredit = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labVersion = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.linkGithub = new System.Windows.Forms.LinkLabel();
@@ -65,8 +65,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Appacker.Properties.Resources.open_box_icon;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Image = global::Appacker.Properties.Resources.open_box_icon;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
@@ -75,10 +75,10 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // label4
+            // labVersion
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.labVersion, "labVersion");
+            this.labVersion.Name = "labVersion";
             // 
             // label6
             // 
@@ -115,7 +115,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labVersion);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDismiss);
@@ -137,7 +137,7 @@
         private System.Windows.Forms.LinkLabel linkIconsCredit;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labVersion;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.LinkLabel linkGithub;
