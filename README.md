@@ -1,6 +1,8 @@
 # Appacker
 This tool takes a folder with application and packs it into a single executable file (without compression) for easy distribution, portability or whatnot.
 
+__[Download Appacker](https://github.com/SerGreen/Appacker/releases/latest)__.
+
 ## How does it work
 The principle behind Appacker is that you can write whatever you want to the end of an `.exe` file and it will still work fine.  
 This app simply appends all the necessary files to the end of a wrapper executable and when the wrapper is launched, it extracts all the files from its own `.exe`, places them into a temporary folder and starts extracted application. When target app is closed, wrapper removes temp folder.  
