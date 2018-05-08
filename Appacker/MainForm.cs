@@ -18,9 +18,17 @@ namespace Appacker
         private readonly CultureInfo CULTURE_RU = CultureInfo.GetCultureInfo("ru-RU");
         private readonly CultureInfo CULTURE_EN = CultureInfo.GetCultureInfo("en-US");
 
+        private string pathToCustomIcon = null;
+
         public MainForm()
         {
             InitializeComponent();
+            // Fix btnIconReset background transparency by setting pictureBox as its Parent (and recalculate position)
+            Point pos = PointToScreen(btnIconReset.Location);
+            pos = picAppIcon.PointToClient(pos);
+            btnIconReset.Parent = picAppIcon;
+            btnIconReset.Location = pos;
+            // Load language from settings
             SetLanguage(RegistrySettingsProvider.Language);
         }
         
@@ -37,7 +45,8 @@ namespace Appacker
         {
             txtAppFolderPath.Text = path;
             RebuildTree();
-            txtMainExePath.Text = string.Empty;
+            UpdateComboBoxMainExe(path);
+            CheckIfReadyToPack();
         }
 
         // Open save file dialog box
@@ -96,7 +105,8 @@ namespace Appacker
             }
             foreach (FileInfo file in directoryInfo.GetFiles())
             {
-                TreeNode fileNode = curNode.Nodes.Add(file.FullName, file.Name);
+                TreeNode fileNode = curNode.Nodes.Add(file.Name);
+                fileNode.Name = fileNode.FullPath.Substring(fileNode.FullPath.IndexOf(Path.DirectorySeparatorChar) + 1);
                 if (file.Extension.ToLowerInvariant() == ".exe")
                     fileNode.ImageIndex = fileNode.SelectedImageIndex = 3;
                 else
@@ -104,53 +114,60 @@ namespace Appacker
             }
         }
 
+        // Find all .exe files and add them to the combobox
+        private void UpdateComboBoxMainExe(string pathToAppFolder)
+        {
+            string[] exes = Directory.GetFiles(pathToAppFolder, "*.exe", SearchOption.AllDirectories);
+            comboMainExePath.Items.Clear();
+            foreach (string localPath in exes.Select(x => x.Replace(pathToAppFolder, "").TrimStart(Path.DirectorySeparatorChar)))
+                comboMainExePath.Items.Add(localPath);
+            SetAppIconPreviewFromMainExeIfNoCustom();
+        }
+
         // Only alow selection of .exe files
         private void treeView_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
-            if(!e.Node.Name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
+            if(e.Node == treeView.SelectedNode || !e.Node.Name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
             {
                 e.Cancel = true;
                 return;
             }
 
-            txtMainExePath.Text = e.Node.FullPath.Substring(e.Node.FullPath.IndexOf(Path.DirectorySeparatorChar) + 1);
+            comboMainExePath.SelectedItem = e.Node.Name;
         }
-
-        private void SetAppIconPreview()
+        
+        // Change selected .exe in treeView when comboBox selection changes
+        private void comboMainExePath_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtMainExePath.Text))
-                picAppIcon.Image = null;
-            else
-            {
-                Bitmap appIcon = Icon.ExtractAssociatedIcon(Path.Combine(txtAppFolderPath.Text, txtMainExePath.Text)).ToBitmap();
-                picAppIcon.Image = appIcon;
-            }
-        }
+            TreeNode node = treeView.Nodes.Find(comboMainExePath.Text, true).First();
+            treeView.SelectedNode = node;
 
+            TextBox_TextChanged(sender, e);
+            SetAppIconPreviewFromMainExeIfNoCustom();
+        }
+        
         // When user have specified path to app directory, path to save package and local path to main exe
         // Button 'Pack' becomes active
         private void CheckIfReadyToPack()
         {
             if (string.IsNullOrWhiteSpace(txtAppFolderPath.Text) ||
-                 string.IsNullOrWhiteSpace(txtMainExePath.Text) ||
                  string.IsNullOrWhiteSpace(txtPackPath.Text) ||
+                 string.IsNullOrWhiteSpace(comboMainExePath.Text) ||
                  !txtPackPath.Text.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
                 packToolStripMenuItem.Enabled = btnPack.Enabled = false;
             else
                 packToolStripMenuItem.Enabled = btnPack.Enabled = true;
         }
 
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            CheckIfReadyToPack();
-            SetAppIconPreview();
-        }
+        private void TextBox_TextChanged(object sender, EventArgs e) => CheckIfReadyToPack();
 
+        // ============== PACK METHOD ================
         // Launch the packer.exe with needed arguments
+        // ===========================================
         private void btnPack_Click(object sender, EventArgs e)
         {
             packToolStripMenuItem.Enabled = false;
-            btnPack.Text = Strings.btnPackTextPacking1 + Environment.NewLine + Strings.btnPackTextPacking2;
+            btnPack.Text = Resources.Strings.btnPackTextPacking1 + Environment.NewLine + Resources.Strings.btnPackTextPacking2;
             btnPack.Update();
 
             // Copy packer and unpacker into the temp directory
@@ -162,8 +179,9 @@ namespace Appacker
             File.WriteAllBytes(Path.Combine(tempDir, "packer.exe"), Resource.Packer);
             File.WriteAllBytes(Path.Combine(tempDir, "unpacker.exe"), Resource.Unpacker);
 
-            // Inject new icon into unpacker.exe (take the icon from the main executable of unpacked app)
-            IconSwapper.ChangeIcon(Path.Combine(tempDir, "unpacker.exe"), Path.Combine(txtAppFolderPath.Text, txtMainExePath.Text));
+            // Inject new icon into unpacker.exe (take the icon from the main executable of unpacked app if user did not provide a custom icon)
+            string iconPath = pathToCustomIcon ?? Path.Combine(txtAppFolderPath.Text, comboMainExePath.Text);
+            IconSwapper.ChangeIcon(Path.Combine(tempDir, "unpacker.exe"), iconPath);
 
             // Launch packer.exe with arguments:
             // 1. Path to unpacker.exe
@@ -172,7 +190,7 @@ namespace Appacker
             // 4. Path to app directory
             // 5. Whether app is self-repackable, True or False
             ProcessStartInfo packProcInfo = new ProcessStartInfo(Path.Combine(tempDir, "packer.exe"));
-            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{txtPackPath.Text.TrimEnd(Path.DirectorySeparatorChar)}"" ""{txtMainExePath.Text}"" ""{txtAppFolderPath.Text}"" {checkRepackable.Checked}";
+            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{txtPackPath.Text.TrimEnd(Path.DirectorySeparatorChar)}"" ""{comboMainExePath.Text}"" ""{txtAppFolderPath.Text}"" {checkRepackable.Checked}";
 #if (!DEBUG)
             packProcInfo.CreateNoWindow = true;
             packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -193,7 +211,7 @@ namespace Appacker
             if (Directory.Exists(tempDir))
                 Directory.Delete(tempDir, true);
             
-            btnPack.Text = Strings.btnPackText;
+            btnPack.Text = Resources.Strings.btnPackText;
             packToolStripMenuItem.Enabled = true;
         }
 
@@ -202,11 +220,11 @@ namespace Appacker
         {
             string message;
             if (exitCode >= 1 && exitCode <= 6)
-                message = Strings.ResourceManager.GetString($"errorCode{exitCode}");
+                message = Resources.Strings.ResourceManager.GetString($"errorCode{exitCode}");
             else
-                message = Strings.errorCodeUnknown;
+                message = Resources.Strings.errorCodeUnknown;
 
-            MessageBox.Show($"{Strings.errorText} 0x{exitCode:X3}.\n{message}", Strings.errorCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show($"{Resources.Strings.errorText} 0x{exitCode:X3}.\n{message}", Resources.Strings.errorCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         #region == Drag and drop stuff ==
@@ -269,5 +287,47 @@ namespace Appacker
             about.ShowDialog(this);
         }
         #endregion
+
+        #region == Package icon stuff ==
+        // Displays the icon of the main executable in pictureBox
+        private void SetAppIconPreviewFromMainExe()
+        {
+            if (string.IsNullOrWhiteSpace(comboMainExePath.Text))
+                picAppIcon.Image = null;
+            else
+            {
+                Bitmap appIcon = IconSwapper.GetIconFromFile(Path.Combine(txtAppFolderPath.Text, comboMainExePath.Text));
+                picAppIcon.Image = appIcon;
+            }
+        }
+
+        private void SetAppIconPreviewFromMainExeIfNoCustom()
+        {
+            if (pathToCustomIcon == null)
+                SetAppIconPreviewFromMainExe();
+        }
+
+        // Displays the custom icon in pictureBox
+        private void btnChangeIcon_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if(openIconDialog.ShowDialog() == DialogResult.OK)
+            {
+                pathToCustomIcon = openIconDialog.FileName;
+                Bitmap icon = IconSwapper.GetIconFromFile(pathToCustomIcon);
+                picAppIcon.Image = icon;
+                btnIconReset.Visible = true;
+            }
+        }
+
+        // Resets icon in pictureBox to the main executable icon
+        private void btnIconReset_Click(object sender, EventArgs e)
+        {
+            pathToCustomIcon = null;
+            SetAppIconPreviewFromMainExe();
+            btnIconReset.Visible = false;
+        }
+        #endregion
+
+        // TODO: https://stackoverflow.com/questions/6107108/reduce-padding-around-text-in-winforms-button
     }
 }

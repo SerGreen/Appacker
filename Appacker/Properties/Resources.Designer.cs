@@ -63,9 +63,29 @@ namespace Appacker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_icon {
+            get {
+                object obj = ResourceManager.GetObject("close-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap open_box_icon {
             get {
                 object obj = ResourceManager.GetObject("open box icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reset_arrow {
+            get {
+                object obj = ResourceManager.GetObject("reset-arrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

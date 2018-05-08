@@ -49,13 +49,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>open box icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\open box icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.2.0.0\lib\net452\Costura.dll</HintPath>
     </Reference>
     <Reference Include="Infralution.Localization, Version=1.2.2.0, Culture=neutral, PublicKeyToken=af4bb5454ff71782, processorArchitecture=MSIL" />
+    <Reference Include="NamedPipeWrapper, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NamedPipeWrapper.1.5.0\lib\net40\NamedPipeWrapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -90,12 +93,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="Strings.Designer.cs">
+    <Compile Include="Resources\Strings.Designer.cs">
       <DependentUpon>Strings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Strings.ru.Designer.cs">
+    <Compile Include="Resources\Strings.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.ru.resx</DependentUpon>
@@ -126,11 +129,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings.resx">
+    <EmbeddedResource Include="Resources\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings.ru.resx">
+    <EmbeddedResource Include="Resources\Strings.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -152,9 +155,10 @@
     <Content Include="FodyWeavers.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Icon credit.txt" />
-    <Content Include="Infralution.Localization.dll" />
-    <Content Include="open box icon.ico" />
+    <Content Include="Lib\Infralution.Localization.dll" />
+    <None Include="Resources\close-icon.png" />
+    <Content Include="Resources\open box icon.ico" />
+    <None Include="Resources\reset-arrow.png" />
     <None Include="Resources\open box icon.png" />
     <None Include="Resources\russia-flag-icon-32.png" />
     <None Include="Resources\united-kingdom-flag-icon-32.png" />

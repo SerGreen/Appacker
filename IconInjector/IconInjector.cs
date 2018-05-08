@@ -179,7 +179,7 @@ namespace ChangeIcon
                 byte[] b = (byte[])_iconImage[0];
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Debug.Assert(false);
             }

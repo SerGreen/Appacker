@@ -40,7 +40,6 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.treeView = new System.Windows.Forms.TreeView();
             this.treeViewIconsList = new System.Windows.Forms.ImageList(this.components);
-            this.txtMainExePath = new System.Windows.Forms.TextBox();
             this.labMainExePath = new System.Windows.Forms.Label();
             this.btnPack = new System.Windows.Forms.Button();
             this.checkRepackable = new System.Windows.Forms.CheckBox();
@@ -51,12 +50,17 @@
             this.packToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.picAppIcon = new System.Windows.Forms.PictureBox();
             this.cultureManager = new Infralution.Localization.CultureManager(this.components);
+            this.labTreeViewCaption = new System.Windows.Forms.Label();
+            this.btnChangeIcon = new System.Windows.Forms.LinkLabel();
+            this.comboMainExePath = new System.Windows.Forms.ComboBox();
+            this.openIconDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnIconReset = new System.Windows.Forms.Button();
+            this.picAppIcon = new System.Windows.Forms.PictureBox();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
             this.SuspendLayout();
@@ -124,6 +128,8 @@
             this.treeView.HideSelection = false;
             this.treeView.ImageList = this.treeViewIconsList;
             this.treeView.Name = "treeView";
+            this.treeView.ShowRootLines = false;
+            this.treeView.TabStop = false;
             this.treeView.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_BeforeSelect);
             this.treeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
             this.treeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
@@ -137,15 +143,6 @@
             this.treeViewIconsList.Images.SetKeyName(2, "file-16.png");
             this.treeViewIconsList.Images.SetKeyName(3, "file-exe-16.png");
             this.treeViewIconsList.Images.SetKeyName(4, "package-16.png");
-            // 
-            // txtMainExePath
-            // 
-            resources.ApplyResources(this.txtMainExePath, "txtMainExePath");
-            this.txtMainExePath.BackColor = System.Drawing.SystemColors.Window;
-            this.txtMainExePath.Name = "txtMainExePath";
-            this.txtMainExePath.ReadOnly = true;
-            this.txtMainExePath.TabStop = false;
-            this.txtMainExePath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // labMainExePath
             // 
@@ -217,6 +214,69 @@
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
             resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // cultureManager
+            // 
+            this.cultureManager.ManagedControl = this;
+            // 
+            // labTreeViewCaption
+            // 
+            resources.ApplyResources(this.labTreeViewCaption, "labTreeViewCaption");
+            this.labTreeViewCaption.Name = "labTreeViewCaption";
+            // 
+            // btnChangeIcon
+            // 
+            resources.ApplyResources(this.btnChangeIcon, "btnChangeIcon");
+            this.btnChangeIcon.Name = "btnChangeIcon";
+            this.btnChangeIcon.TabStop = true;
+            this.btnChangeIcon.UseCompatibleTextRendering = true;
+            this.btnChangeIcon.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnChangeIcon_LinkClicked);
+            // 
+            // comboMainExePath
+            // 
+            resources.ApplyResources(this.comboMainExePath, "comboMainExePath");
+            this.comboMainExePath.BackColor = System.Drawing.SystemColors.Window;
+            this.comboMainExePath.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboMainExePath.Name = "comboMainExePath";
+            this.comboMainExePath.SelectedIndexChanged += new System.EventHandler(this.comboMainExePath_SelectedIndexChanged);
+            // 
+            // openIconDialog
+            // 
+            resources.ApplyResources(this.openIconDialog, "openIconDialog");
+            // 
+            // btnIconReset
+            // 
+            resources.ApplyResources(this.btnIconReset, "btnIconReset");
+            this.btnIconReset.BackColor = System.Drawing.Color.Transparent;
+            this.btnIconReset.BackgroundImage = global::Appacker.Properties.Resources.close_icon;
+            this.btnIconReset.FlatAppearance.BorderSize = 0;
+            this.btnIconReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnIconReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnIconReset.ForeColor = System.Drawing.Color.Red;
+            this.btnIconReset.Name = "btnIconReset";
+            this.toolTip.SetToolTip(this.btnIconReset, resources.GetString("btnIconReset.ToolTip"));
+            this.btnIconReset.UseVisualStyleBackColor = false;
+            this.btnIconReset.Click += new System.EventHandler(this.btnIconReset_Click);
+            // 
+            // picAppIcon
+            // 
+            resources.ApplyResources(this.picAppIcon, "picAppIcon");
+            this.picAppIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picAppIcon.Name = "picAppIcon";
+            this.picAppIcon.TabStop = false;
+            // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Image = global::Appacker.Properties.Resources.united_kingdom_flag_icon_32;
@@ -231,34 +291,14 @@
             this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
             this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
             // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // picAppIcon
-            // 
-            resources.ApplyResources(this.picAppIcon, "picAppIcon");
-            this.picAppIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picAppIcon.Name = "picAppIcon";
-            this.picAppIcon.TabStop = false;
-            // 
-            // cultureManager
-            // 
-            this.cultureManager.ManagedControl = this;
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnIconReset);
+            this.Controls.Add(this.comboMainExePath);
+            this.Controls.Add(this.btnChangeIcon);
+            this.Controls.Add(this.labTreeViewCaption);
             this.Controls.Add(this.picAppIcon);
             this.Controls.Add(this.checkRepackable);
             this.Controls.Add(this.btnPack);
@@ -268,7 +308,6 @@
             this.Controls.Add(this.labAppFolderPath);
             this.Controls.Add(this.btnBrowsePackPath);
             this.Controls.Add(this.btnBrowseAppFolder);
-            this.Controls.Add(this.txtMainExePath);
             this.Controls.Add(this.txtPackPath);
             this.Controls.Add(this.txtAppFolderPath);
             this.Controls.Add(this.menuStrip);
@@ -293,7 +332,6 @@
         private System.Windows.Forms.Button btnBrowsePackPath;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.TreeView treeView;
-        private System.Windows.Forms.TextBox txtMainExePath;
         private System.Windows.Forms.Label labMainExePath;
         private System.Windows.Forms.ImageList treeViewIconsList;
         private System.Windows.Forms.Button btnPack;
@@ -311,6 +349,11 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private Infralution.Localization.CultureManager cultureManager;
+        private System.Windows.Forms.Label labTreeViewCaption;
+        private System.Windows.Forms.LinkLabel btnChangeIcon;
+        private System.Windows.Forms.ComboBox comboMainExePath;
+        private System.Windows.Forms.Button btnIconReset;
+        private System.Windows.Forms.OpenFileDialog openIconDialog;
     }
 }
 
