@@ -1,10 +1,10 @@
-﻿using System;
+﻿using NamedPipeWrapper;
+using SharedLib;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Packer
 {
@@ -12,6 +12,8 @@ namespace Packer
     {
         private const string USAGE = "packer.exe <path to unpacker.exe> <path to packed app file> <local path to main exe> <path to folder for packing> [if app should be repackable: True|False]";
         private const int WAIT_FOR_FILE_ACCESS_TIMEOUT = 5000; // ms
+
+        private static NamedPipeClient<ProgressReport> namedPipeClient = null;
 
         //string unpackerExePath, string pathToPackedApp, string localPathToMainExe, string pathToFolderWithApp
         static int Main(string[] args)
@@ -80,6 +82,13 @@ namespace Packer
             }
             #endregion
 
+            if (!isRepacking)
+            {
+                namedPipeClient = new NamedPipeClient<ProgressReport>("PackingPipe");
+                namedPipeClient.Start();
+                namedPipeClient.WaitForConnection();
+            }
+
             // Get all files in the application folder (incl. sub-folders)
             List<string> filesToPack = GetFilesRecursively(pathToFolderWithApp);
             
@@ -111,6 +120,7 @@ namespace Packer
                 Process.Start(pathToPackedApp, $@"-killme ""{System.Reflection.Assembly.GetEntryAssembly().Location}""");
             }
 
+            namedPipeClient?.Stop();
             return 0;
         }
 
@@ -145,12 +155,17 @@ namespace Packer
                 packedExe.Write(localPathToMainExe);                    // string
 
                 // Append all packed files to the end of the wrapper app .exe file
-                foreach (string filePath in filesToPack)
+                for (int i=0; i<filesToPack.Count; i++)
                 {
-                    byte[] data = File.ReadAllBytes(Path.Combine(pathToFolderWithApp, filePath));
-                    packedExe.Write(filePath);                          // string
+                    // Report progress to Appacker
+                    namedPipeClient?.PushMessage(new ProgressReport(i, filesToPack.Count));
+
+                    byte[] data = File.ReadAllBytes(Path.Combine(pathToFolderWithApp, filesToPack[i]));
+                    packedExe.Write(filesToPack[i]);                    // string
                     packedExe.Write(data.Length);                       // int
                     packedExe.Write(data);                              // byte[]
+                    // Debug test shit
+                    System.Threading.Thread.Sleep(400);
                 }
             }
         }

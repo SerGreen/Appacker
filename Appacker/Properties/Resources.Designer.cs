@@ -65,7 +65,7 @@ namespace Appacker.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap close_icon {
             get {
-                object obj = ResourceManager.GetObject("close-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("close_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,17 +75,7 @@ namespace Appacker.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap open_box_icon {
             get {
-                object obj = ResourceManager.GetObject("open box icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap reset_arrow {
-            get {
-                object obj = ResourceManager.GetObject("reset-arrow", resourceCulture);
+                object obj = ResourceManager.GetObject("open_box_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +85,7 @@ namespace Appacker.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap russia_flag_icon_32 {
             get {
-                object obj = ResourceManager.GetObject("russia-flag-icon-32", resourceCulture);
+                object obj = ResourceManager.GetObject("russia_flag_icon_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +95,7 @@ namespace Appacker.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap united_kingdom_flag_icon_32 {
             get {
-                object obj = ResourceManager.GetObject("united-kingdom-flag-icon-32", resourceCulture);
+                object obj = ResourceManager.GetObject("united_kingdom_flag_icon_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

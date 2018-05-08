@@ -13,6 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appacker GUI", "Appacker\Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Packer", "Packer\Packer.csproj", "{076A6452-1FA4-4995-95BF-C4E28EEFD062}"
 	ProjectSection(ProjectDependencies) = postProject
+		{13429E30-A572-47E8-91D7-423FD1D98E27} = {13429E30-A572-47E8-91D7-423FD1D98E27}
 		{8D85B3EA-40DB-4187-A4F6-FA6263669C5B} = {8D85B3EA-40DB-4187-A4F6-FA6263669C5B}
 	EndProjectSection
 EndProject
@@ -21,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconInjector", "IconInjector\IconInjector.csproj", "{D7B9897A-704B-4754-BB33-F26529A23EA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconLib", "IconLib\IconLib.csproj", "{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLib", "SharedLib\SharedLib.csproj", "{13429E30-A572-47E8-91D7-423FD1D98E27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +51,10 @@ Global
 		{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE53747F-D2E6-4E1E-9EF4-A0AE02671B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13429E30-A572-47E8-91D7-423FD1D98E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13429E30-A572-47E8-91D7-423FD1D98E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13429E30-A572-47E8-91D7-423FD1D98E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13429E30-A572-47E8-91D7-423FD1D98E27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -61,6 +61,7 @@
             this.picAppIcon = new System.Windows.Forms.PictureBox();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
             this.SuspendLayout();
@@ -291,10 +292,16 @@
             this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
             this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
             // 
+            // progressBar
+            // 
+            resources.ApplyResources(this.progressBar, "progressBar");
+            this.progressBar.Name = "progressBar";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnIconReset);
             this.Controls.Add(this.comboMainExePath);
             this.Controls.Add(this.btnChangeIcon);
@@ -354,6 +361,7 @@
         private System.Windows.Forms.ComboBox comboMainExePath;
         private System.Windows.Forms.Button btnIconReset;
         private System.Windows.Forms.OpenFileDialog openIconDialog;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

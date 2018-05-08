@@ -88,10 +88,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrySettingsProvider.cs" />
-    <Compile Include="Resource.Designer.cs">
+    <Compile Include="ToolsStorage.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
+      <DependentUpon>ToolsStorage.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Strings.Designer.cs">
       <DependentUpon>Strings.resx</DependentUpon>
@@ -125,9 +125,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Resource.resx">
+    <EmbeddedResource Include="ToolsStorage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <LastGenOutput>ToolsStorage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -156,12 +156,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Lib\Infralution.Localization.dll" />
-    <None Include="Resources\close-icon.png" />
+    <None Include="Resources\open_box_icon.png" />
+    <None Include="Resources\close_icon.png" />
     <Content Include="Resources\open box icon.ico" />
-    <None Include="Resources\reset-arrow.png" />
-    <None Include="Resources\open box icon.png" />
-    <None Include="Resources\russia-flag-icon-32.png" />
-    <None Include="Resources\united-kingdom-flag-icon-32.png" />
+    <None Include="Resources\russia_flag_icon_32.png" />
+    <None Include="Resources\united_kingdom_flag_icon_32.png" />
     <None Include="Resources\Unpacker.exe" />
     <None Include="Resources\Packer.exe" />
   </ItemGroup>
@@ -175,6 +174,10 @@
       <Project>{ce53747f-d2e6-4e1e-9ef4-a0ae02671b1d}</Project>
       <Name>IconLib</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedLib\SharedLib.csproj">
+      <Project>{13429E30-A572-47E8-91D7-423FD1D98E27}</Project>
+      <Name>SharedLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

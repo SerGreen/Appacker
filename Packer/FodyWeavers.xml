@@ -2,9 +2,6 @@
 <Weavers>
   <Costura>
     <IncludeAssemblies>
-        Infralution.Localization
-        IconInjector
-        IconLib
         NamedPipeWrapper
         SharedLib
     </IncludeAssemblies>

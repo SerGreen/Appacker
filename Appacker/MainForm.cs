@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NamedPipeWrapper;
+using SharedLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -121,6 +123,7 @@ namespace Appacker
             comboMainExePath.Items.Clear();
             foreach (string localPath in exes.Select(x => x.Replace(pathToAppFolder, "").TrimStart(Path.DirectorySeparatorChar)))
                 comboMainExePath.Items.Add(localPath);
+            comboMainExePath.Enabled = true;
             SetAppIconPreviewFromMainExeIfNoCustom();
         }
 
@@ -176,8 +179,8 @@ namespace Appacker
                 tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
             Directory.CreateDirectory(tempDir);
 
-            File.WriteAllBytes(Path.Combine(tempDir, "packer.exe"), Resource.Packer);
-            File.WriteAllBytes(Path.Combine(tempDir, "unpacker.exe"), Resource.Unpacker);
+            File.WriteAllBytes(Path.Combine(tempDir, "packer.exe"), ToolsStorage.Packer);
+            File.WriteAllBytes(Path.Combine(tempDir, "unpacker.exe"), ToolsStorage.Unpacker);
 
             // Inject new icon into unpacker.exe (take the icon from the main executable of unpacked app if user did not provide a custom icon)
             string iconPath = pathToCustomIcon ?? Path.Combine(txtAppFolderPath.Text, comboMainExePath.Text);
@@ -196,23 +199,55 @@ namespace Appacker
             packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;
 #endif
 
-            Process packProc = Process.Start(packProcInfo);
-            packProc.WaitForExit();
+            Process packProc = new Process();
+            packProc.StartInfo = packProcInfo;
 
-            // Show error message if return code is abnormal
-            if (packProc.ExitCode != 0)
-                ShowPackingFailMessage(packProc.ExitCode);
-            else
-                System.Media.SystemSounds.Exclamation.Play();
+            // Setup the Named Pipe server for IPC with packer process to receive progress updates
+            var server = new NamedPipeServer<ProgressReport>("PackingPipe");
 
-            packProc.Dispose();
+            // Do the cleanup once packer disconnects
+            server.ClientConnected += delegate (NamedPipeConnection<ProgressReport, ProgressReport> conn)
+            {
+
+            };
+
+            server.ClientDisconnected += delegate (NamedPipeConnection<ProgressReport, ProgressReport> conn)
+            {
+                //progressBar.Value = progressBar.Maximum;
+                server.Stop();
+                packProc.WaitForExit();
+
+                // Show error message if return code is abnormal
+                if (packProc.ExitCode != 0)
+                    ShowPackingFailMessage(packProc.ExitCode);
+                else
+                    System.Media.SystemSounds.Exclamation.Play();
+
+                packProc.Dispose();
+
+                // Delete temp directory
+                if (Directory.Exists(tempDir))
+                    Directory.Delete(tempDir, true);
+
+                btnPack.Text = Resources.Strings.btnPackText;
+                packToolStripMenuItem.Enabled = true;
+            };
+
+            server.ClientMessage += Server_ClientMessage;
+            //    delegate (NamedPipeConnection<ProgressReport, ProgressReport> conn, ProgressReport message)
+            //{
+            //    progressBar.Maximum = message.Total;
+            //    progressBar.Value = message.Current;
+            //};
+
+            server.Start();
+            progressBar.Value = 0;
+            packProc.Start();
+        }
+
+        private void Server_ClientMessage(NamedPipeConnection<ProgressReport, ProgressReport> connection, ProgressReport message)
+        {
             
-            // Delete temp directory
-            if (Directory.Exists(tempDir))
-                Directory.Delete(tempDir, true);
-            
-            btnPack.Text = Resources.Strings.btnPackText;
-            packToolStripMenuItem.Enabled = true;
         }
 
         // Display message box with an error explanation
