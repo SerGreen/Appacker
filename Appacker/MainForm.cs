@@ -328,6 +328,6 @@ namespace Appacker
         }
         #endregion
 
-        // TODO: https://stackoverflow.com/questions/6107108/reduce-padding-around-text-in-winforms-button
+        // TODO: https://stackoverflow.com/questions/13806153/example-of-named-pipes
     }
 }
