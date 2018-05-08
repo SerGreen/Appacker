@@ -45,23 +45,23 @@
             this.checkRepackable = new System.Windows.Forms.CheckBox();
             this.flagsIamgeList = new System.Windows.Forms.ImageList(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnIconReset = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.packToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cultureManager = new Infralution.Localization.CultureManager(this.components);
             this.labTreeViewCaption = new System.Windows.Forms.Label();
             this.btnChangeIcon = new System.Windows.Forms.LinkLabel();
             this.comboMainExePath = new System.Windows.Forms.ComboBox();
-            this.openIconDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnIconReset = new System.Windows.Forms.Button();
             this.picAppIcon = new System.Windows.Forms.PictureBox();
-            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.cultureManager = new Infralution.Localization.CultureManager(this.components);
+            this.openIconDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
             this.SuspendLayout();
@@ -178,6 +178,20 @@
             this.toolTip.IsBalloon = true;
             this.toolTip.ReshowDelay = 100;
             // 
+            // btnIconReset
+            // 
+            resources.ApplyResources(this.btnIconReset, "btnIconReset");
+            this.btnIconReset.BackColor = System.Drawing.Color.Transparent;
+            this.btnIconReset.BackgroundImage = global::Appacker.Properties.Resources.close_icon;
+            this.btnIconReset.FlatAppearance.BorderSize = 0;
+            this.btnIconReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnIconReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnIconReset.ForeColor = System.Drawing.Color.Red;
+            this.btnIconReset.Name = "btnIconReset";
+            this.toolTip.SetToolTip(this.btnIconReset, resources.GetString("btnIconReset.ToolTip"));
+            this.btnIconReset.UseVisualStyleBackColor = false;
+            this.btnIconReset.Click += new System.EventHandler(this.btnIconReset_Click);
+            // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -215,6 +229,20 @@
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
             resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             // 
+            // englishToolStripMenuItem
+            // 
+            this.englishToolStripMenuItem.Image = global::Appacker.Properties.Resources.united_kingdom_flag_icon_32;
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            // 
+            // russianToolStripMenuItem
+            // 
+            this.russianToolStripMenuItem.Image = global::Appacker.Properties.Resources.russia_flag_icon_32;
+            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
+            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
+            this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -227,10 +255,6 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // cultureManager
-            // 
-            this.cultureManager.ManagedControl = this;
             // 
             // labTreeViewCaption
             // 
@@ -253,24 +277,6 @@
             this.comboMainExePath.Name = "comboMainExePath";
             this.comboMainExePath.SelectedIndexChanged += new System.EventHandler(this.comboMainExePath_SelectedIndexChanged);
             // 
-            // openIconDialog
-            // 
-            resources.ApplyResources(this.openIconDialog, "openIconDialog");
-            // 
-            // btnIconReset
-            // 
-            resources.ApplyResources(this.btnIconReset, "btnIconReset");
-            this.btnIconReset.BackColor = System.Drawing.Color.Transparent;
-            this.btnIconReset.BackgroundImage = global::Appacker.Properties.Resources.close_icon;
-            this.btnIconReset.FlatAppearance.BorderSize = 0;
-            this.btnIconReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnIconReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnIconReset.ForeColor = System.Drawing.Color.Red;
-            this.btnIconReset.Name = "btnIconReset";
-            this.toolTip.SetToolTip(this.btnIconReset, resources.GetString("btnIconReset.ToolTip"));
-            this.btnIconReset.UseVisualStyleBackColor = false;
-            this.btnIconReset.Click += new System.EventHandler(this.btnIconReset_Click);
-            // 
             // picAppIcon
             // 
             resources.ApplyResources(this.picAppIcon, "picAppIcon");
@@ -278,24 +284,18 @@
             this.picAppIcon.Name = "picAppIcon";
             this.picAppIcon.TabStop = false;
             // 
-            // englishToolStripMenuItem
-            // 
-            this.englishToolStripMenuItem.Image = global::Appacker.Properties.Resources.united_kingdom_flag_icon_32;
-            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
-            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
-            // 
-            // russianToolStripMenuItem
-            // 
-            this.russianToolStripMenuItem.Image = global::Appacker.Properties.Resources.russia_flag_icon_32;
-            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
-            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
-            this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
-            // 
             // progressBar
             // 
             resources.ApplyResources(this.progressBar, "progressBar");
             this.progressBar.Name = "progressBar";
+            // 
+            // cultureManager
+            // 
+            this.cultureManager.ManagedControl = this;
+            // 
+            // openIconDialog
+            // 
+            resources.ApplyResources(this.openIconDialog, "openIconDialog");
             // 
             // MainForm
             // 

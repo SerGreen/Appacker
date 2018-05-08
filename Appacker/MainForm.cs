@@ -1,6 +1,4 @@
-﻿using NamedPipeWrapper;
-using SharedLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XDMessaging;
 
 namespace Appacker
 {
@@ -169,7 +168,7 @@ namespace Appacker
         // ===========================================
         private void btnPack_Click(object sender, EventArgs e)
         {
-            packToolStripMenuItem.Enabled = false;
+            btnPack.Enabled = packToolStripMenuItem.Enabled = false;
             btnPack.Text = Resources.Strings.btnPackTextPacking1 + Environment.NewLine + Resources.Strings.btnPackTextPacking2;
             btnPack.Update();
 
@@ -202,54 +201,53 @@ namespace Appacker
             Process packProc = new Process();
             packProc.StartInfo = packProcInfo;
 
-            // Setup the Named Pipe server for IPC with packer process to receive progress updates
-            var server = new NamedPipeServer<ProgressReport>("PackingPipe");
+            // Setup XDMessagingClient listener to receive packing progress updates
+            XDMessagingClient client = new XDMessagingClient();
+            IXDListener listener = client.Listeners.GetListenerForMode(XDTransportMode.HighPerformanceUI);
+            listener.RegisterChannel("PackerProgress");
 
-            // Do the cleanup once packer disconnects
-            server.ClientConnected += delegate (NamedPipeConnection<ProgressReport, ProgressReport> conn)
+            // Attach event handler for incoming messages
+            listener.MessageReceived += (o, ea) =>
             {
+                if (ea.DataGram.Channel == "PackerProgress")
+                {
+                    // 'Done' is sent by Packer when it finished packing and is ready to quit
+                    if (ea.DataGram.Message == "Done")
+                    {
+                        progressBar.Value = progressBar.Maximum;
+                        packProc.WaitForExit();
 
+                        // Show error message if return code is abnormal
+                        if (packProc.ExitCode != 0)
+                            ShowPackingFailMessage(packProc.ExitCode);
+                        else
+                            System.Media.SystemSounds.Exclamation.Play();
+
+                        packProc.Dispose();
+
+                        // Delete temp directory
+                        if (Directory.Exists(tempDir))
+                            Directory.Delete(tempDir, true);
+
+                        btnPack.Text = Resources.Strings.btnPackText;
+                        btnPack.Enabled = packToolStripMenuItem.Enabled = true;
+
+                        listener.UnRegisterChannel("PackerProgress");
+                        listener.Dispose();
+                    }
+                    else
+                    {
+                        string[] tokens = ea.DataGram.Message.Split(' ');
+                        progressBar.Maximum = int.Parse(tokens[1]);
+                        progressBar.Value = int.Parse(tokens[0]);
+                    }
+                }
             };
-
-            server.ClientDisconnected += delegate (NamedPipeConnection<ProgressReport, ProgressReport> conn)
-            {
-                //progressBar.Value = progressBar.Maximum;
-                server.Stop();
-                packProc.WaitForExit();
-
-                // Show error message if return code is abnormal
-                if (packProc.ExitCode != 0)
-                    ShowPackingFailMessage(packProc.ExitCode);
-                else
-                    System.Media.SystemSounds.Exclamation.Play();
-
-                packProc.Dispose();
-
-                // Delete temp directory
-                if (Directory.Exists(tempDir))
-                    Directory.Delete(tempDir, true);
-
-                btnPack.Text = Resources.Strings.btnPackText;
-                packToolStripMenuItem.Enabled = true;
-            };
-
-            server.ClientMessage += Server_ClientMessage;
-            //    delegate (NamedPipeConnection<ProgressReport, ProgressReport> conn, ProgressReport message)
-            //{
-            //    progressBar.Maximum = message.Total;
-            //    progressBar.Value = message.Current;
-            //};
-
-            server.Start();
+            
             progressBar.Value = 0;
             packProc.Start();
         }
-
-        private void Server_ClientMessage(NamedPipeConnection<ProgressReport, ProgressReport> connection, ProgressReport message)
-        {
-            
-        }
-
+        
         // Display message box with an error explanation
         private void ShowPackingFailMessage(int exitCode)
         {
@@ -362,7 +360,5 @@ namespace Appacker
             btnIconReset.Visible = false;
         }
         #endregion
-
-        // TODO: https://stackoverflow.com/questions/13806153/example-of-named-pipes
     }
 }

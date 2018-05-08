@@ -2,8 +2,7 @@
 <Weavers>
   <Costura>
     <IncludeAssemblies>
-        NamedPipeWrapper
-        SharedLib
+      XDMessaging.Lite
     </IncludeAssemblies>
 </Costura>
 </Weavers>

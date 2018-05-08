@@ -56,9 +56,6 @@
       <HintPath>..\packages\Costura.Fody.2.0.0\lib\net452\Costura.dll</HintPath>
     </Reference>
     <Reference Include="Infralution.Localization, Version=1.2.2.0, Culture=neutral, PublicKeyToken=af4bb5454ff71782, processorArchitecture=MSIL" />
-    <Reference Include="NamedPipeWrapper, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NamedPipeWrapper.1.5.0\lib\net40\NamedPipeWrapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -70,6 +67,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="XDMessaging.Lite, Version=5.0.6.0, Culture=neutral, PublicKeyToken=737bc70442f2c4af, processorArchitecture=MSIL">
+      <HintPath>..\packages\XDMessaging.Lite.5.0.6\lib\net452\XDMessaging.Lite.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs">
@@ -174,10 +174,6 @@
       <Project>{ce53747f-d2e6-4e1e-9ef4-a0ae02671b1d}</Project>
       <Name>IconLib</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-    </ProjectReference>
-    <ProjectReference Include="..\SharedLib\SharedLib.csproj">
-      <Project>{13429E30-A572-47E8-91D7-423FD1D98E27}</Project>
-      <Name>SharedLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -37,9 +37,6 @@
     <Reference Include="Costura, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.2.0.0\lib\net452\Costura.dll</HintPath>
     </Reference>
-    <Reference Include="NamedPipeWrapper, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NamedPipeWrapper.1.5.0\lib\net40\NamedPipeWrapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +45,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="XDMessaging.Lite, Version=5.0.6.0, Culture=neutral, PublicKeyToken=737bc70442f2c4af, processorArchitecture=MSIL">
+      <HintPath>..\packages\XDMessaging.Lite.5.0.6\lib\net452\XDMessaging.Lite.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Packer Program.cs" />
@@ -61,12 +61,6 @@
     <Content Include="FodyWeavers.xml">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SharedLib\SharedLib.csproj">
-      <Project>{13429E30-A572-47E8-91D7-423FD1D98E27}</Project>
-      <Name>SharedLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

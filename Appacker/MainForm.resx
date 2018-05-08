@@ -129,7 +129,7 @@
     <value>12, 43</value>
   </data>
   <data name="txtAppFolderPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 20</value>
+    <value>359, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtAppFolderPath.TabIndex" type="System.Int32, mscorlib">
@@ -154,7 +154,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBrowseAppFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>375, 42</value>
+    <value>377, 42</value>
   </data>
   <data name="btnBrowseAppFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 22</value>
@@ -244,7 +244,7 @@
     <value>12, 92</value>
   </data>
   <data name="txtPackPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 20</value>
+    <value>359, 20</value>
   </data>
   <data name="txtPackPath.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -268,7 +268,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBrowsePackPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>375, 91</value>
+    <value>377, 91</value>
   </data>
   <data name="btnBrowsePackPath.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 22</value>
@@ -311,7 +311,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
-        CgAAAk1TRnQBSQFMAgEBBQEAAeABAAHgAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBBQEAASgBAQEoAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -368,7 +368,7 @@
     <value>1</value>
   </data>
   <data name="treeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 192</value>
+    <value>440, 196</value>
   </data>
   <data name="treeView.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -395,7 +395,7 @@
     <value>NoControl</value>
   </data>
   <data name="labMainExePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 336</value>
+    <value>12, 340</value>
   </data>
   <data name="labMainExePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 13</value>
@@ -428,7 +428,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnPack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>375, 352</value>
+    <value>377, 356</value>
   </data>
   <data name="btnPack.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 43</value>
@@ -451,6 +451,9 @@
   <data name="&gt;&gt;btnPack.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>610, 18</value>
+  </metadata>
   <data name="checkRepackable.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -461,7 +464,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkRepackable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 378</value>
+    <value>12, 382</value>
   </data>
   <data name="checkRepackable.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 17</value>
@@ -472,9 +475,6 @@
   <data name="checkRepackable.Text" xml:space="preserve">
     <value>Self-repackable application</value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>610, 18</value>
-  </metadata>
   <data name="checkRepackable.ToolTip" xml:space="preserve">
     <value>[   ] If unchecked, any modifications to the app's files are not saved after you close it (e.g. config files stored inside the application folder).
 [✓] If checked, application repacks itself after closing and replaces the .exe package.</value>
@@ -499,7 +499,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB2
-        CQAAAk1TRnQBSQFMAgEBAgEAAZQBAAGUAQABIAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAAdwBAAHcAQABIAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAARADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -542,126 +542,9 @@
         AYADAAEQAwABAQEAAQEGAAEBFgAD//8AAgAL
 </value>
   </data>
-  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>700, 18</value>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>610, 18</value>
   </metadata>
-  <data name="packToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="packToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
-  <data name="packToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pack</value>
-  </data>
-  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
-  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exit</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="englishToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 28</value>
-  </data>
-  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="russianToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 28</value>
-  </data>
-  <data name="russianToolStripMenuItem.Text" xml:space="preserve">
-    <value>Russian (Русский)</value>
-  </data>
-  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 20</value>
-  </data>
-  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 22</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 24</value>
-  </data>
-  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="menuStrip.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
-    <value>menuStrip</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <metadata name="cultureManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>815, 18</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>462, 407</value>
-  </data>
-  <data name="progressBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 399</value>
-  </data>
-  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 8</value>
-  </data>
-  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
-    <value>progressBar</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="btnIconReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -678,7 +561,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnIconReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>356, 353</value>
+    <value>358, 357</value>
   </data>
   <data name="btnIconReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 12</value>
@@ -704,71 +587,89 @@
   <data name="&gt;&gt;btnIconReset.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="comboMainExePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
+  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>700, 18</value>
+  </metadata>
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="comboMainExePath.Enabled" type="System.Boolean, mscorlib">
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>464, 24</value>
+  </data>
+  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="menuStrip.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="packToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="comboMainExePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 352</value>
+  <data name="packToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
   </data>
-  <data name="comboMainExePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 21</value>
+  <data name="packToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pack</value>
   </data>
-  <data name="comboMainExePath.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
   </data>
-  <data name="&gt;&gt;comboMainExePath.Name" xml:space="preserve">
-    <value>comboMainExePath</value>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit</value>
   </data>
-  <data name="&gt;&gt;comboMainExePath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
   </data>
-  <data name="&gt;&gt;comboMainExePath.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Language</value>
   </data>
-  <data name="&gt;&gt;comboMainExePath.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="englishToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
   </data>
-  <data name="btnChangeIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 28</value>
   </data>
-  <data name="btnChangeIcon.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+    <value>English</value>
   </data>
-  <data name="btnChangeIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="russianToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
   </data>
-  <data name="btnChangeIcon.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
-    <value>0, 13</value>
+  <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 28</value>
   </data>
-  <data name="btnChangeIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 378</value>
+  <data name="russianToolStripMenuItem.Text" xml:space="preserve">
+    <value>Russian (Русский)</value>
   </data>
-  <data name="btnChangeIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
   </data>
-  <data name="btnChangeIcon.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help</value>
   </data>
-  <data name="btnChangeIcon.Text" xml:space="preserve">
-    <value>Change icon</value>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 22</value>
   </data>
-  <data name="btnChangeIcon.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;btnChangeIcon.Name" xml:space="preserve">
-    <value>btnChangeIcon</value>
-  </data>
-  <data name="&gt;&gt;btnChangeIcon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnChangeIcon.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnChangeIcon.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>About</value>
   </data>
   <data name="labTreeViewCaption.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -800,6 +701,72 @@
   <data name="&gt;&gt;labTreeViewCaption.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="btnChangeIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnChangeIcon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnChangeIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnChangeIcon.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
+    <value>7, 11</value>
+  </data>
+  <data name="btnChangeIcon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 382</value>
+  </data>
+  <data name="btnChangeIcon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="btnChangeIcon.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnChangeIcon.Text" xml:space="preserve">
+    <value>       Change icon</value>
+  </data>
+  <data name="btnChangeIcon.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;btnChangeIcon.Name" xml:space="preserve">
+    <value>btnChangeIcon</value>
+  </data>
+  <data name="&gt;&gt;btnChangeIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnChangeIcon.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnChangeIcon.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="comboMainExePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="comboMainExePath.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboMainExePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 356</value>
+  </data>
+  <data name="comboMainExePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 21</value>
+  </data>
+  <data name="comboMainExePath.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;comboMainExePath.Name" xml:space="preserve">
+    <value>comboMainExePath</value>
+  </data>
+  <data name="&gt;&gt;comboMainExePath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboMainExePath.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comboMainExePath.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="picAppIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -807,7 +774,7 @@
     <value>NoControl</value>
   </data>
   <data name="picAppIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 352</value>
+    <value>328, 356</value>
   </data>
   <data name="picAppIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 43</value>
@@ -829,6 +796,42 @@
   </data>
   <data name="&gt;&gt;picAppIcon.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="progressBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 403</value>
+  </data>
+  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>464, 8</value>
+  </data>
+  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
+    <value>progressBar</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="cultureManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>815, 18</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>464, 411</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1066,8 +1069,8 @@
         SUVORK5CYII=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>430, 300</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Appacker</value>
@@ -1126,6 +1129,18 @@
   <data name="&gt;&gt;languageToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;englishToolStripMenuItem.Name" xml:space="preserve">
+    <value>englishToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;englishToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;russianToolStripMenuItem.Name" xml:space="preserve">
+    <value>russianToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;russianToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
     <value>helpToolStripMenuItem</value>
   </data>
@@ -1149,18 +1164,6 @@
   </data>
   <data name="&gt;&gt;openIconDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;englishToolStripMenuItem.Name" xml:space="preserve">
-    <value>englishToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;englishToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;russianToolStripMenuItem.Name" xml:space="preserve">
-    <value>russianToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;russianToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

@@ -2,11 +2,10 @@
 <Weavers>
   <Costura>
     <IncludeAssemblies>
-        Infralution.Localization
-        IconInjector
-        IconLib
-        NamedPipeWrapper
-        SharedLib
+      Infralution.Localization
+      IconInjector
+      IconLib
+      XDMessaging.Lite
     </IncludeAssemblies>
 </Costura>
 </Weavers>
