@@ -15,6 +15,10 @@ namespace Packer
         //XDMessaging broadcaster to report packing progress
         private static IXDBroadcaster broadcaster = null;
 
+        // Timer that measures for how long packer is running
+        private static readonly Stopwatch timer = new Stopwatch();
+        private const int SPLASH_POPUP_DELAY = 2000; // ms
+
         //string unpackerExePath, string pathToPackedApp, string localPathToMainExe, string pathToFolderWithApp
         static int Main(string[] args)
         {
@@ -82,12 +86,9 @@ namespace Packer
             }
             #endregion
 
-            if (!isRepacking)
-            {
-                // Create XDMessagingClient broadcaster to report progress
-                XDMessagingClient client = new XDMessagingClient();
-                broadcaster = client.Broadcasters.GetBroadcasterForMode(XDTransportMode.HighPerformanceUI);
-            }
+            // Create XDMessagingClient broadcaster to report progress
+            XDMessagingClient client = new XDMessagingClient();
+            broadcaster = client.Broadcasters.GetBroadcasterForMode(XDTransportMode.HighPerformanceUI);
 
             // Get all files in the application folder (incl. sub-folders)
             List<string> filesToPack = GetFilesRecursively(pathToFolderWithApp);
@@ -106,8 +107,10 @@ namespace Packer
                 }
             }
 
+            timer.Start();
+
             // Do the packing
-            PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable);
+            PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable, isRepacking);
 
             // If it was repack call, then packer.exe is the one who should remove the temp dir with the app after packing
             // Problem: packer.exe can't delete itself
@@ -120,7 +123,7 @@ namespace Packer
                 Process.Start(pathToPackedApp, $@"-killme ""{System.Reflection.Assembly.GetEntryAssembly().Location}""");
             }
 
-            broadcaster?.SendToChannel("PackerProgress", "Done");
+            broadcaster.SendToChannel("AppackerProgress", "Done");
             return 0;
         }
 
@@ -132,7 +135,7 @@ namespace Packer
         /// <param name="pathToFolderWithApp">Path to the directory that contains application files that will be packed</param>
         /// <param name="localPathToMainExe">Relative path to the executable file that will be launched when the packed app is launched</param>
         /// <param name="filesToPack">List of relative paths to all files of the app that is being packed</param>
-        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack, bool isSelfRepackable)
+        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack, bool isSelfRepackable, bool isRepacking)
         {
             using (var packedExe = new BinaryWriter(File.Open(pathToPackedApp, FileMode.Create, FileAccess.Write)))
             {
@@ -151,20 +154,44 @@ namespace Packer
                     packedExe.Write(packerData);                        // byte[]
                 }
 
+                // If ProgressBarSplash.exe is present in the same forder, then add it to the package
+                string splashPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProgressBarSplash.exe");
+                bool splashExeExists = File.Exists(splashPath);
+                packedExe.Write(splashExeExists);                       // bool
+                if (splashExeExists)
+                {
+                    byte[] splashData = File.ReadAllBytes(splashPath);
+                    packedExe.Write(splashData.Length);                 // int
+                    packedExe.Write(splashData);                        // byte[]
+                }
+
                 // Write relative path to the main executable of the packed app
                 packedExe.Write(localPathToMainExe);                    // string
+
+                Process splashProgressBarProc = null;
 
                 // Append all packed files to the end of the wrapper app .exe file
                 for (int i=0; i<filesToPack.Count; i++)
                 {
+                    // If repacking is going on for too long, show the splash progress bar                    
+                    if (isRepacking && splashProgressBarProc == null && timer.ElapsedMilliseconds > SPLASH_POPUP_DELAY)
+                    {
+                        if (splashExeExists)
+                            splashProgressBarProc = Process.Start(splashPath);
+                    }
+
                     // Report progress to Appacker
-                    broadcaster?.SendToChannel("PackerProgress", $"{i} {filesToPack.Count}");
+                    broadcaster.SendToChannel("AppackerProgress", $"{i} {filesToPack.Count}");
 
                     byte[] data = File.ReadAllBytes(Path.Combine(pathToFolderWithApp, filesToPack[i]));
                     packedExe.Write(filesToPack[i]);                    // string
                     packedExe.Write(data.Length);                       // int
                     packedExe.Write(data);                              // byte[]
+
+                    System.Threading.Thread.Sleep(1000);
                 }
+
+                splashProgressBarProc?.Kill();
             }
         }
 

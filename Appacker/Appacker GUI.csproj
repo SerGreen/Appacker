@@ -156,6 +156,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Lib\Infralution.Localization.dll" />
+    <None Include="Resources\ProgressBarSplash.exe" />
     <None Include="Resources\open_box_icon.png" />
     <None Include="Resources\close_icon.png" />
     <Content Include="Resources\open box icon.ico" />
@@ -193,9 +194,11 @@
     <PreBuildEvent>if "$(ConfigurationName)" == "Debug" (
   copy "$(SolutionDir)Packer\bin\Debug\packer.exe" "$(ProjectDir)Resources" /Y
   copy "$(SolutionDir)Unpacker\bin\Debug\unpacker.exe" "$(ProjectDir)Resources" /Y
+  copy "$(SolutionDir)ProgressBarSplash\bin\Debug\progressBarSplash.exe" "$(ProjectDir)Resources" /Y
 ) ELSE (
   copy "$(SolutionDir)Packer\bin\Release\packer.exe" "$(ProjectDir)Resources" /Y
   copy "$(SolutionDir)Unpacker\bin\Release\unpacker.exe" "$(ProjectDir)Resources" /Y
+  copy "$(SolutionDir)ProgressBarSplash\bin\Release\progressBarSplash.exe" "$(ProjectDir)Resources" /Y
 )</PreBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets" Condition="Exists('..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets')" />

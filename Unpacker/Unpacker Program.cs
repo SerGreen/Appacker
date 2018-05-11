@@ -15,6 +15,7 @@ namespace Unpacker
         private static string repackerTempDir = null;
         private static bool isSelfRepackable = false;
         private static string pathToMainExe = null;
+        private static bool isProgressBarSplashPresent;
 
         static void Main(string[] args)
         {
@@ -56,15 +57,15 @@ namespace Unpacker
                 long pos = FindPatternPosition(me.BaseStream, pattern);
                 me.BaseStream.Seek(pos + pattern.Length, SeekOrigin.Begin);
 
+                // Create temp directory to store tools
+                while (repackerTempDir == null || Directory.Exists(repackerTempDir))
+                    repackerTempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+                Directory.CreateDirectory(repackerTempDir);
+
                 // Start extracting appended data
                 isSelfRepackable = me.ReadBoolean();
                 if(isSelfRepackable)
                 {
-                    // Create temp directory to store packer.exe and unpacker.exe for repacking process
-                    while (repackerTempDir == null || Directory.Exists(repackerTempDir))
-                        repackerTempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-                    Directory.CreateDirectory(repackerTempDir);
-
                     // For repacking we also need the unpacker.exe itself
                     // So return to the beginning of the file and save the unpacker.exe part
                     me.BaseStream.Seek(0, SeekOrigin.Begin);
@@ -74,6 +75,13 @@ namespace Unpacker
                     // Save the packer.exe
                     int packerDataLength = me.ReadInt32();
                     File.WriteAllBytes(Path.Combine(repackerTempDir, "packer.exe"), me.ReadBytes(packerDataLength));
+                }
+
+                isProgressBarSplashPresent = me.ReadBoolean();
+                if(isProgressBarSplashPresent)
+                {
+                    int splashDataLength = me.ReadInt32();
+                    File.WriteAllBytes(Path.Combine(repackerTempDir, "ProgressBarSplash.exe"), me.ReadBytes(splashDataLength));
                 }
 
                 pathToMainExe = me.ReadString();

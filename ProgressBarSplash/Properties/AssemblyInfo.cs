@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SharedLib")]
+[assembly: AssemblyTitle("ProgressBarSplash")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SharedLib")]
+[assembly: AssemblyProduct("ProgressBarSplash")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("13429e30-a572-47e8-91d7-423fd1d98e27")]
+[assembly: Guid("302dac96-8b41-466b-b86c-cb5da71f0d1b")]
 
 // Version information for an assembly consists of the following four values:
 //

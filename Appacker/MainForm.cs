@@ -180,6 +180,7 @@ namespace Appacker
 
             File.WriteAllBytes(Path.Combine(tempDir, "packer.exe"), ToolsStorage.Packer);
             File.WriteAllBytes(Path.Combine(tempDir, "unpacker.exe"), ToolsStorage.Unpacker);
+            File.WriteAllBytes(Path.Combine(tempDir, "progressBarSplash.exe"), ToolsStorage.ProgressBarSplash);
 
             // Inject new icon into unpacker.exe (take the icon from the main executable of unpacked app if user did not provide a custom icon)
             string iconPath = pathToCustomIcon ?? Path.Combine(txtAppFolderPath.Text, comboMainExePath.Text);
@@ -204,12 +205,12 @@ namespace Appacker
             // Setup XDMessagingClient listener to receive packing progress updates
             XDMessagingClient client = new XDMessagingClient();
             IXDListener listener = client.Listeners.GetListenerForMode(XDTransportMode.HighPerformanceUI);
-            listener.RegisterChannel("PackerProgress");
+            listener.RegisterChannel("AppackerProgress");
 
             // Attach event handler for incoming messages
             listener.MessageReceived += (o, ea) =>
             {
-                if (ea.DataGram.Channel == "PackerProgress")
+                if (ea.DataGram.Channel == "AppackerProgress")
                 {
                     // 'Done' is sent by Packer when it finished packing and is ready to quit
                     if (ea.DataGram.Message == "Done")
@@ -232,7 +233,7 @@ namespace Appacker
                         btnPack.Text = Resources.Strings.btnPackText;
                         btnPack.Enabled = packToolStripMenuItem.Enabled = true;
 
-                        listener.UnRegisterChannel("PackerProgress");
+                        listener.UnRegisterChannel("AppackerProgress");
                         listener.Dispose();
                     }
                     else
