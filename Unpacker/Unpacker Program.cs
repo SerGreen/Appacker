@@ -5,17 +5,34 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XDMessaging;
 
 namespace Unpacker
 {
     class Program
     {
         private const int WAIT_FOR_FILE_ACCESS_TIMEOUT = 5000; // ms
+        // Path to directory where target app gets extracted
         private static string tempDir = null;
+        // Path to directory where Appacker tools get extracted
         private static string repackerTempDir = null;
+        // A flag that indicated whether or not we need to repack target app after it quits
         private static bool isSelfRepackable = false;
+        // Local path to the exe file inside target app dir, that needs to be launched
         private static string pathToMainExe = null;
-        private static bool isProgressBarSplashPresent;
+        // A flag that indicates whether or not the splash screen tool is present inside the package
+        private static bool isProgressBarSplashExePresent;
+        // A time stamp that will help to determine whether or not any file of target app was changed (i.e. the need of repacking)
+        private static DateTime unpackingDoneTimestamp;
+        // Same purpose, helps to detect deletion of files from target app
+        private static int targetAppFilesCount = 0;
+
+        //XDMessaging broadcaster to report unpacking progress
+        private static IXDBroadcaster broadcaster = null;
+
+        // Timer that measures for how long packer is running
+        private static readonly Stopwatch timer = new Stopwatch();
+        private const int SPLASH_POPUP_DELAY = 1000; // ms
 
         static void Main(string[] args)
         {
@@ -77,8 +94,9 @@ namespace Unpacker
                     File.WriteAllBytes(Path.Combine(repackerTempDir, "packer.exe"), me.ReadBytes(packerDataLength));
                 }
 
-                isProgressBarSplashPresent = me.ReadBoolean();
-                if(isProgressBarSplashPresent)
+                // Extract splash screen tool if present
+                isProgressBarSplashExePresent = me.ReadBoolean();
+                if(isProgressBarSplashExePresent)
                 {
                     int splashDataLength = me.ReadInt32();
                     File.WriteAllBytes(Path.Combine(repackerTempDir, "ProgressBarSplash.exe"), me.ReadBytes(splashDataLength));
@@ -86,9 +104,27 @@ namespace Unpacker
 
                 pathToMainExe = me.ReadString();
 
+                timer.Start();
+                Process splashProgressBarProc = null;
+
                 // Keep extracting files until the end of the stream
-                while(me.BaseStream.Position < me.BaseStream.Length)
+                while (me.BaseStream.Position < me.BaseStream.Length)
                 {
+                    // If unpacking process takes too long, display splash screen with progress bar
+                    if(isProgressBarSplashExePresent && broadcaster == null && timer.ElapsedMilliseconds > SPLASH_POPUP_DELAY)
+                    {
+                        // Create XDMessagingClient broadcaster to report progress
+                        XDMessagingClient client = new XDMessagingClient();
+                        broadcaster = client.Broadcasters.GetBroadcasterForMode(XDTransportMode.HighPerformanceUI);
+
+                        splashProgressBarProc = Process.Start(Path.Combine(repackerTempDir, "ProgressBarSplash.exe"), "-unpacking");
+                        timer.Stop();
+                    }
+
+                    // Report progress to the Splash screen with progress bar
+                    broadcaster?.SendToChannel("AppackerProgress", $"{me.BaseStream.Position} {me.BaseStream.Length}");
+
+                    targetAppFilesCount++;
                     string path = me.ReadString();
                     int length = me.ReadInt32();
                     byte[] data = me.ReadBytes(length);
@@ -100,6 +136,9 @@ namespace Unpacker
 
                     File.WriteAllBytes(Path.Combine(tempDir, path), data);
                 }
+
+                unpackingDoneTimestamp = DateTime.Now;
+                splashProgressBarProc?.Kill();
             }
 
             // Launch unpacked app
@@ -154,9 +193,18 @@ namespace Unpacker
             if (dirPath != null && Directory.Exists(dirPath))
                 Directory.Delete(dirPath, true);
         }
-        
-        // Checks if there's at least one file that has been altered since its creation time
-        private static bool AnyFileChanged(string pathToAppDir) => GetAllFilesInsideDirectory(new DirectoryInfo(pathToAppDir)).Any(x => x.LastWriteTime.Subtract(x.CreationTime).Milliseconds > 500);
+
+        // Checks if there's at least one file that has been altered, created or deleted since the finish of unpacking process
+        private static bool AnyFileChanged(string pathToAppDir)
+        {
+            var allFiles = GetAllFilesInsideDirectory(new DirectoryInfo(pathToAppDir));
+            if (allFiles.Any(x => x.LastWriteTime.Subtract(unpackingDoneTimestamp).Milliseconds > 200))
+                return true;
+            else if (allFiles.Count() < targetAppFilesCount)
+                return true;
+
+            return false;
+        }
         private static IEnumerable<FileInfo> GetAllFilesInsideDirectory(DirectoryInfo dirInfo)
         {
             foreach (FileInfo file in dirInfo.GetFiles())

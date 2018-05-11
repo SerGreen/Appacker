@@ -17,7 +17,7 @@ namespace Packer
 
         // Timer that measures for how long packer is running
         private static readonly Stopwatch timer = new Stopwatch();
-        private const int SPLASH_POPUP_DELAY = 2000; // ms
+        private const int SPLASH_POPUP_DELAY = 1000; // ms
 
         //string unpackerExePath, string pathToPackedApp, string localPathToMainExe, string pathToFolderWithApp
         static int Main(string[] args)
@@ -176,8 +176,9 @@ namespace Packer
                     // If repacking is going on for too long, show the splash progress bar                    
                     if (isRepacking && splashProgressBarProc == null && timer.ElapsedMilliseconds > SPLASH_POPUP_DELAY)
                     {
+                        timer.Stop();
                         if (splashExeExists)
-                            splashProgressBarProc = Process.Start(splashPath);
+                            splashProgressBarProc = Process.Start(splashPath, "-packing");
                     }
 
                     // Report progress to Appacker
@@ -187,8 +188,6 @@ namespace Packer
                     packedExe.Write(filesToPack[i]);                    // string
                     packedExe.Write(data.Length);                       // int
                     packedExe.Write(data);                              // byte[]
-
-                    System.Threading.Thread.Sleep(1000);
                 }
 
                 splashProgressBarProc?.Kill();

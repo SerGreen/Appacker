@@ -20,6 +20,12 @@ namespace ProgressBarSplash
         {
             InitializeComponent();
 
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Contains("-packing") || args.Contains("packing"))
+                labPacking.Visible = true;
+            else if (args.Contains("-unpacking") || args.Contains("unpacking"))
+                labUnpacking.Visible = true;
+
             // Setup XDMessagingClient listener to receive progress updates
             XDMessagingClient client = new XDMessagingClient();
             listener = client.Listeners.GetListenerForMode(XDTransportMode.HighPerformanceUI);

@@ -1,4 +1,5 @@
 ﻿using ChangeIcon;
+using System;
 using System.Drawing;
 using System.Drawing.IconLib;
 
@@ -53,6 +54,11 @@ namespace Appacker
 
         private static void ChangeIconFromBitmap(string pathToTargetExe, Bitmap bmpIcon)
         {
+            if (bmpIcon.PixelFormat != System.Drawing.Imaging.PixelFormat.Format32bppArgb
+                || bmpIcon.Width > 256
+                || bmpIcon.Height > 256)
+                bmpIcon = FixIcon(bmpIcon);
+
             // Create icon and save it into temp file
             MultiIcon mIco = new MultiIcon();
             SingleIcon sIco = mIco.Add("main");
@@ -65,6 +71,22 @@ namespace Appacker
 
             // Delete temp ico file
             System.IO.File.Delete(tempIcoPath);
+        }
+
+        private static Bitmap FixIcon(Bitmap orig)
+        {
+            float scale = Math.Min(256f / orig.Width, 256f / orig.Height);
+            int cloneWidth = (int)(orig.Width * scale);
+            int cloneHeight = (int)(orig.Height * scale);
+            
+            Bitmap clone = new Bitmap(cloneWidth, cloneHeight,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            using (Graphics g = Graphics.FromImage(clone))
+                g.DrawImage(orig, new Rectangle(0, 0, clone.Width, clone.Height));
+
+            orig.Dispose();
+            return clone;
         }
     }
 }
