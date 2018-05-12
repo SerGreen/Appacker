@@ -185,6 +185,7 @@ namespace Unpacker
             else
             {
                 DeleteDirectory(tempDir);
+                DeleteDirectory(repackerTempDir);
             }
         }
 
