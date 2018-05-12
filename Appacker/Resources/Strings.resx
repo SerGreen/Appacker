@@ -126,6 +126,15 @@
   <data name="btnPackTextPacking2" xml:space="preserve">
     <value>Please wait</value>
   </data>
+  <data name="cueAppDirPath" xml:space="preserve">
+    <value>Drag the application folder here</value>
+  </data>
+  <data name="cueMainExe" xml:space="preserve">
+    <value>Select main executable</value>
+  </data>
+  <data name="cuePackExePath" xml:space="preserve">
+    <value>Select save location</value>
+  </data>
   <data name="errorCaption" xml:space="preserve">
     <value>Packing aborted</value>
   </data>

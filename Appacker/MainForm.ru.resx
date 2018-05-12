@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtAppFolderPath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="btnBrowseAppFolder.Text" xml:space="preserve">
     <value>Обзор...</value>
+  </data>
+  <data name="btnBrowseAppFolder.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labAppFolderPath.Size" type="System.Drawing.Size, System.Drawing">
@@ -127,21 +133,33 @@
   <data name="labAppFolderPath.Text" xml:space="preserve">
     <value>Папка с приложением для упаковки</value>
   </data>
+  <data name="labAppFolderPath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labPackPath.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 13</value>
   </data>
   <data name="labPackPath.Text" xml:space="preserve">
     <value>Куда сохранить упакованное приложение</value>
   </data>
+  <data name="labPackPath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtPackPath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="btnBrowsePackPath.Text" xml:space="preserve">
     <value>Обзор...</value>
+  </data>
+  <data name="btnBrowsePackPath.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="treeViewIconsList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
-        CgAAAk1TRnQBSQFMAgEBBQEAAZQBAAGUAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBBQEAAZwBAAGcAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -188,14 +206,23 @@
         AwABAQHAAQMBwAEDAwABAQHAAQcBwAEHAQMB/wEDAf8BwAEPAcABDwT/AcABHwHAAR8L
 </value>
   </data>
+  <data name="treeView.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labMainExePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 13</value>
   </data>
   <data name="labMainExePath.Text" xml:space="preserve">
     <value>Укажите основной исполняемый файл</value>
   </data>
+  <data name="labMainExePath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="btnPack.Text" xml:space="preserve">
     <value>Упаковать!</value>
+  </data>
+  <data name="btnPack.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkRepackable.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 17</value>
@@ -212,7 +239,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB2
-        CQAAAk1TRnQBSQFMAgEBAgEAAXwBAAF8AQABIAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAAYQBAAGEAQABIAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAARADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -258,12 +285,6 @@
   <data name="btnIconReset.ToolTip" xml:space="preserve">
     <value>Вернуть иконку</value>
   </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Файл</value>
-  </data>
   <data name="packToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 22</value>
   </data>
@@ -276,11 +297,11 @@
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>Выход</value>
   </data>
-  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
   </data>
-  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Язык</value>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Файл</value>
   </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>206, 28</value>
@@ -294,11 +315,11 @@
   <data name="russianToolStripMenuItem.Text" xml:space="preserve">
     <value>Русский</value>
   </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
+  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
   </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Помощь</value>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Язык</value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
@@ -306,21 +327,54 @@
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>О программе</value>
   </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="menuStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labTreeViewCaption.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 13</value>
   </data>
   <data name="labTreeViewCaption.Text" xml:space="preserve">
     <value>Файлы, которые будут упакованы:</value>
   </data>
+  <data name="labTreeViewCaption.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnChangeIcon.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
     <value>0, 14</value>
   </data>
-  <data name="btnChangeIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 17</value>
-  </data>
   <data name="btnChangeIcon.Text" xml:space="preserve">
     <value>Сменить иконку</value>
+  </data>
+  <data name="btnChangeIcon.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboMainExePath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="picAppIcon.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="progressBar.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labOverride.Location" type="System.Drawing.Point, System.Drawing">
+    <value>230, 76</value>
+  </data>
+  <data name="labOverride.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="labOverride.Text" xml:space="preserve">
+    <value>[Замена]</value>
+  </data>
+  <data name="labOverride.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -557,5 +611,8 @@
         t8HtuxwAXC0FAQR8HhLweWjln/Hg5wDgagEQ2DZFKOBFKOCFbVMe+FxcXFytpv8PsHgU31cuG7YAAAAA
         SUVORK5CYII=
 </value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

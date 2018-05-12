@@ -88,6 +88,33 @@ namespace Appacker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Drag the application folder here.
+        /// </summary>
+        internal static string cueAppDirPath {
+            get {
+                return ResourceManager.GetString("cueAppDirPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select main executable.
+        /// </summary>
+        internal static string cueMainExe {
+            get {
+                return ResourceManager.GetString("cueMainExe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select save location.
+        /// </summary>
+        internal static string cuePackExePath {
+            get {
+                return ResourceManager.GetString("cuePackExePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Packing aborted.
         /// </summary>
         internal static string errorCaption {

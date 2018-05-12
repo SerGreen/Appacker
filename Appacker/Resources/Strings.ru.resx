@@ -126,6 +126,15 @@
   <data name="btnPackTextPacking2" xml:space="preserve">
     <value>Ожидайте</value>
   </data>
+  <data name="cueAppDirPath" xml:space="preserve">
+    <value>Перетащите сюда папку с приложением</value>
+  </data>
+  <data name="cueMainExe" xml:space="preserve">
+    <value>Выберите основной .exe файл</value>
+  </data>
+  <data name="cuePackExePath" xml:space="preserve">
+    <value>Укажите куда сохранить пакет</value>
+  </data>
   <data name="errorCaption" xml:space="preserve">
     <value>Упаковка прервана</value>
   </data>

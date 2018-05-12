@@ -35,7 +35,7 @@
             this.btnBrowseAppFolder = new System.Windows.Forms.Button();
             this.labAppFolderPath = new System.Windows.Forms.Label();
             this.labPackPath = new System.Windows.Forms.Label();
-            this.txtPackPath = new System.Windows.Forms.TextBox();
+            this.txtPackExePath = new System.Windows.Forms.TextBox();
             this.btnBrowsePackPath = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.treeView = new System.Windows.Forms.TreeView();
@@ -60,10 +60,17 @@
             this.comboMainExePath = new System.Windows.Forms.ComboBox();
             this.picAppIcon = new System.Windows.Forms.PictureBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.labOverride = new System.Windows.Forms.Label();
             this.cultureManager = new Infralution.Localization.CultureManager(this.components);
             this.openIconDialog = new System.Windows.Forms.OpenFileDialog();
+            this.indAppFolder = new System.Windows.Forms.PictureBox();
+            this.indPackExePath = new System.Windows.Forms.PictureBox();
+            this.indMainExe = new System.Windows.Forms.PictureBox();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indMainExe)).BeginInit();
             this.SuspendLayout();
             // 
             // folderBrowserDialog
@@ -77,11 +84,12 @@
             resources.ApplyResources(this.txtAppFolderPath, "txtAppFolderPath");
             this.txtAppFolderPath.BackColor = System.Drawing.SystemColors.Window;
             this.txtAppFolderPath.Name = "txtAppFolderPath";
-            this.txtAppFolderPath.ReadOnly = true;
+            this.txtAppFolderPath.ShortcutsEnabled = false;
             this.txtAppFolderPath.TabStop = false;
             this.txtAppFolderPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.txtAppFolderPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
             this.txtAppFolderPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
+            this.txtAppFolderPath.Enter += new System.EventHandler(this.txtAppFolderPath_Enter);
             // 
             // btnBrowseAppFolder
             // 
@@ -100,14 +108,15 @@
             resources.ApplyResources(this.labPackPath, "labPackPath");
             this.labPackPath.Name = "labPackPath";
             // 
-            // txtPackPath
+            // txtPackExePath
             // 
-            this.txtPackPath.AllowDrop = true;
-            resources.ApplyResources(this.txtPackPath, "txtPackPath");
-            this.txtPackPath.Name = "txtPackPath";
-            this.txtPackPath.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
-            this.txtPackPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPackPath_DragDrop);
-            this.txtPackPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
+            this.txtPackExePath.AllowDrop = true;
+            resources.ApplyResources(this.txtPackExePath, "txtPackExePath");
+            this.txtPackExePath.Name = "txtPackExePath";
+            this.txtPackExePath.TextChanged += new System.EventHandler(this.txtPackPath_TextChanged);
+            this.txtPackExePath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPackPath_DragDrop);
+            this.txtPackExePath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
+            this.txtPackExePath.Leave += new System.EventHandler(this.txtPackExePath_Leave);
             // 
             // btnBrowsePackPath
             // 
@@ -289,6 +298,12 @@
             resources.ApplyResources(this.progressBar, "progressBar");
             this.progressBar.Name = "progressBar";
             // 
+            // labOverride
+            // 
+            resources.ApplyResources(this.labOverride, "labOverride");
+            this.labOverride.ForeColor = System.Drawing.Color.Red;
+            this.labOverride.Name = "labOverride";
+            // 
             // cultureManager
             // 
             this.cultureManager.ManagedControl = this;
@@ -297,10 +312,35 @@
             // 
             resources.ApplyResources(this.openIconDialog, "openIconDialog");
             // 
+            // indAppFolder
+            // 
+            this.indAppFolder.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.indAppFolder, "indAppFolder");
+            this.indAppFolder.Name = "indAppFolder";
+            this.indAppFolder.TabStop = false;
+            // 
+            // indPackExePath
+            // 
+            this.indPackExePath.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.indPackExePath, "indPackExePath");
+            this.indPackExePath.Name = "indPackExePath";
+            this.indPackExePath.TabStop = false;
+            // 
+            // indMainExe
+            // 
+            resources.ApplyResources(this.indMainExe, "indMainExe");
+            this.indMainExe.BackColor = System.Drawing.Color.Red;
+            this.indMainExe.Name = "indMainExe";
+            this.indMainExe.TabStop = false;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.indMainExe);
+            this.Controls.Add(this.indPackExePath);
+            this.Controls.Add(this.indAppFolder);
+            this.Controls.Add(this.labOverride);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnIconReset);
             this.Controls.Add(this.comboMainExePath);
@@ -315,7 +355,7 @@
             this.Controls.Add(this.labAppFolderPath);
             this.Controls.Add(this.btnBrowsePackPath);
             this.Controls.Add(this.btnBrowseAppFolder);
-            this.Controls.Add(this.txtPackPath);
+            this.Controls.Add(this.txtPackExePath);
             this.Controls.Add(this.txtAppFolderPath);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
@@ -323,6 +363,9 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indMainExe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,7 +378,7 @@
         private System.Windows.Forms.Button btnBrowseAppFolder;
         private System.Windows.Forms.Label labAppFolderPath;
         private System.Windows.Forms.Label labPackPath;
-        private System.Windows.Forms.TextBox txtPackPath;
+        private System.Windows.Forms.TextBox txtPackExePath;
         private System.Windows.Forms.Button btnBrowsePackPath;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.TreeView treeView;
@@ -362,6 +405,10 @@
         private System.Windows.Forms.Button btnIconReset;
         private System.Windows.Forms.OpenFileDialog openIconDialog;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label labOverride;
+        private System.Windows.Forms.PictureBox indAppFolder;
+        private System.Windows.Forms.PictureBox indMainExe;
+        private System.Windows.Forms.PictureBox indPackExePath;
     }
 }
 

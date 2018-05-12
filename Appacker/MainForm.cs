@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RavSoft;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,10 +30,12 @@ namespace Appacker
             pos = picAppIcon.PointToClient(pos);
             btnIconReset.Parent = picAppIcon;
             btnIconReset.Location = pos;
+
             // Load language from settings
             SetLanguage(RegistrySettingsProvider.Language);
         }
-        
+
+        #region GUI and controls stuff
         // Open folder dialog box
         private void btnBrowseAppFolder_Click(object sender, EventArgs e)
         {
@@ -50,6 +53,8 @@ namespace Appacker
             CheckIfReadyToPack();
         }
 
+        private void txtAppFolderPath_Enter(object sender, EventArgs e) => btnBrowseAppFolder.Focus();
+
         // Open save file dialog box
         private void btnBrowsePackPath_Click(object sender, EventArgs e)
         {
@@ -61,11 +66,20 @@ namespace Appacker
 
         private void SetPackPath(string path)
         {
-            txtPackPath.Text = path;
+            txtPackExePath.Text = path;
 
-            // If treeView is build, make the root node name equal to name of the pack name
+            // If treeView is built, make the root node name equal to name of the pack name
             if (treeView.Nodes.Count > 0)
                 treeView.Nodes[0].Text = Path.GetFileName(path);
+        }
+
+        // Add .exe extension to packExePath if missing
+        private void txtPackExePath_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtPackExePath.Text) && !txtPackExePath.Text.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
+            {
+                txtPackExePath.Text = txtPackExePath.Text.TrimEnd('.') + ".exe";
+            }
         }
 
         // Clear tree view and build new tree using path from txtAppFolderPath
@@ -82,11 +96,11 @@ namespace Appacker
                 rootNode.Expand();
 
                 // If there's defined path to package save file, then set pack file name as root node name
-                if (!string.IsNullOrWhiteSpace(txtPackPath.Text))
+                if (!string.IsNullOrWhiteSpace(txtPackExePath.Text))
                 {
                     try
                     {
-                        rootNode.Text = Path.GetFileName(txtPackPath.Text);
+                        rootNode.Text = Path.GetFileName(txtPackExePath.Text);
                     }
                     catch (ArgumentException) { /* Fucked up pack save path */ }
                 }
@@ -147,21 +161,57 @@ namespace Appacker
             TextBox_TextChanged(sender, e);
             SetAppIconPreviewFromMainExeIfNoCustom();
         }
-        
-        // When user have specified path to app directory, path to save package and local path to main exe
-        // Button 'Pack' becomes active
-        private void CheckIfReadyToPack()
+
+        // If user chose existing exe file as a save destination, then display file override warning label
+        private void txtPackPath_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtAppFolderPath.Text) ||
-                 string.IsNullOrWhiteSpace(txtPackPath.Text) ||
-                 string.IsNullOrWhiteSpace(comboMainExePath.Text) ||
-                 !txtPackPath.Text.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
-                packToolStripMenuItem.Enabled = btnPack.Enabled = false;
-            else
-                packToolStripMenuItem.Enabled = btnPack.Enabled = true;
+            TextBox_TextChanged(sender, e);
+            labOverride.Visible = File.Exists(txtPackExePath.Text);
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e) => CheckIfReadyToPack();
+
+        // When user have specified path to app directory, path to save package and local path to main exe, button 'Pack' becomes active
+        private readonly Color colOk = Color.Green;
+        private readonly Color colWrong = Color.FromArgb(200, 0, 0);
+        private void CheckIfReadyToPack()
+        {
+            bool isReady = true;
+
+            if (string.IsNullOrWhiteSpace(txtAppFolderPath.Text))
+            {
+                isReady = false;
+                indAppFolder.BackColor = colWrong;
+            }
+            else
+            {
+                indAppFolder.BackColor = colOk;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPackExePath.Text)
+                || !txtPackExePath.Text.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
+            {
+                isReady = false;
+                indPackExePath.BackColor = colWrong;
+            }
+            else
+            {
+                indPackExePath.BackColor = colOk;
+            }
+
+            if (string.IsNullOrWhiteSpace(comboMainExePath.Text))
+            {
+                isReady = false;
+                indMainExe.BackColor = colWrong;
+            }
+            else
+            {
+                indMainExe.BackColor = colOk;
+            }
+
+            packToolStripMenuItem.Enabled = btnPack.Enabled = isReady;
+        }
+        #endregion
 
         // ============== PACK METHOD ================
         // Launch the packer.exe with needed arguments
@@ -193,7 +243,7 @@ namespace Appacker
             // 4. Path to app directory
             // 5. Whether app is self-repackable, True or False
             ProcessStartInfo packProcInfo = new ProcessStartInfo(Path.Combine(tempDir, "packer.exe"));
-            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{txtPackPath.Text.TrimEnd(Path.DirectorySeparatorChar)}"" ""{comboMainExePath.Text}"" ""{txtAppFolderPath.Text}"" {checkRepackable.Checked}";
+            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{txtPackExePath.Text.TrimEnd(Path.DirectorySeparatorChar)}"" ""{comboMainExePath.Text}"" ""{txtAppFolderPath.Text}"" {checkRepackable.Checked}";
 #if (!DEBUG)
             packProcInfo.CreateNoWindow = true;
             packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -297,6 +347,7 @@ namespace Appacker
         }
         #endregion
 
+        #region Language stuff ==
         // Change the CultureInfo and save the language choice to the registry
         private void SetLanguage(CultureInfo language)
         {
@@ -307,7 +358,28 @@ namespace Appacker
                 System.Threading.Thread.CurrentThread.CurrentUICulture = language;
             RegistrySettingsProvider.Language = cultureManager.UICulture;
             CheckIfReadyToPack();
+            SetCueBanners();
+            CrunchFixControlsVisibility();
         }
+        
+        // Changing language resets Enabled and Visible parameters of controls to default values
+        // So this is rather lazy fix by manually re-checking specific controlls
+        private void CrunchFixControlsVisibility()
+        {
+            if (!string.IsNullOrWhiteSpace(txtAppFolderPath.Text))
+                comboMainExePath.Enabled = true;
+            if (!string.IsNullOrWhiteSpace(pathToCustomIcon))
+                btnIconReset.Visible = true;
+            if (!string.IsNullOrWhiteSpace(txtPackExePath.Text) && File.Exists(txtPackExePath.Text))
+                labOverride.Visible = true;
+        }
+
+        private void SetCueBanners()
+        {
+            CueProvider.SetCue(txtAppFolderPath, Resources.Strings.cueAppDirPath);
+            CueProvider.SetCue(txtPackExePath, Resources.Strings.cuePackExePath);
+        }
+        #endregion
 
         #region == Menu strip items stuff ==
         private void englishToolStripMenuItem_Click(object sender, EventArgs e) => SetLanguage(CULTURE_EN);
