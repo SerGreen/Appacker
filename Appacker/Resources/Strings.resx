@@ -162,4 +162,7 @@
   <data name="errorText" xml:space="preserve">
     <value>Packing was not performed. Packer has exited with code</value>
   </data>
+  <data name="labSizeText" xml:space="preserve">
+    <value>Estimated package size: </value>
+  </data>
 </root>

@@ -162,4 +162,7 @@
   <data name="errorText" xml:space="preserve">
     <value>Упаковка не была завершена. Упаковщик завершил работу с кодом</value>
   </data>
+  <data name="labSizeText" xml:space="preserve">
+    <value>Оценочный размер пакета:</value>
+  </data>
 </root>

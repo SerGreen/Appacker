@@ -66,6 +66,7 @@
             this.indAppFolder = new System.Windows.Forms.PictureBox();
             this.indPackExePath = new System.Windows.Forms.PictureBox();
             this.indMainExe = new System.Windows.Forms.PictureBox();
+            this.labSize = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).BeginInit();
@@ -333,10 +334,16 @@
             this.indMainExe.Name = "indMainExe";
             this.indMainExe.TabStop = false;
             // 
+            // labSize
+            // 
+            resources.ApplyResources(this.labSize, "labSize");
+            this.labSize.Name = "labSize";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labSize);
             this.Controls.Add(this.indMainExe);
             this.Controls.Add(this.indPackExePath);
             this.Controls.Add(this.indAppFolder);
@@ -409,6 +416,7 @@
         private System.Windows.Forms.PictureBox indAppFolder;
         private System.Windows.Forms.PictureBox indMainExe;
         private System.Windows.Forms.PictureBox indPackExePath;
+        private System.Windows.Forms.Label labSize;
     }
 }
 

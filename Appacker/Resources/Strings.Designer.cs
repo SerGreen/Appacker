@@ -194,5 +194,14 @@ namespace Appacker.Resources {
                 return ResourceManager.GetString("errorText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated package size: .
+        /// </summary>
+        internal static string labSizeText {
+            get {
+                return ResourceManager.GetString("labSizeText", resourceCulture);
+            }
+        }
     }
 }

@@ -51,6 +51,7 @@ namespace Appacker
             RebuildTree();
             UpdateComboBoxMainExe(path);
             CheckIfReadyToPack();
+            UpdateEstimatedSize();
         }
 
         private void txtAppFolderPath_Enter(object sender, EventArgs e) => btnBrowseAppFolder.Focus();
@@ -122,11 +123,67 @@ namespace Appacker
             {
                 TreeNode fileNode = curNode.Nodes.Add(file.Name);
                 fileNode.Name = fileNode.FullPath.Substring(fileNode.FullPath.IndexOf(Path.DirectorySeparatorChar) + 1);
+                fileNode.Tag = file.Length;
                 if (file.Extension.ToLowerInvariant() == ".exe")
                     fileNode.ImageIndex = fileNode.SelectedImageIndex = 3;
                 else
                     fileNode.ImageIndex = fileNode.SelectedImageIndex = 2;
             }
+        }
+
+        // Updates label that displays the size of the package
+        private void UpdateEstimatedSize()
+        {
+            long size = CountFolderSize(treeView.TopNode);
+
+            if (size != 0)
+                size += 204800; // + 200 KiB ~= appacker wrapper & tools
+
+            string unit;
+            int power = 0;
+            if (size >= 1073741824)
+            {
+                unit = "GiB";
+                power = 3;
+            }
+            else if (size >= 1048576)
+            {
+                unit = "MiB";
+                power = 2;
+            }
+            else if (size >= 1024)
+            {
+                unit = "KiB";
+                power = 1;
+            }
+            else
+                unit = "B";
+
+            labSize.Text = $"{Resources.Strings.labSizeText} {(size / Math.Pow(1024, power)).ToString(size == 0 ? "0" : "0.00")} {unit}";
+            labSize.Left = this.ClientSize.Width - labSize.Width - (9 + labSize.Margin.Right); // magic 9  (∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *
+            // If file size is more than 200 MiB, then warn user using red color
+            labSize.ForeColor = size > 209715200 ? Color.Red : Color.Black;
+
+            if (size == 0)
+                labSize.Enabled = false;
+            else
+                labSize.Enabled = true;
+        }
+        // Returns the size of all files in a folder, in bytes
+        private long CountFolderSize(TreeNode folder)
+        {
+            long size = 0;
+            if (folder != null)
+            {
+                foreach (TreeNode node in folder.Nodes)
+                {
+                    if (node.Tag != null)
+                        size += (long)node.Tag;
+                    if (node.Nodes.Count > 0)
+                        size += CountFolderSize(node);
+                }
+            }
+            return size;
         }
 
         // Find all .exe files and add them to the combobox
@@ -347,7 +404,7 @@ namespace Appacker
         }
         #endregion
 
-        #region Language stuff ==
+        #region == Language stuff ==
         // Change the CultureInfo and save the language choice to the registry
         private void SetLanguage(CultureInfo language)
         {
@@ -359,6 +416,7 @@ namespace Appacker
             RegistrySettingsProvider.Language = cultureManager.UICulture;
             CheckIfReadyToPack();
             SetCueBanners();
+            UpdateEstimatedSize();
             CrunchFixControlsVisibility();
         }
         
