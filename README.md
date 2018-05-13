@@ -54,6 +54,7 @@ __If it is a self-repacking application, CoolApp.exe does the following:__
 * `Appacker` &mdash; WinForms main application project
 * `Packer` &mdash; Console tool that creates packages
 * `Unpacker` &mdash; Console wrapper that is used as the core of a package
+* `ProgressBarSplash` &mdash; WinForms splashscreen tool, that is used by packer and unpacker tools
 * `IconLib` &mdash; DLL project for saving Windows `.ico` files (vanilla .NET can't save Windows icons correctly ¯\\\_(ツ)\_/¯ )
 * `IconInjector` &mdash; DLL project for replacing icons of external executables
 
@@ -63,3 +64,5 @@ __If it is a self-repacking application, CoolApp.exe does the following:__
 * [Fody.Costura by Simon Cropp](https://github.com/Fody/Costura) &mdash; NuGet package for embedding .exe and .dll files into the main executable.
 * [Resource.Embedder by MarcStan](https://gitlab.com/MarcStan/Resource.Embedder) &mdash; NuGet package for embedding localization satellite assemblies into the main executable.
 * [CultureManager by Grant Frisken](https://www.codeproject.com/Articles/23694/Changing-Your-Application-User-Interface-Culture-O) &mdash; WinForms component that allows dynamically update language and UI Culture of the form without closing and recreating it.
+* [XDMessaging by TheCodeKing](https://thecodeking.co.uk/project/xdmessaging/usage/) &mdash; Lightweight easy-to-use library for inter-process communication.
+* [CueProvider by Ravi Bhavnani](https://www.codeproject.com/Articles/27853/CueProvider) &mdash; Lightweight class that lets you add cue banners to a TextBox.
