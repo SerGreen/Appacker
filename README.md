@@ -36,13 +36,7 @@ C:\>appacker.exe -r -src "d:\users\sergreen\desktop\vault\coolapp" -exe "bin\lau
 ```
 You can also run it in silent mode by adding `--quiet` flag, in this mode only error messages are shown.
 
-## How does it work
-The principle behind Appacker is that you can write whatever you want to the end of an `.exe` file and it will still work fine.  
-This app simply appends all the necessary files to the end of a wrapper executable and when the wrapper is launched, it extracts all the files from its own `.exe`, places them into a temporary folder and starts extracted application. When target app is closed, wrapper removes temp folder.  
-  
-Also you can set self-repack flag and Appacker will append to the wrapper executable the packer tool, that will repack target application once it's closed from the temporary folder and replace the original package with the updated one. This can be used to create portable application that can keep any changes made to its files (like settings, that are stored inside application directory).  
-
-## How to use Appacker
+#### How to use Appacker GUI
 To pack an application you have to:  
 1. Select folder that contains all the files of the target application.  
 _You can drag'n'drop the folder to the first textBox or the treeView._
@@ -55,6 +49,12 @@ _You can drag'n'drop an existing `.exe` into the second textBox; in this case it
 <p align="center">
   <img src="Screenshots/2018-08-21_190019.png">
 </p>
+
+## How does it work
+The principle behind Appacker is that you can write whatever you want to the end of an `.exe` file and it will still work fine.  
+This app simply appends all the necessary files to the end of a wrapper executable and when the wrapper is launched, it extracts all the files from its own `.exe`, places them into a temporary folder and starts extracted application. When target app is closed, wrapper removes temp folder.  
+  
+Also you can set self-repack flag and Appacker will append to the wrapper executable the packer tool, that will repack target application once it's closed from the temporary folder and replace the original package with the updated one. This can be used to create portable application that can keep any changes made to its files (like settings, that are stored inside application directory).  
 
 ## What happens when you run packed application
 
