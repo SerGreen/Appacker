@@ -199,7 +199,8 @@ namespace Unpacker
         private static bool AnyFileChanged(string pathToAppDir)
         {
             var allFiles = GetAllFilesInsideDirectory(new DirectoryInfo(pathToAppDir));
-            if (allFiles.Any(x => x.LastWriteTime.Subtract(unpackingDoneTimestamp).Milliseconds > 200))
+            if (allFiles.Any(x => x.LastWriteTime.Subtract(unpackingDoneTimestamp).Milliseconds > 200 
+                               || x.CreationTime.Subtract(unpackingDoneTimestamp).Milliseconds > 200))
                 return true;
             else if (allFiles.Count() < targetAppFilesCount)
                 return true;

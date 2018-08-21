@@ -279,6 +279,51 @@ namespace Appacker
             btnPack.Text = Resources.Strings.btnPackTextPacking1 + Environment.NewLine + Resources.Strings.btnPackTextPacking2;
             btnPack.Update();
 
+            string sourceAppFolder = txtAppFolderPath.Text;
+            string mainExePath = comboMainExePath.Text;
+            string destinationPath = txtPackExePath.Text;
+            string customIconPath = pathToCustomIcon;
+            bool selfRepackable = checkRepackable.Checked;
+
+            PackingProgressUpdate += (o, progress) =>
+            {
+                progressBar.Maximum = progress.maxValue;
+                progressBar.Value = progress.currentValue;
+            };
+            PackingFinished += (o, exitCode) => 
+            {
+                progressBar.Value = progressBar.Maximum;
+                
+                // Show error message if return code is abnormal
+                if (exitCode != 0)
+                    ShowPackingFailMessage(exitCode);
+                else
+                    System.Media.SystemSounds.Exclamation.Play();
+
+                btnPack.Text = Resources.Strings.btnPackText;
+                btnPack.Enabled = packToolStripMenuItem.Enabled = true;
+            };
+
+            progressBar.Value = 0;
+            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, selfRepackable);
+        }
+
+        internal static event EventHandler<(int maxValue, int currentValue)> PackingProgressUpdate;
+        internal static event EventHandler<int> PackingFinished;
+        /// <summary>
+        /// Initiates packing process in the background thread. Subscribe to PackingProgressUpdate and PackingFinished for callbacks
+        /// </summary>
+        /// <param name="sourceAppFolder">Path to the folder with the target application</param>
+        /// <param name="mainExePath">Local path to the main executable of the target app</param>
+        /// <param name="destinationPath">Save location of the resulting packed .exe</param>
+        /// <param name="customIconPath">Path to the icon file that will replace original app's icon</param>
+        /// <param name="selfRepackable">True = packed app will repack itself after its execution so any changes are saved; Flase = changes are discarded</param>
+        internal static void StartPacking( string sourceAppFolder, 
+                                                 string mainExePath, 
+                                                 string destinationPath, 
+                                                 string customIconPath = null, 
+                                                 bool   selfRepackable = true )
+        {
             // Copy packer and unpacker into the temp directory
             string tempDir = null;
             while (tempDir == null || Directory.Exists(tempDir))
@@ -290,7 +335,7 @@ namespace Appacker
             File.WriteAllBytes(Path.Combine(tempDir, "progressBarSplash.exe"), ToolsStorage.ProgressBarSplash);
 
             // Inject new icon into unpacker.exe (take the icon from the main executable of unpacked app if user did not provide a custom icon)
-            string iconPath = pathToCustomIcon ?? Path.Combine(txtAppFolderPath.Text, comboMainExePath.Text);
+            string iconPath = customIconPath ?? Path.Combine(sourceAppFolder, mainExePath);
             IconSwapper.ChangeIcon(Path.Combine(tempDir, "unpacker.exe"), iconPath);
 
             // Launch packer.exe with arguments:
@@ -300,7 +345,7 @@ namespace Appacker
             // 4. Path to app directory
             // 5. Whether app is self-repackable, True or False
             ProcessStartInfo packProcInfo = new ProcessStartInfo(Path.Combine(tempDir, "packer.exe"));
-            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{txtPackExePath.Text.TrimEnd(Path.DirectorySeparatorChar)}"" ""{comboMainExePath.Text}"" ""{txtAppFolderPath.Text}"" {checkRepackable.Checked}";
+            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{destinationPath.TrimEnd(Path.DirectorySeparatorChar)}"" ""{mainExePath}"" ""{sourceAppFolder}"" {selfRepackable}";
 #if (!DEBUG)
             packProcInfo.CreateNoWindow = true;
             packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -322,23 +367,13 @@ namespace Appacker
                     // 'Done' is sent by Packer when it finished packing and is ready to quit
                     if (ea.DataGram.Message == "Done")
                     {
-                        progressBar.Value = progressBar.Maximum;
                         packProc.WaitForExit();
-
-                        // Show error message if return code is abnormal
-                        if (packProc.ExitCode != 0)
-                            ShowPackingFailMessage(packProc.ExitCode);
-                        else
-                            System.Media.SystemSounds.Exclamation.Play();
-
+                        PackingFinished.Invoke(null, packProc.ExitCode);
                         packProc.Dispose();
 
                         // Delete temp directory
                         if (Directory.Exists(tempDir))
                             Directory.Delete(tempDir, true);
-
-                        btnPack.Text = Resources.Strings.btnPackText;
-                        btnPack.Enabled = packToolStripMenuItem.Enabled = true;
 
                         listener.UnRegisterChannel("AppackerProgress");
                         listener.Dispose();
@@ -346,26 +381,31 @@ namespace Appacker
                     else
                     {
                         string[] tokens = ea.DataGram.Message.Split(' ');
-                        progressBar.Maximum = int.Parse(tokens[1]);
-                        progressBar.Value = int.Parse(tokens[0]);
+                        PackingProgressUpdate.Invoke(null, (int.Parse(tokens[1]), int.Parse(tokens[0])));
                     }
                 }
             };
-            
-            progressBar.Value = 0;
+
             packProc.Start();
         }
-        
+
         // Display message box with an error explanation
         private void ShowPackingFailMessage(int exitCode)
         {
-            string message;
-            if (exitCode >= 1 && exitCode <= 6)
-                message = Resources.Strings.ResourceManager.GetString($"errorCode{exitCode}");
-            else
-                message = Resources.Strings.errorCodeUnknown;
-
+            string message = GetErrorMessage(exitCode);
             MessageBox.Show($"{Resources.Strings.errorText} 0x{exitCode:X3}.\n{message}", Resources.Strings.errorCaption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        /// <summary>
+        /// Translates numeric exit code to the human-readable message
+        /// </summary>
+        /// <param name="exitCode">The return code of the packer process from PackingFinished event</param>
+        internal static string GetErrorMessage(int exitCode)
+        {
+            if (exitCode >= 1 && exitCode <= 6)
+                return Resources.Strings.ResourceManager.GetString($"errorCode{exitCode}");
+            else
+                return Resources.Strings.errorCodeUnknown;
         }
 
         #region == Drag and drop stuff ==
