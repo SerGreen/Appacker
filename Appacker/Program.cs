@@ -58,25 +58,25 @@ namespace Appacker
             // Initialize possible arguments
             var argsParser = new OptionSet() {
                     { "s|src|source-folder=",
-                        "path to the folder containing all the files of the target application",
+                        "Directory containing all the files of the target application.",
                         s => sourceAppFolder = s.TrimEnd('\\', '/') },
                     { "e|exe|main-exe=",
-                        "local path to the main executable inside the target app folder",
+                        "Local path to the main executable inside the source app folder. This is the application that will launch whenever the packed app extracts itself.",
                         e => mainExePath = e.TrimStart('\\', '/') },
                     { "d|dst|destination|output=",
-                        "location where packed app will be saved",
+                        "Location where packed app will be created.",
                         d => destinationPath = d },
                     { "i|ico|icon=",
-                        "path to the custom icon",
+                        "Custom icon for the packed application.",
                         c => customIconPath = c },
                     { "r|repack|self-repack",
-                        "makes application self-repackable",
+                        "Sets the packed application to refresh itself after the main executable closes. Refreshing adds and replaces files in the packed executable with those created and modified during runtime.",
                         r => selfRepackable = r != null },
                     { "q|quiet|silent",
-                        "no packing progress messages will be shown",
+                        "No progress messages will be shown during the packing process.",
                         q => quietPacking = q != null },
                     { "h|help|?",
-                        "show this message and exit",
+                        "Show this message and exit.",
                        v => showHelp = v != null }
                 };
 
