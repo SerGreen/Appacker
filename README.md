@@ -3,13 +3,40 @@ This tool takes a folder with application and packs it into a single executable 
 
 __[Download Appacker](https://github.com/SerGreen/Appacker/releases/latest)__.
 
-## How does it work
-The principle behind Appacker is that you can write whatever you want to the end of an `.exe` file and it will still work fine.  
-This app simply appends all the necessary files to the end of a wrapper executable and when the wrapper is launched, it extracts all the files from its own `.exe`, places them into a temporary folder and starts extracted application. When target app is closed, wrapper removes temp folder.  
-  
-Also you can set self-repack flag and Appacker will append to the wrapper executable the packer tool, that will repack target application once it's closed from the temporary folder and replace the original package with the updated one. This can be used to create portable application that can keep any changes made to its files (like settings, that are stored inside application directory).  
+## Usage
+It can be used in GUI-less mode via command line. If you provide no arguments it will launch GUI.
 
-## How to use Appacker
+```console
+Usage: appacker.exe [-r] [-q] <-s "source_folder"> <-e "main_exe"> <-d "save_location"> [-i "icon_path"]
+
+Options:
+  -s, --src, --source-folder=VALUE
+                             path to the folder containing all the files of
+                               the target application
+  -e, --exe, --main-exe=VALUE
+                             local path to the main executable inside the
+                               target app folder
+  -d, --dst, --destination, --output=VALUE
+                             location where packed app will be saved
+  -i, --ico, --icon=VALUE    path to the custom icon
+  -r, --repack, --self-repack
+                             makes application self-repackable
+  -q, --quiet, --silent      no packing progress messages will be shown
+  -h, --help, -?             show this message and exit
+```
+
+
+This will launch Appacker in GUI mode:
+```console
+C:\>appacker.exe
+```
+This will launch Appacker in console mode:
+```console
+C:\>appacker.exe -r -src "d:\users\sergreen\desktop\vault\coolapp" -exe "bin\launcher.exe" -dst "d:\users\sergreen\desktop\vault"\CoolApp packed.exe" -ico "d:\cool_icon.png"
+```
+You can also run it in silent mode by adding `--quiet` flag, in this mode only error messages are shown.
+
+#### How to use Appacker GUI
 To pack an application you have to:  
 1. Select folder that contains all the files of the target application.  
 _You can drag'n'drop the folder to the first textBox or the treeView._
@@ -20,8 +47,14 @@ _You can drag'n'drop an existing `.exe` into the second textBox; in this case it
 5. Press the `Pack!` button and it's done. It may take some time if the target application is big enough / has a lot of files.
 
 <p align="center">
-  <img src="Screenshots/2018-05-06_222416.png">
+  <img src="Screenshots/2018-08-21_190019.png">
 </p>
+
+## How does it work
+The principle behind Appacker is that you can write whatever you want to the end of an `.exe` file and it will still work fine.  
+This app simply appends all the necessary files to the end of a wrapper executable and when the wrapper is launched, it extracts all the files from its own `.exe`, places them into a temporary folder and starts extracted application. When target app is closed, wrapper removes temp folder.  
+  
+Also you can set self-repack flag and Appacker will append to the wrapper executable the packer tool, that will repack target application once it's closed from the temporary folder and replace the original package with the updated one. This can be used to create portable application that can keep any changes made to its files (like settings, that are stored inside application directory).  
 
 ## What happens when you run packed application
 
@@ -66,3 +99,4 @@ __If it is a self-repacking application, CoolApp.exe does the following:__
 * [CultureManager by Grant Frisken](https://www.codeproject.com/Articles/23694/Changing-Your-Application-User-Interface-Culture-O) &mdash; WinForms component that allows dynamically update language and UI Culture of the form without closing and recreating it.
 * [XDMessaging by TheCodeKing](https://thecodeking.co.uk/project/xdmessaging/usage/) &mdash; Lightweight easy-to-use library for inter-process communication.
 * [CueProvider by Ravi Bhavnani](https://www.codeproject.com/Articles/27853/CueProvider) &mdash; Lightweight class that lets you add cue banners to a TextBox.
+* [NDesk.Options](http://www.ndesk.org/Options) &mdash; NuGet package for parsing program arguments.
