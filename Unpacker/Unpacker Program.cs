@@ -167,7 +167,7 @@ namespace Unpacker
                     // 5. Self-repackable flag = True
                     // 6. -repack flag = mark, that this is the repacking process, which will result in deletion of unpacked temp folder after repacking
                     ProcessStartInfo repackProcInfo = new ProcessStartInfo(Path.Combine(repackerTempDir, "packer.exe"));
-                    repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" True -repack";
+                    repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" True True -repack";
 #if (!DEBUG)
                 repackProcInfo.CreateNoWindow = true;
                 repackProcInfo.WindowStyle = ProcessWindowStyle.Hidden;

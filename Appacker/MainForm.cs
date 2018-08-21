@@ -319,10 +319,11 @@ namespace Appacker
         /// <param name="customIconPath">Path to the icon file that will replace original app's icon</param>
         /// <param name="selfRepackable">True = packed app will repack itself after its execution so any changes are saved; Flase = changes are discarded</param>
         internal static void StartPacking( string sourceAppFolder, 
-                                                 string mainExePath, 
-                                                 string destinationPath, 
-                                                 string customIconPath = null, 
-                                                 bool   selfRepackable = true )
+                                           string mainExePath, 
+                                           string destinationPath, 
+                                           string customIconPath = null, 
+                                           bool   selfRepackable = true,
+                                           bool   noGUI = false )
         {
             // Copy packer and unpacker into the temp directory
             string tempDir = null;
@@ -345,7 +346,7 @@ namespace Appacker
             // 4. Path to app directory
             // 5. Whether app is self-repackable, True or False
             ProcessStartInfo packProcInfo = new ProcessStartInfo(Path.Combine(tempDir, "packer.exe"));
-            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{destinationPath.TrimEnd(Path.DirectorySeparatorChar)}"" ""{mainExePath}"" ""{sourceAppFolder}"" {selfRepackable}";
+            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{destinationPath.TrimEnd(Path.DirectorySeparatorChar)}"" ""{mainExePath}"" ""{sourceAppFolder}"" {selfRepackable} {noGUI}";
 #if (!DEBUG)
             packProcInfo.CreateNoWindow = true;
             packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -356,7 +357,8 @@ namespace Appacker
 
             // Setup XDMessagingClient listener to receive packing progress updates
             XDMessagingClient client = new XDMessagingClient();
-            IXDListener listener = client.Listeners.GetListenerForMode(XDTransportMode.HighPerformanceUI);
+            // For command line launch use Compatibility mode; for regular GUI launch use HighPerformanceUI
+            IXDListener listener = client.Listeners.GetListenerForMode(noGUI ? XDTransportMode.Compatibility : XDTransportMode.HighPerformanceUI);
             listener.RegisterChannel("AppackerProgress");
 
             // Attach event handler for incoming messages
@@ -368,7 +370,7 @@ namespace Appacker
                     if (ea.DataGram.Message == "Done")
                     {
                         packProc.WaitForExit();
-                        PackingFinished.Invoke(null, packProc.ExitCode);
+                        PackingFinished?.Invoke(null, packProc.ExitCode);
                         packProc.Dispose();
 
                         // Delete temp directory
@@ -381,7 +383,7 @@ namespace Appacker
                     else
                     {
                         string[] tokens = ea.DataGram.Message.Split(' ');
-                        PackingProgressUpdate.Invoke(null, (int.Parse(tokens[1]), int.Parse(tokens[0])));
+                        PackingProgressUpdate?.Invoke(null, (int.Parse(tokens[1]), int.Parse(tokens[0])));
                     }
                 }
             };

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using XDMessaging;
@@ -18,6 +19,10 @@ namespace Appacker
 
         private const string TRY_HELP = "Try `{0} --help' for more information.";
         private const string USAGE = @"Usage: {0} [-r] [-q] <-s ""source_folder""> <-e ""main_exe""> <-d ""save_location""> [-i ""icon_path""]";
+
+        // Flag to keep application running until background packing is finished
+        // It's done to print packing progress messages to the console
+        private static bool packingFinished = false;
 
         /// <summary>
         /// The main entry point for the application.
@@ -50,6 +55,7 @@ namespace Appacker
             bool selfRepackable = false, quietPacking = false;
             bool showHelp = false;
 
+            // Initialize possible arguments
             var argsParser = new OptionSet() {
                     { "s|src|source-app-folder=",
                         "path to the folder containing all the files of the target application",
@@ -74,9 +80,10 @@ namespace Appacker
                        v => showHelp = v != null }
                 };
 
-            List<string> unknownArgs;
+            List<string> unknownArgs;   // unused
             try
             {
+                // Parse arguments
                 unknownArgs = argsParser.Parse(args);
             }
             catch (OptionException e)
@@ -86,79 +93,231 @@ namespace Appacker
                 return;
             }
 
+            // If --help flag is present
             if (showHelp)
             {
                 ShowHelp(argsParser, args[0]);
                 return;
             }
-            // Validate arguments and show error messages if required
             else
             {
-                #region Arguments validation
-                Console.WriteLine();
-                bool error = false;
-                if (sourceAppFolder == null)
-                {
-                    Console.WriteLine("-s argument is missing");
-                    error = true;
-                }
-                else if (!Directory.Exists(sourceAppFolder))
-                {
-                    Console.WriteLine("Invalid path to the source app folder");
-                    error = true;
-                }
-                if (mainExePath == null)
-                {
-                    Console.WriteLine("-e argument is missing");
-                    error = true;
-                }
-                else if (!File.Exists(Path.Combine(sourceAppFolder, mainExePath)))
-                {
-                    Console.WriteLine("Invalid local path to the main executable");
-                    error = true;
-                }
-                if (destinationPath == null)
-                {
-                    Console.WriteLine("-d argument is missing");
-                    error = true;
-                }
-                if (customIconPath != null && !File.Exists(customIconPath))
-                {
-                    Console.WriteLine("Invalid icon path: file does not exist");
-                    error = true;
-                }
-                if (error)
+                // Validate arguments and show error messages if required
+                if (!ValidateArguments(sourceAppFolder, mainExePath, destinationPath, customIconPath, isQuiet:quietPacking))
                 {
                     Console.WriteLine(USAGE, args[0]);
                     Console.WriteLine(TRY_HELP, args[0]);
                     return;
                 }
-                #endregion
 
                 // == PACKING ==
                 // Subscribe to progress update events
                 if (!quietPacking)
                 {
-                    XDMessagingClient client = new XDMessagingClient();
-                    IXDListener listener = client.Listeners.GetListenerForMode(XDTransportMode.HighPerformanceUI);
-                    listener.RegisterChannel("AppackerProgress");
+                    // Position of the concole cursor
+                    (int left, int top) firstMessageCursorPos = default;
+                    bool firstMessageReceived = false;
+                    // Value from ProgressUpdate message
+                    int maxValue = 0;
+                    object syncObj = new object();
 
                     MainForm.PackingProgressUpdate += (o, progress) =>
                     {
-                        Console.WriteLine($"Packing... {progress.currentValue} / {progress.maxValue} done [{(float)progress.currentValue / progress.maxValue:F2}%]");
+                        // Multiple messages can try to write to the same spon in the Console, hence lock
+                        lock (syncObj)
+                        {
+                            // This check is kinda crutchy. Using Compatibility mode in XDMessaging may lead to non-sequential progress updates, 
+                            // i.e. `5% progress` message can arrive after `8% progress` one. It's not nice, but there's no easy fixes, so i'm gonna leave it as it is,
+                            // but having `95%` message arrive after `100%` is ugly and this check for packingFinished fixes at least this situation
+                            if (!packingFinished)
+                            {
+                                // Remember the position of the first message in Console, so we can write to the same spot 
+                                // and it looks neat and not like a stream of text
+                                if (!firstMessageReceived)
+                                {
+                                    firstMessageReceived = true;
+                                    firstMessageCursorPos = (Console.CursorLeft, Console.CursorTop);
+                                    // Also remember maxValue for the PackingFinished event, because that event doesn't have `100/100` like text. Yeah, another crutch, i know .__.
+                                    maxValue = progress.maxValue;
+                                }
+
+                                // Move cursor and write new progress message on top of the old one
+                                Console.SetCursorPosition(firstMessageCursorPos.left, firstMessageCursorPos.top);
+                                Console.WriteLine($"Packing... {progress.currentValue} / {progress.maxValue} done [{100f * progress.currentValue / progress.maxValue:F2}%]");
+                            }
+                        }
                     };
                     MainForm.PackingFinished += (o, exitCode) =>
                     {
+                        // Multiple messages can try to write to the same spon in the Console, hence lock
+                        lock (syncObj)
+                        {
+                            if (exitCode == 0)
+                            {
+                                // Write success message
+                                Console.SetCursorPosition(firstMessageCursorPos.left, firstMessageCursorPos.top);
+                                Console.WriteLine($"Packing... {maxValue} / {maxValue} done [100.00%]");
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.WriteLine($"Packing complete!");
+                                Console.ResetColor();
+                                Console.WriteLine($"Packed app location: `{destinationPath}`");
+                            }
+                            // Show error message if return code is abnormal
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine($"Packing finished with an error: {MainForm.GetErrorMessage(exitCode)}");
+                                Console.ResetColor();
+                            }
+
+                            // Release Sleep() loop
+                            packingFinished = true;
+                        }
+                    };
+                }
+                // If --quiet then subscribe only to PackingFinished event to release Sleep() loop and display possible errors
+                else
+                {
+                    MainForm.PackingFinished += (o, exitCode) =>
+                    {
                         // Show error message if return code is abnormal
-                        if (exitCode == 0)
-                            Console.WriteLine($"Packing complete!\n Packed app location: `{destinationPath}`");
-                        else
-                            Console.WriteLine($"Packing finished with an error:\n {MainForm.GetErrorMessage(exitCode)}");
+                        if (exitCode != 0)
+                        {
+                            Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine($"Packing finished with an error: {MainForm.GetErrorMessage(exitCode)}");
+                            Console.ResetColor();
+                        }
+
+                        // Release Sleep() loop
+                        packingFinished = true;
                     };
                 }
 
-                MainForm.StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, selfRepackable);
+                // Initiate packing process
+                MainForm.StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, selfRepackable, noGUI:true);
+
+                // Keep the process alive until packing process finishes in order to receive progress messages and to clean up temp files
+                while (!packingFinished)
+                {
+                    Thread.Sleep(200);
+                }
             }
+        }
+
+        // Checks for null and paths existance. Prints error messages
+        // Ugly unreadable method, but it works and makes console ui pretty
+        private static bool ValidateArguments(string sourceAppFolder, string mainExePath, string destinationPath, string customIconPath, bool isQuiet = false)
+        {
+            bool newLinePrinted = false;
+
+            bool valid = true;
+            bool sourcePathIsOk = true;
+
+            ConsoleColor errorColor = ConsoleColor.DarkRed;
+            ConsoleColor errorHighlightColor = ConsoleColor.Red;
+            ConsoleColor warningColor = ConsoleColor.DarkYellow;
+
+            if (sourceAppFolder == null)
+            {
+                if(!newLinePrinted)
+                {
+                    Console.WriteLine();
+                    newLinePrinted = true;
+                }
+                Console.ForegroundColor = errorColor;
+                Console.WriteLine("-s argument is missing");
+                valid = false;
+            }
+            else if (!Directory.Exists(sourceAppFolder))
+            {
+                if (!newLinePrinted)
+                {
+                    Console.WriteLine();
+                    newLinePrinted = true;
+                }
+                Console.ForegroundColor = errorColor;
+                Console.Write("Invalid path to the source app folder: \"");
+                Console.ForegroundColor = errorHighlightColor;
+                Console.Write(sourceAppFolder);
+                Console.ForegroundColor = errorColor;
+                Console.WriteLine("\"");
+                valid = false;
+                sourcePathIsOk = false;
+            }
+            if (mainExePath == null)
+            {
+                if (!newLinePrinted)
+                {
+                    Console.WriteLine();
+                    newLinePrinted = true;
+                }
+                Console.ForegroundColor = errorColor;
+                Console.WriteLine("-e argument is missing");
+                valid = false;
+            }
+            // If path to the source folder is wrong then there's no reason to check local path to the exe, hence `sourcePathIsOk`
+            else if (sourcePathIsOk && !File.Exists(Path.Combine(sourceAppFolder, mainExePath)))
+            {
+                if (!newLinePrinted)
+                {
+                    Console.WriteLine();
+                    newLinePrinted = true;
+                }
+                Console.ForegroundColor = errorColor;
+                Console.Write($"Invalid local path to the main executable: \"");
+                Console.ForegroundColor = errorHighlightColor;
+                Console.Write(mainExePath);
+                Console.ForegroundColor = errorColor;
+                Console.WriteLine("\"");
+                valid = false;
+            }
+            if (destinationPath == null)
+            {
+                if (!newLinePrinted)
+                {
+                    Console.WriteLine();
+                    newLinePrinted = true;
+                }
+                Console.ForegroundColor = errorColor;
+                Console.WriteLine("-d argument is missing");
+                valid = false;
+            }
+            // Suppress warning for quiet
+            else if (!isQuiet && !destinationPath.EndsWith(".exe"))
+            {
+                if (!newLinePrinted)
+                {
+                    Console.WriteLine();
+                    newLinePrinted = true;
+                }
+                Console.ForegroundColor = warningColor;
+                Console.WriteLine("Warning: destination path should end with .exe");
+                // Don't mark as an error
+            }
+            if (customIconPath != null && !File.Exists(customIconPath))
+            {
+                if (!newLinePrinted)
+                {
+                    Console.WriteLine();
+                    newLinePrinted = true;
+                }
+                Console.ForegroundColor = errorColor;
+                Console.Write($"Invalid icon path: file does not exist: \"");
+                Console.ForegroundColor = errorHighlightColor;
+                Console.Write(customIconPath);
+                Console.ForegroundColor = errorColor;
+                Console.WriteLine("\"");
+                valid = false;
+            }
+
+            if (!isQuiet && !newLinePrinted)
+            {
+                Console.WriteLine();
+                newLinePrinted = true;
+            }
+
+            Console.ResetColor();
+            return valid;
         }
 
         static void ShowHelp(OptionSet p, string exeName)

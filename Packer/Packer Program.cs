@@ -30,7 +30,8 @@ namespace Packer
 #endif
 
             string unpackerExePath, pathToPackedApp, localPathToMainExe, pathToFolderWithApp;
-            bool isSelfRepackable, isRepacking;
+            bool isSelfRepackable, isRepacking; 
+            bool isNoGui = false;   // determines the type of XDMessaging mode
 
             #region == Arguments check and assignment ==
             if (args.Length < 4)
@@ -40,6 +41,7 @@ namespace Packer
                 return 1;
             }
 
+            // UPD: i should have used arguments parser library... Mistakes were made and i don't want to refactor them now .__.
             unpackerExePath = args[0];
             pathToPackedApp = args[1];
             localPathToMainExe = args[2];
@@ -47,11 +49,13 @@ namespace Packer
             isSelfRepackable = false;
             if (args.Length > 4)
                 bool.TryParse(args[4], out isSelfRepackable);
+            if (args.Length > 5)
+                bool.TryParse(args[5], out isNoGui);
             isRepacking = false;
-            if (args.Length > 5 && (args[5] == "-repack" || args[5] == "repack"))
+            if (args.Length > 6 && (args[6] == "-repack" || args[6] == "repack"))
                 isRepacking = true;
-            
-            if(!File.Exists(unpackerExePath))
+
+            if (!File.Exists(unpackerExePath))
             {
                 Console.WriteLine("Unpacker.exe is missing.");
                 return 2;
@@ -88,7 +92,8 @@ namespace Packer
 
             // Create XDMessagingClient broadcaster to report progress
             XDMessagingClient client = new XDMessagingClient();
-            broadcaster = client.Broadcasters.GetBroadcasterForMode(XDTransportMode.HighPerformanceUI);
+            // For command line launch use Compatibility mode, for GUI use HighPerformanceUI
+            broadcaster = client.Broadcasters.GetBroadcasterForMode(isNoGui ? XDTransportMode.Compatibility : XDTransportMode.HighPerformanceUI);
 
             // Get all files in the application folder (incl. sub-folders)
             List<string> filesToPack = GetFilesRecursively(pathToFolderWithApp);
