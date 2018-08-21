@@ -57,19 +57,19 @@ namespace Appacker
 
             // Initialize possible arguments
             var argsParser = new OptionSet() {
-                    { "s|src|source-app-folder=",
+                    { "s|src|source-folder=",
                         "path to the folder containing all the files of the target application",
                         s => sourceAppFolder = s.TrimEnd('\\', '/') },
                     { "e|exe|main-exe=",
                         "local path to the main executable inside the target app folder",
                         e => mainExePath = e.TrimStart('\\', '/') },
-                    { "d|dst|destination-path=",
+                    { "d|dst|destination|output=",
                         "location where packed app will be saved",
                         d => destinationPath = d },
                     { "i|ico|icon=",
                         "path to the custom icon",
                         c => customIconPath = c },
-                    { "r|self-repack",
+                    { "r|repack|self-repack",
                         "makes application self-repackable",
                         r => selfRepackable = r != null },
                     { "q|quiet|silent",
@@ -323,7 +323,8 @@ namespace Appacker
         static void ShowHelp(OptionSet p, string exeName)
         {
             Console.WriteLine();
-            Console.WriteLine("Tool for packing multi-file applications into single .exe file");
+            Console.WriteLine($"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}");
+            Console.WriteLine("Tool for packing multi-file applications into a single .exe file");
             Console.WriteLine(USAGE, exeName);
             Console.WriteLine();
             Console.WriteLine("Options:");
