@@ -4,39 +4,6 @@ This tool takes a folder with application and packs it into a single executable 
 __[Download Appacker](https://github.com/SerGreen/Appacker/releases/latest)__.
 
 ## Usage
-It can be used in GUI-less mode via command line. If you provide no arguments it will launch GUI.
-
-```console
-Usage: appacker.exe [-r] [-q] <-s "source_folder"> <-e "main_exe"> <-d "save_location"> [-i "icon_path"]
-
-Options:
-  -s, --src, --source-folder=VALUE
-                             path to the folder containing all the files of
-                               the target application
-  -e, --exe, --main-exe=VALUE
-                             local path to the main executable inside the
-                               target app folder
-  -d, --dst, --destination, --output=VALUE
-                             location where packed app will be saved
-  -i, --ico, --icon=VALUE    path to the custom icon
-  -r, --repack, --self-repack
-                             makes application self-repackable
-  -q, --quiet, --silent      no packing progress messages will be shown
-  -h, --help, -?             show this message and exit
-```
-
-
-This will launch Appacker in GUI mode:
-```console
-C:\>appacker.exe
-```
-This will launch Appacker in console mode:
-```console
-C:\>appacker.exe -r -src "d:\users\sergreen\desktop\vault\coolapp" -exe "bin\launcher.exe" -dst "d:\users\sergreen\desktop\vault"\CoolApp packed.exe" -ico "d:\cool_icon.png"
-```
-You can also run it in silent mode by adding `--quiet` flag, in this mode only error messages are shown.
-
-#### How to use Appacker GUI
 To pack an application you have to:  
 1. Select folder that contains all the files of the target application.  
 _You can drag'n'drop the folder to the first textBox or the treeView._
@@ -49,6 +16,45 @@ _You can drag'n'drop an existing `.exe` into the second textBox; in this case it
 <p align="center">
   <img src="Screenshots/2018-08-21_190019.png">
 </p>
+
+### How to use Appacker via command line
+It can be used in GUI-less mode via command line. If you provide no arguments it will launch GUI.
+
+```console
+Usage: appacker.exe [-r] [-q] <-s "source_folder"> <-e "main_exe"> <-d "save_location"> [-i "icon_path"]
+
+Options:
+  -s, --src, --source-folder=VALUE
+                             Directory containing all the files of the target
+                               application.
+  -e, --exe, --main-exe=VALUE
+                             Local path to the main executable inside the
+                               source app folder. This is the application that
+                               will launch whenever the packed app extracts
+                               itself.
+  -d, --dst, --destination, --output=VALUE
+                             Location where packed app will be created.
+  -i, --ico, --icon=VALUE    Custom icon for the packed application.
+  -r, --repack, --self-repack
+                             Sets the packed application to refresh itself
+                               after the main executable closes. Refreshing
+                               adds and replaces files in the packed executable
+                               with those created and modified during runtime.
+  -q, --quiet, --silent      No progress messages will be shown during the
+                               packing process.
+  -h, --help, -?             Show this message and exit.
+```
+
+
+This will launch Appacker in GUI mode:
+```console
+C:\>appacker.exe
+```
+This will launch Appacker in console mode:
+```console
+C:\>appacker.exe -r -src "d:\users\sergreen\desktop\vault\coolapp" -exe "bin\launcher.exe" -dst "d:\users\sergreen\desktop\vault"\CoolApp packed.exe" -ico "d:\cool_icon.png"
+```
+You can also run it in silent mode by adding `--quiet` flag, in this mode only error messages are shown.
 
 ## How does it work
 The principle behind Appacker is that you can write whatever you want to the end of an `.exe` file and it will still work fine.  
