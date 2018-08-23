@@ -33,103 +33,123 @@ namespace Packer
             bool isSelfRepackable, isRepacking; 
             bool isNoGui = false;   // determines the type of XDMessaging mode
 
-            #region == Arguments check and assignment ==
-            if (args.Length < 4)
-            {
-                Console.WriteLine("Arguments are missing. Usage:");
-                Console.WriteLine(USAGE);
-                return 1;
-            }
-
-            // UPD: i should have used arguments parser library... Mistakes were made and i don't want to refactor them now .__.
-            unpackerExePath = args[0];
-            pathToPackedApp = args[1];
-            localPathToMainExe = args[2];
-            pathToFolderWithApp = args[3];
-            isSelfRepackable = false;
-            if (args.Length > 4)
-                bool.TryParse(args[4], out isSelfRepackable);
-            if (args.Length > 5)
-                bool.TryParse(args[5], out isNoGui);
-            isRepacking = false;
-            if (args.Length > 6 && (args[6] == "-repack" || args[6] == "repack"))
-                isRepacking = true;
-
-            if (!File.Exists(unpackerExePath))
-            {
-                Console.WriteLine("Unpacker.exe is missing.");
-                return 2;
-            }
-
-            if (!Directory.Exists(pathToFolderWithApp))
-            {
-                Console.WriteLine("Specified directory with application does not exist.");
-                return 3;
-            }
-
-            if (!File.Exists(Path.Combine(pathToFolderWithApp, localPathToMainExe)))
-            {
-                Console.WriteLine("Main executable does not exist in app directory.");
-                return 4;
-            }
-
-            // Check if the provided path where we gonna save packed exe is valid
-            FileStream testFile = null;
             try
             {
-                testFile = File.Create(pathToPackedApp + ".temp", 1, FileOptions.DeleteOnClose);
-            }
-            catch(Exception)
-            {
-                Console.WriteLine("Invalid path to packed executable.");
-                return 5;
+                #region == Arguments check and assignment ==
+                if (args.Length < 4)
+                {
+                    Console.WriteLine("Arguments are missing. Usage:");
+                    Console.WriteLine(USAGE);
+                    return 1;
+                }
+
+                // UPD: i should have used arguments parser library... Mistakes were made and i don't want to refactor them now .__.
+                unpackerExePath = args[0];
+                pathToPackedApp = args[1];
+                localPathToMainExe = args[2];
+                pathToFolderWithApp = args[3];
+                isSelfRepackable = false;
+                if (args.Length > 4)
+                    bool.TryParse(args[4], out isSelfRepackable);
+                if (args.Length > 5)
+                    bool.TryParse(args[5], out isNoGui);
+                isRepacking = false;
+                if (args.Length > 6 && (args[6] == "-repack" || args[6] == "repack"))
+                    isRepacking = true;
+
+                // Create XDMessagingClient broadcaster to report progress
+                // Creating it here so the broadcaster is initialized before any possible return => finally
+                XDMessagingClient client = new XDMessagingClient();
+                // For command line launch use Compatibility mode, for GUI use HighPerformanceUI
+                broadcaster = client.Broadcasters.GetBroadcasterForMode(isNoGui ? XDTransportMode.Compatibility : XDTransportMode.HighPerformanceUI);
+
+                if (!File.Exists(unpackerExePath))
+                {
+                    Console.WriteLine("Unpacker.exe is missing.");
+                    return 2;
+                }
+
+                if (!Directory.Exists(pathToFolderWithApp))
+                {
+                    Console.WriteLine("Specified directory with application does not exist.");
+                    return 3;
+                }
+
+                if (!File.Exists(Path.Combine(pathToFolderWithApp, localPathToMainExe)))
+                {
+                    Console.WriteLine("Main executable does not exist in app directory.");
+                    return 4;
+                }
+
+                // Check if the provided path where we gonna save packed exe is valid
+                FileStream testFile = null;
+                try
+                {
+                    testFile = File.Create(pathToPackedApp + ".temp", 1, FileOptions.DeleteOnClose);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid path to packed executable.");
+                    return 5;
+                }
+                finally
+                {
+                    testFile?.Close();
+                }
+                #endregion
+                
+                // Get all files in the application folder (incl. sub-folders)
+                List<string> filesToPack = GetFilesRecursively(pathToFolderWithApp);
+
+                // Transform absolute paths into relative ones
+                for (int i = 0; i < filesToPack.Count; i++)
+                    filesToPack[i] = filesToPack[i].Replace(pathToFolderWithApp, string.Empty).TrimStart('\\');
+
+                // If it's self-repacking process, then we should wait until packed app frees its .exe file
+                if (isRepacking)
+                {
+                    if (WaitForFileAccess(pathToPackedApp, WAIT_FOR_FILE_ACCESS_TIMEOUT) == false)
+                    {
+                        Console.WriteLine($"Can't access file {pathToPackedApp}");
+                        return 6;
+                    }
+                }
+
+                timer.Start();
+
+                // Do the packing
+                try
+                {
+                    PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable, isRepacking);
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    Console.WriteLine($"Unauthorized access to {pathToPackedApp}");
+                    return 6;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine($"Oops! Something went wrong");
+                    return -1;
+                }
+
+                // If it was repack call, then packer.exe is the one who should remove the temp dir with the app after packing
+                // Problem: packer.exe can't delete itself
+                // Solution: launch just repacked app and tell it to kill this packer.exe
+                if (isRepacking)
+                {
+                    if (Directory.Exists(pathToFolderWithApp))
+                        Directory.Delete(pathToFolderWithApp, true);
+
+                    Process.Start(pathToPackedApp, $@"-killme ""{System.Reflection.Assembly.GetEntryAssembly().Location}""");
+                }
+
+                return 0;
             }
             finally
             {
-                testFile?.Close();
+                broadcaster.SendToChannel("AppackerProgress", "Done");
             }
-            #endregion
-
-            // Create XDMessagingClient broadcaster to report progress
-            XDMessagingClient client = new XDMessagingClient();
-            // For command line launch use Compatibility mode, for GUI use HighPerformanceUI
-            broadcaster = client.Broadcasters.GetBroadcasterForMode(isNoGui ? XDTransportMode.Compatibility : XDTransportMode.HighPerformanceUI);
-
-            // Get all files in the application folder (incl. sub-folders)
-            List<string> filesToPack = GetFilesRecursively(pathToFolderWithApp);
-            
-            // Transform absolute paths into relative ones
-            for (int i = 0; i < filesToPack.Count; i++)
-                filesToPack[i] = filesToPack[i].Replace(pathToFolderWithApp, string.Empty).TrimStart('\\');
-
-            // If it's self-repacking process, then we should wait until packed app frees its .exe file
-            if (isRepacking)
-            {
-                if(WaitForFileAccess(pathToPackedApp, WAIT_FOR_FILE_ACCESS_TIMEOUT) == false)
-                {
-                    Console.WriteLine($"Can't access file {pathToPackedApp}");
-                    return 6;
-                }
-            }
-
-            timer.Start();
-
-            // Do the packing
-            PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable, isRepacking);
-
-            // If it was repack call, then packer.exe is the one who should remove the temp dir with the app after packing
-            // Problem: packer.exe can't delete itself
-            // Solution: launch just repacked app and tell it to kill this packer.exe
-            if(isRepacking)
-            {
-                if (Directory.Exists(pathToFolderWithApp))
-                    Directory.Delete(pathToFolderWithApp, true);
-
-                Process.Start(pathToPackedApp, $@"-killme ""{System.Reflection.Assembly.GetEntryAssembly().Location}""");
-            }
-
-            broadcaster.SendToChannel("AppackerProgress", "Done");
-            return 0;
         }
 
         /// <summary>

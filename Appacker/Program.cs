@@ -1,6 +1,7 @@
 ﻿using NDesk.Options;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -13,12 +14,14 @@ namespace Appacker
 {
     static class Program
     {
+        [DllImport("USER32.DLL")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
         [DllImport("kernel32.dll")]
         static extern bool AttachConsole(int dwProcessId);
         private const int ATTACH_PARENT_PROCESS = -1;
 
         private const string TRY_HELP = "Try `{0} --help' for more information.";
-        private const string USAGE = @"Usage: {0} [-r] [-q] <-s ""source_folder""> <-e ""main_exe""> <-d ""save_location""> [-i ""icon_path""]";
+        private const string USAGE = @"Usage: {0} [-r] [-q] <-s ""source_folder""> <-e ""main_exe""> [-d ""save_location""] [-i ""icon_path""]";
 
         // Flag to keep application running until background packing is finished
         // It's done to print packing progress messages to the console
@@ -55,8 +58,22 @@ namespace Appacker
             bool selfRepackable = false, quietPacking = false;
             bool showHelp = false;
 
-            // Initialize possible arguments
-            var argsParser = new OptionSet() {
+            //Stopwatch sw = new Stopwatch();
+
+            //// Start the search of the parent process (command prompt that launched Appacker) in the background 
+            //// to minimize the delay after the exit of Appacker and before the SendKeys("{Enter}")
+            //Task<Process> findParentProcessTask = new Task<Process>(() => {
+            //    return ParentProcessUtilities.GetParentProcess();
+            //});
+            //findParentProcessTask.Start();
+
+            //sw.Start();
+
+            // Do all the important things in the try block to be able to execute SendKeys in the finally block regardless of the return point
+            try
+            {
+                // Initialize possible arguments
+                var argsParser = new OptionSet() {
                     { "s|src|source-folder=",
                         "Directory containing all the files of the target application.",
                         s => sourceAppFolder = s.TrimEnd('\\', '/') },
@@ -80,90 +97,114 @@ namespace Appacker
                        v => showHelp = v != null }
                 };
 
-            List<string> unknownArgs;   // unused
-            try
-            {
-                // Parse arguments
-                unknownArgs = argsParser.Parse(args);
-            }
-            catch (OptionException e)
-            {
-                Console.WriteLine("Appacker: " + e.Message);
-                Console.WriteLine(TRY_HELP, args[0]);
-                return;
-            }
-
-            // If --help flag is present
-            if (showHelp)
-            {
-                ShowHelp(argsParser, args[0]);
-                return;
-            }
-            else
-            {
-                // Validate arguments and show error messages if required
-                if (!ValidateArguments(sourceAppFolder, mainExePath, destinationPath, customIconPath, isQuiet:quietPacking))
+                try
                 {
-                    Console.WriteLine(USAGE, args[0]);
+                    // Parse arguments
+                    argsParser.Parse(args);
+                }
+                catch (OptionException e)
+                {
+                    Console.WriteLine("Appacker: " + e.Message);
                     Console.WriteLine(TRY_HELP, args[0]);
                     return;
                 }
 
-                // == PACKING ==
-                // Subscribe to progress update events
-                if (!quietPacking)
+                // If --help flag is present
+                if (showHelp)
                 {
-                    // Position of the concole cursor
-                    (int left, int top) firstMessageCursorPos = default;
-                    bool firstMessageReceived = false;
-                    // Value from ProgressUpdate message
-                    int maxValue = 0;
-                    object syncObj = new object();
-
-                    MainForm.PackingProgressUpdate += (o, progress) =>
+                    ShowHelp(argsParser, args[0]);
+                    return;
+                }
+                else
+                {
+                    // Validate arguments and show error messages if required
+                    if (!ValidateArguments(sourceAppFolder, mainExePath, destinationPath, customIconPath, isQuiet: quietPacking))
                     {
-                        // Multiple messages can try to write to the same spon in the Console, hence lock
-                        lock (syncObj)
+                        Console.WriteLine(USAGE, args[0]);
+                        Console.WriteLine(TRY_HELP, args[0]);
+                        return;
+                    }
+
+                    // If destination file was not specified => save package next to the source directory
+                    if (destinationPath == null)
+                    {
+                        destinationPath = Path.Combine(Path.GetDirectoryName(sourceAppFolder), Path.GetFileName(mainExePath));
+                    }
+
+                    // == PACKING ==
+                    // Subscribe to progress update events
+                    if (!quietPacking)
+                    {
+                        // Position of the concole cursor
+                        (int left, int top) firstMessageCursorPos = default;
+                        bool firstMessageReceived = false;
+                        // Value from ProgressUpdate message
+                        int maxValue = 0;
+                        object syncObj = new object();
+
+                        MainForm.PackingProgressUpdate += (o, progress) =>
                         {
-                            // This check is kinda crutchy. Using Compatibility mode in XDMessaging may lead to non-sequential progress updates, 
-                            // i.e. `5% progress` message can arrive after `8% progress` one. It's not nice, but there's no easy fixes, so i'm gonna leave it as it is,
-                            // but having `95%` message arrive after `100%` is ugly and this check for packingFinished fixes at least this situation
-                            if (!packingFinished)
+                            // Multiple messages can try to write to the same spon in the Console, hence lock
+                            lock (syncObj)
                             {
-                                // Remember the position of the first message in Console, so we can write to the same spot 
-                                // and it looks neat and not like a stream of text
-                                if (!firstMessageReceived)
+                                // This check is kinda crutchy. Using Compatibility mode in XDMessaging may lead to non-sequential progress updates, 
+                                // i.e. `5% progress` message can arrive after `8% progress` one. It's not nice, but there's no easy fixes, so i'm gonna leave it as it is,
+                                // but having `95%` message arrive after `100%` is ugly and this check for packingFinished fixes at least this situation
+                                if (!packingFinished)
                                 {
-                                    firstMessageReceived = true;
-                                    firstMessageCursorPos = (Console.CursorLeft, Console.CursorTop);
-                                    // Also remember maxValue for the PackingFinished event, because that event doesn't have `100/100` like text. Yeah, another crutch, i know .__.
-                                    maxValue = progress.maxValue;
+                                    // Remember the position of the first message in Console, so we can write to the same spot 
+                                    // and it looks neat and not like a stream of text
+                                    if (!firstMessageReceived)
+                                    {
+                                        firstMessageReceived = true;
+                                        firstMessageCursorPos = (Console.CursorLeft, Console.CursorTop);
+                                        // Also remember maxValue for the PackingFinished event, because that event doesn't have `100/100` like text. Yeah, another crutch, i know .__.
+                                        maxValue = progress.maxValue;
+                                    }
+
+                                    // Move cursor and write new progress message on top of the old one
+                                    Console.SetCursorPosition(firstMessageCursorPos.left, firstMessageCursorPos.top);
+                                    Console.WriteLine($"Packing... {progress.currentValue} / {progress.maxValue} done [{100f * progress.currentValue / progress.maxValue:F2}%]");
+                                }
+                            }
+                        };
+                        MainForm.PackingFinished += (o, exitCode) =>
+                        {
+                            // Multiple messages can try to write to the same spon in the Console, hence lock
+                            lock (syncObj)
+                            {
+                                if (exitCode == 0)
+                                {
+                                    // Write success message
+                                    Console.SetCursorPosition(firstMessageCursorPos.left, firstMessageCursorPos.top);
+                                    Console.WriteLine($"Packing... {maxValue} / {maxValue} done [100.00%]");
+                                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                    Console.WriteLine($"Packing complete!");
+                                    Console.ResetColor();
+                                    Console.WriteLine($"Packed app location: `{Path.GetFullPath(destinationPath)}`");
+                                }
+                                // Show error message if return code is abnormal
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                                    Console.WriteLine($"Packing finished with an error: {MainForm.GetErrorMessage(exitCode)}");
+                                    Console.ResetColor();
                                 }
 
-                                // Move cursor and write new progress message on top of the old one
-                                Console.SetCursorPosition(firstMessageCursorPos.left, firstMessageCursorPos.top);
-                                Console.WriteLine($"Packing... {progress.currentValue} / {progress.maxValue} done [{100f * progress.currentValue / progress.maxValue:F2}%]");
+                                // Release Sleep() loop
+                                packingFinished = true;
                             }
-                        }
-                    };
-                    MainForm.PackingFinished += (o, exitCode) =>
+                        };
+                    }
+                    // If --quiet then subscribe only to PackingFinished event to release Sleep() loop and display possible errors
+                    else
                     {
-                        // Multiple messages can try to write to the same spon in the Console, hence lock
-                        lock (syncObj)
+                        MainForm.PackingFinished += (o, exitCode) =>
                         {
-                            if (exitCode == 0)
-                            {
-                                // Write success message
-                                Console.SetCursorPosition(firstMessageCursorPos.left, firstMessageCursorPos.top);
-                                Console.WriteLine($"Packing... {maxValue} / {maxValue} done [100.00%]");
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                Console.WriteLine($"Packing complete!");
-                                Console.ResetColor();
-                                Console.WriteLine($"Packed app location: `{destinationPath}`");
-                            }
                             // Show error message if return code is abnormal
-                            else
+                            if (exitCode != 0)
                             {
+                                Console.WriteLine();
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine($"Packing finished with an error: {MainForm.GetErrorMessage(exitCode)}");
                                 Console.ResetColor();
@@ -171,35 +212,42 @@ namespace Appacker
 
                             // Release Sleep() loop
                             packingFinished = true;
-                        }
-                    };
-                }
-                // If --quiet then subscribe only to PackingFinished event to release Sleep() loop and display possible errors
-                else
-                {
-                    MainForm.PackingFinished += (o, exitCode) =>
+                        };
+                    }
+
+                    // Initiate packing process
+                    MainForm.StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, selfRepackable, noGUI: true);
+
+                    // Keep the process alive until packing process finishes in order to receive progress messages and to clean up temp files
+                    while (!packingFinished)
                     {
-                        // Show error message if return code is abnormal
-                        if (exitCode != 0)
-                        {
-                            Console.WriteLine();
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine($"Packing finished with an error: {MainForm.GetErrorMessage(exitCode)}");
-                            Console.ResetColor();
-                        }
-
-                        // Release Sleep() loop
-                        packingFinished = true;
-                    };
+                        Thread.Sleep(200);
+                    }
                 }
-
-                // Initiate packing process
-                MainForm.StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, selfRepackable, noGUI:true);
-
-                // Keep the process alive until packing process finishes in order to receive progress messages and to clean up temp files
-                while (!packingFinished)
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw e;
+            }
+            // When Appacker exits, send {Enter} key press to the parent command prompt (if not in --quiet mode)
+            finally
+            {
+                if (!quietPacking)
                 {
-                    Thread.Sleep(200);
+                    //long time1 = sw.ElapsedMilliseconds;
+                    //Process parentProcess = await findParentProcessTask;
+                    //long time2 = sw.ElapsedMilliseconds;
+
+                    //Console.WriteLine($"Packing time: {time1} ms");
+                    //Console.WriteLine($"Delay: {time2 - time1} ms");
+                    //Console.WriteLine($"Parent PID: {parentProcess.Id}");
+
+                    Console.WriteLine();
+                    Console.Write(Environment.CurrentDirectory + ">");
+
+                    //SetForegroundWindow(parentProcess.Handle);
+                    //SendKeys.SendWait("{Enter}");
                 }
             }
         }
@@ -271,19 +319,8 @@ namespace Appacker
                 Console.WriteLine("\"");
                 valid = false;
             }
-            if (destinationPath == null)
-            {
-                if (!newLinePrinted)
-                {
-                    Console.WriteLine();
-                    newLinePrinted = true;
-                }
-                Console.ForegroundColor = errorColor;
-                Console.WriteLine("-d argument is missing");
-                valid = false;
-            }
             // Suppress warning for quiet
-            else if (!isQuiet && !destinationPath.EndsWith(".exe"))
+            if (!isQuiet && destinationPath != null && !destinationPath.EndsWith(".exe"))
             {
                 if (!newLinePrinted)
                 {
@@ -292,6 +329,8 @@ namespace Appacker
                 }
                 Console.ForegroundColor = warningColor;
                 Console.WriteLine("Warning: destination path should end with .exe");
+                var dir = Path.GetDirectoryName(destinationPath);
+                Console.WriteLine($"File '{Path.GetFileName(destinationPath)}' will be created at '{(string.IsNullOrWhiteSpace(dir) ? Environment.CurrentDirectory : Path.GetFullPath(dir))}'");
                 // Don't mark as an error
             }
             if (customIconPath != null && !File.Exists(customIconPath))
