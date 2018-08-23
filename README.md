@@ -21,7 +21,7 @@ _You can drag'n'drop an existing `.exe` into the second textBox; in this case it
 It can be used in GUI-less mode via command line. If you provide no arguments it will launch GUI.
 
 ```console
-Usage: appacker.exe [-r] [-q] <-s "source_folder"> <-e "main_exe"> <-d "save_location"> [-i "icon_path"]
+Usage: appacker.exe [-r] [-q] <-s "source_folder"> <-e "main_exe"> [-d "save_location"] [-i "icon_path"]
 
 Options:
   -s, --src, --source-folder=VALUE
