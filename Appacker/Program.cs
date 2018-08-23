@@ -57,18 +57,7 @@ namespace Appacker
             string sourceAppFolder = null, mainExePath = null, destinationPath = null, customIconPath = null;
             bool selfRepackable = false, quietPacking = false;
             bool showHelp = false;
-
-            //Stopwatch sw = new Stopwatch();
-
-            //// Start the search of the parent process (command prompt that launched Appacker) in the background 
-            //// to minimize the delay after the exit of Appacker and before the SendKeys("{Enter}")
-            //Task<Process> findParentProcessTask = new Task<Process>(() => {
-            //    return ParentProcessUtilities.GetParentProcess();
-            //});
-            //findParentProcessTask.Start();
-
-            //sw.Start();
-
+            
             // Do all the important things in the try block to be able to execute SendKeys in the finally block regardless of the return point
             try
             {
@@ -235,19 +224,8 @@ namespace Appacker
             {
                 if (!quietPacking)
                 {
-                    //long time1 = sw.ElapsedMilliseconds;
-                    //Process parentProcess = await findParentProcessTask;
-                    //long time2 = sw.ElapsedMilliseconds;
-
-                    //Console.WriteLine($"Packing time: {time1} ms");
-                    //Console.WriteLine($"Delay: {time2 - time1} ms");
-                    //Console.WriteLine($"Parent PID: {parentProcess.Id}");
-
                     Console.WriteLine();
                     Console.Write(Environment.CurrentDirectory + ">");
-
-                    //SetForegroundWindow(parentProcess.Handle);
-                    //SendKeys.SendWait("{Enter}");
                 }
             }
         }
