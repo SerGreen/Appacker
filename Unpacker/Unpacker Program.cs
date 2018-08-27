@@ -142,8 +142,12 @@ namespace Unpacker
             }
 
             // Launch unpacked app
-            ProcessStartInfo procInfo = new ProcessStartInfo(Path.Combine(tempDir, pathToMainExe));
-            procInfo.WorkingDirectory = tempDir;
+            ProcessStartInfo procInfo = new ProcessStartInfo()
+            {
+                FileName = Path.Combine(tempDir, pathToMainExe),
+                WorkingDirectory = tempDir,
+                UseShellExecute = true
+            };
             Process proc = Process.Start(procInfo);
 
             // Wait until app exits to delete its files from temp directory
