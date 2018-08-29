@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using XDMessaging;
@@ -11,6 +12,14 @@ namespace Unpacker
 {
     class Program
     {
+        // WinAPI methods used to hide console window when stdout is not redirected
+        [DllImport("kernel32.dll")]
+        static extern IntPtr GetConsoleWindow();
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        const int SW_HIDE = 0;
+        const int SW_SHOW = 5;
+
         private const int WAIT_FOR_FILE_ACCESS_TIMEOUT = 5000; // ms
         // Path to directory where target app gets extracted
         private static string tempDir = null;
@@ -43,14 +52,25 @@ namespace Unpacker
             Console.WriteLine("Resuming");
 #endif
 
+            // Hide console window if stdout is not redirected
+            // If it is => keep window and later redirect I/O of the unpacked app too
+            bool stdoutRedirected = Console.IsOutputRedirected;
+            if (!stdoutRedirected)
+#if DEBUG
+                Console.WriteLine($"Output redirected: {stdoutRedirected}");
+                Console.WriteLine("I'm hidden");
+#else
+                ShowWindow(GetConsoleWindow(), SW_HIDE);
+#endif
+
             // After self-repacking, packer.exe can't delete itself from the temp dir, so it calls repacked app to kill it
             // Command is "unpacker.exe -killme <path to packer.exe>"
             // The whole folder where packer.exe is gets deleted (cuz there should also be temp unpacker.exe from repacking process)
-            if(args.Length > 0 && 
-                (args[0] == "-killme" || args[0] == "killme"))
+            if (args.Length > 0 &&
+            (args[0] == "-killme" || args[0] == "killme"))
             {
-                if(args.Length > 1)
-                    if(WaitForFileAccess(args[1], WAIT_FOR_FILE_ACCESS_TIMEOUT) == true)
+                if (args.Length > 1)
+                    if (WaitForFileAccess(args[1], WAIT_FOR_FILE_ACCESS_TIMEOUT) == true)
                         DeleteDirectory(Path.GetDirectoryName(args[1]));
 
                 // Don't unpack anything. Just close the app now
@@ -146,7 +166,7 @@ namespace Unpacker
             {
                 FileName = Path.Combine(tempDir, pathToMainExe),
                 WorkingDirectory = tempDir,
-                UseShellExecute = true
+                UseShellExecute = !stdoutRedirected     // if stdout is redirected, then redirect i/o of the target app too
             };
             Process proc = Process.Start(procInfo);
 
@@ -191,6 +211,9 @@ namespace Unpacker
                 DeleteDirectory(tempDir);
                 DeleteDirectory(repackerTempDir);
             }
+
+            // Make window appear again, otherwise when launched from command prompt there will be left hidden cmd
+            ShowWindow(GetConsoleWindow(), SW_SHOW);
         }
 
         private static void DeleteDirectory(string dirPath)
@@ -221,7 +244,7 @@ namespace Unpacker
                     yield return file;
         }
 
-        #region == Find pattern position in stream methods ==
+#region == Find pattern position in stream methods ==
         // Solution from here https://stackoverflow.com/questions/1471975
         /// <summary>
         /// Search for the first occurance of a byte-sequence pattern in stream
@@ -265,9 +288,9 @@ namespace Unpacker
             }
             return i;
         }
-        #endregion
+#endregion
 
-        #region == Wait for the file access ==
+#region == Wait for the file access ==
         /// <summary>
         /// Awaits for the file access
         /// </summary>
@@ -317,6 +340,6 @@ namespace Unpacker
                 return false;
             }
         }
-        #endregion
+#endregion
     }
 }
