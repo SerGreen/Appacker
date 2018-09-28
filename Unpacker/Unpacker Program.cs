@@ -165,6 +165,7 @@ namespace Unpacker
             ProcessStartInfo procInfo = new ProcessStartInfo()
             {
                 FileName = Path.Combine(tempDir, pathToMainExe),
+                Arguments = string.Join(" ", args),
                 WorkingDirectory = tempDir,
                 UseShellExecute = !stdoutRedirected     // if stdout is redirected, then redirect i/o of the target app too
             };
