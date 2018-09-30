@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using XDMessaging;
+using System.Windows.Forms;
 
 namespace Unpacker
 {
@@ -23,10 +24,15 @@ namespace Unpacker
         private const int WAIT_FOR_FILE_ACCESS_TIMEOUT = 5000; // ms
         // Path to directory where target app gets extracted
         private static string tempDir = null;
+        // Where create temp directory where target app gets extracted. 0 = temp, 1 = desktop, 2 = where this exe is, 3 = ask user
+        private static int unpackingDirectoryType = 0;
+        private static string unpackingDirectoryPath = null;
         // Path to directory where Appacker tools get extracted
         private static string repackerTempDir = null;
         // A flag that indicated whether or not we need to repack target app after it quits
         private static bool isSelfRepackable = false;
+        // A flag that indicated whether or not to open folder with unpacked files in Explorer
+        private static bool openUnpackedDir = false;
         // Local path to the exe file inside target app dir, that needs to be launched
         private static string pathToMainExe = null;
         // A flag that indicates whether or not the splash screen tool is present inside the package
@@ -43,6 +49,7 @@ namespace Unpacker
         private static readonly Stopwatch timer = new Stopwatch();
         private const int SPLASH_POPUP_DELAY = 1000; // ms
 
+        [STAThread]
         static void Main(string[] args)
         {
 #if DEBUG
@@ -77,14 +84,10 @@ namespace Unpacker
                 return;
             }
 
+                        
             // Subscribe for exit event to delete tempDir
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(Unpacker_ProcessExit);
-
-            // Create temp directory to store unpacked files
-            while (tempDir == null || Directory.Exists(tempDir))
-                tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-            Directory.CreateDirectory(tempDir);
-
+            
             // Open self exe file as byte stream and unpack data that is appended to the end of exe
             string selfExePath = System.Reflection.Assembly.GetEntryAssembly().Location;
             using (var me = new BinaryReader(File.OpenRead(selfExePath)))
@@ -122,6 +125,36 @@ namespace Unpacker
                     File.WriteAllBytes(Path.Combine(repackerTempDir, "ProgressBarSplash.exe"), me.ReadBytes(splashDataLength));
                 }
 
+                // Unpack directory loading
+                openUnpackedDir = me.ReadBoolean();
+                unpackingDirectoryType = me.ReadInt32();
+
+                // Decode actual path
+                // Desktop
+                if (unpackingDirectoryType == 1)
+                    unpackingDirectoryPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                // Directory where this exe is located
+                else if (unpackingDirectoryType == 2)
+                    unpackingDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
+                // Ask user for a folder
+                else if (unpackingDirectoryType == 3)
+                {
+                    FolderBrowserDialog fbd = new FolderBrowserDialog { Description = "Select a folder in which to extract files" };
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                        unpackingDirectoryPath = fbd.SelectedPath;
+                    else
+                        unpackingDirectoryPath = Path.GetTempPath();
+                }
+                // Default is %TEMP%
+                else
+                    unpackingDirectoryPath = Path.GetTempPath();
+
+                // Create temp directory to store unpacked files
+                while (tempDir == null || Directory.Exists(tempDir))
+                    tempDir = Path.Combine(unpackingDirectoryPath, Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location) + "_" + Guid.NewGuid().ToString());
+                Directory.CreateDirectory(tempDir);
+
+                // Load relative path to the main exe
                 pathToMainExe = me.ReadString();
 
                 timer.Start();
@@ -161,6 +194,15 @@ namespace Unpacker
                 splashProgressBarProc?.Kill();
             }
 
+            // Open tempDir in Explorer if corresponding flag is set
+            if(openUnpackedDir)
+            {
+                Process.Start(new ProcessStartInfo() { FileName = "explorer.exe",
+                                                       Arguments = tempDir,
+                                                       UseShellExecute = true,
+                                                       Verb = "open" });
+            }
+
             // Launch unpacked app
             ProcessStartInfo procInfo = new ProcessStartInfo()
             {
@@ -190,9 +232,11 @@ namespace Unpacker
                     // 3. Relative path to main executable inside app directory
                     // 4. Path to the app directory (tempDir)
                     // 5. Self-repackable flag = True
-                    // 6. -repack flag = mark, that this is the repacking process, which will result in deletion of unpacked temp folder after repacking
+                    // 6. Open unpacking temp folder flag
+                    // 7. Unpacking directory type
+                    // 8. -repack flag = mark, that this is the repacking process, which will result in deletion of unpacked temp folder after repacking
                     ProcessStartInfo repackProcInfo = new ProcessStartInfo(Path.Combine(repackerTempDir, "packer.exe"));
-                    repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" True True -repack";
+                    repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" True True {openUnpackedDir} {unpackingDirectoryType} -repack";
 #if (!DEBUG)
                 repackProcInfo.CreateNoWindow = true;
                 repackProcInfo.WindowStyle = ProcessWindowStyle.Hidden;

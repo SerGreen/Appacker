@@ -30,8 +30,9 @@ namespace Packer
 #endif
 
             string unpackerExePath, pathToPackedApp, localPathToMainExe, pathToFolderWithApp;
-            bool isSelfRepackable, isRepacking; 
+            bool isSelfRepackable, isRepacking, openUnpackedDir; 
             bool isNoGui = false;   // determines the type of XDMessaging mode
+            int unpackDirectory;    // Temp = 0, Desktop = 1, SameAsPackedExe = 2 or AskAtLaunch = 3
 
             try
             {
@@ -44,6 +45,7 @@ namespace Packer
                 }
 
                 // UPD: i should have used arguments parser library... Mistakes were made and i don't want to refactor them now .__.
+                // UPD2: what a shitty code. I hate myself.
                 unpackerExePath = args[0];
                 pathToPackedApp = args[1];
                 localPathToMainExe = args[2];
@@ -53,8 +55,18 @@ namespace Packer
                     bool.TryParse(args[4], out isSelfRepackable);
                 if (args.Length > 5)
                     bool.TryParse(args[5], out isNoGui);
+                openUnpackedDir = false;
+                if (args.Length > 6)
+                    bool.TryParse(args[6], out openUnpackedDir);
+                unpackDirectory = 0;
+                if (args.Length > 7)
+                {
+                    int.TryParse(args[7], out unpackDirectory);
+                    if (unpackDirectory < 0 || unpackDirectory > 3)
+                        unpackDirectory = 0;
+                }
                 isRepacking = false;
-                if (args.Length > 6 && (args[6] == "-repack" || args[6] == "repack"))
+                if (args.Length > 8 && (args[8] == "-repack" || args[8] == "repack"))
                     isRepacking = true;
 
                 // Create XDMessagingClient broadcaster to report progress
@@ -120,7 +132,7 @@ namespace Packer
                 // Do the packing
                 try
                 {
-                    PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable, isRepacking);
+                    PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable, isRepacking, openUnpackedDir, unpackDirectory);
                 }
                 catch (UnauthorizedAccessException)
                 {
@@ -160,7 +172,9 @@ namespace Packer
         /// <param name="pathToFolderWithApp">Path to the directory that contains application files that will be packed</param>
         /// <param name="localPathToMainExe">Relative path to the executable file that will be launched when the packed app is launched</param>
         /// <param name="filesToPack">List of relative paths to all files of the app that is being packed</param>
-        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack, bool isSelfRepackable, bool isRepacking)
+        /// <param name="unpackDirectory">Enum as int, 0 to 3, indicates whereto unpack files at launch</param>
+        /// <param name="openUnpackedDir">Whether or not to open folder with unpacked files after unpacking</param>
+        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack, bool isSelfRepackable, bool isRepacking, bool openUnpackedDir, int unpackDirectory)
         {
             using (var packedExe = new BinaryWriter(File.Open(pathToPackedApp, FileMode.Create, FileAccess.Write)))
             {
@@ -189,6 +203,12 @@ namespace Packer
                     packedExe.Write(splashData.Length);                 // int
                     packedExe.Write(splashData);                        // byte[]
                 }
+
+                // Write open unpacking directory flag
+                packedExe.Write(openUnpackedDir);                       // bool
+
+                // Write unpacking directory type
+                packedExe.Write(unpackDirectory);                       // int
 
                 // Write relative path to the main executable of the packed app
                 packedExe.Write(localPathToMainExe);                    // string

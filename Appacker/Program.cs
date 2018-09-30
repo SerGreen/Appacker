@@ -55,9 +55,10 @@ namespace Appacker
         static void NoGuiMode(string[] args)
         {
             string sourceAppFolder = null, mainExePath = null, destinationPath = null, customIconPath = null;
-            bool selfRepackable = false, quietPacking = false;
+            bool selfRepackable = false, openUnpackedDir = false, quietPacking = false;
             bool showHelp = false;
-            
+            MainForm.UnpackDirectory unpackDir = MainForm.UnpackDirectory.Temp;
+
             // Do all the important things in the try block to be able to execute SendKeys in the finally block regardless of the return point
             try
             {
@@ -78,12 +79,26 @@ namespace Appacker
                     { "r|repack|self-repack",
                         "Sets the packed application to refresh itself after the main executable closes. Refreshing adds and replaces files in the packed executable with those created and modified during runtime.",
                         r => selfRepackable = r != null },
+                    { "o|open-dir",
+                        "Open folder with unpacked application in Explorer when you launch packed app",
+                        o => openUnpackedDir = o != null },
                     { "q|quiet|silent",
                         "No progress messages will be shown during the packing process.",
                         q => quietPacking = q != null },
                     { "h|help|?",
                         "Show this message and exit.",
-                       v => showHelp = v != null }
+                       v => showHelp = v != null },
+                    { "u|udir|unpack-dir=",
+                        "Directory where to unpack app files. Can be [temp|desktop|same|ask]. Default is 'temp'.\nIf set 'same', temp directory will be created in the same directory where packed exe is.\nIf set 'ask', it will prompt user before each unpacking",
+                        u => {
+                            if (u == "temp")
+                                unpackDir = MainForm.UnpackDirectory.Temp;
+                            else if (u == "desktop")
+                                unpackDir = MainForm.UnpackDirectory.Desktop;
+                            else if (u == "same")
+                                unpackDir = MainForm.UnpackDirectory.NextToPackedExe;
+                            else if (u == "ask")
+                                unpackDir = MainForm.UnpackDirectory.AskAtLaunch; } }
                 };
 
                 try
@@ -205,7 +220,12 @@ namespace Appacker
                     }
 
                     // Initiate packing process
-                    MainForm.StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, selfRepackable, noGUI: true);
+                    MainForm.StartPacking(sourceAppFolder, mainExePath, destinationPath, 
+                                          customIconPath:customIconPath, 
+                                          selfRepackable:selfRepackable, 
+                                          openUnpackDir:openUnpackedDir, 
+                                          unpackDirectory:unpackDir,
+                                          noGUI: true);
 
                     // Keep the process alive until packing process finishes in order to receive progress messages and to clean up temp files
                     while (!packingFinished)

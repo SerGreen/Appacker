@@ -145,7 +145,7 @@
   <data name="labPackPath.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="txtPackPath.ToolTip" xml:space="preserve">
+  <data name="txtPackExePath.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="btnBrowsePackPath.Text" xml:space="preserve">
@@ -159,7 +159,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
-        CgAAAk1TRnQBSQFMAgEBBQEAAZwBAAGcAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBBQEAAawBAAGsAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -224,22 +224,12 @@
   <data name="btnPack.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="checkRepackable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 17</value>
-  </data>
-  <data name="checkRepackable.Text" xml:space="preserve">
-    <value>Автоматическая перепаковка</value>
-  </data>
-  <data name="checkRepackable.ToolTip" xml:space="preserve">
-    <value>[   ] Если выключено, то любые изменения файлов приложения не сохраняются после закрытия (например, файлы настроек, хранящиеся в папке самого приложения).
-[✓] Если включено, то после закрытия приложение упаковывает себя заново и заменяет свой упакованный .exe файл на новый.</value>
-  </data>
   <data name="flagsIamgeList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB2
-        CQAAAk1TRnQBSQFMAgEBAgEAAYQBAAGEAQABIAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAAZQBAAGUAQABIAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAARADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -374,6 +364,24 @@
     <value>[Замена]</value>
   </data>
   <data name="labOverride.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="indAppFolder.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="indPackExePath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="indMainExe.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labSize.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnAdvancedOptions.Text" xml:space="preserve">
+    <value>Расширенные настройки...</value>
+  </data>
+  <data name="btnAdvancedOptions.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -611,6 +619,9 @@
         t8HtuxwAXC0FAQR8HhLweWjln/Hg5wDgagEQ2DZFKOBFKOCFbVMe+FxcXFytpv8PsHgU31cuG7YAAAAA
         SUVORK5CYII=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />

@@ -84,6 +84,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdvancedOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedOptionsForm.Designer.cs">
+      <DependentUpon>AdvancedOptionsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CueProvider.cs" />
     <Compile Include="IconSwapper.cs" />
     <Compile Include="MainForm.cs">
@@ -115,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AboutForm.ru.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancedOptionsForm.resx">
+      <DependentUpon>AdvancedOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancedOptionsForm.ru.resx">
+      <DependentUpon>AdvancedOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

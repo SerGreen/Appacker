@@ -311,7 +311,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
-        CgAAAk1TRnQBSQFMAgEBBQEAAUwBAQFMAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBBQEAAYwBAQGMAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -368,7 +368,7 @@
     <value>1</value>
   </data>
   <data name="treeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 196</value>
+    <value>440, 194</value>
   </data>
   <data name="treeView.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -395,7 +395,7 @@
     <value>NoControl</value>
   </data>
   <data name="labMainExePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 340</value>
+    <value>12, 338</value>
   </data>
   <data name="labMainExePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 13</value>
@@ -428,10 +428,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnPack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 356</value>
+    <value>377, 353</value>
   </data>
   <data name="btnPack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 43</value>
+    <value>75, 47</value>
   </data>
   <data name="btnPack.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
@@ -451,46 +451,6 @@
   <data name="&gt;&gt;btnPack.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="checkRepackable.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="checkRepackable.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkRepackable.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkRepackable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 382</value>
-  </data>
-  <data name="checkRepackable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 17</value>
-  </data>
-  <data name="checkRepackable.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="checkRepackable.Text" xml:space="preserve">
-    <value>Self-repackable application</value>
-  </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>610, 18</value>
-  </metadata>
-  <data name="checkRepackable.ToolTip" xml:space="preserve">
-    <value>[   ] If unchecked, any modifications to the app's files are not saved after you close it (e.g. config files stored inside the application folder).
-[✓] If checked, application repacks itself after closing and replaces the .exe package.</value>
-  </data>
-  <data name="&gt;&gt;checkRepackable.Name" xml:space="preserve">
-    <value>checkRepackable</value>
-  </data>
-  <data name="&gt;&gt;checkRepackable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkRepackable.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkRepackable.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
   <metadata name="flagsIamgeList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>481, 18</value>
   </metadata>
@@ -498,48 +458,48 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB0
-        CQAAAk1TRnQBSQFMAgEBAgIAAQEBAAEBASABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
-        AYADAAEQAwABAQEAAQgGAAEIGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
-        AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
-        AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
-        AwABmQMAAcwCAAEzAwACMwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZ
-        AgABZgHMAgABZgH/AgABmQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFm
-        AgABzAGZAgACzAIAAcwB/wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEz
-        AQABmQEAATMBAAHMAQABMwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFm
-        AgABMwFmATMBAAEzAmYBAAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFm
-        AQABMwKZAQABMwGZAcwBAAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEA
-        ATMBzAH/AQABMwH/ATMBAAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFm
-        AQABZgEAAWYBAAGZAQABZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFm
-        ATMBzAEAAWYBMwH/AQACZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFm
-        AQABZgKZAQABZgGZAcwBAAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEA
-        AWYB/wIAAWYB/wEzAQABZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZ
-        AQABmQEAAZkBAAHMAQABmQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEz
-        AQABmQEzAWYBAAGZAWYBmQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/
-        AQABmQHMAgABmQHMATMBAAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEA
-        AZkBzAFmAQABmQH/AZkBAAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHM
-        AQABzAEAAZkBMwIAAcwCMwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFm
-        ATMBAAGZAmYBAAHMAWYBmQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZ
-        AQABzAGZAcwBAAHMAZkB/wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/
-        ATMBAAGZAf8BZgEAAcwB/wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHM
-        ATMCAAH/AjMBAAH/ATMBZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJm
-        AQAB/wFmAZkBAAH/AWYBzAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHM
-        AQAB/wGZAf8BAAH/AcwCAAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEA
-        AcwB/wFmAQAC/wGZAQAC/wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEA
-        ASEBAAGlAQADXwEAA3cBAAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7
-        Af8BAAGkAqABAAOAAwAB/wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA/8BAAG9AW8BFgHvAc8IhgEJ
-        AZQCRgGUAQkIhgGuAfAB/wG9ARYgRkAAAQkB/wG9AeMBbwH3AYsBpgVlAQkBFgJAARYBCQVlAQQBiwEJ
-        Af8BvQHjAW8B7yBGQAABhgGLAQkB/wG9AeMBbwH3AYsBpgNlAQkBFgJAARYBCQNlAQQBiwEJAf8BvQHj
-        AW8B9wGLAYYgRkAAAYYBZQEEAYsBCQH/Ab0B4wFvAfcBiwGmAQQBCQEWAkABFgEJAgQBiwEJAf8BvQHj
-        AW8B9wGLAaYBZQGGIEZAAAGGAQQBZQIEAYsBCQH/Ab0B4wFvAfcBiwEJARYCQAEWAQkBiwEJAf8BvQJv
-        AZIBiwIEAWUBBAGGIEZAAAcJAfQC/wK9Av8BFgJAARYE/wK9Af8HCSCGQAABlA0WAUYCQAFGDRYBlCCm
-        QAABRh5AAUYgpkAAAUYeQAFGIKZAAAGUDRYBRgJAAUYNFgGUIKZAAAUJAbsBCQH/Ar0E/wEWAkABFgL/
-        Ar0C/wH0AQkBuwUJILRAAAGGAmUCBAGLAZICbwG9Af8BCQGGAQkBFgJAARYBCQGLAfcBbwHjAbcB/wEJ
-        AYsCBAJlAYYg/0AAAYYBZQGmAYsB9wFvAeMBvQH/AQkBiwIEAQkBFgJAARYBCQEEAaYBiwH3AW8B4wG9
-        Af8BCQGLAQQBZQGGIP9AAAGGAYsB9wFvAeMBvQH/AQkBiwEEA2UBCQEWAkABFgEJA2UBpgGLAfcBbwHj
-        Ab0B/wEJAYsBhiD/QAAB9wFvAeMBvQH/AQkBiwEEBWUBCQEWAkABFgEJBWUBpgGLAfcBbwHjAb0B/wG8
-        IP9AAAEWAb0B/wHwAa4IhgEJAZQCRgGUAQkIhgHPAe8BFgFvARog/0AAAUIBTQE+BwABPgMAASgDAAGA
-        AwABEAMAAQEBAAEBBgABARYAA///AAIACw==
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB2
+        CQAAAk1TRnQBSQFMAgEBAgEAAUABAQFAAQEBIAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABgAMAARADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wEAAb0BbwEWAe8BzwiG
+        AQkBlAJGAZQBCQiGAa4B8AH/Ab0BFiBGQAABCQH/Ab0B4wFvAfcBiwGmBWUBCQEWAkABFgEJBWUBBAGL
+        AQkB/wG9AeMBbwHvIEZAAAGGAYsBCQH/Ab0B4wFvAfcBiwGmA2UBCQEWAkABFgEJA2UBBAGLAQkB/wG9
+        AeMBbwH3AYsBhiBGQAABhgFlAQQBiwEJAf8BvQHjAW8B9wGLAaYBBAEJARYCQAEWAQkCBAGLAQkB/wG9
+        AeMBbwH3AYsBpgFlAYYgRkAAAYYBBAFlAgQBiwEJAf8BvQHjAW8B9wGLAQkBFgJAARYBCQGLAQkB/wG9
+        Am8BkgGLAgQBZQEEAYYgRkAABwkB9AL/Ar0C/wEWAkABFgT/Ar0B/wcJIIZAAAGUDRYBRgJAAUYNFgGU
+        IKZAAAFGHkABRiCmQAABRh5AAUYgpkAAAZQNFgFGAkABRg0WAZQgpkAABQkBuwEJAf8CvQT/ARYCQAEW
+        Av8CvQL/AfQBCQG7BQkgtEAAAYYCZQIEAYsBkgJvAb0B/wEJAYYBCQEWAkABFgEJAYsB9wFvAeMBtwH/
+        AQkBiwIEAmUBhiD/QAABhgFlAaYBiwH3AW8B4wG9Af8BCQGLAgQBCQEWAkABFgEJAQQBpgGLAfcBbwHj
+        Ab0B/wEJAYsBBAFlAYYg/0AAAYYBiwH3AW8B4wG9Af8BCQGLAQQDZQEJARYCQAEWAQkDZQGmAYsB9wFv
+        AeMBvQH/AQkBiwGGIP9AAAH3AW8B4wG9Af8BCQGLAQQFZQEJARYCQAEWAQkFZQGmAYsB9wFvAeMBvQH/
+        Abwg/0AAARYBvQH/AfABrgiGAQkBlAJGAZQBCQiGAc8B7wEWAW8BGiD/QAABQgFNAT4HAAE+AwABKAMA
+        AYADAAEQAwABAQEAAQEGAAEBFgAD//8AAgAL
 </value>
   </data>
   <data name="btnIconReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -558,16 +518,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnIconReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 357</value>
+    <value>360, 355</value>
   </data>
   <data name="btnIconReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 12</value>
   </data>
   <data name="btnIconReset.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="btnIconReset.ToolTip" xml:space="preserve">
-    <value>Revert icon</value>
   </data>
   <data name="btnIconReset.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -582,7 +539,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnIconReset.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>700, 18</value>
@@ -696,7 +653,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labTreeViewCaption.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="btnChangeIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -711,7 +668,7 @@
     <value>7, 11</value>
   </data>
   <data name="btnChangeIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 382</value>
+    <value>233, 383</value>
   </data>
   <data name="btnChangeIcon.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 17</value>
@@ -735,7 +692,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnChangeIcon.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="comboMainExePath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -744,7 +701,7 @@
     <value>False</value>
   </data>
   <data name="comboMainExePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 356</value>
+    <value>16, 354</value>
   </data>
   <data name="comboMainExePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 21</value>
@@ -762,7 +719,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboMainExePath.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="picAppIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -771,10 +728,10 @@
     <value>NoControl</value>
   </data>
   <data name="picAppIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>328, 356</value>
+    <value>328, 354</value>
   </data>
   <data name="picAppIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 43</value>
+    <value>45, 45</value>
   </data>
   <data name="picAppIcon.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -792,7 +749,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;picAppIcon.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="progressBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -816,7 +773,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="labOverride.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -846,19 +803,79 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labOverride.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="indAppFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 43</value>
+  </data>
+  <data name="indAppFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="indAppFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="&gt;&gt;indAppFolder.Name" xml:space="preserve">
+    <value>indAppFolder</value>
+  </data>
+  <data name="&gt;&gt;indAppFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;indAppFolder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;indAppFolder.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="cultureManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>815, 18</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="indPackExePath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>464, 411</value>
+  <data name="indPackExePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 92</value>
+  </data>
+  <data name="indPackExePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="indPackExePath.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="&gt;&gt;indPackExePath.Name" xml:space="preserve">
+    <value>indPackExePath</value>
+  </data>
+  <data name="&gt;&gt;indPackExePath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;indPackExePath.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;indPackExePath.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="indMainExe.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="indMainExe.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="indMainExe.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 354</value>
+  </data>
+  <data name="indMainExe.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="indMainExe.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="&gt;&gt;indMainExe.Name" xml:space="preserve">
+    <value>indMainExe</value>
+  </data>
+  <data name="&gt;&gt;indMainExe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;indMainExe.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;indMainExe.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="labSize.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -891,79 +908,46 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labSize.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="indMainExe.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="indMainExe.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="indMainExe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 356</value>
-  </data>
-  <data name="indMainExe.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 21</value>
-  </data>
-  <data name="indMainExe.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="&gt;&gt;indMainExe.Name" xml:space="preserve">
-    <value>indMainExe</value>
-  </data>
-  <data name="&gt;&gt;indMainExe.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;indMainExe.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;indMainExe.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="indPackExePath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="btnAdvancedOptions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
-  <data name="indPackExePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 92</value>
+  <data name="btnAdvancedOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 378</value>
   </data>
-  <data name="indPackExePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 20</value>
+  <data name="btnAdvancedOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
   </data>
-  <data name="indPackExePath.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
+  <data name="btnAdvancedOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
   </data>
-  <data name="&gt;&gt;indPackExePath.Name" xml:space="preserve">
-    <value>indPackExePath</value>
+  <data name="btnAdvancedOptions.Text" xml:space="preserve">
+    <value>Advanced options...</value>
   </data>
-  <data name="&gt;&gt;indPackExePath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;btnAdvancedOptions.Name" xml:space="preserve">
+    <value>btnAdvancedOptions</value>
   </data>
-  <data name="&gt;&gt;indPackExePath.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnAdvancedOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAdvancedOptions.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;indPackExePath.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;btnAdvancedOptions.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="indAppFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 43</value>
+  <metadata name="cultureManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>815, 18</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
-  <data name="indAppFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 20</value>
-  </data>
-  <data name="indAppFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="&gt;&gt;indAppFolder.Name" xml:space="preserve">
-    <value>indAppFolder</value>
-  </data>
-  <data name="&gt;&gt;indAppFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;indAppFolder.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;indAppFolder.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>464, 411</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1230,12 +1214,6 @@
   </data>
   <data name="&gt;&gt;flagsIamgeList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>

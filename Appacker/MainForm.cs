@@ -20,7 +20,13 @@ namespace Appacker
         private readonly CultureInfo CULTURE_RU = CultureInfo.GetCultureInfo("ru-RU");
         private readonly CultureInfo CULTURE_EN = CultureInfo.GetCultureInfo("en-US");
 
+        public enum UnpackDirectory { Temp, Desktop, NextToPackedExe, AskAtLaunch };
+
         private string pathToCustomIcon = null;
+
+        internal bool isRepackable = true;
+        internal bool openUnpackDirectory = false;
+        internal UnpackDirectory unpackDirectory = UnpackDirectory.Temp;
 
         public MainForm()
         {
@@ -268,6 +274,13 @@ namespace Appacker
 
             packToolStripMenuItem.Enabled = btnPack.Enabled = isReady;
         }
+
+        // Open advanced options form
+        private void btnAdvancedOptions_Click(object sender, EventArgs e)
+        {
+            AdvancedOptionsForm aof = new AdvancedOptionsForm(this, isRepackable, openUnpackDirectory, unpackDirectory);
+            aof.ShowDialog();
+        }
         #endregion
 
         // ============== PACK METHOD ================
@@ -283,7 +296,7 @@ namespace Appacker
             string mainExePath = comboMainExePath.Text;
             string destinationPath = txtPackExePath.Text;
             string customIconPath = pathToCustomIcon;
-            bool selfRepackable = checkRepackable.Checked;
+            bool selfRepackable = isRepackable;
 
             PackingProgressUpdate += (o, progress) =>
             {
@@ -305,7 +318,7 @@ namespace Appacker
             };
 
             progressBar.Value = 0;
-            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, selfRepackable);
+            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, selfRepackable, openUnpackDirectory, unpackDirectory);
         }
 
         internal static event EventHandler<(int maxValue, int currentValue)> PackingProgressUpdate;
@@ -318,11 +331,15 @@ namespace Appacker
         /// <param name="destinationPath">Save location of the resulting packed .exe</param>
         /// <param name="customIconPath">Path to the icon file that will replace original app's icon</param>
         /// <param name="selfRepackable">True = packed app will repack itself after its execution so any changes are saved; Flase = changes are discarded</param>
+        /// <param name="openUnpackDir">If true, then when you launch packed app, it will open the directory with unpacked app in Explorer</param>
+        /// <param name="unpackDirectory">Where create temp directory with unpacked app</param>
         internal static void StartPacking( string sourceAppFolder, 
                                            string mainExePath, 
                                            string destinationPath, 
                                            string customIconPath = null, 
                                            bool   selfRepackable = true,
+                                           bool   openUnpackDir = false,
+                                           UnpackDirectory unpackDirectory = UnpackDirectory.Temp,
                                            bool   noGUI = false )
         {
             // Copy packer and unpacker into the temp directory
@@ -346,7 +363,7 @@ namespace Appacker
             // 4. Path to app directory
             // 5. Whether app is self-repackable, True or False
             ProcessStartInfo packProcInfo = new ProcessStartInfo(Path.Combine(tempDir, "packer.exe"));
-            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{destinationPath.TrimEnd(Path.DirectorySeparatorChar)}"" ""{mainExePath}"" ""{sourceAppFolder}"" {selfRepackable} {noGUI}";
+            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{destinationPath.TrimEnd(Path.DirectorySeparatorChar)}"" ""{mainExePath}"" ""{sourceAppFolder}"" {selfRepackable} {noGUI} {openUnpackDir} {(int)unpackDirectory}";
 #if (!DEBUG)
             packProcInfo.CreateNoWindow = true;
             packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;

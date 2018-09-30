@@ -42,9 +42,7 @@
             this.treeViewIconsList = new System.Windows.Forms.ImageList(this.components);
             this.labMainExePath = new System.Windows.Forms.Label();
             this.btnPack = new System.Windows.Forms.Button();
-            this.checkRepackable = new System.Windows.Forms.CheckBox();
             this.flagsIamgeList = new System.Windows.Forms.ImageList(this.components);
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnIconReset = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,12 +59,13 @@
             this.picAppIcon = new System.Windows.Forms.PictureBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.labOverride = new System.Windows.Forms.Label();
-            this.cultureManager = new Infralution.Localization.CultureManager(this.components);
-            this.openIconDialog = new System.Windows.Forms.OpenFileDialog();
             this.indAppFolder = new System.Windows.Forms.PictureBox();
             this.indPackExePath = new System.Windows.Forms.PictureBox();
             this.indMainExe = new System.Windows.Forms.PictureBox();
             this.labSize = new System.Windows.Forms.Label();
+            this.btnAdvancedOptions = new System.Windows.Forms.Button();
+            this.cultureManager = new Infralution.Localization.CultureManager(this.components);
+            this.openIconDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).BeginInit();
@@ -167,26 +166,12 @@
             this.btnPack.UseVisualStyleBackColor = true;
             this.btnPack.Click += new System.EventHandler(this.btnPack_Click);
             // 
-            // checkRepackable
-            // 
-            resources.ApplyResources(this.checkRepackable, "checkRepackable");
-            this.checkRepackable.Name = "checkRepackable";
-            this.toolTip.SetToolTip(this.checkRepackable, resources.GetString("checkRepackable.ToolTip"));
-            this.checkRepackable.UseVisualStyleBackColor = true;
-            // 
             // flagsIamgeList
             // 
             this.flagsIamgeList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("flagsIamgeList.ImageStream")));
             this.flagsIamgeList.TransparentColor = System.Drawing.Color.Transparent;
             this.flagsIamgeList.Images.SetKeyName(0, "united-kingdom-flag-icon-32.png");
             this.flagsIamgeList.Images.SetKeyName(1, "russia-flag-icon-32.png");
-            // 
-            // toolTip
-            // 
-            this.toolTip.AutoPopDelay = 32767;
-            this.toolTip.InitialDelay = 500;
-            this.toolTip.IsBalloon = true;
-            this.toolTip.ReshowDelay = 100;
             // 
             // btnIconReset
             // 
@@ -198,7 +183,6 @@
             this.btnIconReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnIconReset.ForeColor = System.Drawing.Color.Red;
             this.btnIconReset.Name = "btnIconReset";
-            this.toolTip.SetToolTip(this.btnIconReset, resources.GetString("btnIconReset.ToolTip"));
             this.btnIconReset.UseVisualStyleBackColor = false;
             this.btnIconReset.Click += new System.EventHandler(this.btnIconReset_Click);
             // 
@@ -305,14 +289,6 @@
             this.labOverride.ForeColor = System.Drawing.Color.Red;
             this.labOverride.Name = "labOverride";
             // 
-            // cultureManager
-            // 
-            this.cultureManager.ManagedControl = this;
-            // 
-            // openIconDialog
-            // 
-            resources.ApplyResources(this.openIconDialog, "openIconDialog");
-            // 
             // indAppFolder
             // 
             this.indAppFolder.BackColor = System.Drawing.Color.Red;
@@ -339,10 +315,26 @@
             resources.ApplyResources(this.labSize, "labSize");
             this.labSize.Name = "labSize";
             // 
+            // btnAdvancedOptions
+            // 
+            resources.ApplyResources(this.btnAdvancedOptions, "btnAdvancedOptions");
+            this.btnAdvancedOptions.Name = "btnAdvancedOptions";
+            this.btnAdvancedOptions.UseVisualStyleBackColor = true;
+            this.btnAdvancedOptions.Click += new System.EventHandler(this.btnAdvancedOptions_Click);
+            // 
+            // cultureManager
+            // 
+            this.cultureManager.ManagedControl = this;
+            // 
+            // openIconDialog
+            // 
+            resources.ApplyResources(this.openIconDialog, "openIconDialog");
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAdvancedOptions);
             this.Controls.Add(this.labSize);
             this.Controls.Add(this.indMainExe);
             this.Controls.Add(this.indPackExePath);
@@ -354,7 +346,6 @@
             this.Controls.Add(this.btnChangeIcon);
             this.Controls.Add(this.labTreeViewCaption);
             this.Controls.Add(this.picAppIcon);
-            this.Controls.Add(this.checkRepackable);
             this.Controls.Add(this.btnPack);
             this.Controls.Add(this.treeView);
             this.Controls.Add(this.labMainExePath);
@@ -392,10 +383,8 @@
         private System.Windows.Forms.Label labMainExePath;
         private System.Windows.Forms.ImageList treeViewIconsList;
         private System.Windows.Forms.Button btnPack;
-        private System.Windows.Forms.CheckBox checkRepackable;
         private System.Windows.Forms.PictureBox picAppIcon;
         private System.Windows.Forms.ImageList flagsIamgeList;
-        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem packToolStripMenuItem;
@@ -417,6 +406,7 @@
         private System.Windows.Forms.PictureBox indMainExe;
         private System.Windows.Forms.PictureBox indPackExePath;
         private System.Windows.Forms.Label labSize;
+        private System.Windows.Forms.Button btnAdvancedOptions;
     }
 }
 

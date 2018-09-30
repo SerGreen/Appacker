@@ -203,5 +203,25 @@ namespace Appacker.Resources {
                 return ResourceManager.GetString("labSizeText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When application is finished, its files are deleted from a temp folder without saving.
+        ///Changes to the app files won&apos;t be saved (e.g. app settings)..
+        /// </summary>
+        internal static string repackOffDescr {
+            get {
+                return ResourceManager.GetString("repackOffDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When application is finished, all its files will be packed back and packed .exe will be replaced.
+        ///Any changes will be saved (e.g. app settings)..
+        /// </summary>
+        internal static string repackOnDescr {
+            get {
+                return ResourceManager.GetString("repackOnDescr", resourceCulture);
+            }
+        }
     }
 }
