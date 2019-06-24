@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.IconLib;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -519,8 +520,11 @@ namespace Appacker
                 picAppIcon.Image = null;
             else
             {
-                Bitmap appIcon = IconSwapper.GetIconFromFile(Path.Combine(txtAppFolderPath.Text, comboMainExePath.Text));
-                picAppIcon.Image = appIcon;
+                var ico = IconSwapper.GetIconFromFile(Path.Combine(txtAppFolderPath.Text, comboMainExePath.Text));
+                Bitmap appIcon = GetPreferredIconSizePreview(ico, 32);
+
+                if (appIcon != null)
+                    picAppIcon.Image = appIcon;
             }
         }
 
@@ -536,10 +540,42 @@ namespace Appacker
             if(openIconDialog.ShowDialog() == DialogResult.OK)
             {
                 pathToCustomIcon = openIconDialog.FileName;
-                Bitmap icon = IconSwapper.GetIconFromFile(pathToCustomIcon);
-                picAppIcon.Image = icon;
-                btnIconReset.Visible = true;
+                var ico = IconSwapper.GetIconFromFile(pathToCustomIcon);
+                Bitmap bmp = GetPreferredIconSizePreview(ico, 32);
+
+                if (bmp != null)
+                {
+                    picAppIcon.Image = bmp;
+                    btnIconReset.Visible = true;
+                }
             }
+        }
+
+        /// <summary>
+        /// Get the icon as a Bitmap of a requested size, or the nearest smaller version if the requested size is absent
+        /// </summary>
+        /// <param name="icon">IconLib.SingleIcon object</param>
+        /// <param name="preferredSize">Size in pixels</param>
+        /// <returns>null if the icon is empty</returns>
+        private Bitmap GetPreferredIconSizePreview(SingleIcon icon, int preferredSize)
+        {
+            if (icon.Count == 0)
+                return null;
+
+            // icons are ordered from larger to smaller, that is: 256, 128, 64, 48, 32, 24, 16
+            // find the first image that is smaller or equal than requested size
+            int bestMatch;
+            for (bestMatch = 0; bestMatch < icon.Count; bestMatch++)
+            {
+                if (icon[bestMatch].Icon.Height <= preferredSize &&
+                    icon[bestMatch].Icon.Width <= preferredSize)
+                    break;
+            }
+
+            // if all of them are larger than the requested size then use the smallest one (the last one)
+            bestMatch = bestMatch >= icon.Count ? icon.Count - 1 : bestMatch;
+
+            return icon[bestMatch].Icon.ToBitmap();
         }
 
         // Resets icon in pictureBox to the main executable icon

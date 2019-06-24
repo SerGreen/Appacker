@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Drawing.IconLib;
+using System.IO;
 
 namespace Appacker
 {
@@ -15,11 +16,13 @@ namespace Appacker
         public static void ChangeIcon(string pathToTargetExe, string pathToFileWithIcon)
         {
             // Load the image based on file extension
-            Bitmap bmp = GetIconFromFile(pathToFileWithIcon);
-            if (bmp == null)
+            SingleIcon ico = GetIconFromFile(pathToFileWithIcon);
+
+            // If icon is empty
+            if (ico.Count == 0)
                 return;
 
-            ChangeIconFromBitmap(pathToTargetExe, bmp);
+            InjectIcon(pathToTargetExe, ico);
         }
 
         /// <summary>
@@ -27,50 +30,65 @@ namespace Appacker
         /// </summary>
         /// <param name="path">Full path to *.exe, *.dll or image file that will be used as the source for new icon</param>
         /// <returns></returns>
-        public static Bitmap GetIconFromFile(string path)
+        public static SingleIcon GetIconFromFile(string path)
         {
-            Bitmap bmp = null;
+            MultiIcon mIco = new MultiIcon();
+            SingleIcon ico = mIco.Add("Icon1");
             // Load the image based on file extension
-            switch (System.IO.Path.GetExtension(path).ToLowerInvariant())
+            switch (Path.GetExtension(path).ToLowerInvariant())
             {
-                case ".exe":
-                case ".dll":
-                    bmp = Icon.ExtractAssociatedIcon(path).ToBitmap();
-                    break;
                 case ".jpg":
                 case ".jpeg":
                 case ".bmp":
                 case ".png":
                 case ".gif":
                 case ".tiff":
-                    bmp = (Bitmap)Image.FromFile(path);
+                    ico = ImageToIcon(path);
                     break;
+                case ".exe":
+                case ".dll":
                 case ".ico":
-                    bmp = new Icon(path).ToBitmap();
+                    mIco.Load(path);
+                    // If icon pack has multiple icons, take the first one
+                    if (mIco.Count > 0)
+                        ico = mIco[0];
+                    // If exe doesn't have any icon it will not load the 'default' icon
+                    // But .NET Icon class can actually extract this 'default exe' icon
+                    else if (ico.Count == 0)
+                        ico.CreateFrom(Icon.ExtractAssociatedIcon(path).ToBitmap(), IconOutputFormat.Vista);
+                        // Tip: you have to convert to Bitmap in order to get 16mil colors
+                        // if you load directly from icon it gets only 16 colors for some reason
+
                     break;
             }
-            return bmp;
+            return ico;
         }
 
-        private static void ChangeIconFromBitmap(string pathToTargetExe, Bitmap bmpIcon)
+        private static SingleIcon ImageToIcon(string imgPath)
         {
-            if (bmpIcon.PixelFormat != System.Drawing.Imaging.PixelFormat.Format32bppArgb
-                || bmpIcon.Width > 256
-                || bmpIcon.Height > 256)
-                bmpIcon = FixIcon(bmpIcon);
+            Bitmap bmp = (Bitmap)Image.FromFile(imgPath);
+            if (bmp.PixelFormat != System.Drawing.Imaging.PixelFormat.Format32bppArgb
+                || bmp.Width > 256
+                || bmp.Height > 256)
+                bmp = FixIcon(bmp);
 
-            // Create icon and save it into temp file
             MultiIcon mIco = new MultiIcon();
-            SingleIcon sIco = mIco.Add("main");
-            sIco.CreateFrom(bmpIcon, IconOutputFormat.Vista);
-            string tempIcoPath = System.IO.Path.GetTempFileName();
-            sIco.Save(tempIcoPath);
+            SingleIcon sIco = mIco.Add("Icon1");
+            sIco.CreateFrom(bmp, IconOutputFormat.Vista);
+            return sIco;
+        }
+                
+        private static void InjectIcon(string pathToTargetExe, SingleIcon icon)
+        {
+            // Save icon to a temp file
+            string tempIcoPath = Path.GetTempFileName();
+            icon.Save(tempIcoPath);
 
-            // Magically inject icon into target exe
+            // Magically inject icon into the target exe
             IconInjector.InjectIcon(pathToTargetExe, tempIcoPath);
 
             // Delete temp ico file
-            System.IO.File.Delete(tempIcoPath);
+            File.Delete(tempIcoPath);
         }
 
         private static Bitmap FixIcon(Bitmap orig)
