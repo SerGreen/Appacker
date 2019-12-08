@@ -52,7 +52,7 @@ C:\>appacker.exe
 ```
 This will launch Appacker in console mode:
 ```console
-C:\>appacker.exe -r -src "d:\users\sergreen\desktop\vault\coolapp" -exe "bin\launcher.exe" -dst "d:\users\sergreen\desktop\vault"\CoolApp packed.exe" -ico "d:\cool_icon.png"
+C:\>appacker.exe -r -src "d:\users\sergreen\desktop\vault\coolapp" -exe "bin\launcher.exe" -dst "d:\users\sergreen\desktop\vault\CoolApp packed.exe" -ico "d:\cool_icon.png"
 ```
 You can also run it in silent mode by adding `--quiet` flag, in this mode only error messages are shown.
 
