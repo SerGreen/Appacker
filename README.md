@@ -1,15 +1,18 @@
 # Appacker
 This tool takes a folder with application and packs it into a single executable file (without compression) for easy distribution, portability or whatnot.
 
-__[Download Appacker](https://github.com/SerGreen/Appacker/releases/latest)__.
+## KNOWN ISSUE
+Appacker and packages created by it **can be detected as malware** by some antivirus software. That's because of a hacky way i used to package files: **packed app reads its own executable and extracts other files from it**, which antiviruses find hella suspicious. It's **false positive**, but it still gets in the way of using this app. I **can't fix this**, which renders this app **not very useful**. ¯\\\_(ツ)\_/¯
+
+Still want to download it for some reason? Well, here you go then: __[Download the latest version](https://github.com/SerGreen/Appacker/releases/latest)__.
 
 ## Usage
 To pack an application you have to:  
-1. Select folder that contains all the files of the target application.  
+1. Select a folder that contains all the files of the target application.  
 _You can drag'n'drop the folder to the first textBox or the treeView._
 2. Select save location for the package (it must be an `.exe` file).  
 _You can drag'n'drop an existing `.exe` into the second textBox; in this case it will be replaced by the package._
-3. Select the main executable file of the target application inside the treeView, that will display target application files after the step #1.
+3. Select the main executable file of the target application inside the treeView, it will display target application's files after the step #1.
 4. [Optional] Check the `self-repackable` checkbox.
 5. Press the `Pack!` button and it's done. It may take some time if the target application is big enough / has a lot of files.
 
