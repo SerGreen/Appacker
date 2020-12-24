@@ -54,7 +54,7 @@ namespace Unpacker
         {
 #if DEBUG
             Console.WriteLine("Unpacker is running in Debug");
-            Console.WriteLine("Attach to process now and press Enter...");
+            Console.WriteLine("To debug attach to process now and press Enter...");
             Console.ReadLine();
             Console.WriteLine("Resuming");
 #endif
@@ -207,7 +207,7 @@ namespace Unpacker
             ProcessStartInfo procInfo = new ProcessStartInfo()
             {
                 FileName = Path.Combine(tempDir, pathToMainExe),
-                Arguments = string.Join(" ", args),
+                Arguments = string.Join(" ", args.Select(x => $"\"{x}\"")),
                 WorkingDirectory = tempDir,
                 UseShellExecute = !stdoutRedirected     // if stdout is redirected, then redirect i/o of the target app too
             };

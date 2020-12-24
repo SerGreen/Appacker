@@ -24,7 +24,7 @@ namespace Packer
         {
 #if DEBUG
             Console.WriteLine("Packer.exe is running in Debug");
-            Console.WriteLine("Attach to process now and press Enter...");
+            Console.WriteLine("To debug attach to process now and press Enter...");
             Console.ReadLine();
             Console.WriteLine("Resuming");
 #endif
