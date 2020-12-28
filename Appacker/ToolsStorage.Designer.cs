@@ -19,7 +19,7 @@ namespace Appacker {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ToolsStorage {
@@ -86,6 +86,26 @@ namespace Appacker {
         internal static byte[] Unpacker {
             get {
                 object obj = ResourceManager.GetObject("Unpacker", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] VerInfoLib {
+            get {
+                object obj = ResourceManager.GetObject("VerInfoLib", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] VerInfoLibDLL {
+            get {
+                object obj = ResourceManager.GetObject("VerInfoLibDLL", resourceCulture);
                 return ((byte[])(obj));
             }
         }

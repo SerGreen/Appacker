@@ -20,6 +20,8 @@ namespace Appacker
     {
         private readonly CultureInfo CULTURE_RU = CultureInfo.GetCultureInfo("ru-RU");
         private readonly CultureInfo CULTURE_EN = CultureInfo.GetCultureInfo("en-US");
+        private readonly string[] ALLOWED_EXTENSIONS = new[] { ".exe", ".bat", ".lnk", ".cmd" };
+        private readonly string[] ALLOWED_ICON_EXTENSIONS = new[] { ".exe", ".dll", ".ico", ".bmp", ".jpg", ".jpeg", ".png", ".gif", ".tiff" };
 
         public enum UnpackDirectory { Temp, Desktop, NextToPackedExe, AskAtLaunch };
 
@@ -28,6 +30,8 @@ namespace Appacker
         internal bool isRepackable = true;
         internal bool openUnpackDirectory = false;
         internal UnpackDirectory unpackDirectory = UnpackDirectory.Temp;
+        internal string launchArguments = "";
+        internal string customFileDescription = "";
 
         public MainForm()
         {
@@ -37,6 +41,9 @@ namespace Appacker
             pos = picAppIcon.PointToClient(pos);
             btnIconReset.Parent = picAppIcon;
             btnIconReset.Location = pos;
+
+            // Enable drag-and-drop for icon preview box
+            picAppIcon.AllowDrop = true;
 
             // Load language from settings
             SetLanguage(RegistrySettingsProvider.Language);
@@ -131,10 +138,17 @@ namespace Appacker
                 TreeNode fileNode = curNode.Nodes.Add(file.Name);
                 fileNode.Name = fileNode.FullPath.Substring(fileNode.FullPath.IndexOf(Path.DirectorySeparatorChar) + 1);
                 fileNode.Tag = file.Length;
-                if (file.Extension.ToLowerInvariant() == ".exe")
-                    fileNode.ImageIndex = fileNode.SelectedImageIndex = 3;
-                else
-                    fileNode.ImageIndex = fileNode.SelectedImageIndex = 2;
+                switch (file.Extension.ToLowerInvariant()) {
+                    case ".exe":
+                        fileNode.ImageIndex = fileNode.SelectedImageIndex = 3; break;
+                    case ".lnk":
+                        fileNode.ImageIndex = fileNode.SelectedImageIndex = 5; break;
+                    case ".bat":
+                    case ".cmd":
+                        fileNode.ImageIndex = fileNode.SelectedImageIndex = 7; break;
+                    default:
+                        fileNode.ImageIndex = fileNode.SelectedImageIndex = 2; break;
+                }
             }
         }
 
@@ -193,10 +207,11 @@ namespace Appacker
             return size;
         }
 
-        // Find all .exe files and add them to the combobox
+        // Find all executable files and add them to the combobox
         private void UpdateComboBoxMainExe(string pathToAppFolder)
         {
-            string[] exes = Directory.GetFiles(pathToAppFolder, "*.exe", SearchOption.AllDirectories);
+            var exes = Directory.EnumerateFiles(pathToAppFolder, "*.*", SearchOption.AllDirectories)
+                                .Where(file => ALLOWED_EXTENSIONS.Any(ext => file.EndsWith(ext, StringComparison.OrdinalIgnoreCase)));
             comboMainExePath.Items.Clear();
             foreach (string localPath in exes.Select(x => x.Replace(pathToAppFolder, "").TrimStart(Path.DirectorySeparatorChar)))
                 comboMainExePath.Items.Add(localPath);
@@ -207,7 +222,7 @@ namespace Appacker
         // Only alow selection of .exe files
         private void treeView_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
-            if(e.Node == treeView.SelectedNode || !e.Node.Name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
+            if(e.Node == treeView.SelectedNode || !ALLOWED_EXTENSIONS.Any(ext => e.Node.Name.EndsWith(ext, StringComparison.OrdinalIgnoreCase)))
             {
                 e.Cancel = true;
                 return;
@@ -279,7 +294,7 @@ namespace Appacker
         // Open advanced options form
         private void btnAdvancedOptions_Click(object sender, EventArgs e)
         {
-            AdvancedOptionsForm aof = new AdvancedOptionsForm(this, isRepackable, openUnpackDirectory, unpackDirectory);
+            AdvancedOptionsForm aof = new AdvancedOptionsForm(this);
             aof.ShowDialog();
         }
         #endregion
@@ -319,7 +334,7 @@ namespace Appacker
             };
 
             progressBar.Value = 0;
-            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, selfRepackable, openUnpackDirectory, unpackDirectory);
+            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, customFileDescription, launchArguments, selfRepackable, openUnpackDirectory, unpackDirectory);
         }
 
         internal static event EventHandler<(int maxValue, int currentValue)> PackingProgressUpdate;
@@ -331,13 +346,17 @@ namespace Appacker
         /// <param name="mainExePath">Local path to the main executable of the target app</param>
         /// <param name="destinationPath">Save location of the resulting packed .exe</param>
         /// <param name="customIconPath">Path to the icon file that will replace original app's icon</param>
+        /// <param name="customFileDescription">New description string for VersionInfo</param>
+        /// <param name="launchArguments">Arguments that will be passed to the target app upon each launch</param>
         /// <param name="selfRepackable">True = packed app will repack itself after its execution so any changes are saved; Flase = changes are discarded</param>
         /// <param name="openUnpackDir">If true, then when you launch packed app, it will open the directory with unpacked app in Explorer</param>
         /// <param name="unpackDirectory">Where create temp directory with unpacked app</param>
         internal static void StartPacking( string sourceAppFolder, 
-                                           string mainExePath, 
+                                           string mainExePath,
                                            string destinationPath, 
-                                           string customIconPath = null, 
+                                           string customIconPath = null,
+                                           string customFileDescription = "",
+                                           string launchArguments = "",
                                            bool   selfRepackable = true,
                                            bool   openUnpackDir = false,
                                            UnpackDirectory unpackDirectory = UnpackDirectory.Temp,
@@ -349,13 +368,22 @@ namespace Appacker
                 tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
             Directory.CreateDirectory(tempDir);
 
+            string pathMainExe = Path.Combine(sourceAppFolder, mainExePath);
+            string pathUnpacker = Path.Combine(tempDir, "unpacker.exe");
+
             File.WriteAllBytes(Path.Combine(tempDir, "packer.exe"), ToolsStorage.Packer);
-            File.WriteAllBytes(Path.Combine(tempDir, "unpacker.exe"), ToolsStorage.Unpacker);
+            File.WriteAllBytes(pathUnpacker, ToolsStorage.Unpacker);
             File.WriteAllBytes(Path.Combine(tempDir, "progressBarSplash.exe"), ToolsStorage.ProgressBarSplash);
+            File.WriteAllBytes(Path.Combine(tempDir, "verInfoLib.exe"), ToolsStorage.VerInfoLib);
+            File.WriteAllBytes(Path.Combine(tempDir, "verInfoLib.dll"), ToolsStorage.VerInfoLibDLL);
 
             // Inject new icon into unpacker.exe (take the icon from the main executable of unpacked app if user did not provide a custom icon)
-            string iconPath = customIconPath ?? Path.Combine(sourceAppFolder, mainExePath);
-            IconSwapper.ChangeIcon(Path.Combine(tempDir, "unpacker.exe"), iconPath);
+            string iconPath = customIconPath ?? pathMainExe;
+            IconSwapper.ChangeIcon(pathUnpacker, iconPath);
+
+            // Change FileDescription field of unpacker.exe (take it from target app if not provided)
+            string fileDescription = string.IsNullOrWhiteSpace(customFileDescription) ? FileVersionInfo.GetVersionInfo(pathMainExe).FileDescription : customFileDescription;
+            Process.Start(Path.Combine(tempDir, "verInfoLib.exe"), $"-u \"{pathUnpacker}\" FileDescription \"{fileDescription}\"");
 
             // Launch packer.exe with arguments:
             // 1. Path to unpacker.exe
@@ -363,8 +391,9 @@ namespace Appacker
             // 3. Relative path to main executable inside app directory
             // 4. Path to app directory
             // 5. Whether app is self-repackable, True or False
+            // 6. Launch arguments for target app
             ProcessStartInfo packProcInfo = new ProcessStartInfo(Path.Combine(tempDir, "packer.exe"));
-            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{destinationPath.TrimEnd(Path.DirectorySeparatorChar)}"" ""{mainExePath}"" ""{sourceAppFolder}"" {selfRepackable} {noGUI} {openUnpackDir} {(int)unpackDirectory}";
+            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{destinationPath.TrimEnd(Path.DirectorySeparatorChar)}"" ""{mainExePath}"" ""{sourceAppFolder}"" ""{launchArguments.Replace("\"", "\\\"")}"" {selfRepackable} {noGUI} {openUnpackDir} {(int)unpackDirectory}";
 #if (!DEBUG)
             packProcInfo.CreateNoWindow = true;
             packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -431,36 +460,64 @@ namespace Appacker
         #region == Drag and drop stuff ==
         private void txtAppFolderPath_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) 
+            {
+                string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+                if (Directory.Exists(files[0]))
+                    e.Effect = DragDropEffects.Copy;
+                else
+                    e.Effect = DragDropEffects.None;
+            }
             else
                 e.Effect = DragDropEffects.None;
         }
 
         private void txtAppFolderPath_DragDrop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+            SetAppFolderPath(files[0]);
+        }
+
+        private void txtPackPath_DragEnter (object sender, DragEventArgs e) 
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) 
             {
                 string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
 
-                if (Directory.Exists(files[0]))
-                {
-                    SetAppFolderPath(files[0]);
-                }
+                if (File.Exists(files[0]) && files[0].EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
+                    e.Effect = DragDropEffects.Copy;
+                else
+                    e.Effect = DragDropEffects.None;
             }
+            else
+                e.Effect = DragDropEffects.None;
         }
 
         private void txtPackPath_DragDrop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            SetPackPath(files[0]);
+        }
 
-                if (File.Exists(files[0]) && files[0].EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
-                {
-                    SetPackPath(files[0]);
-                }
+        private void picAppIcon_DragEnter (object sender, DragEventArgs e) 
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) 
+            {
+                string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+
+                if (File.Exists(files[0]) && ALLOWED_ICON_EXTENSIONS.Any(ext => files[0].EndsWith(ext, StringComparison.OrdinalIgnoreCase))) 
+                    e.Effect = DragDropEffects.Copy;
+                else
+                    e.Effect = DragDropEffects.None;
             }
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void picAppIcon_DragDrop (object sender, DragEventArgs e) 
+        {
+            string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+            SetAppIconPreviewCustom(files[0]);
         }
         #endregion
 
@@ -516,7 +573,7 @@ namespace Appacker
         // Displays the icon of the main executable in pictureBox
         private void SetAppIconPreviewFromMainExe()
         {
-            if (string.IsNullOrWhiteSpace(comboMainExePath.Text))
+            if (string.IsNullOrWhiteSpace(comboMainExePath.Text) || !comboMainExePath.Text.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
                 picAppIcon.Image = null;
             else
             {
@@ -534,20 +591,23 @@ namespace Appacker
                 SetAppIconPreviewFromMainExe();
         }
 
+        private void SetAppIconPreviewCustom (string pathToIcon) {
+            var ico = IconSwapper.GetIconFromFile(pathToIcon);
+            Bitmap bmp = GetPreferredIconSizePreview(ico, 32);
+
+            if (bmp != null) {
+                picAppIcon.Image = bmp;
+                btnIconReset.Visible = true;
+                pathToCustomIcon = pathToIcon;
+            }
+        }
+
         // Displays the custom icon in pictureBox
         private void btnChangeIcon_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if(openIconDialog.ShowDialog() == DialogResult.OK)
             {
-                pathToCustomIcon = openIconDialog.FileName;
-                var ico = IconSwapper.GetIconFromFile(pathToCustomIcon);
-                Bitmap bmp = GetPreferredIconSizePreview(ico, 32);
-
-                if (bmp != null)
-                {
-                    picAppIcon.Image = bmp;
-                    btnIconReset.Visible = true;
-                }
+                SetAppIconPreviewCustom(openIconDialog.FileName);
             }
         }
 

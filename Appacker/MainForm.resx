@@ -303,16 +303,16 @@
   <data name="treeView.ImageIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <metadata name="treeViewIconsList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>335, 18</value>
+  <metadata name="treeVieIconsList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>342, 18</value>
   </metadata>
-  <data name="treeViewIconsList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="treeVieIconsList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
-        CgAAAk1TRnQBSQFMAgEBBQEAAYwBAQGMAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAq
+        DgAAAk1TRnQBSQFMAgEBCgEAAZgBAAGYAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAATADAAEBAQABCAYAAQwYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
         AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
@@ -339,23 +339,39 @@
         AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
         AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
         AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wEAAf8O9AH/MAAB9A55
-        AfQwAAH0AXkMmgF5AfQwAAH0AXkMmgF5AfQwAAH0AXkMmgF5AfQwAAH0AXkMmgF5AfQwAAH0AXkMmgF5
-        AfQwAAH0AXkMmgF5AfQwAAH0AXkMmgF5AfQwAAH0AXkMmgF5AfQwAAH0AXkMmgF5AfQwAAH0AXkEmgR6
-        BJoBeQH0MAAB9AF5A5oBdARLAXQDmgF5AfQwAAH0AXkMmgF5AfQwAAH0DnkB9DAAAf8O9AH/UgAM/wQA
-        DP8CAAHxDpkC8Q2ZAfMDAAHwCvMB8AQAAZMKFgGTAgABdA6aAXQBHA2aARwDAAHwCv8B8AQAAQcKlAEH
-        AgABdA6aAXQBmQF5DJoBHAMAAfAK/wHwBAABBwqUAQcCAAF0DpoBdAGZAXkMmgF0AwAB8Ar/AfAEAAEH
-        CpQBBwIAAXQOmgF0AZkBdAyaAXkB/wIAAfAK/wHwBAABBwKUBr0ClAEHAgABdA6aAXQBmQF0DJoBeQH0
-        AgAB8Ar/AfAEAAEHApQBvQGUA70DlAEHAgABdA6aAXQBmQF0DZoBGgIAAfAK/wHwBAABBwKUAfQBlAS9
-        ApQBBwIAAXQOmgF0AZkBdA2aARoCAAHwCv8B8AQAAQcClAHzBb0ClAEHAgABdA6aAXQBmQF0AXkMmgGZ
-        AgAB8Ar/AfAEAAEHCpQBBwIAAXQOmgF0AZkGdAF5B3oBmQIAAfAK/wHwBAABBwqUAQcCAAF0DpoBdAGZ
-        BnkHdAEHAfQCAAHwBv8B8QK8AgcEAAEHBpQBFgKTARYBkwIAAZkFdAF5CHoBdAGZBHkJdAEaAwAB8Ab/
-        AbwC/wEHAf8EAAEHBpQBFgL/AZMB/wIAAZkDeQF0AZkJ8gH0AZkDeQF0AZkI9AH/AwAB8Ab/AbwB/wEH
-        Af8FAAEHBpQBFgH/AZMB/wMAAfMEGgH/CgAB8wQaAf8MAAHwBvQBvAEHAf8GAAEHBxYBkwH/JgAB/wf0
-        Af8HAAH/B/QB/wUAAUIBTQE+BwABPgMAASgDAAFAAwABIAMAAQEBAAEBBgABARYAA/+BAAT/AcABAwHA
-        AQMDAAEBAcABAwHAAQMDAAEBAcABAwHAAQMDAAEBAcABAwHAAQMDAAEBAcABAwHAAQMEAAHAAQMBwAED
-        BAABwAEDAcABAwQAAcABAwHAAQMEAAHAAQMBwAEDBAABwAEDAcABAwQAAcABAwHAAQMEAAHAAQMBwAED
-        AwABAQHAAQMBwAEDAwABAQHAAQcBwAEHAQMB/wEDAf8BwAEPAcABDwT/AcABHwHAAR8L
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/0EAEAkBAA5LIQABCQ4T
+        AQkBAAFLDJoBSyEAAQkOEwEJAQABSwyaAUshAAEJAhMBEgFtAxMECAMTAQkBAAFLDJoBSyEAAQkCEwFt
+        AQgB6wkTAQkBAAFLDJoBSyEAAQkDEwHqAQcB7AgTAQkBAAFLDJoBSyEAAQkDEwHqAQcB7AgTAQkBAAFL
+        DJoBSyEAAQkCEwFtAQgB6wkTAQkBAAFLA5oBdARLAXQDmgFLIQABCQITARIBbQoTAQkBAAFLDJoBSyEA
+        AQkOEwEJAQABSwyaAUshAAEJDhMBCRBLIAABCQ4TAQkBSw6aAUsgABAJAUsOmgFLIAAQCRBLoQAOSwMA
+        DOwEAAzsEwABSwyaAUsDAAHsCv8B7AQAAewK/wHsEwABSwyaAUsDAAHsCv8B7AQAAewK/wHsBQAB9wrs
+        Af8CAAFLDJoBSwMAAewD/wHzAfAF/wHsBAAB7Ar/AewFAAEHAfEI/wHvAfMCAAFLDJoBSwMAAewD/wG1
+        AbsF/wHsBAAB7AP/AewB/wEHAZEBBwL/AewCAAMZAbsBBwj/AQcB8AIAAUsMmgFLAwAB7AP/AbQBzwLy
+        A/8B7AQAAewD/wHsAf8B7AH0AewC/wHsBQAB8wHvAfEGrQG1AfABBwIAAUsMmgFLAwAB7AP/AbsBrQK0
+        A/8B7AQAAewD/wHsAf8B7AH0AewC/wHsAgAEGQHtAf8BzwTcAbUBtAH0AfcCAAFLDJoBSwMAAewE/wG0
+        Aq0D/wHsBAAB7AL/AQcB7AH/AQcBkQEHAv8B7AYAAfcB9AG0AfIBEgP/AbQB/wHtAf8BAAFLDJoBSwMA
+        AewD/wHzAbQCrQP/AewEAAHsCv8B7AIABBkB7wHxAbUGrQHxAe8B8wEAAUsMmgFLAwAB7Ar/AewEAAHs
+        Cv8B7AIABBkBuwEHCP8BBwHwAQABSwOaAXkESwF5A5oBSwMAAewG/wXsBAAB7Ab/BewGAAHzCuwBBwEA
+        AUsMmgFLAwAB7Ab/AewB/wH0AfcB7wQAAewG/wHsAv8B9wHvBgAB/wrsAfcBAAFLDJoBSwMAAewG/wHs
+        Af8B9wHvBQAB7Ab/AewB/wH3Ae8UAA5LAwAB7Ab/AewB9wHvBgAB7Ab/AewB9wHvJgAI7AHvBwAI7AH3
+        Af9UAB9LAf8CAAzsBAAMRgIAAUsOmgJLAXkMmgFRAfQCAAHsCv8B7AQAAUYKlAFGAgABSw6aAksBeQya
+        AXMB8wIAAewK/wHsBAABRgqUAUYCAAFLDpoCSwF0DJoBdAHyAgAB7Ar/AewEAAFGCpQBRgIAAUsOmgJL
+        AXQMmgF0ARoCAAHsCv8B7AQAAUYBlAK9AZQCvQGUAr0BlAFGAgABSw6aAksBdAyaAXQBBwIAAewK/wHs
+        BAABRgGUAb0ClAG9AfMBlAG9ApQBRgIAAUsOmgJLAVEMmgF5ARwCAAHsCv8B7AQAAUYBlAK9AZQCvQGU
+        Af8BvQGUAUYCAAFLDpoHSwFRAXQGmgF5AXMCAAHsCv8B7AQAAUYBlAK9AZQB8wG9AZQBvQKUAUYCAAFL
+        DpoCSwV5AXQBUQdLAXMCAAHsCv8B7AQAAUYClAG9BJQBvQKUAUYCAAFLDpoCSw15AUsDAAHsCv8B7AQA
+        AUYKlAFGAgAFSwFRAXQImgJLDXkBSwMAAewG/wXsBAABRgaUBUYCAAFLBHkBdAFRCksEeQF0AXMISwMA
+        AewG/wHsAf8B9AH3Ae8EAAFGBpQBRgL/AW8BkwIAAUsDeQF0AXMBvAkAAUsDeQF0AXMBvAsAAewG/wHs
+        Af8B9wHvBQABRgaUAUYB/wJvAwAFSwG8CgAFSwG8DAAB7Ab/AewB9wHvBgABRgaUAUYBbwGTJgAI7AHv
+        BwAIRgFvBQABQgFNAT4HAAE+AwABKAMAAUADAAEwAwABAQEAAQEFAAGAAQEWAAP/AQAE/wYAAYABAQYA
+        AYABAQYAAYABAQYAAYABAQYAAYABAQYAAYABAQYAAYABAQYAAYABAQYAAYABAQYAAYABASQABP8EAAj/
+        AYABAQHAAQMBwAEDAv8BgAEBAcABAwHAAQMC/wGAAQEBwAEDAcABAwHgAQEBgAEBAcABAwHAAQMB4AEB
+        AYABAQHAAQMBwAEDAQABAQGAAQEBwAEDAcABAwHgAQEBgAEBAcABAwHAAQMBAAEBAYABAQHAAQMBwAED
+        AfABAAGAAQEBwAEDAcABAwIAAYABAQHAAQMBwAEDAgABgAEBAcABAwHAAQMB8AEAAYABAQHAAQMBwAED
+        AfABAAGAAQEBwAEHAcABBwL/AYABAQHAAQ8BwAEPBP8BwAEfAcABDwr/BAABwAEDAcABAwQAAcABAwHA
+        AQMEAAHAAQMBwAEDBAABwAEDAcABAwQAAcABAwHAAQMEAAHAAQMBwAEDBAABwAEDAcABAwQAAcABAwHA
+        AQMEAAHAAQMBwAEDAwABAQHAAQMBwAEDAwABAQHAAQMBwAEDAwABAQHAAQMBwAEDAQEB/wEBAf8BwAEH
+        AcABBwEDAf8BAwH/AcABDwHAAQ8E/wHAAR8BwAEfCw==
 </value>
   </data>
   <data name="treeView.Indent" type="System.Int32, mscorlib">
@@ -365,7 +381,7 @@
     <value>12, 141</value>
   </data>
   <data name="treeView.SelectedImageIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="treeView.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 194</value>
@@ -459,7 +475,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB2
-        CQAAAk1TRnQBSQFMAgEBAgEAAUABAQFAAQEBIAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAAdgBAQHYAQEBIAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAARADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -502,105 +518,9 @@
         AYADAAEQAwABAQEAAQEGAAEBFgAD//8AAgAL
 </value>
   </data>
-  <data name="btnIconReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnIconReset.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="btnIconReset.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnIconReset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7pt, style=Bold</value>
-  </data>
-  <data name="btnIconReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnIconReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, 355</value>
-  </data>
-  <data name="btnIconReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="btnIconReset.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="btnIconReset.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;btnIconReset.Name" xml:space="preserve">
-    <value>btnIconReset</value>
-  </data>
-  <data name="&gt;&gt;btnIconReset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnIconReset.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnIconReset.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>700, 18</value>
+    <value>600, 17</value>
   </metadata>
-  <data name="packToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="packToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
-  <data name="packToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pack</value>
-  </data>
-  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
-  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exit</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="englishToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 28</value>
-  </data>
-  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="russianToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 28</value>
-  </data>
-  <data name="russianToolStripMenuItem.Text" xml:space="preserve">
-    <value>Russian (Русский)</value>
-  </data>
-  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 20</value>
-  </data>
-  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 22</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -624,6 +544,63 @@
   </data>
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>21</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="packToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="packToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="packToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pack</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="englishToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 36</value>
+  </data>
+  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="russianToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="russianToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 36</value>
+  </data>
+  <data name="russianToolStripMenuItem.Text" xml:space="preserve">
+    <value>Russian (Русский)</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 22</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>About</value>
   </data>
   <data name="labTreeViewCaption.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -721,6 +698,264 @@
   <data name="&gt;&gt;comboMainExePath.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="progressBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="progressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 403</value>
+  </data>
+  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>464, 8</value>
+  </data>
+  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
+    <value>progressBar</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="labOverride.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labOverride.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labOverride.Location" type="System.Drawing.Point, System.Drawing">
+    <value>211, 76</value>
+  </data>
+  <data name="labOverride.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 13</value>
+  </data>
+  <data name="labOverride.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="labOverride.Text" xml:space="preserve">
+    <value>[Override]</value>
+  </data>
+  <data name="labOverride.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;labOverride.Name" xml:space="preserve">
+    <value>labOverride</value>
+  </data>
+  <data name="&gt;&gt;labOverride.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labOverride.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labOverride.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labSize.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="labSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labSize.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>292, 125</value>
+  </data>
+  <data name="labSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 13</value>
+  </data>
+  <data name="labSize.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="labSize.Text" xml:space="preserve">
+    <value>Estimated package size: 0 Bytes</value>
+  </data>
+  <data name="&gt;&gt;labSize.Name" xml:space="preserve">
+    <value>labSize</value>
+  </data>
+  <data name="&gt;&gt;labSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labSize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="cultureManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>715, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>464, 411</value>
+  </data>
+  <data name="btnAdvancedOptions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="btnAdvancedOptions.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnAdvancedOptions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAdvancedOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 378</value>
+  </data>
+  <data name="btnAdvancedOptions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 5, 0</value>
+  </data>
+  <data name="btnAdvancedOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="btnAdvancedOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnAdvancedOptions.Text" xml:space="preserve">
+    <value>Advanced options...</value>
+  </data>
+  <data name="&gt;&gt;btnAdvancedOptions.Name" xml:space="preserve">
+    <value>btnAdvancedOptions</value>
+  </data>
+  <data name="&gt;&gt;btnAdvancedOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAdvancedOptions.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnAdvancedOptions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="indMainExe.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="indMainExe.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="indMainExe.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 354</value>
+  </data>
+  <data name="indMainExe.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="indMainExe.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="&gt;&gt;indMainExe.Name" xml:space="preserve">
+    <value>indMainExe</value>
+  </data>
+  <data name="&gt;&gt;indMainExe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;indMainExe.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;indMainExe.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="indPackExePath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="indPackExePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 92</value>
+  </data>
+  <data name="indPackExePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="indPackExePath.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="&gt;&gt;indPackExePath.Name" xml:space="preserve">
+    <value>indPackExePath</value>
+  </data>
+  <data name="&gt;&gt;indPackExePath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;indPackExePath.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;indPackExePath.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="indAppFolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="indAppFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 43</value>
+  </data>
+  <data name="indAppFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="indAppFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="&gt;&gt;indAppFolder.Name" xml:space="preserve">
+    <value>indAppFolder</value>
+  </data>
+  <data name="&gt;&gt;indAppFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;indAppFolder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;indAppFolder.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnIconReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="btnIconReset.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="btnIconReset.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnIconReset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7pt, style=Bold</value>
+  </data>
+  <data name="btnIconReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnIconReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>360, 355</value>
+  </data>
+  <data name="btnIconReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="btnIconReset.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnIconReset.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnIconReset.Name" xml:space="preserve">
+    <value>btnIconReset</value>
+  </data>
+  <data name="&gt;&gt;btnIconReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnIconReset.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnIconReset.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="picAppIcon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -750,204 +985,6 @@
   </data>
   <data name="&gt;&gt;picAppIcon.ZOrder" xml:space="preserve">
     <value>11</value>
-  </data>
-  <data name="progressBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
-  </data>
-  <data name="progressBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 403</value>
-  </data>
-  <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>464, 8</value>
-  </data>
-  <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Name" xml:space="preserve">
-    <value>progressBar</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;progressBar.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;progressBar.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="labOverride.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labOverride.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 76</value>
-  </data>
-  <data name="labOverride.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
-  </data>
-  <data name="labOverride.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="labOverride.Text" xml:space="preserve">
-    <value>[Override]</value>
-  </data>
-  <data name="labOverride.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;labOverride.Name" xml:space="preserve">
-    <value>labOverride</value>
-  </data>
-  <data name="&gt;&gt;labOverride.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labOverride.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labOverride.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="indAppFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 43</value>
-  </data>
-  <data name="indAppFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 20</value>
-  </data>
-  <data name="indAppFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="&gt;&gt;indAppFolder.Name" xml:space="preserve">
-    <value>indAppFolder</value>
-  </data>
-  <data name="&gt;&gt;indAppFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;indAppFolder.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;indAppFolder.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="indPackExePath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="indPackExePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 92</value>
-  </data>
-  <data name="indPackExePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 20</value>
-  </data>
-  <data name="indPackExePath.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="&gt;&gt;indPackExePath.Name" xml:space="preserve">
-    <value>indPackExePath</value>
-  </data>
-  <data name="&gt;&gt;indPackExePath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;indPackExePath.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;indPackExePath.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="indMainExe.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="indMainExe.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="indMainExe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 354</value>
-  </data>
-  <data name="indMainExe.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 21</value>
-  </data>
-  <data name="indMainExe.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="&gt;&gt;indMainExe.Name" xml:space="preserve">
-    <value>indMainExe</value>
-  </data>
-  <data name="&gt;&gt;indMainExe.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;indMainExe.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;indMainExe.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labSize.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="labSize.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labSize.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="labSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>292, 125</value>
-  </data>
-  <data name="labSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 13</value>
-  </data>
-  <data name="labSize.TabIndex" type="System.Int32, mscorlib">
-    <value>103</value>
-  </data>
-  <data name="labSize.Text" xml:space="preserve">
-    <value>Estimated package size: 0 Bytes</value>
-  </data>
-  <data name="&gt;&gt;labSize.Name" xml:space="preserve">
-    <value>labSize</value>
-  </data>
-  <data name="&gt;&gt;labSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labSize.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labSize.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnAdvancedOptions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="btnAdvancedOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 378</value>
-  </data>
-  <data name="btnAdvancedOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="btnAdvancedOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>104</value>
-  </data>
-  <data name="btnAdvancedOptions.Text" xml:space="preserve">
-    <value>Advanced options...</value>
-  </data>
-  <data name="&gt;&gt;btnAdvancedOptions.Name" xml:space="preserve">
-    <value>btnAdvancedOptions</value>
-  </data>
-  <data name="&gt;&gt;btnAdvancedOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnAdvancedOptions.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnAdvancedOptions.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="cultureManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>815, 18</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>464, 411</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1203,10 +1240,10 @@
   <data name="&gt;&gt;saveFileDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;treeViewIconsList.Name" xml:space="preserve">
-    <value>treeViewIconsList</value>
+  <data name="&gt;&gt;treeVieIconsList.Name" xml:space="preserve">
+    <value>treeVieIconsList</value>
   </data>
-  <data name="&gt;&gt;treeViewIconsList.Type" xml:space="preserve">
+  <data name="&gt;&gt;treeVieIconsList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flagsIamgeList.Name" xml:space="preserve">
@@ -1282,7 +1319,7 @@
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="openIconDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>953, 18</value>
+    <value>853, 17</value>
   </metadata>
   <data name="openIconDialog.Filter" xml:space="preserve">
     <value>All supported files|*.exe;*.dll;*.ico;*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tiff|Executables and DLLs|*.exe;*.dll|Icons|*.ico|Images|*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tiff</value>

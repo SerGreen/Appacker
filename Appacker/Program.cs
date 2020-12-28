@@ -21,7 +21,7 @@ namespace Appacker
         private const int ATTACH_PARENT_PROCESS = -1;
 
         private const string TRY_HELP = "Try `{0} --help' for more information.";
-        private const string USAGE = @"Usage: {0} [-r] [-q] <-s ""source_folder""> <-e ""main_exe""> [-d ""save_location""] [-i ""icon_path""]";
+        private const string USAGE = @"Usage: {0} [-r] [-q] <-s ""source_folder""> <-e ""main_exe""> [-d ""save_location""] [-i ""icon_path""] [-a ""launch_arguments""] [-fd ""file_description""]";
 
         // Flag to keep application running until background packing is finished
         // It's done to print packing progress messages to the console
@@ -54,7 +54,7 @@ namespace Appacker
 
         static void NoGuiMode(string[] args)
         {
-            string sourceAppFolder = null, mainExePath = null, destinationPath = null, customIconPath = null;
+            string sourceAppFolder = null, mainExePath = null, destinationPath = null, customIconPath = null, launchArguments = "", fileDescription = null;
             bool selfRepackable = false, openUnpackedDir = false, quietPacking = false;
             bool showHelp = false;
             MainForm.UnpackDirectory unpackDir = MainForm.UnpackDirectory.Temp;
@@ -64,11 +64,11 @@ namespace Appacker
             {
                 // Initialize possible arguments
                 var argsParser = new OptionSet() {
-                    { "s|src|source-folder=",
+                    { "s|src|source-folder|input=",
                         "Directory containing all the files of the target application.",
                         s => sourceAppFolder = s.TrimEnd('\\', '/') },
                     { "e|exe|main-exe=",
-                        "Local path to the main executable inside the source app folder. This is the application that will launch whenever the packed app extracts itself.",
+                        "Local path to the main executable inside the source app folder. Can be .exe, .bat, .cmd, .lnk or .sh file. This is the application that will launch whenever the packed app extracts itself.",
                         e => mainExePath = e.TrimStart('\\', '/') },
                     { "d|dst|destination|output=",
                         "Location where packed app will be created.",
@@ -79,8 +79,14 @@ namespace Appacker
                     { "r|repack|self-repack",
                         "Sets the packed application to refresh itself after the main executable closes. Refreshing adds and replaces files in the packed executable with those created and modified during runtime.",
                         r => selfRepackable = r != null },
+                    { "a|args|arguments=",
+                        "Arguments to pass to the main executable at every launch.\nYou should add escaped quotes for paths:\n-a \"--some-flag \\\"c:\\file with spaces.txt\\\"\"",
+                        a => launchArguments = a ?? "" },
+                    { "fd|description|file-description=",
+                        "FileDescription string for main executable (used in Windows 'Open with...' menu).",
+                        fd => fileDescription = fd },
                     { "o|open-dir",
-                        "Open folder with unpacked application in Explorer when you launch packed app",
+                        "Open folder with unpacked application in Explorer when you launch packed app.",
                         o => openUnpackedDir = o != null },
                     { "q|quiet|silent",
                         "No progress messages will be shown during the packing process.",
@@ -89,7 +95,7 @@ namespace Appacker
                         "Show this message and exit.",
                        v => showHelp = v != null },
                     { "u|udir|unpack-dir=",
-                        "Directory where to unpack app files. Can be [temp|desktop|same|ask]. Default is 'temp'.\nIf set 'same', temp directory will be created in the same directory where packed exe is.\nIf set 'ask', it will prompt user before each unpacking",
+                        "Directory where to unpack app files. Can be [temp|desktop|same|ask]. Default is 'temp'.\nIf set 'same', temp directory will be created in the same directory where packed exe is.\nIf set 'ask', it will prompt user before each unpacking.",
                         u => {
                             if (u == "temp")
                                 unpackDir = MainForm.UnpackDirectory.Temp;
@@ -223,6 +229,8 @@ namespace Appacker
                     MainForm.StartPacking(sourceAppFolder, mainExePath, destinationPath, 
                                           customIconPath:customIconPath, 
                                           selfRepackable:selfRepackable, 
+                                          launchArguments: launchArguments,
+                                          customFileDescription: fileDescription,
                                           openUnpackDir:openUnpackedDir, 
                                           unpackDirectory:unpackDir,
                                           noGUI: true);

@@ -23,6 +23,11 @@ namespace Appacker
             System.Diagnostics.Process.Start("https://www.flaticon.com/authors/good-ware");
         }
 
+        private void linkIconsCredit2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://icons8.com/icons/officexs");
+        }
+
         private void linkGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/SerGreen/Appacker");

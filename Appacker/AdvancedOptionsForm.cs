@@ -15,21 +15,24 @@ namespace Appacker
     {
         MainForm mainForm = null;
 
-        public AdvancedOptionsForm(MainForm mainForm, bool isRepackable, bool openUnpackDirectory, MainForm.UnpackDirectory unpackDirectoryType)
+        public AdvancedOptionsForm(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
 
-            checkRepackable.Checked = isRepackable;
-            checkOpenUnpackFolder.Checked = openUnpackDirectory;
-            if (unpackDirectoryType == MainForm.UnpackDirectory.Desktop)
+            checkRepackable.Checked = mainForm.isRepackable;
+            checkOpenUnpackFolder.Checked = mainForm.openUnpackDirectory;
+            if (mainForm.unpackDirectory == MainForm.UnpackDirectory.Desktop)
                 comboUnpackDir.SelectedIndex = 1;
-            else if (unpackDirectoryType == MainForm.UnpackDirectory.NextToPackedExe)
+            else if (mainForm.unpackDirectory == MainForm.UnpackDirectory.NextToPackedExe)
                 comboUnpackDir.SelectedIndex = 2;
-            else if (unpackDirectoryType == MainForm.UnpackDirectory.AskAtLaunch)
+            else if (mainForm.unpackDirectory == MainForm.UnpackDirectory.AskAtLaunch)
                 comboUnpackDir.SelectedIndex = 3;
             else
                 comboUnpackDir.SelectedIndex = 0;
+
+            txtArguments.Text = mainForm.launchArguments;
+            txtFileDescription.Text = mainForm.customFileDescription;
 
             SetRepackDescription();
         }
@@ -46,6 +49,8 @@ namespace Appacker
                 ? MainForm.UnpackDirectory.NextToPackedExe : comboUnpackDir.SelectedIndex == 3
                 ? MainForm.UnpackDirectory.AskAtLaunch
                 : MainForm.UnpackDirectory.Temp;
+            mainForm.launchArguments = txtArguments.Text;
+            mainForm.customFileDescription = txtFileDescription.Text;
         }
         
         private void checkRepackable_CheckedChanged(object sender, EventArgs e) => SetRepackDescription();

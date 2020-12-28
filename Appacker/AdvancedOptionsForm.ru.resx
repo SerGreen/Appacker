@@ -136,6 +136,9 @@
   <data name="comboUnpackDir.Items3" xml:space="preserve">
     <value>Спрашивать при каждом запуске</value>
   </data>
+  <data name="comboUnpackDir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 21</value>
+  </data>
   <data name="labUnpackDir.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 13</value>
   </data>
@@ -147,6 +150,37 @@
   </data>
   <data name="checkOpenUnpackFolder.Text" xml:space="preserve">
     <value>Открыть в Проводнике папку для распаковки после запуска</value>
+  </data>
+  <data name="txtArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 20</value>
+  </data>
+  <data name="labArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>296, 13</value>
+  </data>
+  <data name="labArguments.Text" xml:space="preserve">
+    <value>Аргументы командной строки для целевого приложения</value>
+  </data>
+  <data name="labFileDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 13</value>
+  </data>
+  <data name="labFileDescription.Text" xml:space="preserve">
+    <value>Свойство FileDescription для упакованного приложения</value>
+  </data>
+  <data name="txtFileDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 20</value>
+  </data>
+  <data name="labFileDescriptionDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 26</value>
+  </data>
+  <data name="labFileDescriptionDescription.Text" xml:space="preserve">
+    <value>Используется как название приложения в меню "Открыть с помощью..." в Windows
+Если оставить пустым, то это свойство будет взято из основного исполняемого файла</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>474, 271</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>490, 310</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Расширенные настройки</value>

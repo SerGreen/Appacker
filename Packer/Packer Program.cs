@@ -9,7 +9,7 @@ namespace Packer
 {
     class Program
     {
-        private const string USAGE = "packer.exe <path to unpacker.exe> <path to packed app file> <local path to main exe> <path to folder for packing> [if app should be repackable: True|False]";
+        private const string USAGE = "packer.exe <path to unpacker.exe> <path to packed app file> <local path to main exe> <path to folder for packing> [if app should be repackable: True|False] [main exe launch arguments]";
         private const int WAIT_FOR_FILE_ACCESS_TIMEOUT = 5000; // ms
 
         //XDMessaging broadcaster to report packing progress
@@ -24,12 +24,12 @@ namespace Packer
         {
 #if DEBUG
             Console.WriteLine("Packer.exe is running in Debug");
-            Console.WriteLine("To debug attach to process now and press Enter...");
+            Console.WriteLine("Attach to process now and press Enter...");
             Console.ReadLine();
             Console.WriteLine("Resuming");
 #endif
 
-            string unpackerExePath, pathToPackedApp, localPathToMainExe, pathToFolderWithApp;
+            string unpackerExePath, pathToPackedApp, localPathToMainExe, pathToFolderWithApp, launchArguments;
             bool isSelfRepackable, isRepacking, openUnpackedDir; 
             bool isNoGui = false;   // determines the type of XDMessaging mode
             int unpackDirectory;    // Temp = 0, Desktop = 1, SameAsPackedExe = 2 or AskAtLaunch = 3
@@ -46,27 +46,31 @@ namespace Packer
 
                 // UPD: i should have used arguments parser library... Mistakes were made and i don't want to refactor them now .__.
                 // UPD2: what a shitty code. I hate myself.
+                // UPD3: yeah, i hate you too, past me
                 unpackerExePath = args[0];
                 pathToPackedApp = args[1];
                 localPathToMainExe = args[2];
                 pathToFolderWithApp = args[3];
-                isSelfRepackable = false;
+                launchArguments = "";
                 if (args.Length > 4)
-                    bool.TryParse(args[4], out isSelfRepackable);
+                    launchArguments = args[4];
+                isSelfRepackable = false;
                 if (args.Length > 5)
-                    bool.TryParse(args[5], out isNoGui);
-                openUnpackedDir = false;
+                    bool.TryParse(args[5], out isSelfRepackable);
                 if (args.Length > 6)
-                    bool.TryParse(args[6], out openUnpackedDir);
-                unpackDirectory = 0;
+                    bool.TryParse(args[6], out isNoGui);
+                openUnpackedDir = false;
                 if (args.Length > 7)
+                    bool.TryParse(args[7], out openUnpackedDir);
+                unpackDirectory = 0;
+                if (args.Length > 8)
                 {
-                    int.TryParse(args[7], out unpackDirectory);
+                    int.TryParse(args[8], out unpackDirectory);
                     if (unpackDirectory < 0 || unpackDirectory > 3)
                         unpackDirectory = 0;
                 }
                 isRepacking = false;
-                if (args.Length > 8 && (args[8] == "-repack" || args[8] == "repack"))
+                if (args.Length > 9 && (args[9] == "-repack" || args[9] == "repack"))
                     isRepacking = true;
 
                 // Create XDMessagingClient broadcaster to report progress
@@ -132,7 +136,7 @@ namespace Packer
                 // Do the packing
                 try
                 {
-                    PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable, isRepacking, openUnpackedDir, unpackDirectory);
+                    PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable, launchArguments, isRepacking, openUnpackedDir, unpackDirectory);
                 }
                 catch (UnauthorizedAccessException)
                 {
@@ -174,7 +178,8 @@ namespace Packer
         /// <param name="filesToPack">List of relative paths to all files of the app that is being packed</param>
         /// <param name="unpackDirectory">Enum as int, 0 to 3, indicates whereto unpack files at launch</param>
         /// <param name="openUnpackedDir">Whether or not to open folder with unpacked files after unpacking</param>
-        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack, bool isSelfRepackable, bool isRepacking, bool openUnpackedDir, int unpackDirectory)
+        /// <param name="launchArguments">Arguments to pass to target exe with every launch</param>
+        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack, bool isSelfRepackable, string launchArguments, bool isRepacking, bool openUnpackedDir, int unpackDirectory)
         {
             using (var packedExe = new BinaryWriter(File.Open(pathToPackedApp, FileMode.Create, FileAccess.Write)))
             {
@@ -212,6 +217,9 @@ namespace Packer
 
                 // Write relative path to the main executable of the packed app
                 packedExe.Write(localPathToMainExe);                    // string
+
+                // Write launch arguments for main executable
+                packedExe.Write(launchArguments);                       // string
 
                 Process splashProgressBarProc = null;
 

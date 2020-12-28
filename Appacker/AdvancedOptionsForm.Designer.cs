@@ -35,6 +35,11 @@
             this.labUnpackDir = new System.Windows.Forms.Label();
             this.checkOpenUnpackFolder = new System.Windows.Forms.CheckBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.txtArguments = new System.Windows.Forms.TextBox();
+            this.labArguments = new System.Windows.Forms.Label();
+            this.labFileDescription = new System.Windows.Forms.Label();
+            this.txtFileDescription = new System.Windows.Forms.TextBox();
+            this.labFileDescriptionDescription = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkRepackable
@@ -75,13 +80,44 @@
             this.checkOpenUnpackFolder.Name = "checkOpenUnpackFolder";
             this.checkOpenUnpackFolder.UseVisualStyleBackColor = true;
             // 
+            // txtArguments
+            // 
+            resources.ApplyResources(this.txtArguments, "txtArguments");
+            this.txtArguments.Name = "txtArguments";
+            // 
+            // labArguments
+            // 
+            resources.ApplyResources(this.labArguments, "labArguments");
+            this.labArguments.Name = "labArguments";
+            // 
+            // labFileDescription
+            // 
+            resources.ApplyResources(this.labFileDescription, "labFileDescription");
+            this.labFileDescription.Name = "labFileDescription";
+            // 
+            // txtFileDescription
+            // 
+            resources.ApplyResources(this.txtFileDescription, "txtFileDescription");
+            this.txtFileDescription.Name = "txtFileDescription";
+            // 
+            // labFileDescriptionDescription
+            // 
+            resources.ApplyResources(this.labFileDescriptionDescription, "labFileDescriptionDescription");
+            this.labFileDescriptionDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labFileDescriptionDescription.Name = "labFileDescriptionDescription";
+            // 
             // AdvancedOptionsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtFileDescription);
+            this.Controls.Add(this.txtArguments);
             this.Controls.Add(this.checkOpenUnpackFolder);
+            this.Controls.Add(this.labFileDescription);
+            this.Controls.Add(this.labArguments);
             this.Controls.Add(this.labUnpackDir);
             this.Controls.Add(this.comboUnpackDir);
+            this.Controls.Add(this.labFileDescriptionDescription);
             this.Controls.Add(this.labRepackableDescr);
             this.Controls.Add(this.checkRepackable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -104,5 +140,10 @@
         private System.Windows.Forms.Label labUnpackDir;
         private System.Windows.Forms.CheckBox checkOpenUnpackFolder;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.TextBox txtArguments;
+        private System.Windows.Forms.Label labArguments;
+        private System.Windows.Forms.Label labFileDescription;
+        private System.Windows.Forms.TextBox txtFileDescription;
+        private System.Windows.Forms.Label labFileDescriptionDescription;
     }
 }

@@ -35,6 +35,8 @@ namespace Unpacker
         private static bool openUnpackedDir = false;
         // Local path to the exe file inside target app dir, that needs to be launched
         private static string pathToMainExe = null;
+        // Arguments to pass to target app
+        private static string launchArguments = null;
         // A flag that indicates whether or not the splash screen tool is present inside the package
         private static bool isProgressBarSplashExePresent;
         // A time stamp that will help to determine whether or not any file of target app was changed (i.e. the need of repacking)
@@ -54,7 +56,7 @@ namespace Unpacker
         {
 #if DEBUG
             Console.WriteLine("Unpacker is running in Debug");
-            Console.WriteLine("To debug attach to process now and press Enter...");
+            Console.WriteLine("Attach to process now and press Enter...");
             Console.ReadLine();
             Console.WriteLine("Resuming");
 #endif
@@ -157,6 +159,9 @@ namespace Unpacker
                 // Load relative path to the main exe
                 pathToMainExe = me.ReadString();
 
+                // Load launch arguments for main exe
+                launchArguments = me.ReadString();
+
                 timer.Start();
                 Process splashProgressBarProc = null;
 
@@ -207,7 +212,7 @@ namespace Unpacker
             ProcessStartInfo procInfo = new ProcessStartInfo()
             {
                 FileName = Path.Combine(tempDir, pathToMainExe),
-                Arguments = string.Join(" ", args.Select(x => $"\"{x}\"")),
+                Arguments = launchArguments + " " + string.Join(" ", args.Select(x => $"\"{x}\"")),
                 WorkingDirectory = tempDir,
                 UseShellExecute = !stdoutRedirected     // if stdout is redirected, then redirect i/o of the target app too
             };
@@ -236,7 +241,7 @@ namespace Unpacker
                     // 7. Unpacking directory type
                     // 8. -repack flag = mark, that this is the repacking process, which will result in deletion of unpacked temp folder after repacking
                     ProcessStartInfo repackProcInfo = new ProcessStartInfo(Path.Combine(repackerTempDir, "packer.exe"));
-                    repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" True True {openUnpackedDir} {unpackingDirectoryType} -repack";
+                    repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" ""{launchArguments.Replace("\"", "\\\"")}"" True True {openUnpackedDir} {unpackingDirectoryType} -repack";
 #if (!DEBUG)
                 repackProcInfo.CreateNoWindow = true;
                 repackProcInfo.WindowStyle = ProcessWindowStyle.Hidden;

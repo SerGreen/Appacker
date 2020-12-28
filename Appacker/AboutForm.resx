@@ -140,7 +140,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
@@ -158,8 +158,8 @@
   <data name="btnDismiss.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>404, 261</value>
+  <data name="&gt;&gt;linkIconsCredit2.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -173,6 +173,9 @@
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
+  </data>
+  <data name="&gt;&gt;linkIconsCredit2.Name" xml:space="preserve">
+    <value>linkIconsCredit2</value>
   </data>
   <data name="linkIconsCredit.Text" xml:space="preserve">
     <value>Good Ware from Flaticon</value>
@@ -217,7 +220,7 @@
     <value>3</value>
   </data>
   <data name="&gt;&gt;linkIconsCredit.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="labVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>134, 107</value>
@@ -226,13 +229,13 @@
     <value>$this</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
+    <value>91, 17</value>
   </data>
   <data name="&gt;&gt;linkGithub.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -519,7 +522,7 @@
     <value>30, 15</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -530,14 +533,20 @@
   <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>404, 261</value>
+  </data>
+  <data name="linkIconsCredit2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
   <data name="&gt;&gt;btnDismiss.Name" xml:space="preserve">
     <value>btnDismiss</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
+  <data name="linkIconsCredit2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 170</value>
   </data>
   <data name="linkGithub.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -546,7 +555,10 @@
     <value>1</value>
   </data>
   <data name="&gt;&gt;labVersion.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;linkIconsCredit2.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -560,14 +572,23 @@
   <data name="linkGithub.Text" xml:space="preserve">
     <value>https://github.com/SerGreen/Appacker</value>
   </data>
+  <data name="linkIconsCredit2.Text" xml:space="preserve">
+    <value>Offise XS set from Icons8</value>
+  </data>
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="linkIconsCredit2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
   <data name="btnDismiss.Text" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="linkIconsCredit2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>27, 130</value>
@@ -591,7 +612,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 17</value>
+    <value>161, 17</value>
   </data>
   <data name="linkIconsCredit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -603,10 +624,13 @@
     <value>True</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 190</value>
+    <value>134, 203</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Roboto Light, 42pt</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -624,7 +648,7 @@
     <value>linkIconsCredit</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;labVersion.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -633,7 +657,10 @@
     <value>label8</value>
   </data>
   <data name="&gt;&gt;btnDismiss.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
+  </data>
+  <data name="linkIconsCredit2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 17</value>
   </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>$this</value>
@@ -653,6 +680,9 @@
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="linkIconsCredit2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>112, 24</value>
   </data>
@@ -667,6 +697,12 @@
   </data>
   <data name="linkIconsCredit.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;linkIconsCredit2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="linkIconsCredit2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="labVersion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
@@ -699,7 +735,7 @@
     <value>linkGithub</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Icons credit:</value>
+    <value>Icons credits:</value>
   </data>
   <data name="btnDismiss.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 23</value>
@@ -714,7 +750,7 @@
     <value>label6</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>© 2018 – SerGreen</value>
+    <value>© 2018-2020  SerGreen</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

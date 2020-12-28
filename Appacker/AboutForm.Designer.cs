@@ -39,6 +39,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.linkGithub = new System.Windows.Forms.LinkLabel();
             this.label7 = new System.Windows.Forms.Label();
+            this.linkIconsCredit2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,6 +105,15 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
+            // linkIconsCredit2
+            // 
+            resources.ApplyResources(this.linkIconsCredit2, "linkIconsCredit2");
+            this.linkIconsCredit2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkIconsCredit2.Name = "linkIconsCredit2";
+            this.linkIconsCredit2.TabStop = true;
+            this.linkIconsCredit2.VisitedLinkColor = System.Drawing.Color.Indigo;
+            this.linkIconsCredit2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkIconsCredit_LinkClicked);
+            // 
             // AboutForm
             // 
             this.AcceptButton = this.btnDismiss;
@@ -111,6 +121,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.linkGithub);
+            this.Controls.Add(this.linkIconsCredit2);
             this.Controls.Add(this.linkIconsCredit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
@@ -142,5 +153,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.LinkLabel linkGithub;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.LinkLabel linkIconsCredit2;
     }
 }

@@ -133,7 +133,7 @@
     <value>154, 17</value>
   </data>
   <data name="checkRepackable.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>1</value>
   </data>
   <data name="checkRepackable.Text" xml:space="preserve">
     <value>Self-repackable application</value>
@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkRepackable.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="labRepackableDescr.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -160,7 +160,7 @@
     <value>36, 39</value>
   </data>
   <data name="labRepackableDescr.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="labRepackableDescr.Text" xml:space="preserve">
     <value>Line 1
@@ -177,7 +177,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labRepackableDescr.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
   <data name="comboUnpackDir.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -198,10 +198,10 @@ Line 3</value>
     <value>12, 91</value>
   </data>
   <data name="comboUnpackDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 21</value>
+    <value>410, 21</value>
   </data>
   <data name="comboUnpackDir.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;comboUnpackDir.Name" xml:space="preserve">
     <value>comboUnpackDir</value>
@@ -213,7 +213,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboUnpackDir.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="labUnpackDir.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -225,7 +225,7 @@ Line 3</value>
     <value>88, 13</value>
   </data>
   <data name="labUnpackDir.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>3</value>
   </data>
   <data name="labUnpackDir.Text" xml:space="preserve">
     <value>Unpack directory</value>
@@ -240,7 +240,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labUnpackDir.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="checkOpenUnpackFolder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -252,7 +252,7 @@ Line 3</value>
     <value>245, 17</value>
   </data>
   <data name="checkOpenUnpackFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>5</value>
   </data>
   <data name="checkOpenUnpackFolder.Text" xml:space="preserve">
     <value>Open unpack directory in Explorer after launch</value>
@@ -267,11 +267,156 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkOpenUnpackFolder.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="txtArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 164</value>
+  </data>
+  <data name="txtArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 20</value>
+  </data>
+  <data name="txtArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtArguments.Name" xml:space="preserve">
+    <value>txtArguments</value>
+  </data>
+  <data name="&gt;&gt;txtArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtArguments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtArguments.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labArguments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 148</value>
+  </data>
+  <data name="labArguments.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 10, 3, 0</value>
+  </data>
+  <data name="labArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 13</value>
+  </data>
+  <data name="labArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="labArguments.Text" xml:space="preserve">
+    <value>Command line arguments for target application</value>
+  </data>
+  <data name="&gt;&gt;labArguments.Name" xml:space="preserve">
+    <value>labArguments</value>
+  </data>
+  <data name="&gt;&gt;labArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labArguments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labArguments.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labFileDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labFileDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labFileDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 197</value>
+  </data>
+  <data name="labFileDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 10, 3, 0</value>
+  </data>
+  <data name="labFileDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 13</value>
+  </data>
+  <data name="labFileDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="labFileDescription.Text" xml:space="preserve">
+    <value>FileDescription parameter for the package executable</value>
+  </data>
+  <data name="&gt;&gt;labFileDescription.Name" xml:space="preserve">
+    <value>labFileDescription</value>
+  </data>
+  <data name="&gt;&gt;labFileDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labFileDescription.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labFileDescription.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="txtFileDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtFileDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 213</value>
+  </data>
+  <data name="txtFileDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 20</value>
+  </data>
+  <data name="txtFileDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;txtFileDescription.Name" xml:space="preserve">
+    <value>txtFileDescription</value>
+  </data>
+  <data name="&gt;&gt;txtFileDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFileDescription.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtFileDescription.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labFileDescriptionDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labFileDescriptionDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labFileDescriptionDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 236</value>
+  </data>
+  <data name="labFileDescriptionDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 26</value>
+  </data>
+  <data name="labFileDescriptionDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labFileDescriptionDescription.Text" xml:space="preserve">
+    <value>Used as the program name by Windows in 'Open with...' dialog
+If left empty, this parameter will be taken from the main executable file</value>
+  </data>
+  <data name="&gt;&gt;labFileDescriptionDescription.Name" xml:space="preserve">
+    <value>labFileDescriptionDescription</value>
+  </data>
+  <data name="&gt;&gt;labFileDescriptionDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labFileDescriptionDescription.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labFileDescriptionDescription.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -279,13 +424,13 @@ Line 3</value>
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>464, 143</value>
+    <value>434, 271</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>9999, 210</value>
+    <value>9999, 320</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>450, 173</value>
+    <value>450, 310</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

@@ -39,11 +39,10 @@
             this.btnBrowsePackPath = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.treeView = new System.Windows.Forms.TreeView();
-            this.treeViewIconsList = new System.Windows.Forms.ImageList(this.components);
+            this.treeVieIconsList = new System.Windows.Forms.ImageList(this.components);
             this.labMainExePath = new System.Windows.Forms.Label();
             this.btnPack = new System.Windows.Forms.Button();
             this.flagsIamgeList = new System.Windows.Forms.ImageList(this.components);
-            this.btnIconReset = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.packToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,21 +55,22 @@
             this.labTreeViewCaption = new System.Windows.Forms.Label();
             this.btnChangeIcon = new System.Windows.Forms.LinkLabel();
             this.comboMainExePath = new System.Windows.Forms.ComboBox();
-            this.picAppIcon = new System.Windows.Forms.PictureBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.labOverride = new System.Windows.Forms.Label();
-            this.indAppFolder = new System.Windows.Forms.PictureBox();
-            this.indPackExePath = new System.Windows.Forms.PictureBox();
-            this.indMainExe = new System.Windows.Forms.PictureBox();
             this.labSize = new System.Windows.Forms.Label();
-            this.btnAdvancedOptions = new System.Windows.Forms.Button();
             this.cultureManager = new Infralution.Localization.CultureManager(this.components);
             this.openIconDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnAdvancedOptions = new System.Windows.Forms.Button();
+            this.indMainExe = new System.Windows.Forms.PictureBox();
+            this.indPackExePath = new System.Windows.Forms.PictureBox();
+            this.indAppFolder = new System.Windows.Forms.PictureBox();
+            this.btnIconReset = new System.Windows.Forms.Button();
+            this.picAppIcon = new System.Windows.Forms.PictureBox();
             this.menuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indMainExe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // folderBrowserDialog
@@ -115,7 +115,7 @@
             this.txtPackExePath.Name = "txtPackExePath";
             this.txtPackExePath.TextChanged += new System.EventHandler(this.txtPackPath_TextChanged);
             this.txtPackExePath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPackPath_DragDrop);
-            this.txtPackExePath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
+            this.txtPackExePath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtPackPath_DragEnter);
             this.txtPackExePath.Leave += new System.EventHandler(this.txtPackExePath_Leave);
             // 
             // btnBrowsePackPath
@@ -136,7 +136,7 @@
             resources.ApplyResources(this.treeView, "treeView");
             this.treeView.FullRowSelect = true;
             this.treeView.HideSelection = false;
-            this.treeView.ImageList = this.treeViewIconsList;
+            this.treeView.ImageList = this.treeVieIconsList;
             this.treeView.Name = "treeView";
             this.treeView.ShowRootLines = false;
             this.treeView.TabStop = false;
@@ -144,15 +144,20 @@
             this.treeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
             this.treeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
             // 
-            // treeViewIconsList
+            // treeVieIconsList
             // 
-            this.treeViewIconsList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("treeViewIconsList.ImageStream")));
-            this.treeViewIconsList.TransparentColor = System.Drawing.Color.Transparent;
-            this.treeViewIconsList.Images.SetKeyName(0, "folder-16.png");
-            this.treeViewIconsList.Images.SetKeyName(1, "folder-open-16.png");
-            this.treeViewIconsList.Images.SetKeyName(2, "file-16.png");
-            this.treeViewIconsList.Images.SetKeyName(3, "file-exe-16.png");
-            this.treeViewIconsList.Images.SetKeyName(4, "package-16.png");
+            this.treeVieIconsList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("treeVieIconsList.ImageStream")));
+            this.treeVieIconsList.TransparentColor = System.Drawing.Color.Transparent;
+            this.treeVieIconsList.Images.SetKeyName(0, "folder-closed-16.png");
+            this.treeVieIconsList.Images.SetKeyName(1, "folder-open-16.png");
+            this.treeVieIconsList.Images.SetKeyName(2, "file-16.png");
+            this.treeVieIconsList.Images.SetKeyName(3, "file-exe-16.png");
+            this.treeVieIconsList.Images.SetKeyName(4, "package-16.png");
+            this.treeVieIconsList.Images.SetKeyName(5, "file-lnk-16.png");
+            this.treeVieIconsList.Images.SetKeyName(6, "file-bin-16.png");
+            this.treeVieIconsList.Images.SetKeyName(7, "file-bat-16.png");
+            this.treeVieIconsList.Images.SetKeyName(8, "file-cmd-16.png");
+            this.treeVieIconsList.Images.SetKeyName(9, "box-16.png");
             // 
             // labMainExePath
             // 
@@ -172,19 +177,6 @@
             this.flagsIamgeList.TransparentColor = System.Drawing.Color.Transparent;
             this.flagsIamgeList.Images.SetKeyName(0, "united-kingdom-flag-icon-32.png");
             this.flagsIamgeList.Images.SetKeyName(1, "russia-flag-icon-32.png");
-            // 
-            // btnIconReset
-            // 
-            resources.ApplyResources(this.btnIconReset, "btnIconReset");
-            this.btnIconReset.BackColor = System.Drawing.Color.Transparent;
-            this.btnIconReset.BackgroundImage = global::Appacker.Properties.Resources.close_icon;
-            this.btnIconReset.FlatAppearance.BorderSize = 0;
-            this.btnIconReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnIconReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnIconReset.ForeColor = System.Drawing.Color.Red;
-            this.btnIconReset.Name = "btnIconReset";
-            this.btnIconReset.UseVisualStyleBackColor = false;
-            this.btnIconReset.Click += new System.EventHandler(this.btnIconReset_Click);
             // 
             // menuStrip
             // 
@@ -225,14 +217,14 @@
             // 
             // englishToolStripMenuItem
             // 
-            this.englishToolStripMenuItem.Image = global::Appacker.Properties.Resources.united_kingdom_flag_icon_32;
+            this.englishToolStripMenuItem.Image = global::Appacker.Properties.Resources.flag_great_britain_30;
             resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // russianToolStripMenuItem
             // 
-            this.russianToolStripMenuItem.Image = global::Appacker.Properties.Resources.russia_flag_icon_32;
+            this.russianToolStripMenuItem.Image = global::Appacker.Properties.Resources.flag_russian_federation_30;
             resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
             this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
             this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
@@ -246,6 +238,7 @@
             // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.Image = global::Appacker.Properties.Resources.info_16;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
@@ -271,13 +264,6 @@
             this.comboMainExePath.Name = "comboMainExePath";
             this.comboMainExePath.SelectedIndexChanged += new System.EventHandler(this.comboMainExePath_SelectedIndexChanged);
             // 
-            // picAppIcon
-            // 
-            resources.ApplyResources(this.picAppIcon, "picAppIcon");
-            this.picAppIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picAppIcon.Name = "picAppIcon";
-            this.picAppIcon.TabStop = false;
-            // 
             // progressBar
             // 
             resources.ApplyResources(this.progressBar, "progressBar");
@@ -289,38 +275,10 @@
             this.labOverride.ForeColor = System.Drawing.Color.Red;
             this.labOverride.Name = "labOverride";
             // 
-            // indAppFolder
-            // 
-            this.indAppFolder.BackColor = System.Drawing.Color.Red;
-            resources.ApplyResources(this.indAppFolder, "indAppFolder");
-            this.indAppFolder.Name = "indAppFolder";
-            this.indAppFolder.TabStop = false;
-            // 
-            // indPackExePath
-            // 
-            this.indPackExePath.BackColor = System.Drawing.Color.Red;
-            resources.ApplyResources(this.indPackExePath, "indPackExePath");
-            this.indPackExePath.Name = "indPackExePath";
-            this.indPackExePath.TabStop = false;
-            // 
-            // indMainExe
-            // 
-            resources.ApplyResources(this.indMainExe, "indMainExe");
-            this.indMainExe.BackColor = System.Drawing.Color.Red;
-            this.indMainExe.Name = "indMainExe";
-            this.indMainExe.TabStop = false;
-            // 
             // labSize
             // 
             resources.ApplyResources(this.labSize, "labSize");
             this.labSize.Name = "labSize";
-            // 
-            // btnAdvancedOptions
-            // 
-            resources.ApplyResources(this.btnAdvancedOptions, "btnAdvancedOptions");
-            this.btnAdvancedOptions.Name = "btnAdvancedOptions";
-            this.btnAdvancedOptions.UseVisualStyleBackColor = true;
-            this.btnAdvancedOptions.Click += new System.EventHandler(this.btnAdvancedOptions_Click);
             // 
             // cultureManager
             // 
@@ -329,6 +287,58 @@
             // openIconDialog
             // 
             resources.ApplyResources(this.openIconDialog, "openIconDialog");
+            // 
+            // btnAdvancedOptions
+            // 
+            resources.ApplyResources(this.btnAdvancedOptions, "btnAdvancedOptions");
+            this.btnAdvancedOptions.Image = global::Appacker.Properties.Resources.tune_16;
+            this.btnAdvancedOptions.Name = "btnAdvancedOptions";
+            this.btnAdvancedOptions.UseVisualStyleBackColor = true;
+            this.btnAdvancedOptions.Click += new System.EventHandler(this.btnAdvancedOptions_Click);
+            // 
+            // indMainExe
+            // 
+            resources.ApplyResources(this.indMainExe, "indMainExe");
+            this.indMainExe.BackColor = System.Drawing.Color.Red;
+            this.indMainExe.Name = "indMainExe";
+            this.indMainExe.TabStop = false;
+            // 
+            // indPackExePath
+            // 
+            this.indPackExePath.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.indPackExePath, "indPackExePath");
+            this.indPackExePath.Name = "indPackExePath";
+            this.indPackExePath.TabStop = false;
+            // 
+            // indAppFolder
+            // 
+            this.indAppFolder.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.indAppFolder, "indAppFolder");
+            this.indAppFolder.Name = "indAppFolder";
+            this.indAppFolder.TabStop = false;
+            // 
+            // btnIconReset
+            // 
+            resources.ApplyResources(this.btnIconReset, "btnIconReset");
+            this.btnIconReset.BackColor = System.Drawing.Color.Transparent;
+            this.btnIconReset.BackgroundImage = global::Appacker.Properties.Resources.close_icon;
+            this.btnIconReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIconReset.FlatAppearance.BorderSize = 0;
+            this.btnIconReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnIconReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnIconReset.ForeColor = System.Drawing.Color.Red;
+            this.btnIconReset.Name = "btnIconReset";
+            this.btnIconReset.UseVisualStyleBackColor = false;
+            this.btnIconReset.Click += new System.EventHandler(this.btnIconReset_Click);
+            // 
+            // picAppIcon
+            // 
+            resources.ApplyResources(this.picAppIcon, "picAppIcon");
+            this.picAppIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picAppIcon.Name = "picAppIcon";
+            this.picAppIcon.TabStop = false;
+            this.picAppIcon.DragDrop += new System.Windows.Forms.DragEventHandler(this.picAppIcon_DragDrop);
+            this.picAppIcon.DragEnter += new System.Windows.Forms.DragEventHandler(this.picAppIcon_DragEnter);
             // 
             // MainForm
             // 
@@ -360,10 +370,10 @@
             this.Name = "MainForm";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indMainExe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,7 +391,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.TreeView treeView;
         private System.Windows.Forms.Label labMainExePath;
-        private System.Windows.Forms.ImageList treeViewIconsList;
         private System.Windows.Forms.Button btnPack;
         private System.Windows.Forms.PictureBox picAppIcon;
         private System.Windows.Forms.ImageList flagsIamgeList;
@@ -407,6 +416,7 @@
         private System.Windows.Forms.PictureBox indPackExePath;
         private System.Windows.Forms.Label labSize;
         private System.Windows.Forms.Button btnAdvancedOptions;
+        private System.Windows.Forms.ImageList treeVieIconsList;
     }
 }
 

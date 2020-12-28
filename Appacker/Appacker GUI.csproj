@@ -52,7 +52,7 @@
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\open box icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\icons\open box icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
@@ -100,6 +100,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrySettingsProvider.cs" />
     <Compile Include="ToolsStorage.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -136,14 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="ToolsStorage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ToolsStorage.Designer.cs</LastGenOutput>
@@ -175,10 +175,23 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Lib\Infralution.Localization.dll" />
+    <None Include="Resources\icons\flag-russian-federation-30.png" />
+    <None Include="Resources\icons\flag-great-britain-30.png" />
+    <None Include="Resources\icons\close-16.png" />
+    <None Include="Resources\icons\cancel-16.png" />
+    <None Include="Resources\icons\settings-16.png" />
+    <None Include="Resources\icons\info-16.png" />
+    <None Include="Resources\icons\menu-16.png" />
+    <None Include="Resources\icons\icons8-tune-16.png" />
+    <None Include="Resources\icons\tune-16.png" />
+    <None Include="Resources\icons\close_icon.png" />
+    <None Include="Resources\icons\open_box_icon.png" />
+    <Content Include="Resources\VerInfoLib.dll" />
+    <Content Include="Resources\VerInfoLib.exe" />
     <None Include="Resources\ProgressBarSplash.exe" />
     <None Include="Resources\open_box_icon.png" />
     <None Include="Resources\close_icon.png" />
-    <Content Include="Resources\open box icon.ico" />
+    <Content Include="Resources\icons\open box icon.ico" />
     <None Include="Resources\russia_flag_icon_32.png" />
     <None Include="Resources\united_kingdom_flag_icon_32.png" />
     <None Include="Resources\Unpacker.exe" />

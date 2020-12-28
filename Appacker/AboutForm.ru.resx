@@ -121,11 +121,23 @@
     <value>Версия:</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="linkIconsCredit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 17</value>
+  </data>
+  <data name="linkIconsCredit.Text" xml:space="preserve">
+    <value>Good Ware на Flaticon</value>
+  </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 17</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Автор иконок:</value>
+  </data>
+  <data name="linkIconsCredit2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 17</value>
+  </data>
+  <data name="linkIconsCredit2.Text" xml:space="preserve">
+    <value>Набор Offise XS на Icons8</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
