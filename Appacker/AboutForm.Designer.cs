@@ -66,8 +66,8 @@
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Image = global::Appacker.Properties.Resources.open_box_icon;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
@@ -112,7 +112,7 @@
             this.linkIconsCredit2.Name = "linkIconsCredit2";
             this.linkIconsCredit2.TabStop = true;
             this.linkIconsCredit2.VisitedLinkColor = System.Drawing.Color.Indigo;
-            this.linkIconsCredit2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkIconsCredit_LinkClicked);
+            this.linkIconsCredit2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkIconsCredit2_LinkClicked);
             // 
             // AboutForm
             // 
