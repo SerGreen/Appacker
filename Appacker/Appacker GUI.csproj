@@ -182,18 +182,13 @@
     <None Include="Resources\icons\settings-16.png" />
     <None Include="Resources\icons\info-16.png" />
     <None Include="Resources\icons\menu-16.png" />
-    <None Include="Resources\icons\icons8-tune-16.png" />
     <None Include="Resources\icons\tune-16.png" />
     <None Include="Resources\icons\close_icon.png" />
     <None Include="Resources\icons\open_box_icon.png" />
     <Content Include="Resources\VerInfoLib.dll" />
     <Content Include="Resources\VerInfoLib.exe" />
     <None Include="Resources\ProgressBarSplash.exe" />
-    <None Include="Resources\open_box_icon.png" />
-    <None Include="Resources\close_icon.png" />
     <Content Include="Resources\icons\open box icon.ico" />
-    <None Include="Resources\russia_flag_icon_32.png" />
-    <None Include="Resources\united_kingdom_flag_icon_32.png" />
     <None Include="Resources\Unpacker.exe" />
     <None Include="Resources\Packer.exe" />
   </ItemGroup>

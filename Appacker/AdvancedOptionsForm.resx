@@ -198,7 +198,7 @@ Line 3</value>
     <value>12, 91</value>
   </data>
   <data name="comboUnpackDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 21</value>
+    <value>440, 21</value>
   </data>
   <data name="comboUnpackDir.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -279,7 +279,7 @@ Line 3</value>
     <value>12, 164</value>
   </data>
   <data name="txtArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 20</value>
+    <value>440, 20</value>
   </data>
   <data name="txtArguments.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -369,7 +369,7 @@ Line 3</value>
     <value>12, 213</value>
   </data>
   <data name="txtFileDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 20</value>
+    <value>440, 20</value>
   </data>
   <data name="txtFileDescription.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -424,13 +424,13 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>434, 271</value>
+    <value>464, 271</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>9999, 320</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>450, 310</value>
+    <value>480, 310</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
