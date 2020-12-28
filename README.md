@@ -102,10 +102,11 @@ __If it is a self-repacking application, CoolApp.exe does the following:__
 
 ## Dependancies and credits
 * [IconLib by Gustavo Franco](https://www.codeproject.com/Articles/16178/IconLib-Icons-Unfolded-MultiIcon-and-Windows-Vista) &mdash; Library for work with windows `.ico` images.
-* [IconInjector by some chinese guy](https://hackforums.net/showthread.php?tid=1021081) &mdash; Library for injecting icons into external executables.
+* [IconInjector by 'some chinese guy'](https://hackforums.net/showthread.php?tid=1021081) &mdash; Library for injecting icons into external executables.
 * [Fody.Costura by Simon Cropp](https://github.com/Fody/Costura) &mdash; NuGet package for embedding .exe and .dll files into the main executable.
 * [Resource.Embedder by MarcStan](https://gitlab.com/MarcStan/Resource.Embedder) &mdash; NuGet package for embedding localization satellite assemblies into the main executable.
 * [CultureManager by Grant Frisken](https://www.codeproject.com/Articles/23694/Changing-Your-Application-User-Interface-Culture-O) &mdash; WinForms component that allows dynamically update language and UI Culture of the form without closing and recreating it.
 * [XDMessaging by TheCodeKing](https://thecodeking.co.uk/project/xdmessaging/usage/) &mdash; Lightweight easy-to-use library for inter-process communication.
 * [CueProvider by Ravi Bhavnani](https://www.codeproject.com/Articles/27853/CueProvider) &mdash; Lightweight class that lets you add cue banners to a TextBox.
 * [NDesk.Options](http://www.ndesk.org/Options) &mdash; NuGet package for parsing program arguments.
+* [VerInfoLib by Denis Zabavchik](https://www.codeproject.com/Articles/13355/Modification-of-Version-Information-Resources-in-C) &mdash; Library that provides an easy way to read, modify, and save version information resource(s) (RT_VERSION) in compiled executable modules (EXE, DLL, OCX, SCR etc.).
