@@ -66,11 +66,13 @@
             this.indAppFolder = new System.Windows.Forms.PictureBox();
             this.btnIconReset = new System.Windows.Forms.Button();
             this.picAppIcon = new System.Windows.Forms.PictureBox();
+            this.picVCRWarning = new System.Windows.Forms.PictureBox();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.indMainExe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picVCRWarning)).BeginInit();
             this.SuspendLayout();
             // 
             // folderBrowserDialog
@@ -340,10 +342,20 @@
             this.picAppIcon.DragDrop += new System.Windows.Forms.DragEventHandler(this.picAppIcon_DragDrop);
             this.picAppIcon.DragEnter += new System.Windows.Forms.DragEventHandler(this.picAppIcon_DragEnter);
             // 
+            // picVCRWarning
+            // 
+            resources.ApplyResources(this.picVCRWarning, "picVCRWarning");
+            this.picVCRWarning.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picVCRWarning.Image = global::Appacker.Properties.Resources.red_warning_16;
+            this.picVCRWarning.Name = "picVCRWarning";
+            this.picVCRWarning.TabStop = false;
+            this.picVCRWarning.Click += new System.EventHandler(this.picVCRWarning_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.picVCRWarning);
             this.Controls.Add(this.btnAdvancedOptions);
             this.Controls.Add(this.labSize);
             this.Controls.Add(this.indMainExe);
@@ -368,12 +380,14 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.indMainExe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picVCRWarning)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,6 +431,7 @@
         private System.Windows.Forms.Label labSize;
         private System.Windows.Forms.Button btnAdvancedOptions;
         private System.Windows.Forms.ImageList treeVieIconsList;
+        private System.Windows.Forms.PictureBox picVCRWarning;
     }
 }
 

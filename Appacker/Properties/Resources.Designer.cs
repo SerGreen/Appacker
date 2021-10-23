@@ -113,6 +113,16 @@ namespace Appacker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap red_warning_16 {
+            get {
+                object obj = ResourceManager.GetObject("red_warning_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tune_16 {
             get {
                 object obj = ResourceManager.GetObject("tune_16", resourceCulture);

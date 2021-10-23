@@ -133,6 +133,9 @@
   <data name="open_box_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\open_box_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="red_warning_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\red-warning-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tune_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\tune-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

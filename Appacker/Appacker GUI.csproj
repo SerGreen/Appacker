@@ -121,6 +121,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.ru.resx</DependentUpon>
     </Compile>
+    <Compile Include="VCRuntimeWarningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VCRuntimeWarningForm.Designer.cs">
+      <DependentUpon>VCRuntimeWarningForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +140,9 @@
       <DependentUpon>AdvancedOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.ru-RU.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.ru.resx">
@@ -155,6 +164,12 @@
     <EmbeddedResource Include="Resources\Strings.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VCRuntimeWarningForm.resx">
+      <DependentUpon>VCRuntimeWarningForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VCRuntimeWarningForm.ru.resx">
+      <DependentUpon>VCRuntimeWarningForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -185,6 +200,7 @@
     <None Include="Resources\icons\tune-16.png" />
     <None Include="Resources\icons\close_icon.png" />
     <None Include="Resources\icons\open_box_icon.png" />
+    <None Include="Resources\red-warning-16.png" />
     <Content Include="Resources\VerInfoLib.dll" />
     <Content Include="Resources\VerInfoLib.exe" />
     <None Include="Resources\ProgressBarSplash.exe" />
