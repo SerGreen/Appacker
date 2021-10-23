@@ -1,5 +1,7 @@
 # Appacker
-This tool takes a folder with application and packs it into a single executable file (without compression) for easy distribution, portability or whatnot.
+This tool takes a folder with application and packs it into a single executable file (without compression) for easy distribution, portability or whatnot.  
+
+It depends on [Microsoft Visual C++ 2005 Service Pack 1 Redistributable Package](https://www.microsoft.com/download/details.aspx?id=26347) for changing the name of packed application. It will work without VC 2005 Runtime but package name will be "Appacker package".
 
 ## KNOWN ISSUE
 Appacker and packages created by it **can be detected as malware** by some antivirus software. That's because of a hacky way i used to package files: **packed app reads its own executable and extracts other files from it**, which antiviruses find hella suspicious. It's **false positive**, but it still gets in the way of using this app. I **can't fix this**, which renders this app **not very useful**. ¯\\\_(ツ)\_/¯
