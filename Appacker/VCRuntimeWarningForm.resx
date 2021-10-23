@@ -160,7 +160,7 @@ It is recommended that you install Microsoft Visual C++ 2005 Service Pack 1 Redi
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 96</value>
+    <value>12, 97</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 13</value>
@@ -190,7 +190,7 @@ It is recommended that you install Microsoft Visual C++ 2005 Service Pack 1 Redi
     <value>True</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 96</value>
+    <value>192, 97</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>296, 13</value>
@@ -217,7 +217,7 @@ It is recommended that you install Microsoft Visual C++ 2005 Service Pack 1 Redi
     <value>Bottom</value>
   </data>
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 125</value>
+    <value>220, 126</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -247,7 +247,7 @@ It is recommended that you install Microsoft Visual C++ 2005 Service Pack 1 Redi
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>519, 160</value>
+    <value>519, 161</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -324,9 +324,6 @@ It is recommended that you install Microsoft Visual C++ 2005 Service Pack 1 Redi
         AAfwAAAP8AGAD/gBgB/4AYAf/APAP/wDwD/+A8B//wPA//8DwP//g8H//4PB///Bg///wAP//+AH///w
         D///8A////gf///4H////D////////////8=
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
