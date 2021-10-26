@@ -36,12 +36,12 @@ namespace Appacker
 
             SetRepackDescription();
 
-            if (!MainForm.vcRuntime80Installed) 
-            {
-                txtFileDescription.Enabled = false;
-                labFileDescription.Enabled = false;
-                labFileDescriptionDescription.Enabled = false;
-            }
+            //if (!MainForm.vcRuntime80Installed) 
+            //{
+            //    txtFileDescription.Enabled = false;
+            //    labFileDescription.Enabled = false;
+            //    labFileDescriptionDescription.Enabled = false;
+            //}
         }
 
         private void SetRepackDescription() => labRepackableDescr.Text = checkRepackable.Checked ? Resources.Strings.repackOnDescr : Resources.Strings.repackOffDescr;

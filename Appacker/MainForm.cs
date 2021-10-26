@@ -59,7 +59,7 @@ namespace Appacker
             // Visual C++ 2005 x86 Runtime
             var response = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Products\c1c4f01781cc94c4c8fb1542c0981a2a", "Version", null);
             vcRuntime80Installed = response != null;
-            picVCRWarning.Visible = !vcRuntime80Installed;
+            //picVCRWarning.Visible = !vcRuntime80Installed;
         }
 
         private void picVCRWarning_Click (object sender, EventArgs e) => ShowVCRWarning();
@@ -71,8 +71,8 @@ namespace Appacker
 
         private void MainForm_Shown (object sender, EventArgs e) 
         {
-            if (!vcRuntime80Installed)
-                ShowVCRWarning();
+            //if (!vcRuntime80Installed)
+            //    ShowVCRWarning();
         }
         #endregion
 
@@ -404,16 +404,19 @@ namespace Appacker
             File.WriteAllBytes(Path.Combine(tempDir, "verInfoLib.exe"), ToolsStorage.VerInfoLib);
             File.WriteAllBytes(Path.Combine(tempDir, "verInfoLib.dll"), ToolsStorage.VerInfoLibDLL);
 
+            if (!vcRuntime80Installed) 
+            {
+                File.WriteAllBytes(Path.Combine(tempDir, "mfc80.dll"), ToolsStorage.mfc80);
+                File.WriteAllBytes(Path.Combine(tempDir, "Microsoft.VC80.MFC.manifest"), ToolsStorage.Microsoft_VC80_MFC);
+            }
+
             // Inject new icon into unpacker.exe (take the icon from the main executable of unpacked app if user did not provide a custom icon)
             string iconPath = customIconPath ?? pathMainExe;
             IconSwapper.ChangeIcon(pathUnpacker, iconPath);
 
-            if (vcRuntime80Installed) 
-            {
-                // Change FileDescription field of unpacker.exe (take it from target app if not provided)
-                string fileDescription = string.IsNullOrWhiteSpace(customFileDescription) ? FileVersionInfo.GetVersionInfo(pathMainExe).FileDescription : customFileDescription;
-                Process.Start(Path.Combine(tempDir, "verInfoLib.exe"), $"-u \"{pathUnpacker}\" FileDescription \"{fileDescription}\"");
-            }
+            // Change FileDescription field of unpacker.exe (take it from target app if not provided)
+            string fileDescription = string.IsNullOrWhiteSpace(customFileDescription) ? FileVersionInfo.GetVersionInfo(pathMainExe).FileDescription : customFileDescription;
+            Process.Start(Path.Combine(tempDir, "verInfoLib.exe"), $"-u \"{pathUnpacker}\" FileDescription \"{fileDescription}\"");
 
             // Launch packer.exe with arguments:
             // 1. Path to unpacker.exe

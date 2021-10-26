@@ -200,7 +200,9 @@
     <None Include="Resources\icons\tune-16.png" />
     <None Include="Resources\icons\close_icon.png" />
     <None Include="Resources\icons\open_box_icon.png" />
+    <None Include="Resources\Microsoft.VC80.MFC.manifest" />
     <None Include="Resources\red-warning-16.png" />
+    <Content Include="Resources\mfc80.dll" />
     <Content Include="Resources\VerInfoLib.dll" />
     <Content Include="Resources\VerInfoLib.exe" />
     <None Include="Resources\ProgressBarSplash.exe" />

@@ -63,6 +63,26 @@ namespace Appacker {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] mfc80 {
+            get {
+                object obj = ResourceManager.GetObject("mfc80", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Microsoft_VC80_MFC {
+            get {
+                object obj = ResourceManager.GetObject("Microsoft_VC80_MFC", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Packer {
             get {
                 object obj = ResourceManager.GetObject("Packer", resourceCulture);
