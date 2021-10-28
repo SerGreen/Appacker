@@ -102,7 +102,7 @@ __If it is a self-repacking application, CoolApp.exe does the following:__
 * `IconLib` &mdash; DLL project for saving Windows `.ico` files (vanilla .NET can't save Windows icons correctly ¯\\\_(ツ)\_/¯ )
 * `IconInjector` &mdash; DLL project for replacing icons of external executables
 
-## Dependancies and credits
+## Dependencies and credits
 * [IconLib by Gustavo Franco](https://www.codeproject.com/Articles/16178/IconLib-Icons-Unfolded-MultiIcon-and-Windows-Vista) &mdash; Library for work with windows `.ico` images.
 * [IconInjector by 'some chinese guy'](https://hackforums.net/showthread.php?tid=1021081) &mdash; Library for injecting icons into external executables.
 * [Fody.Costura by Simon Cropp](https://github.com/Fody/Costura) &mdash; NuGet package for embedding .exe and .dll files into the main executable.
