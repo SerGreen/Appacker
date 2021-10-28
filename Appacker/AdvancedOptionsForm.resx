@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkRepackable.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="labRepackableDescr.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -177,7 +177,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labRepackableDescr.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="comboUnpackDir.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -213,7 +213,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboUnpackDir.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="labUnpackDir.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -240,7 +240,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labUnpackDir.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="checkOpenUnpackFolder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -267,7 +267,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkOpenUnpackFolder.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -294,7 +294,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtArguments.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="labArguments.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -327,7 +327,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labArguments.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="labFileDescription.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -360,7 +360,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labFileDescription.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtFileDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -384,7 +384,7 @@ Line 3</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtFileDescription.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="labFileDescriptionDescription.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -415,7 +415,61 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labFileDescriptionDescription.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
+  </data>
+  <data name="btnSaveIni.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 280</value>
+  </data>
+  <data name="btnSaveIni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 23</value>
+  </data>
+  <data name="btnSaveIni.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="btnSaveIni.Text" xml:space="preserve">
+    <value>Save settings in appacker.ini file</value>
+  </data>
+  <data name="&gt;&gt;btnSaveIni.Name" xml:space="preserve">
+    <value>btnSaveIni</value>
+  </data>
+  <data name="&gt;&gt;btnSaveIni.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSaveIni.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSaveIni.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labIniDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labIniDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labIniDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 306</value>
+  </data>
+  <data name="labIniDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 13</value>
+  </data>
+  <data name="labIniDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="labIniDescription.Text" xml:space="preserve">
+    <value>Settings will automatically load from ini file at launch if it exists</value>
+  </data>
+  <data name="&gt;&gt;labIniDescription.Name" xml:space="preserve">
+    <value>labIniDescription</value>
+  </data>
+  <data name="&gt;&gt;labIniDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labIniDescription.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labIniDescription.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -424,10 +478,10 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>464, 271</value>
+    <value>464, 326</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>9999, 320</value>
+    <value>9999, 5000</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>480, 310</value>

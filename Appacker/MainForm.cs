@@ -33,9 +33,11 @@ namespace Appacker
         internal string launchArguments = "";
         internal string customFileDescription = "";
 
+        private IniSettingsProvider iniSettings;
+
         internal static bool vcRuntime80Installed;
 
-        public MainForm()
+        public MainForm ()
         {
             InitializeComponent();
             // Fix btnIconReset background transparency by setting pictureBox as its Parent (and recalculate position)
@@ -47,8 +49,17 @@ namespace Appacker
             // Enable drag-and-drop for icon preview box
             picAppIcon.AllowDrop = true;
 
-            // Load language from settings
-            SetLanguage(RegistrySettingsProvider.Language);
+            // Load settings from INI file if it exists
+            iniSettings = new IniSettingsProvider();
+            if (iniSettings.isIniFilePresent)
+            {
+                LoadIniSettings();
+            }
+            else
+            {
+                // Load language from registry settings
+                SetLanguage(RegistrySettingsProvider.Language);
+            }
 
             checkVCRuntime();
         }
@@ -563,16 +574,20 @@ namespace Appacker
             cultureManager.UICulture =
                 System.Threading.Thread.CurrentThread.CurrentCulture =
                 System.Threading.Thread.CurrentThread.CurrentUICulture = language;
-            RegistrySettingsProvider.Language = cultureManager.UICulture;
+            
+            // Save language in registry only when there's no INI settings file
+            if (!iniSettings.isIniFilePresent)
+                RegistrySettingsProvider.Language = cultureManager.UICulture;
+
             CheckIfReadyToPack();
             SetCueBanners();
             UpdateEstimatedSize();
-            CrunchFixControlsVisibility();
+            CrutchFixControlsVisibility();
         }
         
         // Changing language resets Enabled and Visible parameters of controls to default values
         // So this is rather lazy fix by manually re-checking specific controlls
-        private void CrunchFixControlsVisibility()
+        private void CrutchFixControlsVisibility()
         {
             if (!string.IsNullOrWhiteSpace(txtAppFolderPath.Text))
                 comboMainExePath.Enabled = true;
@@ -677,6 +692,57 @@ namespace Appacker
             pathToCustomIcon = null;
             SetAppIconPreviewFromMainExe();
             btnIconReset.Visible = false;
+        }
+        #endregion
+
+        #region INI settings
+        private void LoadIniSettings ()
+        {
+            Settings settings = iniSettings.ReadIniSettings();
+
+            if (settings != null)
+            {
+                SetLanguage(CultureInfo.GetCultureInfo(settings.language));
+
+                isRepackable = settings.isRepackable;
+                openUnpackDirectory = settings.openUnpackDirectory;
+                unpackDirectory = settings.unpackDirectory;
+                launchArguments = settings.launchArguments;
+                customFileDescription = settings.customFileDescription;
+
+                this.Top = settings.positionTop;
+                this.Left = settings.positionLeft;
+                this.Width = settings.width;
+                this.Height = settings.height;
+            }
+        }
+
+        internal void SaveIniSettings ()
+        {
+            Settings settings = new Settings();
+
+            settings.language = cultureManager.UICulture.Name;
+
+            settings.isRepackable = isRepackable;
+            settings.openUnpackDirectory = openUnpackDirectory;
+            settings.unpackDirectory = unpackDirectory;
+            settings.launchArguments = launchArguments;
+            settings.customFileDescription = customFileDescription;
+
+            settings.positionTop = this.Top;
+            settings.positionLeft = this.Left;
+            settings.width = this.Width;
+            settings.height = this.Height;
+
+            iniSettings.SaveIniFile(settings);
+        }
+
+        private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
+        {
+            if (iniSettings.isIniFilePresent)
+            {
+                SaveIniSettings();
+            }
         }
         #endregion
 

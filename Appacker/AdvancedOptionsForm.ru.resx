@@ -176,8 +176,26 @@
     <value>Используется как название приложения в меню "Открыть с помощью..." в Windows
 Если оставить пустым, то это свойство будет взято из основного исполняемого файла</value>
   </data>
+  <data name="btnSaveIni.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 275</value>
+  </data>
+  <data name="btnSaveIni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 23</value>
+  </data>
+  <data name="btnSaveIni.Text" xml:space="preserve">
+    <value>Сохранить настройки в файл appacker.ini</value>
+  </data>
+  <data name="labIniDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 301</value>
+  </data>
+  <data name="labIniDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>437, 13</value>
+  </data>
+  <data name="labIniDescription.Text" xml:space="preserve">
+    <value>При запуске настройки автоматически загрузятся из ini файла, если он существует</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>474, 271</value>
+    <value>474, 324</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>490, 310</value>

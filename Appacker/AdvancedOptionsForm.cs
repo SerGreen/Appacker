@@ -47,7 +47,9 @@ namespace Appacker
         private void SetRepackDescription() => labRepackableDescr.Text = checkRepackable.Checked ? Resources.Strings.repackOnDescr : Resources.Strings.repackOffDescr;
 
         // Save options to the main form before closing
-        private void AdvancedOptionsForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void AdvancedOptionsForm_FormClosing (object sender, FormClosingEventArgs e) => SaveSettings();
+
+        private void SaveSettings ()
         {
             mainForm.isRepackable = checkRepackable.Checked;
             mainForm.openUnpackDirectory = checkOpenUnpackFolder.Checked;
@@ -61,5 +63,11 @@ namespace Appacker
         }
         
         private void checkRepackable_CheckedChanged(object sender, EventArgs e) => SetRepackDescription();
+
+        private void btnSaveIni_Click (object sender, EventArgs e)
+        {
+            SaveSettings();
+            mainForm.SaveIniSettings();
+        }
     }
 }

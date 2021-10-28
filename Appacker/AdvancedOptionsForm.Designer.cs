@@ -40,6 +40,8 @@
             this.labFileDescription = new System.Windows.Forms.Label();
             this.txtFileDescription = new System.Windows.Forms.TextBox();
             this.labFileDescriptionDescription = new System.Windows.Forms.Label();
+            this.btnSaveIni = new System.Windows.Forms.Button();
+            this.labIniDescription = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkRepackable
@@ -106,10 +108,25 @@
             this.labFileDescriptionDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labFileDescriptionDescription.Name = "labFileDescriptionDescription";
             // 
+            // btnSaveIni
+            // 
+            resources.ApplyResources(this.btnSaveIni, "btnSaveIni");
+            this.btnSaveIni.Name = "btnSaveIni";
+            this.btnSaveIni.UseVisualStyleBackColor = true;
+            this.btnSaveIni.Click += new System.EventHandler(this.btnSaveIni_Click);
+            // 
+            // labIniDescription
+            // 
+            resources.ApplyResources(this.labIniDescription, "labIniDescription");
+            this.labIniDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labIniDescription.Name = "labIniDescription";
+            // 
             // AdvancedOptionsForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labIniDescription);
+            this.Controls.Add(this.btnSaveIni);
             this.Controls.Add(this.txtFileDescription);
             this.Controls.Add(this.txtArguments);
             this.Controls.Add(this.checkOpenUnpackFolder);
@@ -145,5 +162,7 @@
         private System.Windows.Forms.Label labFileDescription;
         private System.Windows.Forms.TextBox txtFileDescription;
         private System.Windows.Forms.Label labFileDescriptionDescription;
+        private System.Windows.Forms.Button btnSaveIni;
+        private System.Windows.Forms.Label labIniDescription;
     }
 }
