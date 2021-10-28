@@ -112,3 +112,4 @@ __If it is a self-repacking application, CoolApp.exe does the following:__
 * [CueProvider by Ravi Bhavnani](https://www.codeproject.com/Articles/27853/CueProvider) &mdash; Lightweight class that lets you add cue banners to a TextBox.
 * [NDesk.Options](http://www.ndesk.org/Options) &mdash; NuGet package for parsing program arguments.
 * [VerInfoLib by Denis Zabavchik](https://www.codeproject.com/Articles/13355/Modification-of-Version-Information-Resources-in-C) &mdash; Library that provides an easy way to read, modify, and save version information resource(s) (RT_VERSION) in compiled executable modules (EXE, DLL, OCX, SCR etc.).
+* [ini-parser by rickyah](https://www.nuget.org/packages/ini-parser) &mdash; NuGet package for reading/writing INI data from IO streams, file streams, and strings.
