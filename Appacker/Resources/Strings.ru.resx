@@ -129,11 +129,17 @@
   <data name="cueAppDirPath" xml:space="preserve">
     <value>Перетащите сюда папку с приложением</value>
   </data>
+  <data name="cueFileDescription" xml:space="preserve">
+    <value>Брать из основного exe</value>
+  </data>
   <data name="cueMainExe" xml:space="preserve">
     <value>Выберите основной .exe файл</value>
   </data>
   <data name="cuePackExePath" xml:space="preserve">
     <value>Укажите куда сохранить пакет</value>
+  </data>
+  <data name="cuePassword" xml:space="preserve">
+    <value>Без пароля</value>
   </data>
   <data name="errorCaption" xml:space="preserve">
     <value>Упаковка прервана</value>

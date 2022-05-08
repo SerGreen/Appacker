@@ -42,6 +42,12 @@
             this.labFileDescriptionDescription = new System.Windows.Forms.Label();
             this.btnSaveIni = new System.Windows.Forms.Button();
             this.labIniDescription = new System.Windows.Forms.Label();
+            this.panelContainer = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.labPasswordDescription = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.labPassword = new System.Windows.Forms.Label();
+            this.panelContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkRepackable
@@ -121,22 +127,59 @@
             this.labIniDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labIniDescription.Name = "labIniDescription";
             // 
+            // panelContainer
+            // 
+            resources.ApplyResources(this.panelContainer, "panelContainer");
+            this.panelContainer.Controls.Add(this.btnClose);
+            this.panelContainer.Controls.Add(this.labPasswordDescription);
+            this.panelContainer.Controls.Add(this.txtPassword);
+            this.panelContainer.Controls.Add(this.labPassword);
+            this.panelContainer.Controls.Add(this.checkRepackable);
+            this.panelContainer.Controls.Add(this.labIniDescription);
+            this.panelContainer.Controls.Add(this.labRepackableDescr);
+            this.panelContainer.Controls.Add(this.btnSaveIni);
+            this.panelContainer.Controls.Add(this.labFileDescriptionDescription);
+            this.panelContainer.Controls.Add(this.txtFileDescription);
+            this.panelContainer.Controls.Add(this.comboUnpackDir);
+            this.panelContainer.Controls.Add(this.txtArguments);
+            this.panelContainer.Controls.Add(this.labUnpackDir);
+            this.panelContainer.Controls.Add(this.checkOpenUnpackFolder);
+            this.panelContainer.Controls.Add(this.labArguments);
+            this.panelContainer.Controls.Add(this.labFileDescription);
+            this.panelContainer.Name = "panelContainer";
+            // 
+            // btnClose
+            // 
+            resources.ApplyResources(this.btnClose, "btnClose");
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Name = "btnClose";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // labPasswordDescription
+            // 
+            resources.ApplyResources(this.labPasswordDescription, "labPasswordDescription");
+            this.labPasswordDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labPasswordDescription.Name = "labPasswordDescription";
+            // 
+            // txtPassword
+            // 
+            resources.ApplyResources(this.txtPassword, "txtPassword");
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.UseSystemPasswordChar = true;
+            // 
+            // labPassword
+            // 
+            resources.ApplyResources(this.labPassword, "labPassword");
+            this.labPassword.Name = "labPassword";
+            // 
             // AdvancedOptionsForm
             // 
+            this.AcceptButton = this.btnClose;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.labIniDescription);
-            this.Controls.Add(this.btnSaveIni);
-            this.Controls.Add(this.txtFileDescription);
-            this.Controls.Add(this.txtArguments);
-            this.Controls.Add(this.checkOpenUnpackFolder);
-            this.Controls.Add(this.labFileDescription);
-            this.Controls.Add(this.labArguments);
-            this.Controls.Add(this.labUnpackDir);
-            this.Controls.Add(this.comboUnpackDir);
-            this.Controls.Add(this.labFileDescriptionDescription);
-            this.Controls.Add(this.labRepackableDescr);
-            this.Controls.Add(this.checkRepackable);
+            this.CancelButton = this.btnClose;
+            this.Controls.Add(this.panelContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -144,8 +187,9 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdvancedOptionsForm_FormClosing);
+            this.panelContainer.ResumeLayout(false);
+            this.panelContainer.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -164,5 +208,10 @@
         private System.Windows.Forms.Label labFileDescriptionDescription;
         private System.Windows.Forms.Button btnSaveIni;
         private System.Windows.Forms.Label labIniDescription;
+        private System.Windows.Forms.Panel panelContainer;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label labPassword;
+        private System.Windows.Forms.Label labPasswordDescription;
+        private System.Windows.Forms.Button btnClose;
     }
 }

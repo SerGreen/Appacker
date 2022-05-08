@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,6 +60,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Unpacker Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,6 +79,15 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordForm.ru.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="..\SharedFiles\SharedFiles.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
@@ -84,6 +100,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Fody.3.0.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.3.0.0\build\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Costura.Fody.2.0.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.2.0.0\build\Costura.Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets'))" />
   </Target>
   <Import Project="..\packages\Costura.Fody.2.0.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.2.0.0\build\Costura.Fody.targets')" />
+  <Import Project="..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets" Condition="Exists('..\packages\Resource.Embedder.1.2.5\build\Resource.Embedder.targets')" />
 </Project>

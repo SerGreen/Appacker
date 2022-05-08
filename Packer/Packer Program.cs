@@ -29,7 +29,7 @@ namespace Packer
             Console.WriteLine("Resuming");
 #endif
 
-            string unpackerExePath, pathToPackedApp, localPathToMainExe, pathToFolderWithApp, launchArguments;
+            string unpackerExePath, pathToPackedApp, localPathToMainExe, pathToFolderWithApp, launchArguments, passHash;
             bool isSelfRepackable, isRepacking, openUnpackedDir; 
             bool isNoGui = false;   // determines the type of XDMessaging mode
             int unpackDirectory;    // Temp = 0, Desktop = 1, SameAsPackedExe = 2 or AskAtLaunch = 3
@@ -70,8 +70,19 @@ namespace Packer
                         unpackDirectory = 0;
                 }
                 isRepacking = false;
-                if (args.Length > 9 && (args[9] == "-repack" || args[9] == "repack"))
-                    isRepacking = true;
+                passHash = string.Empty;
+                if (args.Length > 9)
+                {
+                    if (args[9] == "-repack" || args[9] == "repack")
+                        isRepacking = true;
+                    else
+                    {
+                        passHash = args[9];
+                        if (args.Length > 10 && (args[10] == "-repack" || args[10] == "repack"))
+                            isRepacking = true;
+                    }
+                }
+                
 
                 // Create XDMessagingClient broadcaster to report progress
                 // Creating it here so the broadcaster is initialized before any possible return => finally
@@ -136,7 +147,7 @@ namespace Packer
                 // Do the packing
                 try
                 {
-                    PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable, launchArguments, isRepacking, openUnpackedDir, unpackDirectory);
+                    PackApp(unpackerExePath, pathToPackedApp, pathToFolderWithApp, localPathToMainExe, filesToPack, isSelfRepackable, launchArguments, isRepacking, openUnpackedDir, unpackDirectory, passHash);
                 }
                 catch (UnauthorizedAccessException)
                 {
@@ -179,14 +190,21 @@ namespace Packer
         /// <param name="unpackDirectory">Enum as int, 0 to 3, indicates whereto unpack files at launch</param>
         /// <param name="openUnpackedDir">Whether or not to open folder with unpacked files after unpacking</param>
         /// <param name="launchArguments">Arguments to pass to target exe with every launch</param>
-        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack, bool isSelfRepackable, string launchArguments, bool isRepacking, bool openUnpackedDir, int unpackDirectory)
+        /// <param name="passHash">Hash of a password for lauching packed app</param>
+        private static void PackApp(string unpackerExePath, string pathToPackedApp, string pathToFolderWithApp, string localPathToMainExe, List<string> filesToPack, bool isSelfRepackable, string launchArguments, bool isRepacking, bool openUnpackedDir, int unpackDirectory, string passHash)
         {
             using (var packedExe = new BinaryWriter(File.Open(pathToPackedApp, FileMode.Create, FileAccess.Write)))
             {
                 // Write wrapper app (unpacker.exe) 
-                // and the key-word mark that will help to separate wrapper app bytes from data bytes
+                // and the key-word mark that will help separate wrapper app bytes from data bytes
                 packedExe.Write(File.ReadAllBytes(unpackerExePath));    // byte[]
                 packedExe.Write(Encoding.UTF8.GetBytes("<SerGreen>"));  // byte[]
+
+                // Write password flag and password hash (if not empty)
+                bool hasPassword = !string.IsNullOrEmpty(passHash);
+                packedExe.Write(hasPassword);
+                if (hasPassword)
+                    packedExe.Write(ConvertHexStringToByteArray(passHash));
 
                 // Write self-repackable flag
                 packedExe.Write(isSelfRepackable);                      // bool
@@ -311,6 +329,23 @@ namespace Packer
             {
                 return false;
             }
+        }
+
+        private static byte[] ConvertHexStringToByteArray (string hexString)
+        {
+            if (hexString.Length != 64)
+            {
+                throw new ArgumentException(string.Format("Password hash should be exactly 32 bytes long (64 hex characters): {0}", hexString));
+            }
+
+            byte[] data = new byte[hexString.Length / 2];
+            for (int index = 0; index < data.Length; index++)
+            {
+                string byteValue = hexString.Substring(index * 2, 2);
+                data[index] = Convert.ToByte(byteValue, 16);
+            }
+
+            return data;
         }
     }
 }

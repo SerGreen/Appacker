@@ -126,12 +126,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.ru.resx</DependentUpon>
     </Compile>
-    <Compile Include="VCRuntimeWarningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VCRuntimeWarningForm.Designer.cs">
-      <DependentUpon>VCRuntimeWarningForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,12 +164,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="VCRuntimeWarningForm.resx">
-      <DependentUpon>VCRuntimeWarningForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VCRuntimeWarningForm.ru.resx">
-      <DependentUpon>VCRuntimeWarningForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -208,6 +196,9 @@
     <None Include="Resources\Microsoft.VC80.MFC.manifest" />
     <None Include="Resources\red-warning-16.png" />
     <Content Include="Resources\mfc80.dll" />
+    <None Include="Resources\password_16.png" />
+    <None Include="Resources\password_20.png" />
+    <None Include="Resources\password_161.png" />
     <Content Include="Resources\VerInfoLib.dll" />
     <Content Include="Resources\VerInfoLib.exe" />
     <None Include="Resources\ProgressBarSplash.exe" />
@@ -239,6 +230,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <Import Project="..\SharedFiles\SharedFiles.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>if "$(ConfigurationName)" == "Debug" (

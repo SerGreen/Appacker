@@ -32,6 +32,7 @@ namespace Appacker
         internal UnpackDirectory unpackDirectory = UnpackDirectory.Temp;
         internal string launchArguments = "";
         internal string customFileDescription = "";
+        internal string password = "";
 
         private IniSettingsProvider iniSettings;
 
@@ -70,21 +71,10 @@ namespace Appacker
             // Visual C++ 2005 x86 Runtime
             var response = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Products\c1c4f01781cc94c4c8fb1542c0981a2a", "Version", null);
             vcRuntime80Installed = response != null;
-            //picVCRWarning.Visible = !vcRuntime80Installed;
-        }
-
-        private void picVCRWarning_Click (object sender, EventArgs e) => ShowVCRWarning();
-        private void ShowVCRWarning () 
-        {
-            VCRuntimeWarningForm vcr = new VCRuntimeWarningForm();
-            vcr.ShowDialog(this);
         }
 
         private void MainForm_Shown (object sender, EventArgs e) 
-        {
-            //if (!vcRuntime80Installed)
-            //    ShowVCRWarning();
-        }
+        { }
         #endregion
 
         #region GUI and controls stuff
@@ -335,6 +325,11 @@ namespace Appacker
             AdvancedOptionsForm aof = new AdvancedOptionsForm(this);
             aof.ShowDialog();
         }
+
+        private void MainForm_Activated (object sender, EventArgs e)
+        {
+            picPassword.Visible = !string.IsNullOrEmpty(password);
+        }
         #endregion
 
         // ============== PACK METHOD ================
@@ -351,6 +346,7 @@ namespace Appacker
             string destinationPath = txtPackExePath.Text;
             string customIconPath = pathToCustomIcon;
             bool selfRepackable = isRepackable;
+            string passHash = Password.GetPasswordHashString(password);
 
             PackingProgressUpdate += (o, progress) =>
             {
@@ -372,7 +368,7 @@ namespace Appacker
             };
 
             progressBar.Value = 0;
-            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, customFileDescription, launchArguments, selfRepackable, openUnpackDirectory, unpackDirectory);
+            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, customFileDescription, launchArguments, selfRepackable, openUnpackDirectory, unpackDirectory, passHash);
         }
 
         internal static event EventHandler<(int maxValue, int currentValue)> PackingProgressUpdate;
@@ -389,6 +385,7 @@ namespace Appacker
         /// <param name="selfRepackable">True = packed app will repack itself after its execution so any changes are saved; Flase = changes are discarded</param>
         /// <param name="openUnpackDir">If true, then when you launch packed app, it will open the directory with unpacked app in Explorer</param>
         /// <param name="unpackDirectory">Where create temp directory with unpacked app</param>
+        /// <param name="passHash">Hash of a password for packed application</param>
         internal static void StartPacking( string sourceAppFolder, 
                                            string mainExePath,
                                            string destinationPath, 
@@ -398,7 +395,8 @@ namespace Appacker
                                            bool   selfRepackable = true,
                                            bool   openUnpackDir = false,
                                            UnpackDirectory unpackDirectory = UnpackDirectory.Temp,
-                                           bool   noGUI = false )
+                                           string passHash = "",
+                                           bool   noGUI = false)
         {
             // Copy packer and unpacker into the temp directory
             string tempDir = null;
@@ -437,7 +435,7 @@ namespace Appacker
             // 5. Whether app is self-repackable, True or False
             // 6. Launch arguments for target app
             ProcessStartInfo packProcInfo = new ProcessStartInfo(Path.Combine(tempDir, "packer.exe"));
-            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{destinationPath.TrimEnd(Path.DirectorySeparatorChar)}"" ""{mainExePath}"" ""{sourceAppFolder}"" ""{launchArguments.Replace("\"", "\\\"")}"" {selfRepackable} {noGUI} {openUnpackDir} {(int)unpackDirectory}";
+            packProcInfo.Arguments = $@"""{Path.Combine(tempDir, "unpacker.exe")}"" ""{destinationPath.TrimEnd(Path.DirectorySeparatorChar)}"" ""{mainExePath}"" ""{sourceAppFolder}"" ""{launchArguments.Replace("\"", "\\\"")}"" {selfRepackable} {noGUI} {openUnpackDir} {(int)unpackDirectory} {passHash}";
 #if (!DEBUG)
             packProcInfo.CreateNoWindow = true;
             packProcInfo.WindowStyle = ProcessWindowStyle.Hidden;

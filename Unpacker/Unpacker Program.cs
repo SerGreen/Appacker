@@ -33,6 +33,8 @@ namespace Unpacker
         private static bool isSelfRepackable = false;
         // A flag that indicated whether or not to open folder with unpacked files in Explorer
         private static bool openUnpackedDir = false;
+        // Hash of a password for launching the main app
+        private static byte[] passHash = null;
         // Local path to the exe file inside target app dir, that needs to be launched
         private static string pathToMainExe = null;
         // Arguments to pass to target app
@@ -76,7 +78,7 @@ namespace Unpacker
             // Command is "unpacker.exe -killme <path to packer.exe>"
             // The whole folder where packer.exe is gets deleted (cuz there should also be temp unpacker.exe from repacking process)
             if (args.Length > 0 &&
-            (args[0] == "-killme" || args[0] == "killme"))
+                (args[0] == "-killme" || args[0] == "killme"))
             {
                 if (args.Length > 1)
                     if (WaitForFileAccess(args[1], WAIT_FOR_FILE_ACCESS_TIMEOUT) == true)
@@ -99,6 +101,18 @@ namespace Unpacker
                 long pos = FindPatternPosition(me.BaseStream, pattern);
                 me.BaseStream.Seek(pos + pattern.Length, SeekOrigin.Begin);
 
+                // TODO: read password flag and show password prompt
+                bool isPasswordProtected = me.ReadBoolean();
+                if (isPasswordProtected)
+                {
+                    passHash = me.ReadBytes(32);
+                    if (AskPassword(passHash) == false)
+                        return;
+                }
+
+
+
+
                 // Create temp directory to store tools
                 while (repackerTempDir == null || Directory.Exists(repackerTempDir))
                     repackerTempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -106,14 +120,15 @@ namespace Unpacker
 
                 // Start extracting appended data
                 isSelfRepackable = me.ReadBoolean();
-                if(isSelfRepackable)
+                if (isSelfRepackable)
                 {
                     // For repacking we also need the unpacker.exe itself
                     // So return to the beginning of the file and save the unpacker.exe part
+                    long savedPosition = me.BaseStream.Position;
                     me.BaseStream.Seek(0, SeekOrigin.Begin);
                     File.WriteAllBytes(Path.Combine(repackerTempDir, "unpacker.exe"), me.ReadBytes((int)pos));
-                    // Skip <SerGreen> keyword and 1 byte of isSelfRepackable flag
-                    me.ReadBytes(pattern.Length + 1);
+                    // Return to saved position
+                    me.BaseStream.Position = savedPosition;
                     // Save the packer.exe
                     int packerDataLength = me.ReadInt32();
                     File.WriteAllBytes(Path.Combine(repackerTempDir, "packer.exe"), me.ReadBytes(packerDataLength));
@@ -121,7 +136,7 @@ namespace Unpacker
 
                 // Extract splash screen tool if present
                 isProgressBarSplashExePresent = me.ReadBoolean();
-                if(isProgressBarSplashExePresent)
+                if (isProgressBarSplashExePresent)
                 {
                     int splashDataLength = me.ReadInt32();
                     File.WriteAllBytes(Path.Combine(repackerTempDir, "ProgressBarSplash.exe"), me.ReadBytes(splashDataLength));
@@ -169,7 +184,7 @@ namespace Unpacker
                 while (me.BaseStream.Position < me.BaseStream.Length)
                 {
                     // If unpacking process takes too long, display splash screen with progress bar
-                    if(isProgressBarSplashExePresent && broadcaster == null && timer.ElapsedMilliseconds > SPLASH_POPUP_DELAY)
+                    if (isProgressBarSplashExePresent && broadcaster == null && timer.ElapsedMilliseconds > SPLASH_POPUP_DELAY)
                     {
                         // Create XDMessagingClient broadcaster to report progress
                         XDMessagingClient client = new XDMessagingClient();
@@ -200,7 +215,7 @@ namespace Unpacker
             }
 
             // Open tempDir in Explorer if corresponding flag is set
-            if(openUnpackedDir)
+            if (openUnpackedDir)
             {
                 Process.Start(new ProcessStartInfo() { FileName = "explorer.exe",
                                                        Arguments = tempDir,
@@ -222,6 +237,14 @@ namespace Unpacker
             proc.WaitForExit();
         }
 
+        private static bool AskPassword (byte[] passHash)
+        {
+            using (PasswordForm passDialog = new PasswordForm(passHash))
+            {
+                return passDialog.ShowDialog() == DialogResult.OK;
+            }
+        }
+
         // Exit event. Delete tempDir recursively or start repacker process
         private static void Unpacker_ProcessExit(object sender, EventArgs e)
         {
@@ -241,7 +264,7 @@ namespace Unpacker
                     // 7. Unpacking directory type
                     // 8. -repack flag = mark, that this is the repacking process, which will result in deletion of unpacked temp folder after repacking
                     ProcessStartInfo repackProcInfo = new ProcessStartInfo(Path.Combine(repackerTempDir, "packer.exe"));
-                    repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" ""{launchArguments.Replace("\"", "\\\"")}"" True True {openUnpackedDir} {unpackingDirectoryType} -repack";
+                    repackProcInfo.Arguments = $@"""{Path.Combine(repackerTempDir, "unpacker.exe")}"" ""{System.Reflection.Assembly.GetEntryAssembly().Location}"" ""{pathToMainExe}"" ""{tempDir}"" ""{launchArguments.Replace("\"", "\\\"")}"" True True {openUnpackedDir} {unpackingDirectoryType} {Appacker.Password.GetPasswordHashString(passHash)} -repack";
 #if (!DEBUG)
                 repackProcInfo.CreateNoWindow = true;
                 repackProcInfo.WindowStyle = ProcessWindowStyle.Hidden;

@@ -177,7 +177,7 @@
 Если оставить пустым, то это свойство будет взято из основного исполняемого файла</value>
   </data>
   <data name="btnSaveIni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 275</value>
+    <value>12, 348</value>
   </data>
   <data name="btnSaveIni.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 23</value>
@@ -186,16 +186,44 @@
     <value>Сохранить настройки в файл appacker.ini</value>
   </data>
   <data name="labIniDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 301</value>
+    <value>12, 374</value>
   </data>
   <data name="labIniDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 13</value>
+    <value>336, 26</value>
   </data>
   <data name="labIniDescription.Text" xml:space="preserve">
-    <value>При запуске настройки автоматически загрузятся из ini файла, если он существует</value>
+    <value>При запуске настройки автоматически загрузятся из ini файла, 
+если он существует</value>
+  </data>
+  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 348</value>
+  </data>
+  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 52</value>
+  </data>
+  <data name="btnClose.Text" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="labPasswordDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 13</value>
+  </data>
+  <data name="labPasswordDescription.Text" xml:space="preserve">
+    <value>Если задать пароль, то его нужно будет ввести для запуска упакованного приложения</value>
+  </data>
+  <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 20</value>
+  </data>
+  <data name="labPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 13</value>
+  </data>
+  <data name="labPassword.Text" xml:space="preserve">
+    <value>Пароль для упакованного приложения</value>
+  </data>
+  <data name="panelContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 409</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>474, 324</value>
+    <value>474, 409</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>490, 310</value>

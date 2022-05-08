@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appacker GUI", "Appacker\Appacker GUI.csproj", "{0618E8D3-3057-4317-8BA4-46F39EB864F3}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -29,7 +29,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconLib", "IconLib\IconLib.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressBarSplash", "ProgressBarSplash\ProgressBarSplash.csproj", "{302DAC96-8B41-466B-B86C-CB5DA71F0D1B}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedFiles", "SharedFiles\SharedFiles.shproj", "{4EBE08B7-C972-4CCA-ACEB-988BD45145EA}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SharedFiles\SharedFiles.projitems*{0618e8d3-3057-4317-8ba4-46f39eb864f3}*SharedItemsImports = 4
+		SharedFiles\SharedFiles.projitems*{4ebe08b7-c972-4cca-aceb-988bd45145ea}*SharedItemsImports = 13
+		SharedFiles\SharedFiles.projitems*{8d85b3ea-40db-4187-a4f6-fa6263669c5b}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

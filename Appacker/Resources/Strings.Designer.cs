@@ -97,6 +97,15 @@ namespace Appacker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inherit from main executable.
+        /// </summary>
+        internal static string cueFileDescription {
+            get {
+                return ResourceManager.GetString("cueFileDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select main executable.
         /// </summary>
         internal static string cueMainExe {
@@ -111,6 +120,15 @@ namespace Appacker.Resources {
         internal static string cuePackExePath {
             get {
                 return ResourceManager.GetString("cuePackExePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No password.
+        /// </summary>
+        internal static string cuePassword {
+            get {
+                return ResourceManager.GetString("cuePassword", resourceCulture);
             }
         }
         

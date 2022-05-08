@@ -54,7 +54,7 @@ namespace Appacker
 
         static void NoGuiMode(string[] args)
         {
-            string sourceAppFolder = null, mainExePath = null, destinationPath = null, customIconPath = null, launchArguments = "", fileDescription = null;
+            string sourceAppFolder = null, mainExePath = null, destinationPath = null, customIconPath = null, launchArguments = "", fileDescription = null, password = "";
             bool selfRepackable = false, openUnpackedDir = false, quietPacking = false;
             bool showHelp = false;
             MainForm.UnpackDirectory unpackDir = MainForm.UnpackDirectory.Temp;
@@ -104,7 +104,10 @@ namespace Appacker
                             else if (u == "same")
                                 unpackDir = MainForm.UnpackDirectory.NextToPackedExe;
                             else if (u == "ask")
-                                unpackDir = MainForm.UnpackDirectory.AskAtLaunch; } }
+                                unpackDir = MainForm.UnpackDirectory.AskAtLaunch; } },
+                    { "p|pass|password=",
+                        "Password for packed application",
+                        p => password = p }
                 };
 
                 try
@@ -233,7 +236,8 @@ namespace Appacker
                                           customFileDescription: fileDescription,
                                           openUnpackDir:openUnpackedDir, 
                                           unpackDirectory:unpackDir,
-                                          noGUI: true);
+                                          noGUI: true,
+                                          passHash: Password.GetPasswordHashString(password));
 
                     // Keep the process alive until packing process finishes in order to receive progress messages and to clean up temp files
                     while (!packingFinished)

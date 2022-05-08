@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RavSoft;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +35,10 @@ namespace Appacker
             txtArguments.Text = mainForm.launchArguments;
             txtFileDescription.Text = mainForm.customFileDescription;
 
+            txtPassword.Text = mainForm.password;
+
             SetRepackDescription();
+            SetCueBanners();
 
             //if (!MainForm.vcRuntime80Installed) 
             //{
@@ -45,6 +49,12 @@ namespace Appacker
         }
 
         private void SetRepackDescription() => labRepackableDescr.Text = checkRepackable.Checked ? Resources.Strings.repackOnDescr : Resources.Strings.repackOffDescr;
+
+        private void SetCueBanners ()
+        {
+            CueProvider.SetCue(txtPassword, Resources.Strings.cuePassword);
+            CueProvider.SetCue(txtFileDescription, Resources.Strings.cueFileDescription);
+        }
 
         // Save options to the main form before closing
         private void AdvancedOptionsForm_FormClosing (object sender, FormClosingEventArgs e) => SaveSettings();
@@ -60,6 +70,7 @@ namespace Appacker
                 : MainForm.UnpackDirectory.Temp;
             mainForm.launchArguments = txtArguments.Text;
             mainForm.customFileDescription = txtFileDescription.Text;
+            mainForm.password = txtPassword.Text;
         }
         
         private void checkRepackable_CheckedChanged(object sender, EventArgs e) => SetRepackDescription();
@@ -69,5 +80,7 @@ namespace Appacker
             SaveSettings();
             mainForm.SaveIniSettings();
         }
+
+        private void btnClose_Click (object sender, EventArgs e) => this.Close();
     }
 }

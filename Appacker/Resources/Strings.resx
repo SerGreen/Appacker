@@ -129,11 +129,17 @@
   <data name="cueAppDirPath" xml:space="preserve">
     <value>Drag the application folder here</value>
   </data>
+  <data name="cueFileDescription" xml:space="preserve">
+    <value>Inherit from main executable</value>
+  </data>
   <data name="cueMainExe" xml:space="preserve">
     <value>Select main executable</value>
   </data>
   <data name="cuePackExePath" xml:space="preserve">
     <value>Select save location</value>
+  </data>
+  <data name="cuePassword" xml:space="preserve">
+    <value>No password</value>
   </data>
   <data name="errorCaption" xml:space="preserve">
     <value>Packing aborted</value>

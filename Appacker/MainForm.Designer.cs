@@ -39,19 +39,16 @@
             this.btnBrowsePackPath = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.treeView = new System.Windows.Forms.TreeView();
-            this.treeVieIconsList = new System.Windows.Forms.ImageList(this.components);
+            this.treeViewIconsList = new System.Windows.Forms.ImageList(this.components);
             this.labMainExePath = new System.Windows.Forms.Label();
             this.btnPack = new System.Windows.Forms.Button();
-            this.flagsIamgeList = new System.Windows.Forms.ImageList(this.components);
+            this.flagsImageList = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.packToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labTreeViewCaption = new System.Windows.Forms.Label();
             this.btnChangeIcon = new System.Windows.Forms.LinkLabel();
             this.comboMainExePath = new System.Windows.Forms.ComboBox();
@@ -60,19 +57,22 @@
             this.labSize = new System.Windows.Forms.Label();
             this.cultureManager = new Infralution.Localization.CultureManager(this.components);
             this.openIconDialog = new System.Windows.Forms.OpenFileDialog();
+            this.picPassword = new System.Windows.Forms.PictureBox();
             this.btnAdvancedOptions = new System.Windows.Forms.Button();
             this.indMainExe = new System.Windows.Forms.PictureBox();
             this.indPackExePath = new System.Windows.Forms.PictureBox();
             this.indAppFolder = new System.Windows.Forms.PictureBox();
             this.btnIconReset = new System.Windows.Forms.Button();
             this.picAppIcon = new System.Windows.Forms.PictureBox();
-            this.picVCRWarning = new System.Windows.Forms.PictureBox();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indMainExe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVCRWarning)).BeginInit();
             this.SuspendLayout();
             // 
             // folderBrowserDialog
@@ -138,7 +138,7 @@
             resources.ApplyResources(this.treeView, "treeView");
             this.treeView.FullRowSelect = true;
             this.treeView.HideSelection = false;
-            this.treeView.ImageList = this.treeVieIconsList;
+            this.treeView.ImageList = this.treeViewIconsList;
             this.treeView.Name = "treeView";
             this.treeView.ShowRootLines = false;
             this.treeView.TabStop = false;
@@ -146,20 +146,20 @@
             this.treeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragDrop);
             this.treeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAppFolderPath_DragEnter);
             // 
-            // treeVieIconsList
+            // treeViewIconsList
             // 
-            this.treeVieIconsList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("treeVieIconsList.ImageStream")));
-            this.treeVieIconsList.TransparentColor = System.Drawing.Color.Transparent;
-            this.treeVieIconsList.Images.SetKeyName(0, "folder-closed-16.png");
-            this.treeVieIconsList.Images.SetKeyName(1, "folder-open-16.png");
-            this.treeVieIconsList.Images.SetKeyName(2, "file-16.png");
-            this.treeVieIconsList.Images.SetKeyName(3, "file-exe-16.png");
-            this.treeVieIconsList.Images.SetKeyName(4, "package-16.png");
-            this.treeVieIconsList.Images.SetKeyName(5, "file-lnk-16.png");
-            this.treeVieIconsList.Images.SetKeyName(6, "file-bin-16.png");
-            this.treeVieIconsList.Images.SetKeyName(7, "file-bat-16.png");
-            this.treeVieIconsList.Images.SetKeyName(8, "file-cmd-16.png");
-            this.treeVieIconsList.Images.SetKeyName(9, "box-16.png");
+            this.treeViewIconsList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("treeViewIconsList.ImageStream")));
+            this.treeViewIconsList.TransparentColor = System.Drawing.Color.Transparent;
+            this.treeViewIconsList.Images.SetKeyName(0, "folder-closed-16.png");
+            this.treeViewIconsList.Images.SetKeyName(1, "folder-open-16.png");
+            this.treeViewIconsList.Images.SetKeyName(2, "file-16.png");
+            this.treeViewIconsList.Images.SetKeyName(3, "file-exe-16.png");
+            this.treeViewIconsList.Images.SetKeyName(4, "package-16.png");
+            this.treeViewIconsList.Images.SetKeyName(5, "file-lnk-16.png");
+            this.treeViewIconsList.Images.SetKeyName(6, "file-bin-16.png");
+            this.treeViewIconsList.Images.SetKeyName(7, "file-bat-16.png");
+            this.treeViewIconsList.Images.SetKeyName(8, "file-cmd-16.png");
+            this.treeViewIconsList.Images.SetKeyName(9, "box-16.png");
             // 
             // labMainExePath
             // 
@@ -173,12 +173,12 @@
             this.btnPack.UseVisualStyleBackColor = true;
             this.btnPack.Click += new System.EventHandler(this.btnPack_Click);
             // 
-            // flagsIamgeList
+            // flagsImageList
             // 
-            this.flagsIamgeList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("flagsIamgeList.ImageStream")));
-            this.flagsIamgeList.TransparentColor = System.Drawing.Color.Transparent;
-            this.flagsIamgeList.Images.SetKeyName(0, "united-kingdom-flag-icon-32.png");
-            this.flagsIamgeList.Images.SetKeyName(1, "russia-flag-icon-32.png");
+            this.flagsImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("flagsImageList.ImageStream")));
+            this.flagsImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.flagsImageList.Images.SetKeyName(0, "united-kingdom-flag-icon-32.png");
+            this.flagsImageList.Images.SetKeyName(1, "russia-flag-icon-32.png");
             // 
             // menuStrip
             // 
@@ -217,33 +217,12 @@
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
             resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             // 
-            // englishToolStripMenuItem
-            // 
-            this.englishToolStripMenuItem.Image = global::Appacker.Properties.Resources.flag_great_britain_30;
-            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
-            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
-            // 
-            // russianToolStripMenuItem
-            // 
-            this.russianToolStripMenuItem.Image = global::Appacker.Properties.Resources.flag_russian_federation_30;
-            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
-            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
-            this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
-            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Image = global::Appacker.Properties.Resources.info_16;
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // labTreeViewCaption
             // 
@@ -289,6 +268,13 @@
             // openIconDialog
             // 
             resources.ApplyResources(this.openIconDialog, "openIconDialog");
+            // 
+            // picPassword
+            // 
+            resources.ApplyResources(this.picPassword, "picPassword");
+            this.picPassword.Image = global::Appacker.Properties.Resources.password_16;
+            this.picPassword.Name = "picPassword";
+            this.picPassword.TabStop = false;
             // 
             // btnAdvancedOptions
             // 
@@ -342,20 +328,32 @@
             this.picAppIcon.DragDrop += new System.Windows.Forms.DragEventHandler(this.picAppIcon_DragDrop);
             this.picAppIcon.DragEnter += new System.Windows.Forms.DragEventHandler(this.picAppIcon_DragEnter);
             // 
-            // picVCRWarning
+            // englishToolStripMenuItem
             // 
-            resources.ApplyResources(this.picVCRWarning, "picVCRWarning");
-            this.picVCRWarning.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picVCRWarning.Image = global::Appacker.Properties.Resources.red_warning_16;
-            this.picVCRWarning.Name = "picVCRWarning";
-            this.picVCRWarning.TabStop = false;
-            this.picVCRWarning.Click += new System.EventHandler(this.picVCRWarning_Click);
+            this.englishToolStripMenuItem.Image = global::Appacker.Properties.Resources.flag_great_britain_30;
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            // 
+            // russianToolStripMenuItem
+            // 
+            this.russianToolStripMenuItem.Image = global::Appacker.Properties.Resources.flag_russian_federation_30;
+            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
+            this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
+            this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Image = global::Appacker.Properties.Resources.info_16;
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.picVCRWarning);
+            this.Controls.Add(this.picPassword);
             this.Controls.Add(this.btnAdvancedOptions);
             this.Controls.Add(this.labSize);
             this.Controls.Add(this.indMainExe);
@@ -380,15 +378,16 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indMainExe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indPackExePath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indAppFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAppIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picVCRWarning)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,7 +407,7 @@
         private System.Windows.Forms.Label labMainExePath;
         private System.Windows.Forms.Button btnPack;
         private System.Windows.Forms.PictureBox picAppIcon;
-        private System.Windows.Forms.ImageList flagsIamgeList;
+        private System.Windows.Forms.ImageList flagsImageList;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem packToolStripMenuItem;
@@ -431,8 +430,8 @@
         private System.Windows.Forms.PictureBox indPackExePath;
         private System.Windows.Forms.Label labSize;
         private System.Windows.Forms.Button btnAdvancedOptions;
-        private System.Windows.Forms.ImageList treeVieIconsList;
-        private System.Windows.Forms.PictureBox picVCRWarning;
+        private System.Windows.Forms.ImageList treeViewIconsList;
+        private System.Windows.Forms.PictureBox picPassword;
     }
 }
 
