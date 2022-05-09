@@ -44,9 +44,11 @@
             this.labIniDescription = new System.Windows.Forms.Label();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
+            this.labWindowlessDescription = new System.Windows.Forms.Label();
             this.labPasswordDescription = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.labPassword = new System.Windows.Forms.Label();
+            this.checkWindowless = new System.Windows.Forms.CheckBox();
             this.panelContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,9 +133,11 @@
             // 
             resources.ApplyResources(this.panelContainer, "panelContainer");
             this.panelContainer.Controls.Add(this.btnClose);
+            this.panelContainer.Controls.Add(this.labWindowlessDescription);
             this.panelContainer.Controls.Add(this.labPasswordDescription);
             this.panelContainer.Controls.Add(this.txtPassword);
             this.panelContainer.Controls.Add(this.labPassword);
+            this.panelContainer.Controls.Add(this.checkWindowless);
             this.panelContainer.Controls.Add(this.checkRepackable);
             this.panelContainer.Controls.Add(this.labIniDescription);
             this.panelContainer.Controls.Add(this.labRepackableDescr);
@@ -156,6 +160,12 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // labWindowlessDescription
+            // 
+            resources.ApplyResources(this.labWindowlessDescription, "labWindowlessDescription");
+            this.labWindowlessDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labWindowlessDescription.Name = "labWindowlessDescription";
+            // 
             // labPasswordDescription
             // 
             resources.ApplyResources(this.labPasswordDescription, "labPasswordDescription");
@@ -172,6 +182,15 @@
             // 
             resources.ApplyResources(this.labPassword, "labPassword");
             this.labPassword.Name = "labPassword";
+            // 
+            // checkWindowless
+            // 
+            resources.ApplyResources(this.checkWindowless, "checkWindowless");
+            this.checkWindowless.Checked = true;
+            this.checkWindowless.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkWindowless.Name = "checkWindowless";
+            this.checkWindowless.UseVisualStyleBackColor = true;
+            this.checkWindowless.CheckedChanged += new System.EventHandler(this.checkWindowless_CheckedChanged);
             // 
             // AdvancedOptionsForm
             // 
@@ -213,5 +232,7 @@
         private System.Windows.Forms.Label labPassword;
         private System.Windows.Forms.Label labPasswordDescription;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label labWindowlessDescription;
+        private System.Windows.Forms.CheckBox checkWindowless;
     }
 }

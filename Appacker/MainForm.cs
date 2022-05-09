@@ -33,6 +33,7 @@ namespace Appacker
         internal string launchArguments = "";
         internal string customFileDescription = "";
         internal string password = "";
+        internal bool isWindowlessUnpacker = true;
 
         private IniSettingsProvider iniSettings;
 
@@ -368,7 +369,7 @@ namespace Appacker
             };
 
             progressBar.Value = 0;
-            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, customFileDescription, launchArguments, selfRepackable, openUnpackDirectory, unpackDirectory, passHash);
+            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, customFileDescription, launchArguments, selfRepackable, openUnpackDirectory, unpackDirectory, passHash, isWindowlessUnpacker);
         }
 
         internal static event EventHandler<(int maxValue, int currentValue)> PackingProgressUpdate;
@@ -396,6 +397,7 @@ namespace Appacker
                                            bool   openUnpackDir = false,
                                            UnpackDirectory unpackDirectory = UnpackDirectory.Temp,
                                            string passHash = "",
+                                           bool   isWindowlessUnpacker = true,
                                            bool   noGUI = false)
         {
             // Copy packer and unpacker into the temp directory
@@ -408,7 +410,7 @@ namespace Appacker
             string pathUnpacker = Path.Combine(tempDir, "unpacker.exe");
 
             File.WriteAllBytes(Path.Combine(tempDir, "packer.exe"), ToolsStorage.Packer);
-            File.WriteAllBytes(pathUnpacker, ToolsStorage.Unpacker);
+            File.WriteAllBytes(pathUnpacker, isWindowlessUnpacker ? ToolsStorage.UnpackerWindowless : ToolsStorage.Unpacker);
             File.WriteAllBytes(Path.Combine(tempDir, "progressBarSplash.exe"), ToolsStorage.ProgressBarSplash);
             File.WriteAllBytes(Path.Combine(tempDir, "verInfoLib.exe"), ToolsStorage.VerInfoLib);
             File.WriteAllBytes(Path.Combine(tempDir, "verInfoLib.dll"), ToolsStorage.VerInfoLibDLL);

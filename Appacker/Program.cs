@@ -55,7 +55,7 @@ namespace Appacker
         static void NoGuiMode(string[] args)
         {
             string sourceAppFolder = null, mainExePath = null, destinationPath = null, customIconPath = null, launchArguments = "", fileDescription = null, password = "";
-            bool selfRepackable = false, openUnpackedDir = false, quietPacking = false;
+            bool selfRepackable = false, openUnpackedDir = false, quietPacking = false, isWindowlessUnpacker = false;
             bool showHelp = false;
             MainForm.UnpackDirectory unpackDir = MainForm.UnpackDirectory.Temp;
 
@@ -107,7 +107,10 @@ namespace Appacker
                                 unpackDir = MainForm.UnpackDirectory.AskAtLaunch; } },
                     { "p|pass|password=",
                         "Password for packed application",
-                        p => password = p }
+                        p => password = p },
+                    { "w|windowless",
+                        "Makes unpacker daemon completely hidden (console window doesn't appear for a split-second), BUT it can not redirect stdout of a packed application",
+                        w => isWindowlessUnpacker = w != null }
                 };
 
                 try
@@ -237,7 +240,8 @@ namespace Appacker
                                           openUnpackDir:openUnpackedDir, 
                                           unpackDirectory:unpackDir,
                                           noGUI: true,
-                                          passHash: Password.GetPasswordHashString(password));
+                                          passHash: Password.GetPasswordHashString(password),
+                                          isWindowlessUnpacker: isWindowlessUnpacker);
 
                     // Keep the process alive until packing process finishes in order to receive progress messages and to clean up temp files
                     while (!packingFinished)

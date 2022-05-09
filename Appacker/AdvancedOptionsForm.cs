@@ -34,10 +34,11 @@ namespace Appacker
 
             txtArguments.Text = mainForm.launchArguments;
             txtFileDescription.Text = mainForm.customFileDescription;
-
             txtPassword.Text = mainForm.password;
+            checkWindowless.Checked = mainForm.isWindowlessUnpacker;
 
             SetRepackDescription();
+            SetWindowlessDescription();
             SetCueBanners();
 
             //if (!MainForm.vcRuntime80Installed) 
@@ -49,6 +50,8 @@ namespace Appacker
         }
 
         private void SetRepackDescription() => labRepackableDescr.Text = checkRepackable.Checked ? Resources.Strings.repackOnDescr : Resources.Strings.repackOffDescr;
+
+        private void SetWindowlessDescription() => labWindowlessDescription.Text = checkWindowless.Checked ? Resources.Strings.windowlessOnDescr : Resources.Strings.windowlessOffDescr;
 
         private void SetCueBanners ()
         {
@@ -71,9 +74,11 @@ namespace Appacker
             mainForm.launchArguments = txtArguments.Text;
             mainForm.customFileDescription = txtFileDescription.Text;
             mainForm.password = txtPassword.Text;
+            mainForm.isWindowlessUnpacker = checkWindowless.Checked;
         }
         
         private void checkRepackable_CheckedChanged(object sender, EventArgs e) => SetRepackDescription();
+        private void checkWindowless_CheckedChanged (object sender, EventArgs e) => SetWindowlessDescription();
 
         private void btnSaveIni_Click (object sender, EventArgs e)
         {
@@ -82,5 +87,6 @@ namespace Appacker
         }
 
         private void btnClose_Click (object sender, EventArgs e) => this.Close();
+
     }
 }

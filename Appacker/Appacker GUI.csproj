@@ -199,6 +199,7 @@
     <None Include="Resources\password_16.png" />
     <None Include="Resources\password_20.png" />
     <None Include="Resources\password_161.png" />
+    <Content Include="Resources\UnpackerWindowless.exe" />
     <Content Include="Resources\VerInfoLib.dll" />
     <Content Include="Resources\VerInfoLib.exe" />
     <None Include="Resources\ProgressBarSplash.exe" />
@@ -236,10 +237,12 @@
     <PreBuildEvent>if "$(ConfigurationName)" == "Debug" (
   copy "$(SolutionDir)Packer\bin\Debug\packer.exe" "$(ProjectDir)Resources" /Y
   copy "$(SolutionDir)Unpacker\bin\Debug\unpacker.exe" "$(ProjectDir)Resources" /Y
+  copy "$(SolutionDir)UnpackerWindowless\bin\Debug\unpackerWindowless.exe" "$(ProjectDir)Resources" /Y
   copy "$(SolutionDir)ProgressBarSplash\bin\Debug\progressBarSplash.exe" "$(ProjectDir)Resources" /Y
 ) ELSE (
-  copy "$(SolutionDir)Packer\bin\Release\packer.exe" "$(ProjectDir)Resources" /Y
+  copy "$(SolutionDir)PackerWindowless\bin\Release\packer.exe" "$(ProjectDir)Resources" /Y
   copy "$(SolutionDir)Unpacker\bin\Release\unpacker.exe" "$(ProjectDir)Resources" /Y
+  copy "$(SolutionDir)UnpackerWindowless\bin\Release\unpackerWindowless.exe" "$(ProjectDir)Resources" /Y
   copy "$(SolutionDir)ProgressBarSplash\bin\Release\progressBarSplash.exe" "$(ProjectDir)Resources" /Y
 )</PreBuildEvent>
   </PropertyGroup>

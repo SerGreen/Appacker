@@ -113,6 +113,16 @@ namespace Appacker {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] UnpackerWindowless {
+            get {
+                object obj = ResourceManager.GetObject("UnpackerWindowless", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] VerInfoLib {
             get {
                 object obj = ResourceManager.GetObject("VerInfoLib", resourceCulture);

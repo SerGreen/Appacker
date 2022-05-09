@@ -241,5 +241,25 @@ namespace Appacker.Resources {
                 return ResourceManager.GetString("repackOnDescr", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can redirect stdout of a packed application and use it via command line,
+        ///BUT unpacker console will appear for a split-second before becoming invisible.
+        /// </summary>
+        internal static string windowlessOffDescr {
+            get {
+                return ResourceManager.GetString("windowlessOffDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unpacker daemon is completely invisible,
+        ///BUT you can not redirect stdout of a packed application.
+        /// </summary>
+        internal static string windowlessOnDescr {
+            get {
+                return ResourceManager.GetString("windowlessOnDescr", resourceCulture);
+            }
+        }
     }
 }

@@ -179,4 +179,12 @@ Changes to the app files won't be saved (e.g. app settings).</value>
     <value>When application is finished, all its files will be packed back and packed .exe will be replaced.
 Any changes will be saved (e.g. app settings).</value>
   </data>
+  <data name="windowlessOffDescr" xml:space="preserve">
+    <value>You can redirect stdout of a packed application and use it via command line,
+BUT unpacker console will appear for a split-second before becoming invisible</value>
+  </data>
+  <data name="windowlessOnDescr" xml:space="preserve">
+    <value>Unpacker daemon is completely invisible,
+BUT you can not redirect stdout of a packed application</value>
+  </data>
 </root>

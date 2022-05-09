@@ -148,7 +148,7 @@
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;checkRepackable.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="labRepackableDescr.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -177,7 +177,7 @@ Line 3</value>
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;labRepackableDescr.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="comboUnpackDir.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -213,7 +213,7 @@ Line 3</value>
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;comboUnpackDir.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="labUnpackDir.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -240,7 +240,7 @@ Line 3</value>
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;labUnpackDir.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="checkOpenUnpackFolder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -267,7 +267,7 @@ Line 3</value>
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;checkOpenUnpackFolder.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -294,7 +294,7 @@ Line 3</value>
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;txtArguments.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="labArguments.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -327,7 +327,7 @@ Line 3</value>
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;labArguments.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="labFileDescription.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -360,7 +360,7 @@ Line 3</value>
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;labFileDescription.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="txtFileDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -384,7 +384,7 @@ Line 3</value>
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;txtFileDescription.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="labFileDescriptionDescription.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -415,13 +415,13 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;labFileDescriptionDescription.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="btnSaveIni.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="btnSaveIni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 360</value>
+    <value>12, 410</value>
   </data>
   <data name="btnSaveIni.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 23</value>
@@ -442,7 +442,7 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;btnSaveIni.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="labIniDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -454,7 +454,7 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>NoControl</value>
   </data>
   <data name="labIniDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 386</value>
+    <value>12, 436</value>
   </data>
   <data name="labIniDescription.Size" type="System.Drawing.Size, System.Drawing">
     <value>293, 13</value>
@@ -475,7 +475,7 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;labIniDescription.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="panelContainer.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -487,7 +487,7 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>Microsoft Sans Serif, 9.5pt</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 360</value>
+    <value>377, 410</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 39</value>
@@ -509,6 +509,37 @@ If left empty, this parameter will be taken from the main executable file</value
   </data>
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="labWindowlessDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labWindowlessDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labWindowlessDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 356</value>
+  </data>
+  <data name="labWindowlessDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 26</value>
+  </data>
+  <data name="labWindowlessDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="labWindowlessDescription.Text" xml:space="preserve">
+    <value>Line 1
+Line 2</value>
+  </data>
+  <data name="&gt;&gt;labWindowlessDescription.Name" xml:space="preserve">
+    <value>labWindowlessDescription</value>
+  </data>
+  <data name="&gt;&gt;labWindowlessDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labWindowlessDescription.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="&gt;&gt;labWindowlessDescription.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="labPasswordDescription.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -538,7 +569,7 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;labPasswordDescription.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="txtPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -565,7 +596,7 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;txtPassword.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="labPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -598,7 +629,37 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>panelContainer</value>
   </data>
   <data name="&gt;&gt;labPassword.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
+  </data>
+  <data name="checkWindowless.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkWindowless.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkWindowless.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 336</value>
+  </data>
+  <data name="checkWindowless.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 17</value>
+  </data>
+  <data name="checkWindowless.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkWindowless.Text" xml:space="preserve">
+    <value>Use windowless unpacker</value>
+  </data>
+  <data name="&gt;&gt;checkWindowless.Name" xml:space="preserve">
+    <value>checkWindowless</value>
+  </data>
+  <data name="&gt;&gt;checkWindowless.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkWindowless.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="&gt;&gt;checkWindowless.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="panelContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -607,7 +668,7 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>0, 0</value>
   </data>
   <data name="panelContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>464, 411</value>
+    <value>464, 461</value>
   </data>
   <data name="panelContainer.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -631,10 +692,7 @@ If left empty, this parameter will be taken from the main executable file</value
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>464, 411</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>464, 461</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>9999, 5000</value>
