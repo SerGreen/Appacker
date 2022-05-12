@@ -36,17 +36,11 @@ namespace Appacker
             txtFileDescription.Text = mainForm.customFileDescription;
             txtPassword.Text = mainForm.password;
             checkWindowless.Checked = mainForm.isWindowlessUnpacker;
+            checkUnpackProgressBar.Checked = mainForm.isUnpackProgressBarEnabled;
 
             SetRepackDescription();
             SetWindowlessDescription();
             SetCueBanners();
-
-            //if (!MainForm.vcRuntime80Installed) 
-            //{
-            //    txtFileDescription.Enabled = false;
-            //    labFileDescription.Enabled = false;
-            //    labFileDescriptionDescription.Enabled = false;
-            //}
         }
 
         private void SetRepackDescription() => labRepackableDescr.Text = checkRepackable.Checked ? Resources.Strings.repackOnDescr : Resources.Strings.repackOffDescr;
@@ -75,6 +69,7 @@ namespace Appacker
             mainForm.customFileDescription = txtFileDescription.Text;
             mainForm.password = txtPassword.Text;
             mainForm.isWindowlessUnpacker = checkWindowless.Checked;
+            mainForm.isUnpackProgressBarEnabled = checkUnpackProgressBar.Checked;
         }
         
         private void checkRepackable_CheckedChanged(object sender, EventArgs e) => SetRepackDescription();
@@ -87,6 +82,5 @@ namespace Appacker
         }
 
         private void btnClose_Click (object sender, EventArgs e) => this.Close();
-
     }
 }

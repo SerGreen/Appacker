@@ -136,7 +136,7 @@
     <value>Select main executable</value>
   </data>
   <data name="cuePackExePath" xml:space="preserve">
-    <value>Select save location</value>
+    <value>Save file as...</value>
   </data>
   <data name="cuePassword" xml:space="preserve">
     <value>No password</value>
@@ -172,11 +172,11 @@
     <value>Estimated package size: </value>
   </data>
   <data name="repackOffDescr" xml:space="preserve">
-    <value>When application is finished, its files are deleted from a temp folder without saving.
+    <value>When application is closed, its files are deleted from a temp folder without saving.
 Changes to the app files won't be saved (e.g. app settings).</value>
   </data>
   <data name="repackOnDescr" xml:space="preserve">
-    <value>When application is finished, all its files will be packed back and packed .exe will be replaced.
+    <value>When application is closed, all its files will be packed back and packed .exe will be replaced.
 Any changes will be saved (e.g. app settings).</value>
   </data>
   <data name="windowlessOffDescr" xml:space="preserve">

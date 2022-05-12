@@ -117,76 +117,236 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;labFileDescriptionDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labArguments.Name" xml:space="preserve">
+    <value>labArguments</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkRepackable.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="txtArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkRepackable.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkRepackable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+  <data name="labFileDescriptionDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 26</value>
   </data>
-  <data name="checkRepackable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 17</value>
+  <data name="&gt;&gt;labFileDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkRepackable.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="labFileDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 13</value>
   </data>
-  <data name="checkRepackable.Text" xml:space="preserve">
-    <value>Self-repackable application</value>
+  <data name="txtArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;checkRepackable.Name" xml:space="preserve">
-    <value>checkRepackable</value>
+  <data name="panelContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
-  <data name="&gt;&gt;checkRepackable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;labRepackableDescr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labWindowlessDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labWindowlessDescription.Name" xml:space="preserve">
+    <value>labWindowlessDescription</value>
+  </data>
+  <data name="&gt;&gt;labProgressBarDescription.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="checkWindowless.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkUnpackProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 17</value>
+  </data>
+  <data name="labProgressBarDescription.Text" xml:space="preserve">
+    <value>When launching packed application, show splash screen with progres bar
+if unpacking takes longer than 1 second</value>
+  </data>
+  <data name="&gt;&gt;btnSaveIni.Name" xml:space="preserve">
+    <value>btnSaveIni</value>
+  </data>
+  <data name="txtArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 20</value>
+  </data>
+  <data name="&gt;&gt;labRepackableDescr.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="labFileDescriptionDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboUnpackDir.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;checkWindowless.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="labProgressBarDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 408</value>
+  </data>
+  <data name="&gt;&gt;txtFileDescription.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="btnClose.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.5pt</value>
+  </data>
+  <data name="labFileDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 197</value>
+  </data>
+  <data name="labIniDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 13</value>
+  </data>
+  <data name="labUnpackDir.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkUnpackProgressBar.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="labFileDescriptionDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Advanced options</value>
+  </data>
+  <data name="txtFileDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 20</value>
+  </data>
+  <data name="labIniDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;labPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labIniDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 485</value>
+  </data>
+  <data name="labIniDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="&gt;&gt;checkRepackable.Parent" xml:space="preserve">
     <value>panelContainer</value>
   </data>
-  <data name="&gt;&gt;checkRepackable.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="labProgressBarDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
   </data>
-  <data name="labRepackableDescr.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="checkRepackable.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="labRepackableDescr.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 32</value>
   </data>
-  <data name="labRepackableDescr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 39</value>
-  </data>
-  <data name="labRepackableDescr.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="checkOpenUnpackFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 118</value>
+  </data>
+  <data name="&gt;&gt;labFileDescriptionDescription.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;labFileDescriptionDescription.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="checkUnpackProgressBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 388</value>
+  </data>
+  <data name="labWindowlessDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;labArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="labRepackableDescr.Text" xml:space="preserve">
     <value>Line 1
 Line 2
 Line 3</value>
   </data>
-  <data name="&gt;&gt;labRepackableDescr.Name" xml:space="preserve">
-    <value>labRepackableDescr</value>
+  <data name="labPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 13</value>
   </data>
-  <data name="&gt;&gt;labRepackableDescr.Type" xml:space="preserve">
+  <data name="labArguments.Text" xml:space="preserve">
+    <value>Command line arguments for target application</value>
+  </data>
+  <data name="&gt;&gt;labUnpackDir.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labArguments.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="labIniDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labIniDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labPassword.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkRepackable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labProgressBarDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labPassword.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 10, 3, 0</value>
+  </data>
+  <data name="labArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="txtFileDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>9999, 5000</value>
+  </data>
+  <data name="&gt;&gt;labWindowlessDescription.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="&gt;&gt;labProgressBarDescription.Name" xml:space="preserve">
+    <value>labProgressBarDescription</value>
+  </data>
+  <data name="labIniDescription.Text" xml:space="preserve">
+    <value>Settings will automatically load from the ini file if it exists</value>
   </data>
   <data name="&gt;&gt;labRepackableDescr.Parent" xml:space="preserve">
     <value>panelContainer</value>
   </data>
-  <data name="&gt;&gt;labRepackableDescr.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;txtFileDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboUnpackDir.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="&gt;&gt;labFileDescription.ZOrder" xml:space="preserve">
+    <value>19</value>
   </data>
-  <data name="comboUnpackDir.Items" xml:space="preserve">
-    <value>Temp directory</value>
+  <data name="&gt;&gt;comboUnpackDir.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboUnpackDir.Items1" xml:space="preserve">
-    <value>Desktop</value>
+  <data name="labFileDescriptionDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labWindowlessDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 356</value>
+  </data>
+  <data name="checkRepackable.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkUnpackProgressBar.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="comboUnpackDir.Items2" xml:space="preserve">
     <value>Same directory as the packed app executable</value>
@@ -194,528 +354,426 @@ Line 3</value>
   <data name="comboUnpackDir.Items3" xml:space="preserve">
     <value>Ask at every launch</value>
   </data>
-  <data name="comboUnpackDir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 91</value>
-  </data>
-  <data name="comboUnpackDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 21</value>
-  </data>
-  <data name="comboUnpackDir.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;comboUnpackDir.Name" xml:space="preserve">
-    <value>comboUnpackDir</value>
-  </data>
-  <data name="&gt;&gt;comboUnpackDir.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboUnpackDir.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;comboUnpackDir.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="labUnpackDir.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labUnpackDir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 75</value>
-  </data>
-  <data name="labUnpackDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 13</value>
-  </data>
-  <data name="labUnpackDir.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="labUnpackDir.Text" xml:space="preserve">
-    <value>Unpack directory</value>
-  </data>
-  <data name="&gt;&gt;labUnpackDir.Name" xml:space="preserve">
-    <value>labUnpackDir</value>
-  </data>
-  <data name="&gt;&gt;labUnpackDir.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labUnpackDir.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;labUnpackDir.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="checkOpenUnpackFolder.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkOpenUnpackFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 118</value>
-  </data>
-  <data name="checkOpenUnpackFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 17</value>
-  </data>
-  <data name="checkOpenUnpackFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="checkOpenUnpackFolder.Text" xml:space="preserve">
-    <value>Open unpack directory in Explorer after launch</value>
-  </data>
-  <data name="&gt;&gt;checkOpenUnpackFolder.Name" xml:space="preserve">
-    <value>checkOpenUnpackFolder</value>
-  </data>
-  <data name="&gt;&gt;checkOpenUnpackFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkOpenUnpackFolder.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;checkOpenUnpackFolder.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="txtArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 164</value>
-  </data>
-  <data name="txtArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 20</value>
-  </data>
-  <data name="txtArguments.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;txtArguments.Name" xml:space="preserve">
-    <value>txtArguments</value>
-  </data>
-  <data name="&gt;&gt;txtArguments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtArguments.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;txtArguments.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="labArguments.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labArguments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 148</value>
-  </data>
-  <data name="labArguments.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 10, 3, 0</value>
-  </data>
-  <data name="labArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 13</value>
-  </data>
-  <data name="labArguments.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="labArguments.Text" xml:space="preserve">
-    <value>Command line arguments for target application</value>
-  </data>
-  <data name="&gt;&gt;labArguments.Name" xml:space="preserve">
-    <value>labArguments</value>
-  </data>
-  <data name="&gt;&gt;labArguments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labArguments.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;labArguments.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="labFileDescription.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labFileDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labFileDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 197</value>
-  </data>
-  <data name="labFileDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 10, 3, 0</value>
-  </data>
-  <data name="labFileDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 13</value>
+  <data name="comboUnpackDir.Items1" xml:space="preserve">
+    <value>Desktop</value>
   </data>
   <data name="labFileDescription.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="labFileDescription.Text" xml:space="preserve">
-    <value>FileDescription parameter for the package executable</value>
+  <data name="&gt;&gt;checkUnpackProgressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labFileDescription.Name" xml:space="preserve">
-    <value>labFileDescription</value>
+  <data name="panelContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;labFileDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="labPassword.Text" xml:space="preserve">
+    <value>Password for packed application</value>
   </data>
-  <data name="&gt;&gt;labFileDescription.Parent" xml:space="preserve">
-    <value>panelContainer</value>
+  <data name="labPasswordDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>342, 13</value>
   </data>
-  <data name="&gt;&gt;labFileDescription.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="txtFileDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtFileDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 213</value>
-  </data>
-  <data name="txtFileDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 20</value>
-  </data>
-  <data name="txtFileDescription.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;txtFileDescription.Name" xml:space="preserve">
-    <value>txtFileDescription</value>
-  </data>
-  <data name="&gt;&gt;txtFileDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFileDescription.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;txtFileDescription.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="labFileDescriptionDescription.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labFileDescriptionDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labFileDescriptionDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 236</value>
-  </data>
-  <data name="labFileDescriptionDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 26</value>
-  </data>
-  <data name="labFileDescriptionDescription.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="labFileDescriptionDescription.Text" xml:space="preserve">
-    <value>Used as the program name by Windows in 'Open with...' dialog
-If left empty, this parameter will be taken from the main executable file</value>
-  </data>
-  <data name="&gt;&gt;labFileDescriptionDescription.Name" xml:space="preserve">
-    <value>labFileDescriptionDescription</value>
-  </data>
-  <data name="&gt;&gt;labFileDescriptionDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labFileDescriptionDescription.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;labFileDescriptionDescription.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="btnSaveIni.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="btnSaveIni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 410</value>
-  </data>
-  <data name="btnSaveIni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 23</value>
-  </data>
-  <data name="btnSaveIni.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="btnSaveIni.Text" xml:space="preserve">
-    <value>Save settings in appacker.ini file</value>
-  </data>
-  <data name="&gt;&gt;btnSaveIni.Name" xml:space="preserve">
-    <value>btnSaveIni</value>
-  </data>
-  <data name="&gt;&gt;btnSaveIni.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnSaveIni.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;btnSaveIni.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="labIniDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="labIniDescription.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labIniDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labIniDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 436</value>
-  </data>
-  <data name="labIniDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 13</value>
-  </data>
-  <data name="labIniDescription.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="labIniDescription.Text" xml:space="preserve">
-    <value>Settings will automatically load from ini file at launch if it exists</value>
-  </data>
-  <data name="&gt;&gt;labIniDescription.Name" xml:space="preserve">
-    <value>labIniDescription</value>
-  </data>
-  <data name="&gt;&gt;labIniDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labIniDescription.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;labIniDescription.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="panelContainer.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="btnClose.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.5pt</value>
-  </data>
-  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 410</value>
-  </data>
-  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 39</value>
-  </data>
-  <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
-    <value>99</value>
-  </data>
-  <data name="btnClose.Text" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="&gt;&gt;btnClose.Name" xml:space="preserve">
-    <value>btnClose</value>
-  </data>
-  <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnClose.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labWindowlessDescription.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labWindowlessDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labWindowlessDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 356</value>
+  <data name="checkOpenUnpackFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="labWindowlessDescription.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 26</value>
   </data>
+  <data name="&gt;&gt;txtPassword.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;folderBrowserDialog.Name" xml:space="preserve">
+    <value>folderBrowserDialog</value>
+  </data>
+  <data name="labPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 272</value>
+  </data>
+  <data name="checkOpenUnpackFolder.Text" xml:space="preserve">
+    <value>Open unpack directory in Explorer after launch</value>
+  </data>
+  <data name="&gt;&gt;txtArguments.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;labPasswordDescription.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="labProgressBarDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>355, 26</value>
+  </data>
+  <data name="&gt;&gt;checkWindowless.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="txtPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labProgressBarDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>480, 310</value>
+  </data>
+  <data name="txtFileDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;checkUnpackProgressBar.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="&gt;&gt;labFileDescriptionDescription.Name" xml:space="preserve">
+    <value>labFileDescriptionDescription</value>
+  </data>
+  <data name="checkRepackable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 17</value>
+  </data>
+  <data name="&gt;&gt;labPasswordDescription.Name" xml:space="preserve">
+    <value>labPasswordDescription</value>
+  </data>
+  <data name="&gt;&gt;labIniDescription.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;labUnpackDir.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="checkRepackable.Text" xml:space="preserve">
+    <value>Self-repackable application</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="checkRepackable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="&gt;&gt;panelContainer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 459</value>
+  </data>
+  <data name="labArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txtPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labIniDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkOpenUnpackFolder.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;txtArguments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkUnpackProgressBar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtPassword.Name" xml:space="preserve">
+    <value>txtPassword</value>
+  </data>
+  <data name="&gt;&gt;labFileDescription.Name" xml:space="preserve">
+    <value>labFileDescription</value>
+  </data>
+  <data name="&gt;&gt;checkUnpackProgressBar.Name" xml:space="preserve">
+    <value>checkUnpackProgressBar</value>
+  </data>
+  <data name="labUnpackDir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 13</value>
+  </data>
   <data name="labWindowlessDescription.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
+  </data>
+  <data name="labRepackableDescr.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labFileDescription.Text" xml:space="preserve">
+    <value>FileDescription parameter for the package executable</value>
+  </data>
+  <data name="labProgressBarDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;labRepackableDescr.Name" xml:space="preserve">
+    <value>labRepackableDescr</value>
+  </data>
+  <data name="checkWindowless.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 336</value>
+  </data>
+  <data name="&gt;&gt;panelContainer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="comboUnpackDir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 91</value>
+  </data>
+  <data name="txtArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 164</value>
+  </data>
+  <data name="checkOpenUnpackFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 17</value>
+  </data>
+  <data name="&gt;&gt;labUnpackDir.Name" xml:space="preserve">
+    <value>labUnpackDir</value>
+  </data>
+  <data name="labFileDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 10, 3, 0</value>
+  </data>
+  <data name="labUnpackDir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 75</value>
+  </data>
+  <data name="btnSaveIni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 23</value>
+  </data>
+  <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 20</value>
+  </data>
+  <data name="checkWindowless.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="checkWindowless.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 17</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="labRepackableDescr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 39</value>
+  </data>
+  <data name="labPasswordDescription.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;labIniDescription.Name" xml:space="preserve">
+    <value>labIniDescription</value>
+  </data>
+  <data name="&gt;&gt;btnSaveIni.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="labArguments.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 10, 3, 0</value>
+  </data>
+  <data name="&gt;&gt;checkWindowless.Name" xml:space="preserve">
+    <value>checkWindowless</value>
+  </data>
+  <data name="&gt;&gt;checkOpenUnpackFolder.Name" xml:space="preserve">
+    <value>checkOpenUnpackFolder</value>
+  </data>
+  <data name="txtPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 288</value>
+  </data>
+  <data name="panelContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelContainer.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>AdvancedOptionsForm</value>
+  </data>
+  <data name="btnSaveIni.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;labArguments.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkWindowless.Text" xml:space="preserve">
+    <value>Use windowless unpacker</value>
+  </data>
+  <data name="labRepackableDescr.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkOpenUnpackFolder.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="labArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 148</value>
+  </data>
+  <data name="&gt;&gt;checkOpenUnpackFolder.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSaveIni.Parent" xml:space="preserve">
+    <value>panelContainer</value>
   </data>
   <data name="labWindowlessDescription.Text" xml:space="preserve">
     <value>Line 1
 Line 2</value>
   </data>
-  <data name="&gt;&gt;labWindowlessDescription.Name" xml:space="preserve">
-    <value>labWindowlessDescription</value>
-  </data>
-  <data name="&gt;&gt;labWindowlessDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labWindowlessDescription.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;labWindowlessDescription.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labPasswordDescription.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labPasswordDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labPasswordDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 311</value>
-  </data>
-  <data name="labPasswordDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 13</value>
-  </data>
-  <data name="labPasswordDescription.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="labPasswordDescription.Text" xml:space="preserve">
-    <value>If set, you will have to enter the password to launch packed application</value>
-  </data>
-  <data name="&gt;&gt;labPasswordDescription.Name" xml:space="preserve">
-    <value>labPasswordDescription</value>
+  <data name="&gt;&gt;folderBrowserDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labPasswordDescription.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labPasswordDescription.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;labPasswordDescription.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtPassword.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 288</value>
-  </data>
-  <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 20</value>
-  </data>
-  <data name="txtPassword.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="txtPassword.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;txtPassword.Name" xml:space="preserve">
-    <value>txtPassword</value>
-  </data>
-  <data name="&gt;&gt;txtPassword.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtPassword.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;txtPassword.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="labPassword.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labPassword.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 272</value>
-  </data>
-  <data name="labPassword.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 10, 3, 0</value>
-  </data>
-  <data name="labPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 13</value>
-  </data>
-  <data name="labPassword.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="labPassword.Text" xml:space="preserve">
-    <value>Password for packed application</value>
+  <data name="labUnpackDir.Text" xml:space="preserve">
+    <value>Unpack directory</value>
   </data>
   <data name="&gt;&gt;labPassword.Name" xml:space="preserve">
     <value>labPassword</value>
   </data>
-  <data name="&gt;&gt;labPassword.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labPassword.Parent" xml:space="preserve">
-    <value>panelContainer</value>
-  </data>
-  <data name="&gt;&gt;labPassword.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="checkWindowless.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labWindowlessDescription.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkWindowless.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;labPassword.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="checkWindowless.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 336</value>
+  <data name="labFileDescriptionDescription.Text" xml:space="preserve">
+    <value>Used as the program name by Windows in 'Open with...' dialog
+If left empty, this parameter will be taken from the main executable file</value>
   </data>
-  <data name="checkWindowless.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 17</value>
-  </data>
-  <data name="checkWindowless.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="checkWindowless.Text" xml:space="preserve">
-    <value>Use windowless unpacker</value>
-  </data>
-  <data name="&gt;&gt;checkWindowless.Name" xml:space="preserve">
-    <value>checkWindowless</value>
-  </data>
-  <data name="&gt;&gt;checkWindowless.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkOpenUnpackFolder.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkWindowless.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labWindowlessDescription.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnClose.Name" xml:space="preserve">
+    <value>btnClose</value>
+  </data>
+  <data name="txtPassword.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labPassword.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="comboUnpackDir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 21</value>
+  </data>
+  <data name="&gt;&gt;txtPassword.Parent" xml:space="preserve">
     <value>panelContainer</value>
   </data>
-  <data name="&gt;&gt;checkWindowless.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="btnSaveIni.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 459</value>
   </data>
-  <data name="panelContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="labFileDescriptionDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 236</value>
   </data>
-  <data name="panelContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;labUnpackDir.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="labUnpackDir.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="comboUnpackDir.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="panelContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>464, 461</value>
+    <value>464, 510</value>
   </data>
-  <data name="panelContainer.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="labPasswordDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;panelContainer.Name" xml:space="preserve">
     <value>panelContainer</value>
   </data>
-  <data name="&gt;&gt;panelContainer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;comboUnpackDir.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
-  <data name="&gt;&gt;panelContainer.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;labFileDescription.Parent" xml:space="preserve">
+    <value>panelContainer</value>
   </data>
-  <data name="&gt;&gt;panelContainer.ZOrder" xml:space="preserve">
+  <data name="btnSaveIni.Text" xml:space="preserve">
+    <value>Save settings in appacker.ini file</value>
+  </data>
+  <data name="&gt;&gt;txtArguments.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="&gt;&gt;labPassword.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="&gt;&gt;txtArguments.Name" xml:space="preserve">
+    <value>txtArguments</value>
+  </data>
+  <data name="checkRepackable.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;labPasswordDescription.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkUnpackProgressBar.Text" xml:space="preserve">
+    <value>Show progress bar during unpacking</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>464, 510</value>
+  </data>
+  <data name="comboUnpackDir.Items" xml:space="preserve">
+    <value>Temp directory</value>
+  </data>
+  <data name="labFileDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnSaveIni.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;labProgressBarDescription.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnSaveIni.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 39</value>
+  </data>
+  <data name="labArguments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labPasswordDescription.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnClose.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;comboUnpackDir.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="btnClose.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="&gt;&gt;txtFileDescription.Name" xml:space="preserve">
+    <value>txtFileDescription</value>
+  </data>
+  <data name="labPasswordDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 311</value>
+  </data>
+  <data name="labArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 13</value>
+  </data>
+  <data name="checkWindowless.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labFileDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="txtFileDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 213</value>
+  </data>
+  <data name="&gt;&gt;checkRepackable.Name" xml:space="preserve">
+    <value>checkRepackable</value>
+  </data>
+  <data name="&gt;&gt;checkWindowless.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFileDescription.Parent" xml:space="preserve">
+    <value>panelContainer</value>
+  </data>
+  <data name="&gt;&gt;checkRepackable.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="labPasswordDescription.Text" xml:space="preserve">
+    <value>If set, you will have to enter the password to launch packed application</value>
+  </data>
+  <data name="&gt;&gt;comboUnpackDir.Name" xml:space="preserve">
+    <value>comboUnpackDir</value>
+  </data>
+  <data name="&gt;&gt;labIniDescription.Parent" xml:space="preserve">
+    <value>panelContainer</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>464, 461</value>
-  </data>
-  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>9999, 5000</value>
-  </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>480, 310</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Advanced options</value>
-  </data>
-  <data name="&gt;&gt;folderBrowserDialog.Name" xml:space="preserve">
-    <value>folderBrowserDialog</value>
-  </data>
-  <data name="&gt;&gt;folderBrowserDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AdvancedOptionsForm</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
+  <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

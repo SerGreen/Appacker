@@ -48,7 +48,21 @@ namespace Appacker
                 case ".exe":
                 case ".dll":
                 case ".ico":
-                    mIco.Load(path);
+                    try
+                    { 
+                        mIco.Load(path); 
+                    }
+                    // Aseprite's exe produces an exception when trying to get its icon. I don't want to deal with it right now, just ignore it, file will use the default icon
+                    catch (System.Drawing.IconLib.Exceptions.InvalidFileException e) 
+                    {
+                        Console.Error.WriteLine(e.Message);
+                    }
+                    // Should never happen, just a failsafe
+                    catch (Exception e)
+                    {
+                        System.Windows.Forms.MessageBox.Show($"Unexpected error related to an icon, please report it on GitHub!\nLikely you can continue packing prosess despite this error.\n\nError message:\n\n\"{e.Message}\"", "Something went wrong!");
+                    }
+
                     // If icon pack has multiple icons, take the first one
                     if (mIco.Count > 0)
                         ico = mIco[0];

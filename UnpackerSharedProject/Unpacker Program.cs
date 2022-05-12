@@ -101,7 +101,7 @@ namespace Unpacker
                 long pos = FindPatternPosition(me.BaseStream, pattern);
                 me.BaseStream.Seek(pos + pattern.Length, SeekOrigin.Begin);
 
-                // TODO: read password flag and show password prompt
+                // Read password flag and show password prompt
                 bool isPasswordProtected = me.ReadBoolean();
                 if (isPasswordProtected)
                 {
@@ -109,9 +109,6 @@ namespace Unpacker
                     if (AskPassword(passHash) == false)
                         return;
                 }
-
-
-
 
                 // Create temp directory to store tools
                 while (repackerTempDir == null || Directory.Exists(repackerTempDir))

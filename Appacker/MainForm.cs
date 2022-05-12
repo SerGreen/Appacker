@@ -34,6 +34,7 @@ namespace Appacker
         internal string customFileDescription = "";
         internal string password = "";
         internal bool isWindowlessUnpacker = true;
+        internal bool isUnpackProgressBarEnabled = true;
 
         private IniSettingsProvider iniSettings;
 
@@ -327,9 +328,12 @@ namespace Appacker
             aof.ShowDialog();
         }
 
-        private void MainForm_Activated (object sender, EventArgs e)
+        private void MainForm_Activated (object sender, EventArgs e) => picPassword.Visible = !string.IsNullOrEmpty(password);
+
+        private void timerProgressBarReset_Tick (object sender, EventArgs e)
         {
-            picPassword.Visible = !string.IsNullOrEmpty(password);
+            progressBar.Value = 0;
+            timerProgressBarReset.Stop();
         }
         #endregion
 
@@ -366,10 +370,22 @@ namespace Appacker
 
                 btnPack.Text = Resources.Strings.btnPackText;
                 btnPack.Enabled = packToolStripMenuItem.Enabled = true;
+                timerProgressBarReset.Start();
             };
 
             progressBar.Value = 0;
-            StartPacking(sourceAppFolder, mainExePath, destinationPath, customIconPath, customFileDescription, launchArguments, selfRepackable, openUnpackDirectory, unpackDirectory, passHash, isWindowlessUnpacker);
+            StartPacking(sourceAppFolder: sourceAppFolder, 
+                         mainExePath: mainExePath, 
+                         destinationPath: destinationPath, 
+                         customIconPath: customIconPath,
+                         customFileDescription: customFileDescription, 
+                         launchArguments: launchArguments, 
+                         selfRepackable: selfRepackable, 
+                         openUnpackDir: openUnpackDirectory, 
+                         unpackDirectory: unpackDirectory, 
+                         passHash: passHash, 
+                         isWindowlessUnpacker: isWindowlessUnpacker,
+                         isUnpackProgressBarEnabled: isUnpackProgressBarEnabled);
         }
 
         internal static event EventHandler<(int maxValue, int currentValue)> PackingProgressUpdate;
@@ -387,6 +403,8 @@ namespace Appacker
         /// <param name="openUnpackDir">If true, then when you launch packed app, it will open the directory with unpacked app in Explorer</param>
         /// <param name="unpackDirectory">Where create temp directory with unpacked app</param>
         /// <param name="passHash">Hash of a password for packed application</param>
+        /// <param name="isWindowlessUnpacker">Determines what type of unpacker tool (windows app/console app) to pack along with the target app. Default is True</param>
+        /// <param name="isUnpackProgressBarEnabled">If true, splash screen with a progress bar will appear after a few seconds of unpacking to show that something is happening</param>
         internal static void StartPacking( string sourceAppFolder, 
                                            string mainExePath,
                                            string destinationPath, 
@@ -398,6 +416,7 @@ namespace Appacker
                                            UnpackDirectory unpackDirectory = UnpackDirectory.Temp,
                                            string passHash = "",
                                            bool   isWindowlessUnpacker = true,
+                                           bool   isUnpackProgressBarEnabled = true,
                                            bool   noGUI = false)
         {
             // Copy packer and unpacker into the temp directory
@@ -411,7 +430,8 @@ namespace Appacker
 
             File.WriteAllBytes(Path.Combine(tempDir, "packer.exe"), ToolsStorage.Packer);
             File.WriteAllBytes(pathUnpacker, isWindowlessUnpacker ? ToolsStorage.UnpackerWindowless : ToolsStorage.Unpacker);
-            File.WriteAllBytes(Path.Combine(tempDir, "progressBarSplash.exe"), ToolsStorage.ProgressBarSplash);
+            if (isUnpackProgressBarEnabled)
+                File.WriteAllBytes(Path.Combine(tempDir, "progressBarSplash.exe"), ToolsStorage.ProgressBarSplash);
             File.WriteAllBytes(Path.Combine(tempDir, "verInfoLib.exe"), ToolsStorage.VerInfoLib);
             File.WriteAllBytes(Path.Combine(tempDir, "verInfoLib.dll"), ToolsStorage.VerInfoLibDLL);
 
@@ -639,11 +659,13 @@ namespace Appacker
                 SetAppIconPreviewFromMainExe();
         }
 
-        private void SetAppIconPreviewCustom (string pathToIcon) {
+        private void SetAppIconPreviewCustom (string pathToIcon)
+        {
             var ico = IconSwapper.GetIconFromFile(pathToIcon);
             Bitmap bmp = GetPreferredIconSizePreview(ico, 32);
 
-            if (bmp != null) {
+            if (bmp != null)
+            {
                 picAppIcon.Image = bmp;
                 btnIconReset.Visible = true;
                 pathToCustomIcon = pathToIcon;

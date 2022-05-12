@@ -43,6 +43,8 @@
             this.btnSaveIni = new System.Windows.Forms.Button();
             this.labIniDescription = new System.Windows.Forms.Label();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.labProgressBarDescription = new System.Windows.Forms.Label();
+            this.checkUnpackProgressBar = new System.Windows.Forms.CheckBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.labWindowlessDescription = new System.Windows.Forms.Label();
             this.labPasswordDescription = new System.Windows.Forms.Label();
@@ -90,6 +92,10 @@
             this.checkOpenUnpackFolder.Name = "checkOpenUnpackFolder";
             this.checkOpenUnpackFolder.UseVisualStyleBackColor = true;
             // 
+            // folderBrowserDialog
+            // 
+            resources.ApplyResources(this.folderBrowserDialog, "folderBrowserDialog");
+            // 
             // txtArguments
             // 
             resources.ApplyResources(this.txtArguments, "txtArguments");
@@ -132,6 +138,8 @@
             // panelContainer
             // 
             resources.ApplyResources(this.panelContainer, "panelContainer");
+            this.panelContainer.Controls.Add(this.labProgressBarDescription);
+            this.panelContainer.Controls.Add(this.checkUnpackProgressBar);
             this.panelContainer.Controls.Add(this.btnClose);
             this.panelContainer.Controls.Add(this.labWindowlessDescription);
             this.panelContainer.Controls.Add(this.labPasswordDescription);
@@ -151,6 +159,20 @@
             this.panelContainer.Controls.Add(this.labArguments);
             this.panelContainer.Controls.Add(this.labFileDescription);
             this.panelContainer.Name = "panelContainer";
+            // 
+            // labProgressBarDescription
+            // 
+            resources.ApplyResources(this.labProgressBarDescription, "labProgressBarDescription");
+            this.labProgressBarDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labProgressBarDescription.Name = "labProgressBarDescription";
+            // 
+            // checkUnpackProgressBar
+            // 
+            resources.ApplyResources(this.checkUnpackProgressBar, "checkUnpackProgressBar");
+            this.checkUnpackProgressBar.Checked = true;
+            this.checkUnpackProgressBar.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkUnpackProgressBar.Name = "checkUnpackProgressBar";
+            this.checkUnpackProgressBar.UseVisualStyleBackColor = true;
             // 
             // btnClose
             // 
@@ -234,5 +256,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label labWindowlessDescription;
         private System.Windows.Forms.CheckBox checkWindowless;
+        private System.Windows.Forms.Label labProgressBarDescription;
+        private System.Windows.Forms.CheckBox checkUnpackProgressBar;
     }
 }
