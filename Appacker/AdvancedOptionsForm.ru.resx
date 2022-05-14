@@ -195,15 +195,19 @@
     <value>При запуске настройки автоматически загрузятся из ini файла, 
 если он существует</value>
   </data>
-  <data name="panelContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 526</value>
+  <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>430, 20</value>
   </data>
-  <data name="labProgressBarDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>423, 26</value>
+  <data name="btnPassEye.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAAKVJREFUOE/N
+        krENwlAMRL0BFSlZIGXSZykaZmGNlFQMgcQEUZQh4B7yff1IIOjCSU/yt322IyX+QgdxFOeEmNxH7QSN
+        j+SW+E2NnpWYeBc2tMIi9gB6yvZG2AQ2DQki5zq9exGXTACTEQbnbK7PxhPXKvGrEc/r5ikT8O1Uest3
+        9mIRFJhsMyL2tll0YiWmjMKTaa7Po1Y2vRMbTsI/AHF9wSaKeALqmkAVf6weuwAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="labProgressBarDescription.Text" xml:space="preserve">
-    <value>Когда запускается приложение, показывать заставку с индикатором прогресса,
-если процесс распаковки занимает больше времени, чем 1 секунду</value>
+  <data name="btnPassEye.Location" type="System.Drawing.Point, System.Drawing">
+    <value>440, 287</value>
   </data>
   <data name="checkUnpackProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>270, 17</value>
@@ -226,14 +230,14 @@
   <data name="labPasswordDescription.Text" xml:space="preserve">
     <value>Если задать пароль, то его нужно будет ввести для запуска упакованного приложения</value>
   </data>
-  <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 20</value>
-  </data>
   <data name="labPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 13</value>
   </data>
   <data name="labPassword.Text" xml:space="preserve">
     <value>Пароль для упакованного приложения</value>
+  </data>
+  <data name="panelContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 526</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>474, 526</value>

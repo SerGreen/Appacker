@@ -43,12 +43,13 @@
             this.btnSaveIni = new System.Windows.Forms.Button();
             this.labIniDescription = new System.Windows.Forms.Label();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnPassEye = new System.Windows.Forms.Button();
             this.labProgressBarDescription = new System.Windows.Forms.Label();
             this.checkUnpackProgressBar = new System.Windows.Forms.CheckBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.labWindowlessDescription = new System.Windows.Forms.Label();
             this.labPasswordDescription = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
             this.labPassword = new System.Windows.Forms.Label();
             this.checkWindowless = new System.Windows.Forms.CheckBox();
             this.panelContainer.SuspendLayout();
@@ -92,10 +93,6 @@
             this.checkOpenUnpackFolder.Name = "checkOpenUnpackFolder";
             this.checkOpenUnpackFolder.UseVisualStyleBackColor = true;
             // 
-            // folderBrowserDialog
-            // 
-            resources.ApplyResources(this.folderBrowserDialog, "folderBrowserDialog");
-            // 
             // txtArguments
             // 
             resources.ApplyResources(this.txtArguments, "txtArguments");
@@ -138,12 +135,13 @@
             // panelContainer
             // 
             resources.ApplyResources(this.panelContainer, "panelContainer");
+            this.panelContainer.Controls.Add(this.txtPassword);
+            this.panelContainer.Controls.Add(this.btnPassEye);
             this.panelContainer.Controls.Add(this.labProgressBarDescription);
             this.panelContainer.Controls.Add(this.checkUnpackProgressBar);
             this.panelContainer.Controls.Add(this.btnClose);
             this.panelContainer.Controls.Add(this.labWindowlessDescription);
             this.panelContainer.Controls.Add(this.labPasswordDescription);
-            this.panelContainer.Controls.Add(this.txtPassword);
             this.panelContainer.Controls.Add(this.labPassword);
             this.panelContainer.Controls.Add(this.checkWindowless);
             this.panelContainer.Controls.Add(this.checkRepackable);
@@ -160,6 +158,21 @@
             this.panelContainer.Controls.Add(this.labFileDescription);
             this.panelContainer.Name = "panelContainer";
             // 
+            // txtPassword
+            // 
+            resources.ApplyResources(this.txtPassword, "txtPassword");
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.UseSystemPasswordChar = true;
+            // 
+            // btnPassEye
+            // 
+            resources.ApplyResources(this.btnPassEye, "btnPassEye");
+            this.btnPassEye.Image = global::Appacker.Properties.Resources.eye_14;
+            this.btnPassEye.Name = "btnPassEye";
+            this.btnPassEye.TabStop = false;
+            this.btnPassEye.UseVisualStyleBackColor = true;
+            this.btnPassEye.Click += new System.EventHandler(this.btnPassEye_Click);
+            // 
             // labProgressBarDescription
             // 
             resources.ApplyResources(this.labProgressBarDescription, "labProgressBarDescription");
@@ -173,6 +186,7 @@
             this.checkUnpackProgressBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkUnpackProgressBar.Name = "checkUnpackProgressBar";
             this.checkUnpackProgressBar.UseVisualStyleBackColor = true;
+            this.checkUnpackProgressBar.CheckedChanged += new System.EventHandler(this.checkUnpackProgressBar_CheckedChanged);
             // 
             // btnClose
             // 
@@ -193,12 +207,6 @@
             resources.ApplyResources(this.labPasswordDescription, "labPasswordDescription");
             this.labPasswordDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labPasswordDescription.Name = "labPasswordDescription";
-            // 
-            // txtPassword
-            // 
-            resources.ApplyResources(this.txtPassword, "txtPassword");
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // labPassword
             // 
@@ -258,5 +266,6 @@
         private System.Windows.Forms.CheckBox checkWindowless;
         private System.Windows.Forms.Label labProgressBarDescription;
         private System.Windows.Forms.CheckBox checkUnpackProgressBar;
+        private System.Windows.Forms.Button btnPassEye;
     }
 }

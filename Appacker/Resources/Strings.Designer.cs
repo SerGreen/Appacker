@@ -243,7 +243,27 @@ namespace Appacker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can redirect stdout of a packed application and use it via command line,
+        ///   Looks up a localized string similar to No progress bar will appear when launching packed application.
+        ///Unadvised for big packages, as it may appear that nothing is happening..
+        /// </summary>
+        internal static string unpackProgressBarOffDescr {
+            get {
+                return ResourceManager.GetString("unpackProgressBarOffDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When launching packed application, show a splash screen with progres bar
+        ///if unpacking takes longer than 1 second.
+        /// </summary>
+        internal static string unpackProgressBarOnDescr {
+            get {
+                return ResourceManager.GetString("unpackProgressBarOnDescr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can redirect stdout of a packed application,
         ///BUT unpacker console will appear for a split-second before becoming invisible.
         /// </summary>
         internal static string windowlessOffDescr {

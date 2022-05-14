@@ -615,6 +615,8 @@ namespace Appacker
                 btnIconReset.Visible = true;
             if (!string.IsNullOrWhiteSpace(txtPackExePath.Text) && File.Exists(txtPackExePath.Text))
                 labOverride.Visible = true;
+            if (!string.IsNullOrWhiteSpace(password))
+                picPassword.Visible = true;
         }
 
         private void SetCueBanners()

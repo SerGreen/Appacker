@@ -73,6 +73,26 @@ namespace Appacker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eye_14 {
+            get {
+                object obj = ResourceManager.GetObject("eye_14", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_red_14 {
+            get {
+                object obj = ResourceManager.GetObject("eye_red_14", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap flag_great_britain_30 {
             get {
                 object obj = ResourceManager.GetObject("flag_great_britain_30", resourceCulture);

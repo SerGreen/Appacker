@@ -179,8 +179,16 @@ Changes to the app files won't be saved (e.g. app settings).</value>
     <value>When application is closed, all its files will be packed back and packed .exe will be replaced.
 Any changes will be saved (e.g. app settings).</value>
   </data>
+  <data name="unpackProgressBarOffDescr" xml:space="preserve">
+    <value>No progress bar will appear when launching packed application.
+Unadvised for big packages, as it may appear that nothing is happening.</value>
+  </data>
+  <data name="unpackProgressBarOnDescr" xml:space="preserve">
+    <value>When launching packed application, show a splash screen with progres bar
+if unpacking takes longer than 1 second</value>
+  </data>
   <data name="windowlessOffDescr" xml:space="preserve">
-    <value>You can redirect stdout of a packed application and use it via command line,
+    <value>You can redirect stdout of a packed application,
 BUT unpacker console will appear for a split-second before becoming invisible</value>
   </data>
   <data name="windowlessOnDescr" xml:space="preserve">

@@ -181,4 +181,20 @@
 .exe заменён на новый.
 Все внесённые изменения сохраняются. (напр., настройки приложения).</value>
   </data>
+  <data name="unpackProgressBarOffDescr" xml:space="preserve">
+    <value>Прогрессбар не будет появляться при запуске упакованного приложения.
+Не рекомендуется для больших пакетов, т.к. может казаться, что ничего не происходит.</value>
+  </data>
+  <data name="unpackProgressBarOnDescr" xml:space="preserve">
+    <value>Показывать заставку с прогрессбаром при запуске упакованного приложения,
+если процесс распаковки длится дольше 1 секунды.</value>
+  </data>
+  <data name="windowlessOffDescr" xml:space="preserve">
+    <value>Можно перенаправлять stdout упакованного приложения,
+НО консольное окно распаковщика будет мелькать на долю секунды при запуске</value>
+  </data>
+  <data name="windowlessOnDescr" xml:space="preserve">
+    <value>Фоновый распаковщик полностью невидим,
+НО нельзя перенаправлять stdout упакованного приложения</value>
+  </data>
 </root>

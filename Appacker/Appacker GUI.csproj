@@ -195,10 +195,10 @@
     <None Include="Resources\icons\open_box_icon.png" />
     <None Include="Resources\Microsoft.VC80.MFC.manifest" />
     <None Include="Resources\red-warning-16.png" />
+    <None Include="Resources\eye_14.png" />
+    <None Include="Resources\eye_red_14.png" />
     <Content Include="Resources\mfc80.dll" />
     <None Include="Resources\password_16.png" />
-    <None Include="Resources\password_20.png" />
-    <None Include="Resources\password_161.png" />
     <Content Include="Resources\UnpackerWindowless.exe" />
     <Content Include="Resources\VerInfoLib.dll" />
     <Content Include="Resources\VerInfoLib.exe" />

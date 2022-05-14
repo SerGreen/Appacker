@@ -40,16 +40,18 @@ namespace Appacker
 
             SetRepackDescription();
             SetWindowlessDescription();
+            SetProgressBarDescription();
             SetCueBanners();
         }
 
         private void SetRepackDescription() => labRepackableDescr.Text = checkRepackable.Checked ? Resources.Strings.repackOnDescr : Resources.Strings.repackOffDescr;
-
         private void SetWindowlessDescription() => labWindowlessDescription.Text = checkWindowless.Checked ? Resources.Strings.windowlessOnDescr : Resources.Strings.windowlessOffDescr;
+        private void SetProgressBarDescription() => labProgressBarDescription.Text = checkUnpackProgressBar.Checked ? Resources.Strings.unpackProgressBarOnDescr : Resources.Strings.unpackProgressBarOffDescr;
 
         private void SetCueBanners ()
         {
             CueProvider.SetCue(txtPassword, Resources.Strings.cuePassword);
+            CueProvider.SetCue(txtFileDescription, Resources.Strings.cueFileDescription);
             CueProvider.SetCue(txtFileDescription, Resources.Strings.cueFileDescription);
         }
 
@@ -74,6 +76,7 @@ namespace Appacker
         
         private void checkRepackable_CheckedChanged(object sender, EventArgs e) => SetRepackDescription();
         private void checkWindowless_CheckedChanged (object sender, EventArgs e) => SetWindowlessDescription();
+        private void checkUnpackProgressBar_CheckedChanged (object sender, EventArgs e) => SetProgressBarDescription();
 
         private void btnSaveIni_Click (object sender, EventArgs e)
         {
@@ -82,5 +85,12 @@ namespace Appacker
         }
 
         private void btnClose_Click (object sender, EventArgs e) => this.Close();
+
+        private void btnPassEye_Click (object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
+            SetCueBanners();
+            btnPassEye.Image = txtPassword.UseSystemPasswordChar ? Properties.Resources.eye_14 : Properties.Resources.eye_red_14;
+        }
     }
 }

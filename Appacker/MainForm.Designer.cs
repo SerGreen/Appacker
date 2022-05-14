@@ -78,14 +78,13 @@
             // 
             // folderBrowserDialog
             // 
-            resources.ApplyResources(this.folderBrowserDialog, "folderBrowserDialog");
             this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.folderBrowserDialog.ShowNewFolderButton = false;
             // 
             // txtAppFolderPath
             // 
-            resources.ApplyResources(this.txtAppFolderPath, "txtAppFolderPath");
             this.txtAppFolderPath.AllowDrop = true;
+            resources.ApplyResources(this.txtAppFolderPath, "txtAppFolderPath");
             this.txtAppFolderPath.BackColor = System.Drawing.SystemColors.Window;
             this.txtAppFolderPath.Name = "txtAppFolderPath";
             this.txtAppFolderPath.ShortcutsEnabled = false;
@@ -114,8 +113,8 @@
             // 
             // txtPackExePath
             // 
-            resources.ApplyResources(this.txtPackExePath, "txtPackExePath");
             this.txtPackExePath.AllowDrop = true;
+            resources.ApplyResources(this.txtPackExePath, "txtPackExePath");
             this.txtPackExePath.Name = "txtPackExePath";
             this.txtPackExePath.TextChanged += new System.EventHandler(this.txtPackPath_TextChanged);
             this.txtPackExePath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPackPath_DragDrop);
@@ -136,8 +135,8 @@
             // 
             // treeView
             // 
-            resources.ApplyResources(this.treeView, "treeView");
             this.treeView.AllowDrop = true;
+            resources.ApplyResources(this.treeView, "treeView");
             this.treeView.FullRowSelect = true;
             this.treeView.HideSelection = false;
             this.treeView.ImageList = this.treeViewIconsList;
@@ -184,20 +183,20 @@
             // 
             // menuStrip
             // 
-            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.languageToolStripMenuItem,
             this.helpToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
             // 
             // fileToolStripMenuItem
             // 
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.packToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // packToolStripMenuItem
             // 
@@ -207,44 +206,44 @@
             // 
             // exitToolStripMenuItem
             // 
-            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
-            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.russianToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
             // 
             // englishToolStripMenuItem
             // 
-            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Image = global::Appacker.Properties.Resources.flag_great_britain_30;
+            resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // russianToolStripMenuItem
             // 
-            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
             this.russianToolStripMenuItem.Image = global::Appacker.Properties.Resources.flag_russian_federation_30;
+            resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
             this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
             this.russianToolStripMenuItem.Click += new System.EventHandler(this.russianToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
             // aboutToolStripMenuItem
             // 
-            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Image = global::Appacker.Properties.Resources.info_16;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // labTreeViewCaption
@@ -295,7 +294,6 @@
             // picPassword
             // 
             resources.ApplyResources(this.picPassword, "picPassword");
-            this.picPassword.Image = global::Appacker.Properties.Resources.password_16;
             this.picPassword.Name = "picPassword";
             this.picPassword.TabStop = false;
             // 
@@ -316,15 +314,15 @@
             // 
             // indPackExePath
             // 
-            resources.ApplyResources(this.indPackExePath, "indPackExePath");
             this.indPackExePath.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.indPackExePath, "indPackExePath");
             this.indPackExePath.Name = "indPackExePath";
             this.indPackExePath.TabStop = false;
             // 
             // indAppFolder
             // 
-            resources.ApplyResources(this.indAppFolder, "indAppFolder");
             this.indAppFolder.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.indAppFolder, "indAppFolder");
             this.indAppFolder.Name = "indAppFolder";
             this.indAppFolder.TabStop = false;
             // 
