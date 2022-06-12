@@ -214,6 +214,33 @@ namespace Appacker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings will load from a file in AppData\Roaming\Appacker..
+        /// </summary>
+        internal static string iniDescriptionAppData {
+            get {
+                return ResourceManager.GetString("iniDescriptionAppData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Appacker will load with default settings the next time..
+        /// </summary>
+        internal static string iniDescriptionDefault {
+            get {
+                return ResourceManager.GetString("iniDescriptionDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings will load from the local appacker.ini file..
+        /// </summary>
+        internal static string iniDescriptionLocal {
+            get {
+                return ResourceManager.GetString("iniDescriptionLocal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estimated package size: .
         /// </summary>
         internal static string labSizeText {
@@ -253,7 +280,7 @@ namespace Appacker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When launching packed application, show a splash screen with progres bar
+        ///   Looks up a localized string similar to When launching packed application, show a splash screen with a progres bar
         ///if unpacking takes longer than 1 second.
         /// </summary>
         internal static string unpackProgressBarOnDescr {

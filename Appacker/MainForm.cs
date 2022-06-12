@@ -36,8 +36,6 @@ namespace Appacker
         internal bool isWindowlessUnpacker = true;
         internal bool isUnpackProgressBarEnabled = true;
 
-        private IniSettingsProvider iniSettings;
-
         internal static bool vcRuntime80Installed;
 
         public MainForm ()
@@ -53,16 +51,7 @@ namespace Appacker
             picAppIcon.AllowDrop = true;
 
             // Load settings from INI file if it exists
-            iniSettings = new IniSettingsProvider();
-            if (iniSettings.isIniFilePresent)
-            {
-                LoadIniSettings();
-            }
-            else
-            {
-                // Load language from registry settings
-                SetLanguage(RegistrySettingsProvider.Language);
-            }
+            LoadIniSettings();
 
             checkVCRuntime();
         }
@@ -595,10 +584,6 @@ namespace Appacker
                 System.Threading.Thread.CurrentThread.CurrentCulture =
                 System.Threading.Thread.CurrentThread.CurrentUICulture = language;
             
-            // Save language in registry only when there's no INI settings file
-            if (!iniSettings.isIniFilePresent)
-                RegistrySettingsProvider.Language = cultureManager.UICulture;
-
             CheckIfReadyToPack();
             SetCueBanners();
             UpdateEstimatedSize();
@@ -722,7 +707,7 @@ namespace Appacker
         #region INI settings
         private void LoadIniSettings ()
         {
-            Settings settings = iniSettings.ReadIniSettings();
+            Settings settings = IniSettingsProvider.ReadIniSettings();
 
             if (settings != null)
             {
@@ -733,6 +718,8 @@ namespace Appacker
                 unpackDirectory = settings.unpackDirectory;
                 launchArguments = settings.launchArguments;
                 customFileDescription = settings.customFileDescription;
+                isWindowlessUnpacker = settings.isWindowless;
+                isUnpackProgressBarEnabled = settings.isSplashProgressBarEnabled;
 
                 this.Top = settings.positionTop;
                 this.Left = settings.positionLeft;
@@ -741,7 +728,7 @@ namespace Appacker
             }
         }
 
-        internal void SaveIniSettings ()
+        private Settings GetCurrentSettings()
         {
             Settings settings = new Settings();
 
@@ -752,21 +739,26 @@ namespace Appacker
             settings.unpackDirectory = unpackDirectory;
             settings.launchArguments = launchArguments;
             settings.customFileDescription = customFileDescription;
+            settings.isWindowless = isWindowlessUnpacker;
+            settings.isSplashProgressBarEnabled = isUnpackProgressBarEnabled;
 
             settings.positionTop = this.Top;
             settings.positionLeft = this.Left;
             settings.width = this.Width;
             settings.height = this.Height;
 
-            iniSettings.SaveIniFile(settings);
+            return settings;
         }
+
+        internal void SaveLocalIniSettings () => IniSettingsProvider.SaveIniFile(GetCurrentSettings(), IniSettingsProvider.IniLocationFlags.Local);
+        internal void SaveAppDataIniSettings () => IniSettingsProvider.SaveIniFile(GetCurrentSettings(), IniSettingsProvider.IniLocationFlags.AppData);
 
         private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
         {
-            if (iniSettings.isIniFilePresent)
-            {
-                SaveIniSettings();
-            }
+            if (IniSettingsProvider.isLocalIniFilePresent)
+                SaveLocalIniSettings();
+            else if (IniSettingsProvider.isAppDataIniFilePresent)
+                SaveAppDataIniSettings();
         }
         #endregion
 

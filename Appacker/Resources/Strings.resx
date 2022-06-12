@@ -168,6 +168,15 @@
   <data name="errorText" xml:space="preserve">
     <value>Packing was not performed. Packer has exited with code</value>
   </data>
+  <data name="iniDescriptionAppData" xml:space="preserve">
+    <value>Settings will load from a file in AppData\Roaming\Appacker.</value>
+  </data>
+  <data name="iniDescriptionDefault" xml:space="preserve">
+    <value>Appacker will load with default settings the next time.</value>
+  </data>
+  <data name="iniDescriptionLocal" xml:space="preserve">
+    <value>Settings will load from the local appacker.ini file.</value>
+  </data>
   <data name="labSizeText" xml:space="preserve">
     <value>Estimated package size: </value>
   </data>
@@ -184,7 +193,7 @@ Any changes will be saved (e.g. app settings).</value>
 Unadvised for big packages, as it may appear that nothing is happening.</value>
   </data>
   <data name="unpackProgressBarOnDescr" xml:space="preserve">
-    <value>When launching packed application, show a splash screen with progres bar
+    <value>When launching packed application, show a splash screen with a progres bar
 if unpacking takes longer than 1 second</value>
   </data>
   <data name="windowlessOffDescr" xml:space="preserve">

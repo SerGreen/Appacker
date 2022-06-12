@@ -15,6 +15,8 @@ namespace Appacker
         public MainForm.UnpackDirectory unpackDirectory;
         public string launchArguments;
         public string customFileDescription;
+        public bool isWindowless;
+        public bool isSplashProgressBarEnabled;
 
         public int positionTop;
         public int positionLeft;

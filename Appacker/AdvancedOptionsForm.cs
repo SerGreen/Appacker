@@ -42,6 +42,7 @@ namespace Appacker
             SetWindowlessDescription();
             SetProgressBarDescription();
             SetCueBanners();
+            UpdateSettingsFileDescriptions();
         }
 
         private void SetRepackDescription() => labRepackableDescr.Text = checkRepackable.Checked ? Resources.Strings.repackOnDescr : Resources.Strings.repackOffDescr;
@@ -53,6 +54,21 @@ namespace Appacker
             CueProvider.SetCue(txtPassword, Resources.Strings.cuePassword);
             CueProvider.SetCue(txtFileDescription, Resources.Strings.cueFileDescription);
             CueProvider.SetCue(txtFileDescription, Resources.Strings.cueFileDescription);
+        }
+
+        private void UpdateSettingsFileDescriptions()
+        {
+            if (IniSettingsProvider.isLocalIniFilePresent)
+                labIniDescription.Text = Resources.Strings.iniDescriptionLocal;
+            else if (IniSettingsProvider.isAppDataIniFilePresent)
+                labIniDescription.Text = Resources.Strings.iniDescriptionAppData;
+            else
+                labIniDescription.Text = Resources.Strings.iniDescriptionDefault;
+
+            labAppDataIniDetected.Visible = linkAppDataIniDelete.Visible = IniSettingsProvider.isAppDataIniFilePresent;
+            btnSaveIniAppData.Enabled = labAppDataIniDescription.Visible = !IniSettingsProvider.isAppDataIniFilePresent;
+            labLocalIniDetected.Visible = linkLocalIniDelete.Visible = IniSettingsProvider.isLocalIniFilePresent;
+            btnSaveLocalIni.Enabled = labLocalIniDescription.Visible = !IniSettingsProvider.isLocalIniFilePresent;
         }
 
         // Save options to the main form before closing
@@ -78,10 +94,18 @@ namespace Appacker
         private void checkWindowless_CheckedChanged (object sender, EventArgs e) => SetWindowlessDescription();
         private void checkUnpackProgressBar_CheckedChanged (object sender, EventArgs e) => SetProgressBarDescription();
 
-        private void btnSaveIni_Click (object sender, EventArgs e)
+        private void btnSaveLocalIni_Click (object sender, EventArgs e)
         {
             SaveSettings();
-            mainForm.SaveIniSettings();
+            mainForm.SaveLocalIniSettings();
+            UpdateSettingsFileDescriptions();
+        }
+
+        private void btnSaveIniAppData_Click (object sender, EventArgs e)
+        {
+            SaveSettings();
+            mainForm.SaveAppDataIniSettings();
+            UpdateSettingsFileDescriptions();
         }
 
         private void btnClose_Click (object sender, EventArgs e) => this.Close();
@@ -91,6 +115,18 @@ namespace Appacker
             txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
             SetCueBanners();
             btnPassEye.Image = txtPassword.UseSystemPasswordChar ? Properties.Resources.eye_14 : Properties.Resources.eye_red_14;
+        }
+
+        private void linkAppDataIniDelete_LinkClicked (object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            IniSettingsProvider.DeleteIniFile(IniSettingsProvider.IniLocationFlags.AppData);
+            UpdateSettingsFileDescriptions();
+        }
+
+        private void linkLocalIniDelete_LinkClicked (object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            IniSettingsProvider.DeleteIniFile(IniSettingsProvider.IniLocationFlags.Local);
+            UpdateSettingsFileDescriptions();
         }
     }
 }

@@ -176,35 +176,98 @@
     <value>Используется как название приложения в меню "Открыть с помощью..." в Windows
 Если оставить пустым, то это свойство будет взято из основного исполняемого файла</value>
   </data>
-  <data name="btnSaveIni.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 465</value>
+  <data name="labLocalIniDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 516</value>
   </data>
-  <data name="btnSaveIni.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 23</value>
+  <data name="labLocalIniDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 13</value>
   </data>
-  <data name="btnSaveIni.Text" xml:space="preserve">
-    <value>Сохранить настройки в файл appacker.ini</value>
+  <data name="labLocalIniDescription.Text" xml:space="preserve">
+    <value>Для портативности</value>
+  </data>
+  <data name="labAppDataIniDescription.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 516</value>
+  </data>
+  <data name="labAppDataIniDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 13</value>
+  </data>
+  <data name="labAppDataIniDescription.Text" xml:space="preserve">
+    <value>Для текущего пользователя</value>
+  </data>
+  <data name="linkLocalIniDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 516</value>
+  </data>
+  <data name="linkLocalIniDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="linkLocalIniDelete.Text" xml:space="preserve">
+    <value>удалить</value>
+  </data>
+  <data name="linkAppDataIniDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 516</value>
+  </data>
+  <data name="linkAppDataIniDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="linkAppDataIniDelete.Text" xml:space="preserve">
+    <value>удалить</value>
+  </data>
+  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 478</value>
+  </data>
+  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 51</value>
+  </data>
+  <data name="btnClose.Text" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="labLocalIniDetected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 516</value>
+  </data>
+  <data name="labLocalIniDetected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 13</value>
+  </data>
+  <data name="labLocalIniDetected.Text" xml:space="preserve">
+    <value>Файл обнаружен [  удалить  ]</value>
+  </data>
+  <data name="labAppDataIniDetected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 516</value>
+  </data>
+  <data name="labAppDataIniDetected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 13</value>
+  </data>
+  <data name="labAppDataIniDetected.Text" xml:space="preserve">
+    <value>Файл обнаружен [  удалить  ]</value>
   </data>
   <data name="labIniDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 491</value>
+    <value>9, 455</value>
   </data>
   <data name="labIniDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 26</value>
+    <value>360, 13</value>
   </data>
   <data name="labIniDescription.Text" xml:space="preserve">
-    <value>При запуске настройки автоматически загрузятся из ini файла, 
-если он существует</value>
+    <value>Appacker запустится с настройками по умолчанию в следующий раз.</value>
+  </data>
+  <data name="btnSaveIniAppData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 478</value>
+  </data>
+  <data name="btnSaveIniAppData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 35</value>
+  </data>
+  <data name="btnSaveIniAppData.Text" xml:space="preserve">
+    <value>Сохранить настройки в AppData</value>
+  </data>
+  <data name="btnSaveLocalIni.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 478</value>
+  </data>
+  <data name="btnSaveLocalIni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 35</value>
+  </data>
+  <data name="btnSaveLocalIni.Text" xml:space="preserve">
+    <value>Сохранить настройки в локальном файле</value>
   </data>
   <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>430, 20</value>
-  </data>
-  <data name="btnPassEye.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAAKVJREFUOE/N
-        krENwlAMRL0BFSlZIGXSZykaZmGNlFQMgcQEUZQh4B7yff1IIOjCSU/yt322IyX+QgdxFOeEmNxH7QSN
-        j+SW+E2NnpWYeBc2tMIi9gB6yvZG2AQ2DQki5zq9exGXTACTEQbnbK7PxhPXKvGrEc/r5ikT8O1Uest3
-        9mIRFJhsMyL2tll0YiWmjMKTaa7Po1Y2vRMbTsI/AHF9wSaKeALqmkAVf6weuwAAAABJRU5ErkJggg==
-</value>
   </data>
   <data name="btnPassEye.Location" type="System.Drawing.Point, System.Drawing">
     <value>440, 287</value>
@@ -214,15 +277,6 @@
   </data>
   <data name="checkUnpackProgressBar.Text" xml:space="preserve">
     <value>Показывать прогрессбар во время распаковки</value>
-  </data>
-  <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 465</value>
-  </data>
-  <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 52</value>
-  </data>
-  <data name="btnClose.Text" xml:space="preserve">
-    <value>Закрыть</value>
   </data>
   <data name="labPasswordDescription.Size" type="System.Drawing.Size, System.Drawing">
     <value>452, 13</value>
@@ -236,11 +290,17 @@
   <data name="labPassword.Text" xml:space="preserve">
     <value>Пароль для упакованного приложения</value>
   </data>
+  <data name="checkWindowless.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 17</value>
+  </data>
+  <data name="checkWindowless.Text" xml:space="preserve">
+    <value>Использовать безоконный распаковщик</value>
+  </data>
   <data name="panelContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 526</value>
+    <value>474, 541</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>474, 526</value>
+    <value>474, 541</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>490, 310</value>
