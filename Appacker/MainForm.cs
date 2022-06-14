@@ -436,7 +436,12 @@ namespace Appacker
 
             // Change FileDescription field of unpacker.exe (take it from target app if not provided)
             string fileDescription = string.IsNullOrWhiteSpace(customFileDescription) ? FileVersionInfo.GetVersionInfo(pathMainExe).FileDescription : customFileDescription;
-            Process.Start(Path.Combine(tempDir, "verInfoLib.exe"), $"-u \"{pathUnpacker}\" FileDescription \"{fileDescription}\"");
+            Process.Start(new ProcessStartInfo() {
+                FileName = Path.Combine(tempDir, "verInfoLib.exe"),
+                Arguments = $"-u \"{pathUnpacker}\" FileDescription \"{fileDescription}\"",
+                CreateNoWindow = true,
+                UseShellExecute = false
+            });
 
             // Launch packer.exe with arguments:
             // 1. Path to unpacker.exe
