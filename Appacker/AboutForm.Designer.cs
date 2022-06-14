@@ -66,8 +66,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Appacker.Properties.Resources.open_box_icon;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Image = global::Appacker.Properties.Resources.open_box_icon;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 

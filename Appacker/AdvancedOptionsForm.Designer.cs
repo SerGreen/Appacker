@@ -43,6 +43,8 @@
             this.panelContainer = new System.Windows.Forms.Panel();
             this.labLocalIniDescription = new System.Windows.Forms.Label();
             this.labAppDataIniDescription = new System.Windows.Forms.Label();
+            this.linkLocalIniDelete = new System.Windows.Forms.LinkLabel();
+            this.linkAppDataIniDelete = new System.Windows.Forms.LinkLabel();
             this.btnClose = new System.Windows.Forms.Button();
             this.labLocalIniDetected = new System.Windows.Forms.Label();
             this.labAppDataIniDetected = new System.Windows.Forms.Label();
@@ -57,8 +59,6 @@
             this.labPasswordDescription = new System.Windows.Forms.Label();
             this.labPassword = new System.Windows.Forms.Label();
             this.checkWindowless = new System.Windows.Forms.CheckBox();
-            this.linkAppDataIniDelete = new System.Windows.Forms.LinkLabel();
-            this.linkLocalIniDelete = new System.Windows.Forms.LinkLabel();
             this.panelContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,10 +99,6 @@
             resources.ApplyResources(this.checkOpenUnpackFolder, "checkOpenUnpackFolder");
             this.checkOpenUnpackFolder.Name = "checkOpenUnpackFolder";
             this.checkOpenUnpackFolder.UseVisualStyleBackColor = true;
-            // 
-            // folderBrowserDialog
-            // 
-            resources.ApplyResources(this.folderBrowserDialog, "folderBrowserDialog");
             // 
             // txtArguments
             // 
@@ -174,6 +170,20 @@
             resources.ApplyResources(this.labAppDataIniDescription, "labAppDataIniDescription");
             this.labAppDataIniDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labAppDataIniDescription.Name = "labAppDataIniDescription";
+            // 
+            // linkLocalIniDelete
+            // 
+            resources.ApplyResources(this.linkLocalIniDelete, "linkLocalIniDelete");
+            this.linkLocalIniDelete.Name = "linkLocalIniDelete";
+            this.linkLocalIniDelete.TabStop = true;
+            this.linkLocalIniDelete.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLocalIniDelete_LinkClicked);
+            // 
+            // linkAppDataIniDelete
+            // 
+            resources.ApplyResources(this.linkAppDataIniDelete, "linkAppDataIniDelete");
+            this.linkAppDataIniDelete.Name = "linkAppDataIniDelete";
+            this.linkAppDataIniDelete.TabStop = true;
+            this.linkAppDataIniDelete.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAppDataIniDelete_LinkClicked);
             // 
             // btnClose
             // 
@@ -270,20 +280,6 @@
             this.checkWindowless.Name = "checkWindowless";
             this.checkWindowless.UseVisualStyleBackColor = true;
             this.checkWindowless.CheckedChanged += new System.EventHandler(this.checkWindowless_CheckedChanged);
-            // 
-            // linkAppDataIniDelete
-            // 
-            resources.ApplyResources(this.linkAppDataIniDelete, "linkAppDataIniDelete");
-            this.linkAppDataIniDelete.Name = "linkAppDataIniDelete";
-            this.linkAppDataIniDelete.TabStop = true;
-            this.linkAppDataIniDelete.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAppDataIniDelete_LinkClicked);
-            // 
-            // linkLocalIniDelete
-            // 
-            resources.ApplyResources(this.linkLocalIniDelete, "linkLocalIniDelete");
-            this.linkLocalIniDelete.Name = "linkLocalIniDelete";
-            this.linkLocalIniDelete.TabStop = true;
-            this.linkLocalIniDelete.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLocalIniDelete_LinkClicked);
             // 
             // AdvancedOptionsForm
             // 

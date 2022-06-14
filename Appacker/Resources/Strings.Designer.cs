@@ -97,7 +97,7 @@ namespace Appacker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inherit from main executable.
+        ///   Looks up a localized string similar to Inherit from the main executable.
         /// </summary>
         internal static string cueFileDescription {
             get {
@@ -115,7 +115,7 @@ namespace Appacker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save file as....
+        ///   Looks up a localized string similar to Save as....
         /// </summary>
         internal static string cuePackExePath {
             get {
@@ -250,7 +250,7 @@ namespace Appacker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When application is closed, its files are deleted from a temp folder without saving.
+        ///   Looks up a localized string similar to When application is closed its files are deleted from a temp folder without saving.
         ///Changes to the app files won&apos;t be saved (e.g. app settings)..
         /// </summary>
         internal static string repackOffDescr {
@@ -260,7 +260,7 @@ namespace Appacker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When application is closed, all its files will be packed back and packed .exe will be replaced.
+        ///   Looks up a localized string similar to When application is closed all of its files will be packed back and packed .exe will be replaced.
         ///Any changes will be saved (e.g. app settings)..
         /// </summary>
         internal static string repackOnDescr {

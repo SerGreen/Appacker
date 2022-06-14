@@ -130,13 +130,13 @@
     <value>Drag the application folder here</value>
   </data>
   <data name="cueFileDescription" xml:space="preserve">
-    <value>Inherit from main executable</value>
+    <value>Inherit from the main executable</value>
   </data>
   <data name="cueMainExe" xml:space="preserve">
     <value>Select main executable</value>
   </data>
   <data name="cuePackExePath" xml:space="preserve">
-    <value>Save file as...</value>
+    <value>Save as...</value>
   </data>
   <data name="cuePassword" xml:space="preserve">
     <value>No password</value>
@@ -181,11 +181,11 @@
     <value>Estimated package size: </value>
   </data>
   <data name="repackOffDescr" xml:space="preserve">
-    <value>When application is closed, its files are deleted from a temp folder without saving.
+    <value>When application is closed its files are deleted from a temp folder without saving.
 Changes to the app files won't be saved (e.g. app settings).</value>
   </data>
   <data name="repackOnDescr" xml:space="preserve">
-    <value>When application is closed, all its files will be packed back and packed .exe will be replaced.
+    <value>When application is closed all of its files will be packed back and packed .exe will be replaced.
 Any changes will be saved (e.g. app settings).</value>
   </data>
   <data name="unpackProgressBarOffDescr" xml:space="preserve">

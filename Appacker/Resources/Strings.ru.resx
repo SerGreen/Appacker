@@ -136,7 +136,7 @@
     <value>Выберите основной .exe файл</value>
   </data>
   <data name="cuePackExePath" xml:space="preserve">
-    <value>Укажите куда сохранить пакет</value>
+    <value>Сохранить как...</value>
   </data>
   <data name="cuePassword" xml:space="preserve">
     <value>Без пароля</value>
